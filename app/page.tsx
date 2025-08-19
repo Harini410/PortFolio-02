@@ -655,7 +655,7 @@ export default function Portfolio() {
       </a>
 
       <a
-        href="https://drive.google.com/file/d/1AwekZ7p2L6lm1JbKh4OwvwAta-VrafvD/view?usp=sharing"
+        href="https://drive.google.com/file/d/1-wjgatuoqg6xEcOkuOnDhVcsg8FCsX7r/view?usp=drive_link"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-100 text-green-800 hover:bg-green-200 transition"
