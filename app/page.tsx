@@ -487,7 +487,7 @@ export default function Portfolio() {
         <CardContent>
           <p className="text-sm text-muted-foreground mb-2">
             <a 
-              href="https://drive.google.com/drive/u/0/folders/1FmX4R-KtWO3z30mpmEgomEKlCCxiFkxl?lfhs=2" 
+              href="https://drive.google.com/file/d/1I_B8fyGlng8WRsnosvQomWHWBlW5_pzX/view?usp=drive_link" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="hover:underline text-primary"
