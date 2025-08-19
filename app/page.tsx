@@ -29,7 +29,7 @@ export default function Portfolio() {
         <a href="https://github.com/Harini410" className="flex items-center gap-1 hover:underline">
           <Github className="h-4 w-4" /> GitHub
         </a>
-        <a href="https://drive.google.com/file/d/1AwekZ7p2L6lm1JbKh4OwvwAta-VrafvD/view?usp=sharing" className="flex items-center gap-1 hover:underline">
+        <a href="https://drive.google.com/file/d/1-wjgatuoqg6xEcOkuOnDhVcsg8FCsX7r/view?usp=drive_link" className="flex items-center gap-1 hover:underline">
           <ExternalLink className="h-4 w-4" /> Resume
         </a>
       </div>
