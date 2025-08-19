@@ -59,42 +59,41 @@ export default function Portfolio() {
 
 
       {/* Hero Section */}
-      <section className="py-24 px-4 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto max-w-5xl text-center">
-          <div className="mb-6">
-            <Badge variant="secondary" className="mb-4 text-sm font-medium">
-              Available for Full-Time Opportunities
-            </Badge>
-          </div>
-          <h2 className="text-6xl font-bold font-serif mb-6 text-foreground leading-tight">
-            Software Engineer 
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Passionate Master's student in Computer Science Engineering with proven expertise in Machine Learning,
-            Full-Stack Development, and building intelligent systems. Committed to leveraging cutting-edge technology to
-            solve complex real-world challenges and drive innovation.
-          </p>
-          <div className="flex items-center justify-center gap-6 mb-10 flex-wrap">
-            
-            <div className="flex items-center gap-2 text-muted-foreground bg-card/50 px-4 py-2 rounded-full">
-              <GraduationCap className="h-4 w-4" />
-              <span>M.Tech CSE (IT) - CGPA: 8.39</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground bg-card/50 px-4 py-2 rounded-full">
-              <MapPin className="h-4 w-4" />
-              <span>Bengaluru, India</span>
-            </div>
-          </div>
-          <div className="flex items-center justify-center gap-4">
-            <Button size="lg" asChild className="px-8">
-              <a href="#projects">Explore My Work</a>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
-              <a href="#contact">Let's Connect</a>
-            </Button>
-          </div>
-        </div>
-      </section>
+<section className="py-24 px-4 bg-gradient-to-br from-background via-background to-muted/20">
+  <div className="container mx-auto max-w-5xl text-center">
+    <div className="mb-6">
+      <Badge variant="secondary" className="mb-4 text-sm font-medium">
+        Available for Full-Time Opportunities
+      </Badge>
+    </div>
+    <h2 className="text-6xl font-bold font-serif mb-6 text-foreground leading-tight">
+      Software Engineer 
+    </h2>
+    <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+      Passionate Master's student at <strong>UVCE, Bengaluru</strong> in Computer Science Engineering with proven expertise in Machine Learning,
+      Full-Stack Development, and building intelligent systems. Committed to leveraging cutting-edge technology to
+      solve complex real-world challenges and drive innovation.
+    </p>
+    <div className="flex items-center justify-center gap-6 mb-10 flex-wrap">
+      <div className="flex items-center gap-2 text-muted-foreground bg-card/50 px-4 py-2 rounded-full">
+        <GraduationCap className="h-4 w-4" />
+        <span>M.Tech CSE (IT) – UVCE, Bengaluru | CGPA: 8.39</span>
+      </div>
+      <div className="flex items-center gap-2 text-muted-foreground bg-card/50 px-4 py-2 rounded-full">
+        <MapPin className="h-4 w-4" />
+        <span>Bengaluru, India</span>
+      </div>
+    </div>
+    <div className="flex items-center justify-center gap-4">
+      <Button size="lg" asChild className="px-8">
+        <a href="#projects">Explore My Work</a>
+      </Button>
+      <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
+        <a href="#contact">Let's Connect</a>
+      </Button>
+    </div>
+  </div>
+</section>
 
    {/* About Section */}
 <section id="about" className="py-20 px-4">
