@@ -161,237 +161,209 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-<section id="projects" className="py-20 px-4 bg-muted/30">
-  <div className="container mx-auto max-w-7xl">
-    <div className="text-center mb-16">
-      <h3 className="text-4xl font-bold font-serif mb-4">Featured Projects</h3>
-      <p className="text-lg text-muted-foreground">
-        Showcasing technical excellence and innovative problem-solving
-      </p>
-    </div>
-    <div className="grid lg:grid-cols-2 gap-8">
+      <section id="projects" className="py-20 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold font-serif mb-4">Featured Projects</h3>
+            <p className="text-lg text-muted-foreground">
+              Showcasing technical excellence and innovative problem-solving
+            </p>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+              <CardHeader className="pb-4">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <CardTitle className="font-serif text-xl mb-2">Cyberbullying Detection System</CardTitle>
+                    <CardDescription className="text-sm flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      Feb 2025 - Jun 2025
+                    </CardDescription>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="ghost" asChild>
+                      <a href="#" className="text-primary hover:text-primary/80">
+                        <Github className="h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button size="sm" variant="ghost" asChild>
+                      <a href="#" className="text-primary hover:text-primary/80">
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 mt-3">
+                  <Badge variant="default" className="bg-green-100 text-green-800 border-green-200">
+                    95% Accuracy
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    Privacy-Preserving
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  Engineered a cutting-edge federated RoBERTa model for cyberbullying detection across social platforms.
+                  Enhanced model performance through innovative emotion-based and contextual embeddings, ensuring
+                  compliance with data protection standards while achieving industry-leading accuracy.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Python", "RoBERTa", "Federated Learning", "NLP", "PyTorch", "Privacy Tech"].map((tech) => (
+                    <Badge key={tech} variant="outline" className="text-xs">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
 
-      {/* Cyberbullying Detection */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <CardTitle className="font-serif text-xl mb-2">
-                Cyberbullying Detection System
-              </CardTitle>
-              <CardDescription className="text-sm flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                Aug 2024 - Jun 2025
-              </CardDescription>
-              <div className="flex items-center gap-4 mt-2">
-                <a
-                  href="https://cyberbullying-detection-eta.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
-                >
-                  Live Demo
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
-                >
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-4 mt-3">
-            <Badge variant="default" className="bg-green-100 text-green-800 border-green-200">
-              95% Accuracy
-            </Badge>
-            <Badge variant="outline" className="text-xs">
-              Privacy-Preserving
-            </Badge>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Engineered a cutting-edge federated RoBERTa model for cyberbullying detection across social platforms.
-            Enhanced model performance through innovative emotion-based and contextual embeddings, ensuring
-            compliance with data protection standards while achieving industry-leading accuracy.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {["Python", "RoBERTa", "Federated Learning", "NLP", "PyTorch", "Privacy Tech"].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+              <CardHeader className="pb-4">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <CardTitle className="font-serif text-xl mb-2">Fake News Detection with BERT</CardTitle>
+                    <CardDescription className="text-sm flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      Jun 2024 - Nov 2024
+                    </CardDescription>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="ghost" asChild>
+                      <a href="#" className="text-primary hover:text-primary/80">
+                        <Github className="h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button size="sm" variant="ghost" asChild>
+                      <a href="#" className="text-primary hover:text-primary/80">
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 mt-3">
+                  <Badge variant="default" className="bg-blue-100 text-blue-800 border-blue-200">
+                    92% Accuracy
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    Production Ready
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  Developed and fine-tuned a sophisticated BERT-based classifier for fake news identification.
+                  Implemented advanced contextual embedding techniques to improve generalization on short and misleading
+                  content, with automated training pipeline for efficient experimentation.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Python", "BERT", "Transformers", "Hugging Face", "NLP", "MLOps"].map((tech) => (
+                    <Badge key={tech} variant="outline" className="text-xs">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
 
-      {/* AI Resume Screener */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <CardTitle className="font-serif text-xl mb-2">
-                AI Resume Screener Web Application
-              </CardTitle>
-              <CardDescription className="text-sm flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                Apr 2025 - Jul 2025
-              </CardDescription>
-              <div className="flex items-center gap-4 mt-2">
-                <a
-                  href="https://v0-ai-resume-screener-smoky.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
-                >
-                  Live Demo
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
-                >
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-4 mt-3">
-            <Badge variant="default" className="bg-blue-100 text-blue-800 border-blue-200">
-              Semantic Matching
-            </Badge>
-            <Badge variant="outline" className="text-xs">
-              Next.js 14
-            </Badge>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Built a Next.js 14 web application that extracts text from resumes and job descriptions for AI-powered semantic analysis.
-            Calculated resume-job match scores and visualized results using interactive dashboards.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {["Next.js 14", "Tailwind CSS", "TensorFlow.js", "Semantic Analysis", "React"].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+              <CardHeader className="pb-4">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <CardTitle className="font-serif text-xl mb-2">Smart Complaint Management Portal</CardTitle>
+                    <CardDescription className="text-sm flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      Jan 2024 - Mar 2024
+                    </CardDescription>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="ghost" asChild>
+                      <a href="#" className="text-primary hover:text-primary/80">
+                        <Github className="h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button size="sm" variant="ghost" asChild>
+                      <a href="#" className="text-primary hover:text-primary/80">
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 mt-3">
+                  <Badge variant="default" className="bg-purple-100 text-purple-800 border-purple-200">
+                    30% Faster Resolution
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    Full-Stack
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  Architected and deployed a comprehensive full-stack portal using modern technologies. Implemented
+                  secure authentication and centralized tracking system, significantly improving operational efficiency
+                  and user experience through streamlined workflows.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Spring Boot", "React.js", "Hibernate", "MySQL", "REST API", "Security"].map((tech) => (
+                    <Badge key={tech} variant="outline" className="text-xs">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
 
-      {/* Smart Complaint Portal */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <CardTitle className="font-serif text-xl mb-2">
-                Smart Complaint Management Portal
-              </CardTitle>
-              <CardDescription className="text-sm flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                Jan 2024 - Mar 2024
-              </CardDescription>
-              <div className="flex items-center gap-4 mt-2">
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
-                >
-                  Live Demo
-                </a>
-                <a
-                  href="https://github.com/Harini410/Fullstack-complaint-portal"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
-                >
-                  GitHub
-                </a>
-              </div>
-            </div>
+            <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+              <CardHeader className="pb-4">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <CardTitle className="font-serif text-xl mb-2">Scalable E-commerce Platform</CardTitle>
+                    <CardDescription className="text-sm flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      Apr 2024 - Jun 2024
+                    </CardDescription>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="ghost" asChild>
+                      <a href="#" className="text-primary hover:text-primary/80">
+                        <Github className="h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button size="sm" variant="ghost" asChild>
+                      <a href="#" className="text-primary hover:text-primary/80">
+                        <ExternalLink className="h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 mt-3">
+                  <Badge variant="default" className="bg-orange-100 text-orange-800 border-orange-200">
+                    50% Faster Response
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    Enterprise Grade
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4 leading-relaxed">
+                  Built a fully-functional, scalable e-commerce application with responsive design and robust backend
+                  architecture. Optimized RESTful APIs and database queries for superior performance, implementing
+                  comprehensive features including product catalog, cart management, and secure payment processing.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Spring Boot", "REST API", "MySQL", "Performance Optimization", "Scalability"].map((tech) => (
+                    <Badge key={tech} variant="outline" className="text-xs">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
-          <div className="flex items-center gap-4 mt-3">
-            <Badge variant="default" className="bg-purple-100 text-purple-800 border-purple-200">
-              30% Faster Resolution
-            </Badge>
-            <Badge variant="outline" className="text-xs">
-              Full-Stack
-            </Badge>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Architected and deployed a comprehensive full-stack portal using modern technologies. Implemented
-            secure authentication and centralized tracking system, improving operational efficiency.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {["Spring Boot", "React.js", "Hibernate", "MySQL", "REST API", "Security"].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* E-commerce Application */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <CardTitle className="font-serif text-xl mb-2">
-                Scalable E-commerce Platform
-              </CardTitle>
-              <CardDescription className="text-sm flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                Apr 2024 - Jun 2024
-              </CardDescription>
-              <div className="flex items-center gap-4 mt-2">
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
-                >
-                  Live Demo
-                </a>
-                <a
-                  href="https://github.com/Harini410/E-commerce-application-using-Spring-Boot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
-                >
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-4 mt-3">
-            <Badge variant="default" className="bg-orange-100 text-orange-800 border-orange-200">
-              50% Faster Response
-            </Badge>
-            <Badge variant="outline" className="text-xs">
-              Enterprise Grade
-            </Badge>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Built a fully-functional, scalable e-commerce application with responsive design and robust backend.
-            Optimized RESTful APIs and database queries for superior performance, implementing product catalog, cart management, and secure payment processing.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {["Spring Boot", "REST API", "MySQL", "Performance Optimization", "Scalability"].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-    </div>
-  </div>
-</section>
-
+        </div>
+      </section>
 
       {/* Experience Section */}
       <section id="experience" className="py-20 px-4">
@@ -510,17 +482,6 @@ export default function Portfolio() {
             <Card className="text-center border-0 shadow-md">
               <CardHeader>
                 <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-                <CardTitle className="text-lg">DRDO CAIR Research</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-2">Centre for Artificial Intelligence & Robotics</p>
-                <p className="text-xs text-muted-foreground">Jan 2025 - Jun 2025</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-0 shadow-md">
-              <CardHeader>
-                <Award className="h-12 w-12 text-primary mx-auto mb-4" />
                 <CardTitle className="text-lg">PMBOK Certification</CardTitle>
               </CardHeader>
               <CardContent>
@@ -550,57 +511,72 @@ export default function Portfolio() {
                 <p className="text-xs text-muted-foreground">Apr 2022 - Mar 2023</p>
               </CardContent>
             </Card>
+
+            <Card className="text-center border-0 shadow-md">
+              <CardHeader>
+                <Award className="h-12 w-12 text-primary mx-auto mb-4" />
+                <CardTitle className="text-lg">Research Impact</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-2xl font-bold text-primary mb-2">95%</p>
+                <p className="text-sm text-muted-foreground">ML Model Accuracy Achievement</p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-0 shadow-md">
+              <CardHeader>
+                <Award className="h-12 w-12 text-primary mx-auto mb-4" />
+                <CardTitle className="text-lg">Performance Optimization</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-2xl font-bold text-primary mb-2">50%</p>
+                <p className="text-sm text-muted-foreground">API Response Time Improvement</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-     {/* Contact Section */}
-<section id="contact" className="py-20 px-4">
-  <div className="container mx-auto max-w-3xl text-center">
-    <h3 className="text-4xl font-bold font-serif mb-6">Let's Build Something Amazing Together</h3>
-    <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-      I'm actively seeking full-time opportunities where I can contribute my technical expertise and passion for
-      innovation. Whether you're looking for a dedicated software engineer, AI/ML specialist, or a collaborative
-      team member, I'd love to discuss how we can create impactful solutions together.
-    </p>
-
-    {/* Buttons: GitHub, Portfolio, LinkedIn */}
-    <div className="flex items-center justify-center gap-6 mb-8 flex-wrap">
-      <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
-        <a href="https://github.com/Harini410" className="flex items-center gap-2">
-          <Github className="h-5 w-5" />
-          GitHub
-        </a>
-      </Button>
-
-      <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
-        <a href="https://port-folio-02.vercel.app/" className="flex items-center gap-2">
-          <ExternalLink className="h-5 w-5" />
-          Portfolio
-        </a>
-      </Button>
-
-      <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
-        <a href="https://www.linkedin.com/in/harini-lakshmanan-04/" className="flex items-center gap-2">
-          <Linkedin className="h-5 w-5" />
-          LinkedIn
-        </a>
-      </Button>
-    </div>
-
-    {/* Contact Info */}
-    <div className="bg-card/50 rounded-lg p-6 inline-block">
-      <p className="text-muted-foreground mb-2">📱 +91 8884916059</p>
-      <p className="text-muted-foreground">📍 Available for opportunities in Bengaluru and remote positions</p>
-    </div>
-  </div>
-</section>
-
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4">
+        <div className="container mx-auto max-w-3xl text-center">
+          <h3 className="text-4xl font-bold font-serif mb-6">Let's Build Something Amazing Together</h3>
+          <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
+            I'm actively seeking full-time opportunities where I can contribute my technical expertise and passion for
+            innovation. Whether you're looking for a dedicated software engineer, AI/ML specialist, or a collaborative
+            team member, I'd love to discuss how we can create impactful solutions together.
+          </p>
+          <div className="flex items-center justify-center gap-6 mb-8">
+            <Button size="lg" asChild className="px-8">
+              <a href="mailto:harini.lts8@gmail.com" className="flex items-center gap-2">
+                <Mail className="h-5 w-5" />
+                Email Me
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
+              <a href="https://www.linkedin.com/in/harini-lakshmanan-04/" className="flex items-center gap-2">
+                <Linkedin className="h-5 w-5" />
+                LinkedIn
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
+              <a href="https://github.com/Harini410" className="flex items-center gap-2">
+                <Github className="h-5 w-5" />
+                GitHub
+              </a>
+            </Button>
+          </div>
+          <div className="bg-card/50 rounded-lg p-6 inline-block">
+            <p className="text-muted-foreground mb-2">📱 +91 8884916059</p>
+            <p className="text-muted-foreground">📍 Available for opportunities in Bengaluru and remote positions</p>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="border-t py-8 px-4 bg-card/50">
         <div className="container mx-auto max-w-4xl text-center">
-          <p className="text-muted-foreground">© 2025 Harini L. </p>
+          <p className="text-muted-foreground">© 2025 Harini L. Crafted with passion using Next.js and Tailwind CSS.</p>
         </div>
       </footer>
     </div>
