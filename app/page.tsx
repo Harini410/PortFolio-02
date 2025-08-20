@@ -84,19 +84,22 @@ export default function Portfolio() {
         <span>Bengaluru, India</span>
       </div>
     </div>
-    <div className="flex items-center justify-center gap-4">
-      <Button size="lg" asChild className="px-8">
-        <a href="#projects">Explore My Work</a>
-      </Button>
-            <Button size="lg" variant="secondary" asChild className="px-8 bg-green-500 text-white">
-        <a href="https://cyberbullying-detection-eta.vercel.app/" target="_blank" rel="noopener noreferrer">
-          Cyberbullying Demo
-        </a>
-      </Button>
-      <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
-        <a href="#contact">Let's Connect</a>
-      </Button>
-    </div>
+    <div className="flex items-center justify-center gap-4 flex-wrap">
+  <Button size="lg" asChild className="px-8">
+    <a href="#projects">Explore My Work</a>
+  </Button>
+
+  <Button size="lg" variant="outline" asChild className="px-8 border-foreground text-foreground">
+    <a href="https://cyberbullying-detection-eta.vercel.app/" target="_blank" rel="noopener noreferrer">
+      Cyberbullying Demo
+    </a>
+  </Button>
+
+  <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
+    <a href="#contact">Let's Connect</a>
+  </Button>
+</div>
+
   </div>
 </section>
 
