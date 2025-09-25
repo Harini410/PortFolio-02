@@ -14,7 +14,25 @@ export default function Portfolio() {
       {/* Centered Name */}
      <h1 className="text-5xl md:text-6xl font-bold font-serif text-primary text-center">
   Harini L
-
+</h1>
+      {/* Contact Info with Icons */}
+      <div className="flex flex-wrap justify-center gap-6 text-sm text-primary">
+        <a href="mailto:harini.lts8@gmail.com" className="flex items-center gap-1 hover:underline">
+          <Mail className="h-4 w-4" /> Email
+        </a>
+        <span className="flex items-center gap-1">
+          <Phone className="h-4 w-4" /> +91 8884916059
+        </span>
+        <a href="https://www.linkedin.com/in/harini-lakshmanan-04/" className="flex items-center gap-1 hover:underline">
+          <Linkedin className="h-4 w-4" /> LinkedIn
+        </a>
+        <a href="https://github.com/Harini410" className="flex items-center gap-1 hover:underline">
+          <Github className="h-4 w-4" /> GitHub
+        </a>
+        <a href="https://drive.google.com/file/d/1_uZoMletufOxrHV7XkJfQefzgrs9oDA9/view?usp=sharing" className="flex items-center gap-1 hover:underline">
+          <ExternalLink className="h-4 w-4" /> Resume
+        </a>
+      </div>
 
       {/* Navigation Links */}
       <div className="flex flex-wrap justify-center gap-4 mt-2">
