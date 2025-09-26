@@ -70,10 +70,11 @@ export default function Portfolio() {
       Software Engineer 
     </h2>
     <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-      Passionate Master's student at <strong>UVCE, Bengaluru</strong> in Computer Science Engineering with proven expertise in Machine Learning,
-      Full-Stack Development, and building intelligent systems. Committed to leveraging cutting-edge technology to
-      solve complex real-world challenges and drive innovation.
-    </p>
+  Passionate <strong>Computer Science Master's student at UVCE, Bengaluru</strong> with hands-on experience in 
+  <strong>Full-Stack Development</strong> and <strong>Machine Learning</strong>. Skilled at building intelligent, scalable systems that solve real-world problems. 
+  Actively seeking <strong>Software Engineer / Full-Stack Developer roles</strong> to contribute to impactful projects and drive innovation.
+</p>
+
     <div className="flex items-center justify-center gap-6 mb-10 flex-wrap">
       <div className="flex items-center gap-2 text-muted-foreground bg-card/50 px-4 py-2 rounded-full">
         <GraduationCap className="h-4 w-4" />
@@ -89,11 +90,7 @@ export default function Portfolio() {
     <a href="#projects">Explore My Work</a>
   </Button>
 
-  <Button size="lg" variant="outline" asChild className="px-8 border-foreground text-foreground">
-    <a href="https://cyberbullying-detection-eta.vercel.app/" target="_blank" rel="noopener noreferrer">
-      Cyberbullying Demo
-    </a>
-  </Button>
+  
 
   <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
     <a href="#contact">Let's Connect</a>
@@ -109,7 +106,7 @@ export default function Portfolio() {
     <div className="text-center mb-16">
       <h3 className="text-4xl font-bold font-serif mb-4">About Me</h3>
       <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-        Driven by innovation and excellence in software engineering
+        Software Engineer with hands-on experience in <strong>Full-Stack Development</strong> and <strong>Machine Learning</strong>. Skilled at building scalable, intelligent systems that solve real-world problems.
       </p>
     </div>
 
@@ -122,11 +119,9 @@ export default function Portfolio() {
             Professional Mission
           </h4>
           <p className="text-muted-foreground leading-relaxed">
-            As an aspiring software engineer with a strong foundation in AI/ML and full-stack development, I am
-            committed to building innovative solutions that make a meaningful impact. My journey from achieving a
-            7.2 CGPA in my Bachelor's to maintaining an 8.39 CGPA in my Master's reflects my dedication to
-            continuous learning and excellence. I thrive in environments where I can explore emerging technologies,
-            implement practical solutions, and collaborate with diverse teams to drive innovation.
+            I am passionate about delivering innovative software solutions using AI/ML and full-stack technologies. 
+            I focus on creating practical, scalable systems that drive measurable impact, leveraging my experience in 
+            projects with DRDO, Toshiba, and personal full-stack applications.
           </p>
         </div>
         <div>
@@ -135,14 +130,13 @@ export default function Portfolio() {
             Career Aspirations
           </h4>
           <p className="text-muted-foreground leading-relaxed">
-            I aspire to contribute to cutting-edge technology companies where I can apply my expertise in machine
-            learning and software development to solve complex challenges. My experience with prestigious
-            organizations like DRDO and Toshiba has prepared me to excel in collaborative, high-impact
-            environments. I aim to leverage my skills to create scalable, intelligent solutions that make a positive
-            difference in people's lives and the technology landscape.
+            Aspiring to join a forward-thinking tech company as a <strong>Software Engineer</strong>, I aim to apply my expertise 
+            to develop scalable, intelligent solutions that solve complex problems, contribute to impactful projects, and 
+            grow as a professional in collaborative environments.
           </p>
         </div>
       </div>
+
 
       {/* Right Side: Core Competencies */}
       <div className="flex flex-col justify-center">
