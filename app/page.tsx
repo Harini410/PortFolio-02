@@ -231,66 +231,131 @@ export default function Portfolio() {
 </section>
 
 
-   <section id="projects" className="py-20 px-4 bg-muted/30">
+  {/* Projects Section */}
+<section id="projects" className="py-20 px-4 bg-muted/30">
   <div className="container mx-auto max-w-7xl">
     <div className="text-center mb-16">
       <h3 className="text-4xl font-bold font-serif mb-4">Featured Projects</h3>
       <p className="text-lg text-muted-foreground">
-        Showcasing technical excellence and innovative problem-solving
+        Showcasing technical excellence and measurable impact
       </p>
     </div>
-
-    {/* Filter Buttons */}
-    <div className="flex justify-center gap-4 mb-12 flex-wrap">
-      {["All", "Full-Stack", "AI/ML"].map((category) => (
-        <Button
-          key={category}
-          variant={selectedCategory === category ? "default" : "outline"}
-          size="sm"
-          onClick={() => setSelectedCategory(category)}
-        >
-          {category}
-        </Button>
-      ))}
-    </div>
-
-    {/* Projects Grid */}
     <div className="grid lg:grid-cols-2 gap-8">
-      {projects
-        .filter(p => selectedCategory === "All" || p.category === selectedCategory)
-        .map((project) => (
-          <Card key={project.title} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-            <CardHeader className="pb-4">
-              <CardTitle className="font-serif text-xl mb-2">{project.title}</CardTitle>
-              <CardDescription className="text-sm flex items-center gap-2">
-                <Calendar className="h-4 w-4" /> {project.date}
-              </CardDescription>
-              <div className="flex items-center gap-4 mt-2">
-                {project.demo && (
-                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-                    Live Demo
-                  </a>
-                )}
-                {project.github && (
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-                    GitHub
-                  </a>
-                )}
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
-                  <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+
+      {/* Cyberbullying Detection */}
+      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+        <CardHeader className="pb-4">
+          <CardTitle className="font-serif text-xl mb-2">
+            Cyberbullying Detection in Social Media
+          </CardTitle>
+          <CardDescription className="text-sm flex items-center gap-2">
+            <Calendar className="h-4 w-4" /> Aug 2024 - Jun 2025
+          </CardDescription>
+          <div className="flex items-center gap-4 mt-2">
+            <a href="https://cyberbullying-detection-eta.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              Live Demo
+            </a>
+            <a href="https://github.com/Harini410/Cyberbullying-detection" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              GitHub
+            </a>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            <strong>Problem:</strong> Social media lacked automated tools to detect cyberbullying while preserving user privacy.<br/>
+            <strong>High-Level Design:</strong> Federated learning-based NLP system using RoBERTa embeddings.<br/>
+            <strong>Contribution / Low-Level:</strong> Developed emotion-based and contextual embeddings; handled end-to-end data preprocessing, model training, and evaluation.<br/>
+            <strong>Impact / Results:</strong> Achieved <strong>95% accuracy</strong> while maintaining privacy compliance.<br/>
+            <strong>Tech Stack:</strong> Python, PyTorch, RoBERTa, Federated Learning, NLP
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* AI Resume Screener */}
+      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+        <CardHeader className="pb-4">
+          <CardTitle className="font-serif text-xl mb-2">
+            AI Resume Screener Web App
+          </CardTitle>
+          <CardDescription className="text-sm flex items-center gap-2">
+            <Calendar className="h-4 w-4" /> Apr 2025 - Jul 2025
+          </CardDescription>
+          <div className="flex items-center gap-4 mt-2">
+            <a href="https://v0-ai-resume-screener-smoky.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              Live Demo
+            </a>
+            <a href="https://github.com/Harini410/AI-Resume-Screener" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              GitHub
+            </a>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            <strong>Problem:</strong> Manual resume shortlisting is time-consuming for recruiters.<br/>
+            <strong>High-Level Design:</strong> Web app that extracts text from resumes and job descriptions and performs AI-powered semantic analysis.<br/>
+            <strong>Contribution / Low-Level:</strong> Built Next.js 14 frontend, integrated semantic scoring (70% semantic + 30% keyword), and visualized results with gauges and skill chips.<br/>
+            <strong>Impact / Results:</strong> Automated resume-job matching, reducing manual effort and improving candidate selection efficiency.<br/>
+            <strong>Tech Stack:</strong> Next.js 14, Tailwind CSS, TensorFlow.js, React, Semantic Analysis
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Smart Complaint Portal */}
+      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+        <CardHeader className="pb-4">
+          <CardTitle className="font-serif text-xl mb-2">
+            Smart Complaint Management Portal
+          </CardTitle>
+          <CardDescription className="text-sm flex items-center gap-2">
+            <Calendar className="h-4 w-4" /> Jan 2024 - Mar 2024
+          </CardDescription>
+          <div className="flex items-center gap-4 mt-2">
+            <a href="https://github.com/Harini410/Fullstack-complaint-portal" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              GitHub
+            </a>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            <strong>Problem:</strong> Manual complaint tracking caused delays and errors.<br/>
+            <strong>High-Level Design:</strong> Full-stack portal using Spring Boot, Hibernate, React.js, and MySQL.<br/>
+            <strong>Contribution / Low-Level:</strong> Implemented secure authentication, centralized tracking, and database management.<br/>
+            <strong>Impact / Results:</strong> Improved system reliability by <strong>25%</strong>.<br/>
+            <strong>Tech Stack:</strong> Spring Boot, Hibernate, React.js, MySQL, Full-Stack
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* E-commerce Application */}
+      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+        <CardHeader className="pb-4">
+          <CardTitle className="font-serif text-xl mb-2">
+            E-commerce Application
+          </CardTitle>
+          <CardDescription className="text-sm flex items-center gap-2">
+            <Calendar className="h-4 w-4" /> Apr 2024 - Jun 2024
+          </CardDescription>
+          <div className="flex items-center gap-4 mt-2">
+            <a href="https://github.com/Harini410/E-commerce-application-using-Spring-Boot" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              GitHub
+            </a>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            <strong>Problem:</strong> Existing e-commerce platforms lacked optimized, scalable APIs for smooth user experience.<br/>
+            <strong>High-Level Design:</strong> Built a scalable Spring Boot backend with RESTful APIs and relational database integration.<br/>
+            <strong>Contribution / Low-Level:</strong> Developed product catalog, shopping cart, order tracking, and secure checkout features.<br/>
+            <strong>Impact / Results:</strong> Delivered a fully-functional, maintainable, and high-performance e-commerce system.<br/>
+            <strong>Tech Stack:</strong> Spring Boot, REST API, MySQL, Performance Optimization, Scalability
+          </p>
+        </CardContent>
+      </Card>
+
     </div>
   </div>
 </section>
+
 
 
       {/* Experience Section */}
