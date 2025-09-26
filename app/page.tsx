@@ -231,8 +231,7 @@ export default function Portfolio() {
 </section>
 
 
-      {/* Projects Section */}
-<section id="projects" className="py-20 px-4 bg-muted/30">
+   <section id="projects" className="py-20 px-4 bg-muted/30">
   <div className="container mx-auto max-w-7xl">
     <div className="text-center mb-16">
       <h3 className="text-4xl font-bold font-serif mb-4">Featured Projects</h3>
@@ -240,122 +239,55 @@ export default function Portfolio() {
         Showcasing technical excellence and innovative problem-solving
       </p>
     </div>
+
+    {/* Filter Buttons */}
+    <div className="flex justify-center gap-4 mb-12 flex-wrap">
+      {["All", "Full-Stack", "AI/ML"].map((category) => (
+        <Button
+          key={category}
+          variant={selectedCategory === category ? "default" : "outline"}
+          size="sm"
+          onClick={() => setSelectedCategory(category)}
+        >
+          {category}
+        </Button>
+      ))}
+    </div>
+
+    {/* Projects Grid */}
     <div className="grid lg:grid-cols-2 gap-8">
-
-      {/* Cyberbullying Detection */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <CardTitle className="font-serif text-xl mb-2">
-            Cyberbullying Detection in Social Media
-          </CardTitle>
-          <CardDescription className="text-sm flex items-center gap-2">
-            <Calendar className="h-4 w-4" /> Aug 2024 - Jun 2025
-          </CardDescription>
-          <div className="flex items-center gap-4 mt-2">
-            <a href="https://cyberbullying-detection-eta.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-              Live Demo
-            </a>
-            <a href="https://github.com/Harini410/Cyberbullying-detection" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-              GitHub
-            </a>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Engineered a privacy-preserving <strong>federated RoBERTa model</strong> integrating <strong>emotion-based and contextual embeddings</strong> for <strong>95% accuracy</strong>. Led end-to-end development from data preprocessing to evaluation, ensuring compliance with data protection standards.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {["Python", "RoBERTa", "Federated Learning", "NLP", "PyTorch"].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* AI Resume Screener */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <CardTitle className="font-serif text-xl mb-2">
-            AI Resume Screener Web Application
-          </CardTitle>
-          <CardDescription className="text-sm flex items-center gap-2">
-            <Calendar className="h-4 w-4" /> Apr 2025 - Jul 2025
-          </CardDescription>
-          <div className="flex items-center gap-4 mt-2">
-            <a href="https://v0-ai-resume-screener-smoky.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-              Live Demo
-            </a>
-            <a href="https://github.com/Harini410/AI-Resume-Screener" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-              GitHub
-            </a>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Built a <strong>Next.js 14 web app</strong> that extracts text from resumes and job descriptions and performs <strong>AI-powered semantic analysis</strong>. Calculated <strong>resume-job match scores</strong> (70% semantic + 30% keyword) and visualized results with circular gauges and color-coded skill chips.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {["Next.js 14", "Tailwind CSS", "TensorFlow.js", "Semantic Analysis", "React"].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Smart Complaint Portal */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <CardTitle className="font-serif text-xl mb-2">
-            Smart Complaint Management Portal
-          </CardTitle>
-          <CardDescription className="text-sm flex items-center gap-2">
-            <Calendar className="h-4 w-4" /> Jan 2024 - Mar 2024
-          </CardDescription>
-          <div className="flex items-center gap-4 mt-2">
-            <a href="https://github.com/Harini410/Fullstack-complaint-portal" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-              GitHub
-            </a>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Designed and deployed a full-stack portal using <strong>Spring Boot, Hibernate, React.js, and MySQL</strong> for complaint tracking. Implemented secure authentication and centralized tracking, improving system reliability by <strong>25%</strong>.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {["Spring Boot", "Hibernate", "React.js", "MySQL", "Full-Stack"].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* E-commerce Application */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <CardTitle className="font-serif text-xl mb-2">
-            E-commerce Application using Spring Boot
-          </CardTitle>
-          <CardDescription className="text-sm flex items-center gap-2">
-            <Calendar className="h-4 w-4" /> Apr 2024 - Jun 2024
-          </CardDescription>
-          <div className="flex items-center gap-4 mt-2">
-            <a href="https://github.com/Harini410/E-commerce-application-using-Spring-Boot" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
-              GitHub
-            </a>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Built a fully-functional, <strong>scalable e-commerce application</strong> with optimized <strong>RESTful APIs and database queries</strong>. Implemented key features such as product catalog, shopping cart, order tracking, and secure checkout.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {["Spring Boot", "REST API", "MySQL", "Performance Optimization", "Scalability"].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
+      {projects
+        .filter(p => selectedCategory === "All" || p.category === selectedCategory)
+        .map((project) => (
+          <Card key={project.title} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+            <CardHeader className="pb-4">
+              <CardTitle className="font-serif text-xl mb-2">{project.title}</CardTitle>
+              <CardDescription className="text-sm flex items-center gap-2">
+                <Calendar className="h-4 w-4" /> {project.date}
+              </CardDescription>
+              <div className="flex items-center gap-4 mt-2">
+                {project.demo && (
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+                    Live Demo
+                  </a>
+                )}
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+                    GitHub
+                  </a>
+                )}
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
     </div>
   </div>
 </section>
