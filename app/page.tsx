@@ -1,133 +1,62 @@
-"use client"
-
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Github, Linkedin, Mail, ExternalLink, MapPin, Calendar, GraduationCap, Award, Target, TrendingUp, Phone, FileText } from "lucide-react"
+import { Github, Linkedin, Mail, ExternalLink, MapPin, Calendar, GraduationCap, Award, Target, TrendingUp, Phone, FileText  } from "lucide-react"
+
 
 export default function Portfolio() {
-  const [activeTab, setActiveTab] = useState("Full-Stack")
-
-  const fullStackProjects = [
-    {
-      title: "Smart Complaint Management Portal",
-      timeline: "Jan 2024 - Mar 2024",
-      description: "Designed and deployed a full-stack portal using Spring Boot, Hibernate, React.js, and MySQL for complaint tracking. Implemented secure authentication and centralized tracking, improving system reliability by 25%.",
-      tech: ["Spring Boot", "Hibernate", "React.js", "MySQL", "Full-Stack"],
-      github: "https://github.com/Harini410/Fullstack-complaint-portal",
-      live: ""
-    },
-    {
-      title: "E-commerce Application using Spring Boot",
-      timeline: "Apr 2024 - Jun 2024",
-      description: "Built a fully-functional, scalable e-commerce application with optimized RESTful APIs and database queries. Implemented product catalog, shopping cart, order tracking, and secure checkout.",
-      tech: ["Spring Boot", "REST API", "MySQL", "Performance Optimization", "Scalability"],
-      github: "https://github.com/Harini410/E-commerce-application-using-Spring-Boot",
-      live: ""
-    }
-  ]
-
-  const aiProjects = [
-    {
-      title: "Cyberbullying Detection in Social Media",
-      timeline: "Aug 2024 - Jun 2025",
-      description: "Engineered a privacy-preserving federated RoBERTa model integrating emotion-based and contextual embeddings for 95% accuracy. Led end-to-end development from data preprocessing to evaluation, ensuring compliance with data protection standards.",
-      tech: ["Python", "RoBERTa", "Federated Learning", "NLP", "PyTorch"],
-      github: "https://github.com/Harini410/Cyberbullying-detection",
-      live: "https://cyberbullying-detection-eta.vercel.app/"
-    },
-    {
-      title: "AI Resume Screener Web Application",
-      timeline: "Apr 2025 - Jul 2025",
-      description: "Built a Next.js 14 web app that extracts text from resumes and job descriptions and performs AI-powered semantic analysis. Calculated resume-job match scores (70% semantic + 30% keyword) and visualized results with circular gauges and skill chips.",
-      tech: ["Next.js 14", "Tailwind CSS", "TensorFlow.js", "Semantic Analysis", "React"],
-      github: "https://github.com/Harini410/AI-Resume-Screener",
-      live: "https://v0-ai-resume-screener-smoky.vercel.app/"
-    }
-  ]
-
-  const projectsToShow = activeTab === "Full-Stack" ? fullStackProjects : aiProjects
-
   return (
     <div className="min-h-screen bg-background">
-
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-bold font-serif mb-4">Featured Projects</h3>
-            <p className="text-lg text-muted-foreground">Showcasing technical excellence and innovative problem-solving</p>
-          </div>
-
-          {/* Toggle Buttons */}
-          <div className="flex justify-center gap-4 mb-8">
-            {["Full-Stack", "AI/ML"].map(tab => (
-              <button
-                key={tab}
-                className={`px-6 py-2 rounded-md font-semibold transition ${
-                  activeTab === tab ? "bg-primary text-white" : "bg-white text-primary border border-primary"
-                }`}
-                onClick={() => setActiveTab(tab)}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-
-          {/* Project Cards */}
-          <div className="grid lg:grid-cols-2 gap-8">
-            {projectsToShow.map(proj => (
-              <Card key={proj.title} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-                <CardHeader className="pb-4">
-                  <CardTitle className="font-serif text-xl mb-2">{proj.title}</CardTitle>
-                  <CardDescription className="text-sm flex items-center gap-2">
-                    <Calendar className="h-4 w-4" /> {proj.timeline}
-                  </CardDescription>
-                  <div className="flex items-center gap-4 mt-2">
-                    {proj.live && <a href={proj.live} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">Live Demo</a>}
-                    {proj.github && <a href={proj.github} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">GitHub</a>}
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{proj.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {proj.tech.map(tech => <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>)}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  )
-}
-
       {/* Header */}
       <header className="border-b bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex flex-col items-center gap-4">
-            <h1 className="text-5xl md:text-6xl font-bold font-serif text-primary text-center">Harini L</h1>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-primary">
-              <a href="mailto:harini.lts8@gmail.com" className="flex items-center gap-1 hover:underline"><Mail className="h-4 w-4" /> Email</a>
-              <span className="flex items-center gap-1"><Phone className="h-4 w-4" /> +91 8884916059</span>
-              <a href="https://www.linkedin.com/in/harini-lakshmanan-04/" className="flex items-center gap-1 hover:underline"><Linkedin className="h-4 w-4" /> LinkedIn</a>
-              <a href="https://github.com/Harini410" className="flex items-center gap-1 hover:underline"><Github className="h-4 w-4" /> GitHub</a>
-              <a href="https://drive.google.com/file/d/1_uZoMletufOxrHV7XkJfQefzgrs9oDA9/view?usp=sharing" className="flex items-center gap-1 hover:underline"><ExternalLink className="h-4 w-4" /> Resume</a>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4 mt-2">
-              <Button variant="ghost" size="sm" asChild><a href="#about">About</a></Button>
-              <Button variant="ghost" size="sm" asChild><a href="#projects">Projects</a></Button>
-              <Button variant="ghost" size="sm" asChild><a href="#experience">Experience</a></Button>
-              <Button variant="ghost" size="sm" asChild><a href="#achievements">Achievements</a></Button>
-              <Button variant="ghost" size="sm" asChild><a href="#contact">Contact</a></Button>
-            </div>
-          </nav>
-        </div>
-      </header>
+  <div className="container mx-auto px-4 py-4">
+    <nav className="flex flex-col items-center gap-4">
+      {/* Centered Name */}
+     <h1 className="text-5xl md:text-6xl font-bold font-serif text-primary text-center">
+  Harini L
+</h1>
+      {/* Contact Info with Icons */}
+      <div className="flex flex-wrap justify-center gap-6 text-sm text-primary">
+        <a href="mailto:harini.lts8@gmail.com" className="flex items-center gap-1 hover:underline">
+          <Mail className="h-4 w-4" /> Email
+        </a>
+        <span className="flex items-center gap-1">
+          <Phone className="h-4 w-4" /> +91 8884916059
+        </span>
+        <a href="https://www.linkedin.com/in/harini-lakshmanan-04/" className="flex items-center gap-1 hover:underline">
+          <Linkedin className="h-4 w-4" /> LinkedIn
+        </a>
+        <a href="https://github.com/Harini410" className="flex items-center gap-1 hover:underline">
+          <Github className="h-4 w-4" /> GitHub
+        </a>
+        <a href="https://drive.google.com/file/d/1FnvOO7hrTPFjUTirG4wpKU2pukDFIf6O/view?usp=sharing" className="flex items-center gap-1 hover:underline">
+          <ExternalLink className="h-4 w-4" /> Resume
+        </a>
+      </div>
 
-     
+      {/* Navigation Links */}
+      <div className="flex flex-wrap justify-center gap-4 mt-2">
+        <Button variant="ghost" size="sm" asChild>
+          <a href="#about">About</a>
+        </Button>
+        <Button variant="ghost" size="sm" asChild>
+          <a href="#projects">Projects</a>
+        </Button>
+        <Button variant="ghost" size="sm" asChild>
+          <a href="#experience">Experience</a>
+        </Button>
+        <Button variant="ghost" size="sm" asChild>
+          <a href="#achievements">Achievements</a>
+        </Button>
+        <Button variant="ghost" size="sm" asChild>
+          <a href="#contact">Contact</a>
+        </Button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
 
       {/* Hero Section */}
 <section className="py-24 px-4 bg-gradient-to-br from-background via-background to-muted/20">
@@ -141,11 +70,10 @@ export default function Portfolio() {
       Software Engineer 
     </h2>
     <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-  Passionate <strong>Computer Science Master's student at UVCE, Bengaluru</strong> with hands-on experience in 
-  <strong>Full-Stack Development</strong> and <strong>Machine Learning</strong>. Skilled at building intelligent, scalable systems that solve real-world problems. 
-  Actively seeking <strong>Software Engineer / Full-Stack Developer roles</strong> to contribute to impactful projects and drive innovation.
-</p>
-
+      Passionate Master's student at <strong>UVCE, Bengaluru</strong> in Computer Science Engineering with proven expertise in Machine Learning,
+      Full-Stack Development, and building intelligent systems. Committed to leveraging cutting-edge technology to
+      solve complex real-world challenges and drive innovation.
+    </p>
     <div className="flex items-center justify-center gap-6 mb-10 flex-wrap">
       <div className="flex items-center gap-2 text-muted-foreground bg-card/50 px-4 py-2 rounded-full">
         <GraduationCap className="h-4 w-4" />
@@ -156,18 +84,14 @@ export default function Portfolio() {
         <span>Bengaluru, India</span>
       </div>
     </div>
-    <div className="flex items-center justify-center gap-4 flex-wrap">
-  <Button size="lg" asChild className="px-8">
-    <a href="#projects">Explore My Work</a>
-  </Button>
-
-  
-
-  <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
-    <a href="#contact">Let's Connect</a>
-  </Button>
-</div>
-
+    <div className="flex items-center justify-center gap-4">
+      <Button size="lg" asChild className="px-8">
+        <a href="#projects">Explore My Work</a>
+      </Button>
+      <Button size="lg" variant="outline" asChild className="px-8 bg-transparent">
+        <a href="#contact">Let's Connect</a>
+      </Button>
+    </div>
   </div>
 </section>
 
@@ -177,7 +101,7 @@ export default function Portfolio() {
     <div className="text-center mb-16">
       <h3 className="text-4xl font-bold font-serif mb-4">About Me</h3>
       <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-        Software Engineer with hands-on experience in <strong>Full-Stack Development</strong> and <strong>Machine Learning</strong>. Skilled at building scalable, intelligent systems that solve real-world problems.
+        Driven by innovation and excellence in software engineering
       </p>
     </div>
 
@@ -190,9 +114,11 @@ export default function Portfolio() {
             Professional Mission
           </h4>
           <p className="text-muted-foreground leading-relaxed">
-            I am passionate about delivering innovative software solutions using AI/ML and full-stack technologies. 
-            I focus on creating practical, scalable systems that drive measurable impact, leveraging my experience in 
-            projects with DRDO, Toshiba, and personal full-stack applications.
+            As an aspiring software engineer with a strong foundation in AI/ML and full-stack development, I am
+            committed to building innovative solutions that make a meaningful impact. My journey from achieving a
+            7.2 CGPA in my Bachelor's to maintaining an 8.39 CGPA in my Master's reflects my dedication to
+            continuous learning and excellence. I thrive in environments where I can explore emerging technologies,
+            implement practical solutions, and collaborate with diverse teams to drive innovation.
           </p>
         </div>
         <div>
@@ -201,13 +127,14 @@ export default function Portfolio() {
             Career Aspirations
           </h4>
           <p className="text-muted-foreground leading-relaxed">
-            Aspiring to join a forward-thinking tech company as a <strong>Software Engineer</strong>, I aim to apply my expertise 
-            to develop scalable, intelligent solutions that solve complex problems, contribute to impactful projects, and 
-            grow as a professional in collaborative environments.
+            I aspire to contribute to cutting-edge technology companies where I can apply my expertise in machine
+            learning and software development to solve complex challenges. My experience with prestigious
+            organizations like DRDO and Toshiba has prepared me to excel in collaborative, high-impact
+            environments. I aim to leverage my skills to create scalable, intelligent solutions that make a positive
+            difference in people's lives and the technology landscape.
           </p>
         </div>
       </div>
-
 
       {/* Right Side: Core Competencies */}
       <div className="flex flex-col justify-center">
@@ -302,49 +229,135 @@ export default function Portfolio() {
 </section>
 
 
- 
-      
-        {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 bg-muted/30">
-        {/* Toggle Buttons */}
-        <div className="flex justify-center gap-4 mb-8">
-          {["Full-Stack", "AI/ML"].map(tab => (
-            <button
-              key={tab}
-              className={`px-6 py-2 rounded-md font-semibold transition ${
-                activeTab === tab ? "bg-primary text-white" : "bg-white text-primary border border-primary"
-              }`}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
+      {/* Projects Section */}
+<section id="projects" className="py-20 px-4 bg-muted/30">
+  <div className="container mx-auto max-w-7xl">
+    <div className="text-center mb-16">
+      <h3 className="text-4xl font-bold font-serif mb-4">Featured Projects</h3>
+      <p className="text-lg text-muted-foreground">
+        Showcasing technical excellence and innovative problem-solving
+      </p>
+    </div>
+    <div className="grid lg:grid-cols-2 gap-8">
 
-        {/* Project Cards */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {projectsToShow.map(proj => (
-            <Card key={proj.title} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-              <CardHeader>
-                <CardTitle className="font-serif text-xl mb-2">{proj.title}</CardTitle>
-                <CardDescription className="text-sm flex items-center gap-2">
-                  <Calendar className="h-4 w-4" /> {proj.timeline}
-                </CardDescription>
-                <div className="flex items-center gap-4 mt-2">
-                  {proj.live && <a href={proj.live} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">Live Demo</a>}
-                  {proj.github && <a href={proj.github} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">GitHub</a>}
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4 leading-relaxed">{proj.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {proj.tech.map(tech => <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>)}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+      {/* Cyberbullying Detection */}
+      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+        <CardHeader className="pb-4">
+          <CardTitle className="font-serif text-xl mb-2">
+            Cyberbullying Detection in Social Media
+          </CardTitle>
+          <CardDescription className="text-sm flex items-center gap-2">
+            <Calendar className="h-4 w-4" /> Aug 2024 - Jun 2025
+          </CardDescription>
+          <div className="flex items-center gap-4 mt-2">
+            <a href="https://cyberbullying-detection-eta.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              Live Demo
+            </a>
+            <a href="https://github.com/Harini410/Cyberbullying-detection" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              GitHub
+            </a>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            Engineered a privacy-preserving <strong>federated RoBERTa model</strong> integrating <strong>emotion-based and contextual embeddings</strong> for <strong>95% accuracy</strong>. Led end-to-end development from data preprocessing to evaluation, ensuring compliance with data protection standards.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {["Python", "RoBERTa", "Federated Learning", "NLP", "PyTorch"].map((tech) => (
+              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* AI Resume Screener */}
+      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+        <CardHeader className="pb-4">
+          <CardTitle className="font-serif text-xl mb-2">
+            AI Resume Screener Web Application
+          </CardTitle>
+          <CardDescription className="text-sm flex items-center gap-2">
+            <Calendar className="h-4 w-4" /> Apr 2025 - Jul 2025
+          </CardDescription>
+          <div className="flex items-center gap-4 mt-2">
+            <a href="https://v0-ai-resume-screener-smoky.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              Live Demo
+            </a>
+            <a href="https://github.com/Harini410/AI-Resume-Screener" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              GitHub
+            </a>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            Built a <strong>Next.js 14 web app</strong> that extracts text from resumes and job descriptions and performs <strong>AI-powered semantic analysis</strong>. Calculated <strong>resume-job match scores</strong> (70% semantic + 30% keyword) and visualized results with circular gauges and color-coded skill chips.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {["Next.js 14", "Tailwind CSS", "TensorFlow.js", "Semantic Analysis", "React"].map((tech) => (
+              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Smart Complaint Portal */}
+      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+        <CardHeader className="pb-4">
+          <CardTitle className="font-serif text-xl mb-2">
+            Smart Complaint Management Portal
+          </CardTitle>
+          <CardDescription className="text-sm flex items-center gap-2">
+            <Calendar className="h-4 w-4" /> Jan 2024 - Mar 2024
+          </CardDescription>
+          <div className="flex items-center gap-4 mt-2">
+            <a href="https://github.com/Harini410/Fullstack-complaint-portal" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              GitHub
+            </a>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            Designed and deployed a full-stack portal using <strong>Spring Boot, Hibernate, React.js, and MySQL</strong> for complaint tracking. Implemented secure authentication and centralized tracking, improving system reliability by <strong>25%</strong>.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {["Spring Boot", "Hibernate", "React.js", "MySQL", "Full-Stack"].map((tech) => (
+              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* E-commerce Application */}
+      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+        <CardHeader className="pb-4">
+          <CardTitle className="font-serif text-xl mb-2">
+            E-commerce Application using Spring Boot
+          </CardTitle>
+          <CardDescription className="text-sm flex items-center gap-2">
+            <Calendar className="h-4 w-4" /> Apr 2024 - Jun 2024
+          </CardDescription>
+          <div className="flex items-center gap-4 mt-2">
+            <a href="https://github.com/Harini410/E-commerce-application-using-Spring-Boot" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+              GitHub
+            </a>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            Built a fully-functional, <strong>scalable e-commerce application</strong> with optimized <strong>RESTful APIs and database queries</strong>. Implemented key features such as product catalog, shopping cart, order tracking, and secure checkout.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {["Spring Boot", "REST API", "MySQL", "Performance Optimization", "Scalability"].map((tech) => (
+              <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+    </div>
+  </div>
+</section>
+
 
       {/* Experience Section */}
 <section id="experience" className="py-20 px-4">
@@ -641,7 +654,7 @@ export default function Portfolio() {
       </a>
 
       <a
-        href="https://drive.google.com/file/d/1_uZoMletufOxrHV7XkJfQefzgrs9oDA9/view?usp=sharing"
+        href="https://drive.google.com/file/d/1FnvOO7hrTPFjUTirG4wpKU2pukDFIf6O/view?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-100 text-green-800 hover:bg-green-200 transition"
