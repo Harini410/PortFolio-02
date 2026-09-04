@@ -1164,7 +1164,7 @@ export default function Portfolio() {
       {/* Footer */}
       <footer className="border-t py-8 px-4 bg-card/50">
         <div className="container mx-auto max-w-4xl text-center">
-          <p className="text-muted-foreground">© 2025 Harini L. </p>
+          <p className="text-muted-foreground">© 2026. </p>
         </div>
       </footer>
     </div>
