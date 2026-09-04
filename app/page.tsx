@@ -72,7 +72,7 @@ export default function Portfolio() {
     </h2>
 
     <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-      Software Engineer with <strong>9 months of professional experience at Dell Technologies</strong>,
+      Software Engineer with <strong>professional experience at Dell Technologies</strong>,
       specializing in <strong>C#/.NET development, Windows recovery solutions,
       automation, and AI-assisted software development</strong>. Experienced in
       building and debugging software systems while applying modern development
