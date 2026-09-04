@@ -1142,7 +1142,7 @@ export default function Portfolio() {
       </a>
 
       <a
-        href="https://drive.google.com/file/d/1zZZpjD0_6yI9UFXIUXMvwMffgxWjcCzJ/view?usp=sharing"
+        href="https://drive.google.com/file/d/1XrVqkvT1YqdDxdQ10ElTDo9Sr2bUhC4J/view?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-100 text-green-800 hover:bg-green-200 transition"
