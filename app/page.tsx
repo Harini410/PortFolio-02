@@ -142,7 +142,7 @@ export default function Portfolio() {
           </h4>
 
           <p className="text-muted-foreground leading-relaxed">
-            Software Engineer with <strong>9 months of professional
+            Software Engineer with <strong>professional
             experience at Dell Technologies</strong>, developing
             <strong> C#/.NET applications</strong> and contributing to
             <strong> Windows OS Recovery Image engineering</strong>.
