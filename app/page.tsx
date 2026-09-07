@@ -1476,8 +1476,8 @@ export default function Portfolio() {
                               rel="noopener noreferrer"
                               className="flex items-center gap-1"
                             >
-                              <span>View Paper / Certificate ↗</span>
-                              <ExternalLink className="h-3 w-3" />
+                              <span>View Paper / Certificate</span>
+                              <ExternalLink className="h-3 w-3 text-white" />
                             </a>
                           </Button>
                           <Button
@@ -1492,7 +1492,7 @@ export default function Portfolio() {
                               rel="noopener noreferrer"
                               className="flex items-center gap-1"
                             >
-                              <span>Live Demo ↗</span>
+                              <span>Live Demo</span>
                               <ExternalLink className="h-3 w-3" />
                             </a>
                           </Button>
@@ -1524,8 +1524,8 @@ export default function Portfolio() {
                               rel="noopener noreferrer"
                               className="flex items-center gap-1"
                             >
-                              <span>View Certificate ↗</span>
-                              <ExternalLink className="h-3 w-3" />
+                              <span>View Certificate</span>
+                              <ExternalLink className="h-3 w-3 text-white" />
                             </a>
                           </Button>
                         </div>
