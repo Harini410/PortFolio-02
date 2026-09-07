@@ -1,671 +1,177 @@
+"use client"
+
+import * as React from "react"
+import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Github, Linkedin, Mail, ExternalLink, MapPin, Calendar, GraduationCap, Award, Target, TrendingUp, Phone, FileText, Briefcase  } from "lucide-react"
-
+import { ThemeToggle } from "@/components/theme-toggle"
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  MapPin,
+  Calendar,
+  GraduationCap,
+  Award,
+  Phone,
+  FileText,
+  Sparkles,
+  Code2,
+  ArrowUpRight,
+  Menu,
+  X,
+  Briefcase,
+  ArrowUp,
+  Building2,
+  Laptop,
+  FileCheck2,
+  ScrollText,
+  LayoutGrid,
+  SlidersHorizontal,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react"
 
 export default function Portfolio() {
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-card/50 backdrop-blur-sm">
-  <div className="container mx-auto px-4 py-4">
-    <nav className="flex flex-col items-center gap-4">
-      {/* Centered Name */}
-     <h1 className="text-5xl md:text-6xl font-bold font-serif text-primary text-center">
-  Harini L
-</h1>
-      {/* Contact Info with Icons */}
-      <div className="flex flex-wrap justify-center gap-6 text-sm text-primary">
-        <a href="mailto:harini.lts8@gmail.com" className="flex items-center gap-1 hover:underline">
-          <Mail className="h-4 w-4" /> Email
-        </a>
-        <span className="flex items-center gap-1">
-          <Phone className="h-4 w-4" /> +91 8884916059
-        </span>
-        <a href="https://www.linkedin.com/in/harini-lakshmanan-04/" className="flex items-center gap-1 hover:underline">
-          <Linkedin className="h-4 w-4" /> LinkedIn
-        </a>
-        <a href="https://github.com/Harini410" className="flex items-center gap-1 hover:underline">
-          <Github className="h-4 w-4" /> GitHub
-        </a>
-        <a href="https://drive.google.com/file/d/1XrVqkvT1YqdDxdQ10ElTDo9Sr2bUhC4J/view?usp=sharing" className="flex items-center gap-1 hover:underline">
-          <ExternalLink className="h-4 w-4" /> Resume
-        </a>
-      </div>
-
-      {/* Navigation Links */}
-      <div className="flex flex-wrap justify-center gap-4 mt-2">
-        <Button variant="ghost" size="sm" asChild>
-          <a href="#about">About</a>
-        </Button>
-        <Button variant="ghost" size="sm" asChild>
-          <a href="#projects">Projects</a>
-        </Button>
-        <Button variant="ghost" size="sm" asChild>
-          <a href="#experience">Experience</a>
-        </Button>
-        <Button variant="ghost" size="sm" asChild>
-          <a href="#achievements">Achievements</a>
-        </Button>
-        <Button variant="ghost" size="sm" asChild>
-          <a href="#contact">Contact</a>
-        </Button>
-      </div>
-    </nav>
-  </div>
-</header>
-
-
-{/* Hero Section */}
-<section className="py-24 px-4 bg-gradient-to-br from-background via-background to-muted/20">
-  <div className="container mx-auto max-w-5xl text-center">
-
-    <div className="mb-6">
-      <Badge variant="secondary" className="mb-4 text-sm font-medium">
-        Available for Full-Time Opportunities
-      </Badge>
-    </div>
-
-    <h2 className="text-6xl font-bold font-serif mb-6 text-foreground leading-tight">
-      Software Engineer
-    </h2>
-
-    <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-      Software Engineer with <strong>9 months of professional experience at Dell Technologies</strong>,
-      specializing in <strong>C#/.NET development, Windows recovery solutions,
-      automation, and AI-assisted software development</strong>. Experienced in
-      building and debugging software systems while applying modern development
-      practices to solve real-world engineering problems.
-    </p>
-
-    <div className="flex items-center justify-center gap-6 mb-10 flex-wrap">
-
-      <div className="flex items-center gap-2 text-muted-foreground bg-card/50 px-4 py-2 rounded-full">
-        <Briefcase className="h-4 w-4" />
-        <span>Dell Technologies | Software Engineer</span>
-      </div>
-
-      <div className="flex items-center gap-2 text-muted-foreground bg-card/50 px-4 py-2 rounded-full">
-        <GraduationCap className="h-4 w-4" />
-        <span>M.Tech CSE (IT) – UVCE | CGPA: 8.70</span>
-      </div>
-
-      <div className="flex items-center gap-2 text-muted-foreground bg-card/50 px-4 py-2 rounded-full">
-        <MapPin className="h-4 w-4" />
-        <span>Bengaluru, India</span>
-      </div>
-
-    </div>
-
-    <div className="flex items-center justify-center gap-4">
-      <Button size="lg" asChild className="px-8">
-        <a href="#projects">Explore My Work</a>
-      </Button>
-
-      <Button
-        size="lg"
-        variant="outline"
-        asChild
-        className="px-8 bg-transparent"
-      >
-        <a href="#contact">Let's Connect</a>
-      </Button>
-    </div>
-
-  </div>
-</section>
-
-{/* About Section */}
-<section id="about" className="py-20 px-4">
-  <div className="container mx-auto max-w-6xl">
-
-    <div className="text-center mb-16">
-      <h3 className="text-4xl font-bold font-serif mb-4">
-        About Me
-      </h3>
-      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-        Software engineering across systems, AI, and full-stack development
-      </p>
-    </div>
-
-    <div className="grid lg:grid-cols-2 gap-12">
-
-      {/* Left Side: Professional Profile */}
-      <div className="space-y-8 flex flex-col justify-center">
-
-        {/* Professional Profile */}
-        <div>
-          <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <Target className="h-5 w-5 text-primary" />
-            Professional Profile
-          </h4>
-
-          <p className="text-muted-foreground leading-relaxed">
-            Software Engineer with <strong>9 months of professional
-            experience at Dell Technologies</strong>, developing
-            <strong> C#/.NET applications</strong> and contributing to
-            <strong> Windows OS Recovery Image engineering</strong>.
-            Experienced in <strong>WinPE, WinRE, WIM, DISM, PowerShell,
-            Windows internals, debugging, automation, and recovery
-            workflows</strong>.
-          </p>
-        </div>
-
-        {/* Engineering Focus */}
-        <div>
-          <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <TrendingUp className="h-5 w-5 text-primary" />
-            Engineering Focus
-          </h4>
-
-          <p className="text-muted-foreground leading-relaxed">
-            Focused on building reliable software while applying
-            <strong> AI-assisted engineering practices</strong>. Experienced
-            with <strong>Claude Code, LLM-based coding agents, and
-            Spec-Driven Development (SDD)</strong> for codebase exploration,
-            implementation, debugging, refactoring, and test generation.
-            Hands-on projects span <strong>Agentic AI, cybersecurity,
-            NLP, and full-stack development</strong>.
-          </p>
-        </div>
-
-        {/* Education */}
-        <div>
-          <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
-            <GraduationCap className="h-5 w-5 text-primary" />
-            Education
-          </h4>
-
-          <p className="text-muted-foreground leading-relaxed">
-            M.Tech in <strong>Computer Science & Engineering (Information
-            Technology)</strong> from <strong>UVCE, Bengaluru</strong> with
-            a <strong>CGPA of 8.70/10</strong>, building on a Bachelor's
-            background in Information Science & Engineering.
-          </p>
-        </div>
-
-      </div>
-
-      {/* Right Side: Core Competencies */}
-      <div className="flex flex-col justify-center">
-
-        <h4 className="text-xl font-semibold mb-6">
-          Core Competencies
-        </h4>
-
-        <div className="space-y-4">
-
-          {/* AI & AI-Assisted Engineering */}
-          <div>
-            <p className="text-sm font-medium mb-3 text-primary">
-              AI & AI-Assisted Engineering
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Claude Code",
-                "Agentic AI",
-                "LLM-Based Coding Agents",
-                "Spec-Driven Development",
-                "Prompt Engineering",
-                "AI-Assisted Code Generation",
-                "Debugging & Test Generation"
-              ].map((skill) => (
-                <Badge key={skill} variant="secondary" className="text-xs">
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-          {/* Systems & .NET */}
-          <div>
-            <p className="text-sm font-medium mb-3 text-primary">
-              Systems & .NET
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {[
-                "C#",
-                ".NET Core",
-                "WPF",
-                "XAML",
-                "MVC",
-                "MVVM",
-                "Windows Internals",
-                "BIOS/UEFI",
-                "WinPE",
-                "WinRE"
-              ].map((skill) => (
-                <Badge key={skill} variant="secondary" className="text-xs">
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-          {/* Automation */}
-          <div>
-            <p className="text-sm font-medium mb-3 text-primary">
-              Automation & DevOps
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {[
-                "PowerShell",
-                "Batch Scripting",
-                "DISM",
-                "Git",
-                "GitHub",
-                "CI/CD",
-                "Build & Deployment Pipelines"
-              ].map((skill) => (
-                <Badge key={skill} variant="secondary" className="text-xs">
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-          {/* Full Stack */}
-          <div>
-            <p className="text-sm font-medium mb-3 text-primary">
-              Full-Stack Development
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Java",
-                "Spring Boot",
-                "Spring Security",
-                "Hibernate",
-                "React.js",
-                "Node.js",
-                "Express.js",
-                "REST APIs",
-                "MySQL",
-                "MongoDB"
-              ].map((skill) => (
-                <Badge key={skill} variant="secondary" className="text-xs">
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-          {/* AI / ML */}
-          <div>
-            <p className="text-sm font-medium mb-3 text-primary">
-              AI / Machine Learning
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {[
-                "Python",
-                "NLP",
-                "RoBERTa",
-                "Federated Learning",
-                "PyTorch",
-                "Hugging Face"
-              ].map((skill) => (
-                <Badge key={skill} variant="secondary" className="text-xs">
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-          {/* Engineering Practices */}
-          <div>
-            <p className="text-sm font-medium mb-3 text-primary">
-              Engineering Practices
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {[
-                "OOP",
-                "DSA",
-                "Agile/Scrum",
-                "Jira",
-                "Maven",
-                "npm",
-                "Problem Solving",
-                "Cross-Functional Collaboration"
-              ].map((skill) => (
-                <Badge key={skill} variant="secondary" className="text-xs">
-                  {skill}
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-{/* Experience Section */}
-<section id="experience" className="py-20 px-4">
-  <div className="container mx-auto max-w-5xl">
-    <div className="text-center mb-16">
-      <h3 className="text-4xl font-bold font-serif mb-4">
-        Professional Experience
-      </h3>
-      <p className="text-lg text-muted-foreground">
-        Building software solutions across enterprise, research, and full-stack development
-      </p>
-    </div>
-
-    <div className="space-y-8">
-
-      {/* Dell Technologies */}
-      <Card className="border-0 shadow-lg">
-        <CardHeader className="pb-4">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <CardTitle className="font-serif text-xl mb-2">
-                Dell Technologies
-              </CardTitle>
-
-              <CardDescription className="text-primary font-semibold text-base mb-2">
-                Software Engineer
-              </CardDescription>
-
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  Nov 2025 – Sep 2026
-                </div>
-
-                <div className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  Bengaluru, India
-                </div>
-              </div>
-            </div>
-
-            <Badge
-              variant="secondary"
-              className="bg-blue-100 text-blue-800"
-            >
-              Software Engineering
-            </Badge>
-          </div>
-        </CardHeader>
-
-        <CardContent>
-          <ul className="list-disc pl-5 text-muted-foreground space-y-2">
-
-            <li>
-              Contributed to <b>OS Recovery Image (OSRI)</b> builds for
-              Windows 11 ARM64, integrating drivers, language packs,
-              inbox applications, Windows components, and Dell content.
-            </li>
-
-            <li>
-              Used <b>WIM, WinPE, WinRE, DISM, PowerShell, and Batch
-              scripting</b> for image customization, automation, recovery,
-              and ISO generation.
-            </li>
-
-            <li>
-              Developed <b>C#/.NET Windows recovery applications</b>
-              supporting Hardware Scan, Repair, Reset, Backup, and Disk
-              Cloning workflows.
-            </li>
-
-            <li>
-              Implemented bug fixes and new requirements across recovery
-              workflows and features, including <b>issue reproduction,
-              snapshot-based debugging, and root cause analysis</b> using
-              snapshots and logs.
-            </li>
-
-            <li>
-              Used <b>GitHub and Jira</b> for source control, development,
-              collaboration, and issue tracking.
-            </li>
-
-            <li>
-              Leveraged <b>Claude Code</b> as an AI coding agent for
-              codebase exploration, implementation, debugging, refactoring,
-              and test generation. Applied <b>Spec-Driven Development
-              (SDD)</b> to structure requirements, guide AI-assisted
-              development, and validate implementations through testing
-              and code review.
-            </li>
-
-          </ul>
-
-          <div className="flex flex-wrap gap-2 mt-5">
-            {[
-              "C#",
-              ".NET",
-              "Windows Recovery",
-              "WinPE",
-              "WinRE",
-              "DISM",
-              "PowerShell",
-              "GitHub",
-              "Jira",
-              "Claude Code",
-              "SDD",
-            ].map((tech) => (
-              <Badge
-                key={tech}
-                variant="outline"
-                className="text-xs"
-              >
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Toshiba Software India */}
-      <Card className="border-0 shadow-lg">
-        <CardHeader className="pb-4">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <CardTitle className="font-serif text-xl mb-2">
-                <a
-                  href="https://drive.google.com/file/d/12-qbiWk395zQNifNbny0t0CEr5ti0Thk/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline text-primary"
-                >
-                  Toshiba Software India Pvt. Ltd. – Japanese Trainee Program
-                </a>
-              </CardTitle>
-
-              <CardDescription className="text-primary font-semibold text-base mb-2">
-                Indian Buddy – Student Intern
-              </CardDescription>
-
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  Jun 2025 – Jul 2025
-                </div>
-
-                <div className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  Bengaluru, India
-                </div>
-              </div>
-            </div>
-
-            <Badge
-              variant="secondary"
-              className="bg-blue-100 text-blue-800"
-            >
-              Cross-Cultural Training
-            </Badge>
-          </div>
-        </CardHeader>
-
-        <CardContent>
-          <ul className="list-disc pl-5 text-muted-foreground space-y-2">
-            <li>
-              Participated in a 1-month cross-cultural training program
-              alongside Japanese engineers, covering <b>PMBOK Project
-              Management</b>, <b>Software Engineering</b>, <b>AI</b>,
-              <b>Agile Methodology</b>, and <b>Requirement Analysis &
-              Estimation</b>.
-            </li>
-
-            <li>
-              Engaged in interactive case studies and collaborative
-              sessions, enhancing technical skills, communication, and
-              global teamwork experience.
-            </li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* DRDO – CAIR */}
-      <Card className="border-0 shadow-lg">
-        <CardHeader className="pb-4">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <CardTitle className="font-serif text-xl mb-2">
-                <a
-                  href="https://drive.google.com/file/d/1I_B8fyGlng8WRsnosvQomWHWBlW5_pzX/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline text-primary"
-                >
-                  DRDO – Centre for Artificial Intelligence and Robotics (CAIR)
-                </a>
-              </CardTitle>
-
-              <CardDescription className="text-primary font-semibold text-base mb-2">
-                Student Intern Trainee
-              </CardDescription>
-
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  Jan 2025 – Jun 2025
-                </div>
-
-                <div className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  Bengaluru, India
-                </div>
-              </div>
-            </div>
-
-            <Badge
-              variant="secondary"
-              className="bg-green-100 text-green-800"
-            >
-              Defense Research
-            </Badge>
-          </div>
-        </CardHeader>
-
-        <CardContent>
-          <ul className="list-disc pl-5 text-muted-foreground space-y-2">
-            <li>
-              Designed user-centric interfaces for an{" "}
-              <b>AI-based performance evaluation system</b>, tailored to
-              institutional workflows.
-            </li>
-
-            <li>
-              Collaborated on <b>interactive prototypes</b> with focus on
-              usability, accessibility, and future full-stack integration.
-            </li>
-          </ul>
-        </CardContent>
-      </Card>
-
-    </div>
-  </div>
-</section>
-
-{/* Projects Section */}
-<section id="projects" className="py-20 px-4 bg-muted/30">
-  <div className="container mx-auto max-w-7xl">
-    <div className="text-center mb-16">
-      <h3 className="text-4xl font-bold font-serif mb-4">Featured Projects</h3>
-      <p className="text-lg text-muted-foreground">
-        Showcasing technical excellence and innovative problem-solving
-      </p>
-    </div>
-
-    <div className="grid lg:grid-cols-2 gap-8">
-
-     {/* Agentic AI Hackathon - Winner */}
-<Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-  <CardHeader className="pb-4">
-    <CardTitle className="font-serif text-xl mb-2 flex items-center gap-2">
-      AI-Powered Ransomware Recovery Prioritizer
-      <Badge variant="secondary" className="text-xs">
-        Winner
-      </Badge>
-    </CardTitle>
-
-    <CardDescription className="text-sm flex items-center gap-2">
-      <Calendar className="h-4 w-4" /> Jan 2026
-    </CardDescription>
-
-    <div className="flex items-center gap-4 mt-2">
-      <a
-        href="https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-sm text-primary hover:underline"
-      >
-        Certificate
-      </a>
-    </div>
-  </CardHeader>
-
-  <CardContent>
-    <ul className="list-disc pl-5 text-muted-foreground space-y-2 mb-5">
-      <li>
-        Designed and prototyped an <strong>AI-driven ransomware recovery
-        decision-support system</strong> combining <strong>Agentic AI</strong>
-        with graph-based network analysis to prioritize recovery of critical
-        enterprise assets.
-      </li>
-
-      <li>
-        Built an interactive <strong>attack-surface/network graph using
-        NetworkX</strong> to visualize infection paths, asset dependencies,
-        connectivity, and potential blast radius.
-      </li>
-
-      <li>
-        Developed a dynamic <strong>risk-scoring and recovery prioritization
-        algorithm</strong> incorporating business criticality, infection
-        status, and network connectivity to identify the highest-impact
-        assets for remediation.
-      </li>
-
-      <li>
-        Integrated <strong>Llama 3.1 via Ollama</strong> to power an
-        autonomous recovery agent capable of generating context-aware
-        remediation plans such as <strong>isolation, reimaging, and backup
-        restoration</strong>.
-      </li>
-
-      <li>
-        Implemented a <strong>Python-based application and interactive
-        dashboard</strong> providing ransomware impact analysis, infection
-        trends, prioritized recovery queues, vulnerability reporting, and
-        AI-generated action plans.
-      </li>
-    </ul>
-
-    <div className="flex flex-wrap gap-2">
-      {[
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [copiedEmail, setCopiedEmail] = useState(false)
+  const [copiedPhone, setCopiedPhone] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [touchedCard, setTouchedCard] = useState<string | null>("exp-0")
+  const [activeSkillCategory, setActiveSkillCategory] = useState("all")
+  const [ieeeExpanded, setIeeeExpanded] = useState(false)
+  const [projectViewMode, setProjectViewMode] = useState<"grid" | "swipe">("grid")
+  const [currentSwipeIndex, setCurrentSwipeIndex] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("harini.lts8@gmail.com")
+    setCopiedEmail(true)
+    setTimeout(() => setCopiedEmail(false), 2500)
+  }
+
+  const copyPhone = () => {
+    navigator.clipboard.writeText("+918884916059")
+    setCopiedPhone(true)
+    setTimeout(() => setCopiedPhone(false), 2500)
+  }
+
+  // Exact factual experiences: Dell (primary prominent), Toshiba, DRDO CAIR
+  const experiences = [
+    {
+      id: "exp-0",
+      company: "Dell Technologies",
+      role: "Software Engineer",
+      duration: "Nov 2025 – Sep 2026",
+      location: "Bengaluru, India",
+      isProminent: true,
+      bullets: [
+        "Architected and developed C#/.NET Windows recovery applications supporting critical Hardware Scan, Repair, Reset, Backup, and Disk Cloning workflows.",
+        "Led end-to-end software development, debugging, snapshot root-cause analysis, and regression testing across core recovery features.",
+        "Engineered robust system automation utilizing PowerShell, Batch scripting, WIM, WinPE, WinRE, and DISM for deployment and automated ISO generation.",
+        "Conducted thorough performance analysis, software validation, and stability optimization to guarantee mission-critical enterprise reliability.",
+        "Employed modern AI-assisted engineering workflows leveraging Claude Code and Spec-Driven Development (SDD) across the full lifecycle: codebase exploration → implementation → debugging → refactoring → test generation → validation.",
+        "Applied coding-agent workflows for AI-assisted code generation, rapid refactoring, and automated test generation within enterprise engineering boundaries.",
+        "Collaborated across agile sprints utilizing Git/GitHub for version control and Jira for sprint backlog triage, defect lifecycle tracking, and issue management.",
+      ],
+      skills: [
+        "C#/.NET",
+        "Software Development",
+        "Claude Code",
+        "Coding Agents",
+        "Spec-Driven Development (SDD)",
+        "AI-Assisted Code Generation",
+        "AI-Assisted Debugging",
+        "AI-Assisted Refactoring",
+        "AI-Assisted Test Generation",
+        "AI-Assisted Codebase Exploration",
+        "PowerShell",
+        "Windows Recovery Applications",
+        "Testing & Validation",
+        "Performance Analysis",
+        "Git / GitHub",
+        "Jira",
+      ],
+      certificate: null,
+    },
+    {
+      id: "exp-1",
+      company: "Toshiba Software India Pvt. Ltd.",
+      role: "Student Intern — Japanese Trainee Program",
+      duration: "Jun 2025 – Jul 2025",
+      location: "Bengaluru, India",
+      isProminent: false,
+      bullets: [
+        "Completed rigorous Japanese software engineering program covering enterprise Software Engineering principles, Artificial Intelligence, and Agile Methodology.",
+        "Executed project-based assignments covering sprint planning, effort estimation, and end-to-end software development lifecycles.",
+        "Applied PMBOK Project Management frameworks to software design, technical documentation, and cross-functional team delivery.",
+        "Collaborated with cross-cultural engineering teams in daily standups and agile delivery reviews adhering to international quality benchmarks.",
+      ],
+      skills: [
+        "Software Engineering",
+        "Artificial Intelligence",
+        "Agile Methodology",
+        "Project Management",
+        "Project-Based Assignments",
+        "Planning & Estimation",
+        "Software Development",
+      ],
+      certificate: "https://drive.google.com/file/d/12-qbiWk395zQNifNbny0t0CEr5ti0Thk/view?usp=sharing",
+    },
+    {
+      id: "exp-2",
+      company: "DRDO — Centre for Artificial Intelligence and Robotics (CAIR)",
+      role: "Student Intern Trainee",
+      duration: "Jan 2025 – Jun 2025",
+      location: "Bengaluru, India",
+      isProminent: false,
+      bullets: [
+        "Engineered modular frontend components and intuitive user interfaces using React.js and Figma for an institutional AI-based evaluation application.",
+        "Integrated client-side components with Spring Boot REST APIs and MongoDB backend database for real-time data persistence and seamless evaluation workflows.",
+        "Built robust state management, client-side validation, and secure RESTful data communication between frontend and backend layers.",
+        "Conducted end-to-end component testing, usability reviews, and system evaluation to meet defense research standards.",
+      ],
+      skills: [
+        "React.js",
+        "Figma",
+        "Spring Boot",
+        "REST APIs",
+        "MongoDB",
+        "Frontend Component Development",
+        "Backend Integration",
+        "Evaluation Application",
+      ],
+      certificate: "https://drive.google.com/file/d/1I_B8fyGlng8WRsnosvQomWHWBlW5_pzX/view?usp=sharing",
+    },
+  ]
+
+  // Exact 5 projects in requested order with authentic technical evidence
+  const projectsData = [
+    {
+      id: "proj-0",
+      title: "AI-Powered Ransomware Recovery Prioritizer",
+      tagline: "Agentic AI · Python · NetworkX · Llama 3.1 · Ollama · Dynamic Risk Scoring",
+      badge: "Winner — Agentic AI Hackathon",
+      date: "January 2026",
+      summary:
+        "Designed and prototyped an AI-driven ransomware recovery decision-support system combining Agentic AI with graph-based network analysis to prioritize recovery of critical enterprise assets.",
+      bullets: [
+        "Built an interactive NetworkX attack-surface graph to represent infection paths, asset dependencies, connectivity, and potential blast radius.",
+        "Developed dynamic risk scoring using business criticality, infection status, and network connectivity to prioritize high-impact assets.",
+        "Integrated Llama 3.1 through Ollama to generate context-aware recovery plans covering isolation, reimaging, and backup restoration.",
+        "Built a Python dashboard for ransomware impact analysis, infection trends, prioritized recovery queues, vulnerability reporting, and AI-generated recovery actions.",
+      ],
+      tech: [
         "Python",
         "Agentic AI",
         "Llama 3.1",
@@ -674,497 +180,1644 @@ export default function Portfolio() {
         "Graph-Based Network Analysis",
         "Risk Scoring",
         "Cybersecurity",
-      ].map((tech) => (
-        <Badge key={tech} variant="outline" className="text-xs">
-          {tech}
-        </Badge>
-      ))}
-    </div>
-  </CardContent>
-</Card>
-      {/* AI Resume Screener */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <CardTitle className="font-serif text-xl mb-2">
-            AI Resume Screener Web Application
-          </CardTitle>
+      ],
+      certificate: "https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing",
+      demoUrl: null,
+      githubUrl: null,
+      isGoldHighlight: true,
+    },
+    {
+      id: "proj-1",
+      title: "AI Resume Screener Web Application",
+      tagline: "Multi-Agent RAG · Next.js · TypeScript · Groq · Semantic Embeddings",
+      badge: null,
+      date: "September 2026",
+      summary:
+        "Built a multi-agent RAG pipeline using Next.js, TypeScript, Groq LLMs, and semantic embeddings for automated resume-to-job matching.",
+      bullets: [
+        "Developed atomic requirement extraction and semantic retrieval to identify relevant candidate evidence against job requirements.",
+        "Implemented grounded evidence evaluation and anti-hallucination validation so generated citations are checked against the candidate's actual resume content.",
+        "Added deterministic scoring, fallback handling, and automated evaluation, achieving 13/13 unit tests and 10/10 evaluation scenarios.",
+      ],
+      tech: [
+        "Next.js",
+        "TypeScript",
+        "Groq LLMs",
+        "RAG",
+        "Semantic Embeddings",
+        "Multi-Agent AI",
+        "Anti-Hallucination",
+        "Deterministic Scoring",
+      ],
+      demoUrl: "https://v0-ai-resume-screener-smoky.vercel.app/",
+      githubUrl: "https://github.com/Harini410/AI-Resume-Screener",
+      certificate: null,
+      isGoldHighlight: false,
+    },
+    {
+      id: "proj-2",
+      title: "Smart Complaint Management Portal",
+      tagline: "Java · Spring Boot · Hibernate · MySQL · React.js · Spring Security",
+      badge: null,
+      date: "September 2026",
+      summary:
+        "Developed a full-stack complaint management portal using Java, Spring Boot, Hibernate, MySQL, and React.js.",
+      bullets: [
+        "Implemented role-based authentication with Spring Security, complaint tracking, status management, and REST API integration.",
+        "Engineered modular REST API architecture cleanly separated with Hibernate ORM repository patterns for reliable data persistence.",
+      ],
+      tech: [
+        "Java",
+        "Spring Boot",
+        "Hibernate",
+        "Spring Security",
+        "React.js",
+        "MySQL",
+        "REST APIs",
+      ],
+      demoUrl: null,
+      githubUrl: "https://github.com/Harini410/Fullstack-complaint-portal",
+      certificate: null,
+      isGoldHighlight: false,
+    },
+    {
+      id: "proj-3",
+      title: "Cyberbullying Detection in Social Media",
+      tagline: "Python · RoBERTa · Federated Learning · NLP · PyTorch",
+      badge: null,
+      date: "January 2026",
+      summary:
+        "Engineered a privacy-preserving federated RoBERTa model for cyberbullying detection, integrating emotion-based and contextual embeddings.",
+      bullets: [
+        "Achieved 95% accuracy and handled the end-to-end pipeline from data preprocessing through model evaluation.",
+        "Emphasized decentralized machine learning and contextual NLP representation.",
+      ],
+      tech: [
+        "Python",
+        "RoBERTa",
+        "Federated Learning",
+        "NLP",
+        "PyTorch",
+      ],
+      demoUrl: "https://cyberbullying-detection-eta.vercel.app/",
+      githubUrl: "https://github.com/Harini410/Cyberbullying-detection",
+      certificate: null,
+      isGoldHighlight: false,
+    },
+    {
+      id: "proj-4",
+      title: "E-commerce Application using Spring Boot",
+      tagline: "Spring Boot · REST API · MySQL · Performance Optimization · Scalability",
+      badge: null,
+      date: "June 2025",
+      summary:
+        "Built a full-stack e-commerce application with RESTful APIs and database-driven workflows.",
+      bullets: [
+        "Implemented product catalog, shopping cart, order tracking, and secure checkout functionality.",
+        "Focused on API design, database queries, performance optimization, and scalability.",
+      ],
+      tech: [
+        "Spring Boot",
+        "REST API",
+        "MySQL",
+        "Performance Optimization",
+        "Scalability",
+      ],
+      demoUrl: null,
+      githubUrl: "https://github.com/Harini410/E-commerce-application-using-Spring-Boot",
+      certificate: null,
+      isGoldHighlight: false,
+    },
+  ]
 
-          <CardDescription className="text-sm flex items-center gap-2">
-            <Calendar className="h-4 w-4" /> Sept 2026
-          </CardDescription>
+  // Technical Skills - WPF removed; fully synced with Experience and Projects
+  const skillGroups = [
+    {
+      category: "ai",
+      title: "AI & AI-Assisted Engineering",
+      skills: [
+        "Agentic AI",
+        "LLM Applications",
+        "Coding Agents",
+        "Claude Code",
+        "Spec-Driven Development (SDD)",
+        "Multi-Agent RAG",
+        "Semantic Embeddings",
+        "Prompt Engineering",
+        "NLP (RoBERTa)",
+        "Federated Learning",
+        "AI-Assisted Code Generation",
+        "AI-Assisted Debugging",
+        "AI-Assisted Test Generation",
+      ],
+    },
+    {
+      category: "programming",
+      title: "Programming",
+      skills: ["Java", "C#", "Python", "JavaScript", "TypeScript", "SQL"],
+    },
+    {
+      category: "software",
+      title: "Software Engineering",
+      skills: [
+        "Spring Boot",
+        ".NET Core",
+        "Hibernate ORM",
+        "Spring Security",
+        "REST APIs",
+        "React.js",
+        "Next.js",
+        "MVC / Clean Architecture",
+        "Full-Stack Development",
+      ],
+    },
+    {
+      category: "systems",
+      title: "Systems & Automation",
+      skills: [
+        "PowerShell Automation",
+        "Windows Internals",
+        "WinPE / WinRE",
+        "DISM",
+        "WIM Deployment",
+        "Batch Scripting",
+        "System Recovery Automation",
+      ],
+    },
+    {
+      category: "tools",
+      title: "Databases & Tools",
+      skills: [
+        "MySQL",
+        "MongoDB",
+        "Git / GitHub",
+        "Jira",
+        "NetworkX",
+        "PyTorch",
+        "Figma",
+        "Maven",
+        "npm",
+        "CI/CD",
+      ],
+    },
+  ]
 
-          <div className="flex items-center gap-4 mt-2">
-            <a
-              href="https://v0-ai-resume-screener-smoky.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline"
-            >
-              Live Demo
-            </a>
+  const filteredSkillGroups =
+    activeSkillCategory === "all"
+      ? skillGroups
+      : skillGroups.filter((g) => g.category === activeSkillCategory)
 
-            <a
-              href="https://github.com/Harini410/AI-Resume-Screener"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline"
-            >
-              GitHub
-            </a>
-          </div>
-        </CardHeader>
+  // Exactly 2 IEEE Papers under M.Tech
+  const ieeePapers = [
+    {
+      id: "ieee-1",
+      title: "A Deep Learning-Based Framework for Detecting Cyberbullying on Social Media Platforms",
+      conference: "Second IEEE International Conference on New Frontiers in Communication, Automation, Management and Security",
+      venueDate: "Presidency University, Bengaluru · 11–12 July 2025",
+      paperLink: "https://drive.google.com/file/d/1awP9khfIb3BWgK2ALano5ieLvKHNS8mf/view?usp=sharing",
+      demoLink: "https://cyberbullying-detection-eta.vercel.app/",
+    },
+    {
+      id: "ieee-2",
+      title: "Optimized Hybrid Model for Network Intrusion Detection Using Ensemble Learning",
+      conference: "International Conference on Emerging Technologies in Electronics and Green Energy (ICETEG 2025)",
+      venueDate: "JSS Science and Technology University, Mysuru · 10–11 October 2025",
+      certificateLink: "https://drive.google.com/file/d/1kbbiDFJwMAWBHz6p9iqfkS9CpHLzFPpG/view?usp=sharing",
+    },
+  ]
 
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Built an <strong>AI-powered web application</strong> for automated
-            resume analysis and candidate-to-job matching. Developed modular{" "}
-            <strong>Node.js backend workflows</strong> and{" "}
-            <strong>REST APIs</strong> to support resume processing and
-            automated matching.
-          </p>
+  // Supported Professional Certifications (Resume-backed)
+  const professionalCertifications = [
+    {
+      id: "cert-1",
+      title: "Student Intern Japanese Trainee Certification",
+      org: "Toshiba Software India Pvt. Ltd.",
+      date: "Jun 2025 – Jul 2025",
+      desc: "Software engineering principles, AI, PMBOK project estimation, and agile delivery.",
+      link: "https://drive.google.com/file/d/12-qbiWk395zQNifNbny0t0CEr5ti0Thk/view?usp=sharing",
+    },
+    {
+      id: "cert-2",
+      title: "Research Internship Trainee Certification",
+      org: "DRDO — Centre for Artificial Intelligence and Robotics (CAIR)",
+      date: "Jan 2025 – Jun 2025",
+      desc: "Component development and RESTful data integration for institutional AI evaluation systems.",
+      link: "https://drive.google.com/file/d/1I_B8fyGlng8WRsnosvQomWHWBlW5_pzX/view?usp=sharing",
+    },
+    {
+      id: "cert-3",
+      title: "Software Testing Certification",
+      org: "NPTEL National Accreditation",
+      date: "Jul 2024 – Oct 2024",
+      desc: "Software testing methodologies, quality assurance frameworks, and verification testing.",
+      link: "https://drive.google.com/file/d/1TZyZvl5HiDj390lw11bnyDYVS1gplW17/view?usp=drive_link",
+    },
+    {
+      id: "cert-4",
+      title: "Full Stack Java Development",
+      org: "JSpiders Training Center",
+      date: "Apr 2022 – Mar 2023",
+      desc: "Enterprise engineering program covering Core Java, Spring Boot, Hibernate ORM, and SQL.",
+      link: "https://drive.google.com/file/d/1RTtCGOrI2vyXH6j_xHPgi3w3-1oqNjTv/view?usp=drive_link",
+    },
+  ]
 
-          <div className="flex flex-wrap gap-2">
-            {[
-              "Node.js",
-              "REST APIs",
-              "AI",
-              "Resume Analysis",
-              "Candidate Matching",
-            ].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Smart Complaint Portal */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <CardTitle className="font-serif text-xl mb-2">
-            Smart Complaint Management Portal
-          </CardTitle>
-
-          <CardDescription className="text-sm flex items-center gap-2">
-            <Calendar className="h-4 w-4" /> Sept 2026
-          </CardDescription>
-
-          <div className="flex items-center gap-4 mt-2">
-            <a
-              href="https://github.com/Harini410/Fullstack-complaint-portal"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline"
-            >
-              GitHub
-            </a>
-          </div>
-        </CardHeader>
-
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Developed a full-stack <strong>complaint management portal</strong>{" "}
-            using <strong>Java, Spring Boot, Hibernate, MySQL, and React.js</strong>.
-            Implemented <strong>role-based authentication</strong> with Spring
-            Security, complaint tracking, status management, and REST API
-            integration.
-          </p>
-
-          <div className="flex flex-wrap gap-2">
-            {[
-              "Java",
-              "Spring Boot",
-              "Hibernate",
-              "Spring Security",
-              "React.js",
-              "MySQL",
-              "REST APIs",
-            ].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Cyberbullying Detection */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <CardTitle className="font-serif text-xl mb-2">
-            Cyberbullying Detection in Social Media
-          </CardTitle>
-
-          <CardDescription className="text-sm flex items-center gap-2">
-            <Calendar className="h-4 w-4" /> Jan 2026
-          </CardDescription>
-
-          <div className="flex items-center gap-4 mt-2">
-            <a
-              href="https://cyberbullying-detection-eta.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline"
-            >
-              Live Demo
-            </a>
-
-            <a
-              href="https://github.com/Harini410/Cyberbullying-detection"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline"
-            >
-              GitHub
-            </a>
-          </div>
-        </CardHeader>
-
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Engineered a privacy-preserving{" "}
-            <strong>federated RoBERTa model</strong> integrating{" "}
-            <strong>emotion-based and contextual embeddings</strong> for{" "}
-            <strong>95% accuracy</strong>. Led end-to-end development from data
-            preprocessing to evaluation, ensuring compliance with data
-            protection standards.
-          </p>
-
-          <div className="flex flex-wrap gap-2">
-            {[
-              "Python",
-              "RoBERTa",
-              "Federated Learning",
-              "NLP",
-              "PyTorch",
-            ].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* E-commerce Application */}
-      <Card className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-        <CardHeader className="pb-4">
-          <CardTitle className="font-serif text-xl mb-2">
-            E-commerce Application using Spring Boot
-          </CardTitle>
-
-          <CardDescription className="text-sm flex items-center gap-2">
-            <Calendar className="h-4 w-4" /> Jun 2025
-          </CardDescription>
-
-          <div className="flex items-center gap-4 mt-2">
-            <a
-              href="https://github.com/Harini410/E-commerce-application-using-Spring-Boot"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-primary hover:underline"
-            >
-              GitHub
-            </a>
-          </div>
-        </CardHeader>
-
-        <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Built a fully-functional,{" "}
-            <strong>scalable e-commerce application</strong> with optimized{" "}
-            <strong>RESTful APIs and database queries</strong>. Implemented key
-            features such as product catalog, shopping cart, order tracking,
-            and secure checkout.
-          </p>
-
-          <div className="flex flex-wrap gap-2">
-            {[
-              "Spring Boot",
-              "REST API",
-              "MySQL",
-              "Performance Optimization",
-              "Scalability",
-            ].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-    </div>
-  </div>
-</section>
-
-
-      
-
-
-{/* Achievements & Certifications Section */}
-<section id="achievements" className="py-20 px-4 bg-muted/30">
-  <div className="container mx-auto max-w-5xl">
-    <div className="text-center mb-16">
-      <h3 className="text-4xl font-bold font-serif mb-4">
-        Achievements & Certifications
-      </h3>
-      <p className="text-lg text-muted-foreground">
-        Continuous learning, professional development, and recognition
-      </p>
-    </div>
-
-    {/* Grid of main achievements */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-     {/* Agentic AI Hackathon */}
-<Card className="text-center border-0 shadow-md h-full">
-  <CardHeader>
-    <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-    <CardTitle className="text-lg">
-      Agentic AI Hackathon – Winner
-    </CardTitle>
-  </CardHeader>
-  <CardContent>
-    <p className="text-sm text-muted-foreground mb-2">
-      <a
-        href="https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:underline text-primary"
+  // Render individual project card
+  const renderProjectCard = (project: (typeof projectsData)[0]) => {
+    const isTouched = touchedCard === project.id
+    return (
+      <Card
+        key={project.id}
+        onClick={() => setTouchedCard(project.id)}
+        className={`w-full flex flex-col justify-between transition-all duration-300 cursor-pointer bg-card ${
+          isTouched
+            ? "border-[#0f2b5c] shadow-[0_0_25px_rgba(15,43,92,0.16)] bg-gradient-to-br from-[#0f2b5c]/[0.03] via-card to-card ring-1 ring-[#0f2b5c]/30"
+            : "border-border hover:border-[#0f2b5c]/60 hover:shadow-md active:border-[#0f2b5c]"
+        }`}
       >
-        Winner of the <strong>Agentic AI Hackathon</strong> at Dell
-        Technologies, led by the <strong>India Innovation Forum and AI
-        Academy</strong> (Jan 2026)
-      </a>
-    </p>
-  </CardContent>
-</Card>
+        <div>
+          <CardHeader className="pb-3">
+            <div className="flex items-center justify-between gap-2 mb-2">
+              {project.badge ? (
+                <span
+                  className={`text-xs font-bold px-2.5 py-0.5 rounded-full transition-colors ${
+                    project.isGoldHighlight
+                      ? "bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30 font-extrabold"
+                      : "bg-[#0f2b5c]/10 text-[#0f2b5c] dark:text-sky-300 border border-[#0f2b5c]/20"
+                  }`}
+                >
+                  {project.badge}
+                </span>
+              ) : (
+                <span className="text-[11px] font-bold text-[#0f2b5c] dark:text-sky-400">
+                  Featured Project
+                </span>
+              )}
+              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{project.date}</span>
+            </div>
 
-      {/* DRDO Internship */}
-      <Card className="text-center border-0 shadow-md h-full">
-        <CardHeader>
-          <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-          <CardTitle className="text-lg">
-            DRDO CAIR Internship
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground mb-2">
-            <a
-              href="https://drive.google.com/file/d/1I_B8fyGlng8WRsnosvQomWHWBlW5_pzX/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline text-primary"
+            <CardTitle
+              className={`text-lg font-bold transition-colors ${
+                isTouched ? "text-[#0f2b5c] dark:text-sky-400" : "text-foreground"
+              }`}
             >
-              Completed internship at Defence Research and Development
-              Organisation (DRDO) – Centre for Artificial Intelligence and
-              Robotics (Jan 2025 – Jun 2025)
-            </a>
-          </p>
-        </CardContent>
-      </Card>
+              {project.title}
+            </CardTitle>
 
-      {/* IEEE Conference */}
-      <Card className="text-center border-0 shadow-md h-full">
-        <CardHeader>
-          <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-          <CardTitle className="text-lg">
-            IEEE Conference Presentation
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground mb-2">
-            <a
-              href="https://drive.google.com/file/d/1awP9khfIb3BWgK2ALano5ieLvKHNS8mf/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline text-primary"
+            <div className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 mt-1">
+              {project.tagline}
+            </div>
+
+            <CardDescription className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-2 font-normal leading-relaxed">
+              {project.summary}
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent className="pt-0 pb-4">
+            <ul className="space-y-2 mb-4 text-xs sm:text-[13px] text-slate-700 dark:text-slate-200">
+              {project.bullets.map((b, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-[#0f2b5c] dark:text-sky-400 font-bold mt-0.5">•</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border">
+              {project.tech.map((t) => (
+                <Badge
+                  key={t}
+                  variant="secondary"
+                  className={`text-[11px] font-medium ${
+                    isTouched
+                      ? "bg-[#0f2b5c]/15 text-[#0f2b5c] dark:text-sky-200 border-[#0f2b5c]/30"
+                      : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-border"
+                  }`}
+                >
+                  {t}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </div>
+
+        <div className="px-6 pb-6 pt-3 border-t border-border flex items-center gap-2 bg-slate-50/50 dark:bg-slate-900/30 rounded-b-xl">
+          {project.demoUrl && (
+            <Button
+              size="sm"
+              className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white text-xs font-semibold rounded-lg h-8 px-3"
+              asChild
             >
-              Presented “Deep Learning-Based Cyberbullying Detection” at IEEE
-              Conference, Presidency University, Bengaluru, Jul 2025
-            </a>
-          </p>
-        </CardContent>
-      </Card>
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1"
+              >
+                <span>Live Demo</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </Button>
+          )}
 
-      {/* PMBOK Certification */}
-      <Card className="text-center border-0 shadow-md h-full">
-        <CardHeader>
-          <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-          <CardTitle className="text-lg">
-            PMBOK Certification
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground mb-2">
-            <a
-              href="https://drive.google.com/file/d/12-qbiWk395zQNifNbny0t0CEr5ti0Thk/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline text-primary"
+          {project.githubUrl && (
+            <Button
+              size="sm"
+              variant="outline"
+              className="border-border hover:border-[#0f2b5c]/60 text-xs font-semibold rounded-lg h-8 px-3"
+              asChild
             >
-              Certified in PMBOK-based Software Project Management –
-              Toshiba Software (Jun 2025 – Jul 2025)
-            </a>
-          </p>
-        </CardContent>
-      </Card>
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1"
+              >
+                <Github className="h-3.5 w-3.5" />
+                <span>Code</span>
+              </a>
+            </Button>
+          )}
 
-      {/* Software Testing */}
-      <Card className="text-center border-0 shadow-md h-full">
-        <CardHeader>
-          <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-          <CardTitle className="text-lg">
-            Software Testing
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground mb-2">
-            <a
-              href="https://drive.google.com/file/d/1TZyZvl5HiDj390lw11bnyDYVS1gplW17/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline text-primary"
+          {project.certificate && (
+            <Button
+              size="sm"
+              variant="outline"
+              className="border-amber-500/40 text-amber-900 dark:text-amber-300 hover:bg-amber-500/10 text-xs font-bold rounded-lg h-8 px-3"
+              asChild
             >
-              Certified in Software Testing – NPTEL (Jul 2024 – Oct 2024)
-            </a>
-          </p>
-        </CardContent>
+              <a
+                href={project.certificate}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1"
+              >
+                <Award className="h-3.5 w-3.5 text-amber-600" />
+                <span>Certificate</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </Button>
+          )}
+        </div>
       </Card>
+    )
+  }
 
-      {/* Full Stack Development */}
-      <Card className="text-center border-0 shadow-md h-full">
-        <CardHeader>
-          <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-          <CardTitle className="text-lg">
-            Full Stack Development
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground mb-2">
-            <a
-              href="https://drive.google.com/file/d/1RTtCGOrI2vyXH6j_xHPgi3w3-1oqNjTv/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline text-primary"
-            >
-              Certified in Full Stack Java Development – JSpiders Training
-              Center (Apr 2022 – Mar 2023)
-            </a>
-          </p>
-        </CardContent>
-      </Card>
+  // Render the ending GitHub all projects card
+  const renderGithubOverviewCard = () => (
+    <Card className="w-full flex flex-col justify-between border-2 border-dashed border-[#0f2b5c]/35 hover:border-[#0f2b5c] bg-gradient-to-br from-[#0f2b5c]/[0.03] via-card to-card p-6 rounded-2xl transition-all shadow-xs group">
+      <div>
+        <div className="flex items-center justify-between mb-4">
+          <div className="w-12 h-12 rounded-xl bg-[#0f2b5c] text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+            <Github className="h-6 w-6" />
+          </div>
+          <span className="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-[#0f2b5c]/10 text-[#0f2b5c] dark:text-sky-300 border border-[#0f2b5c]/25">
+            GitHub
+          </span>
+        </div>
 
-      {/* Associate Data Scientist */}
-      <Card className="text-center border-0 shadow-md h-full">
-        <CardHeader>
-          <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-          <CardTitle className="text-lg">
-            Data Science Internship
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground mb-2">
-            <a
-              href="https://drive.google.com/file/d/1HUf5xs7Rev2AaUFj64330AUcTSptBSh9/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline text-primary"
-            >
-              Completed Associate Data Scientist internship – Gloify
-              (Sep 2021 – Nov 2021)
-            </a>
-          </p>
-        </CardContent>
-      </Card>
-
-
-
-    {/* Other Certificates centered */}
-    
-      <Card className="text-center border-0 shadow-md h-full">
-        <CardHeader>
-          <Award className="h-12 w-12 text-primary mx-auto mb-4" />
-          <CardTitle className="text-lg">
-            Other Certificates
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground mb-2">
-            <a
-              href="https://drive.google.com/drive/folders/1FmX4R-KtWO3z30mpmEgomEKlCCxiFkxl?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline text-primary font-semibold"
-            >
-              View other certificates here
-            </a>
-          </p>
-        </CardContent>
-      </Card>
-    </div>
-  </div>
-</section>
-
-
-{/* Contact Section */}
-<section id="contact" className="py-20 px-4 bg-muted/30">
-  <div className="container mx-auto max-w-3xl text-center">
-    <h3 className="text-4xl font-bold font-serif mb-6">Let's Build Something Amazing Together</h3>
-    <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-      I'm actively seeking full-time opportunities where I can contribute my technical expertise and passion for
-      innovation. Let's create impactful solutions together.
-    </p>
-
-    {/* Single Line Contact */}
-    <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
-      <a
-        href="mailto:harini.lts8@gmail.com"
-        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-100 text-green-800 hover:bg-green-200 transition"
-      >
-        <Mail className="h-5 w-5" /> Email
-      </a>
-
-      <a
-        href="https://www.linkedin.com/in/harini-lakshmanan-04/"
-        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-100 text-green-800 hover:bg-green-200 transition"
-      >
-        <Linkedin className="h-5 w-5" /> LinkedIn
-      </a>
-
-      <a
-        href="https://github.com/Harini410"
-        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-100 text-green-800 hover:bg-green-200 transition"
-      >
-        <Github className="h-5 w-5" /> GitHub
-      </a>
-
-      <a
-        href="https://drive.google.com/file/d/1zZZpjD0_6yI9UFXIUXMvwMffgxWjcCzJ/view?usp=sharing"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-100 text-green-800 hover:bg-green-200 transition"
-      >
-        <FileText className="h-5 w-5" /> Resume
-      </a>
-
-      <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-100 text-green-800">
-        <Phone className="h-5 w-5" /> +91 8884916059
+        <h3 className="text-lg sm:text-xl font-black text-foreground">
+          Explore All GitHub Repositories
+        </h3>
+        <div className="text-xs font-bold text-[#0f2b5c] dark:text-sky-400 mt-1">
+          github.com/Harini410
+        </div>
+        <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-3 leading-relaxed">
+          Access complete source code repositories, open-source utilities, enterprise full-stack implementations, automated recovery workflows, and ongoing software experiments.
+        </p>
       </div>
-    </div>
-  </div>
-</section>
 
+      <div className="mt-6 pt-4 border-t border-border">
+        <Button
+          className="w-full bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg text-xs font-bold h-9 shadow-xs"
+          asChild
+        >
+          <a
+            href="https://github.com/Harini410"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2"
+          >
+            <Github className="h-4 w-4" />
+            <span>View All Projects on GitHub ↗</span>
+          </a>
+        </Button>
+      </div>
+    </Card>
+  )
 
+  const totalSwipeSlides = projectsData.length + 1
 
+  return (
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-[#0f2b5c]/20 selection:text-[#0f2b5c] dark:selection:text-sky-300">
+      {/* Ambient subtle deep navy glow */}
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-72 bg-[radial-gradient(ellipse_60%_35%_at_50%_0%,rgba(15,43,92,0.08),transparent)] pointer-events-none z-0" />
 
+      {/* Sticky Header */}
+      <header
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-background/90 backdrop-blur-md border-b border-border shadow-xs"
+            : "bg-background/60 backdrop-blur-sm border-b border-transparent"
+        }`}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Name Branding */}
+            <a href="#" className="flex items-center gap-2.5 group">
+              <div className="w-8 h-8 rounded-lg bg-[#0f2b5c] text-white font-extrabold text-sm flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+                HL
+              </div>
+              <span className="font-extrabold text-base tracking-tight text-foreground group-hover:text-[#0f2b5c] dark:group-hover:text-sky-400 transition-colors">
+                Harini L
+              </span>
+            </a>
+
+            {/* Desktop Navigation in Exact Required Section Sequence */}
+            <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-700 dark:text-slate-300">
+              <a href="#experience" className="hover:text-[#0f2b5c] dark:hover:text-sky-400 transition-colors">Experience</a>
+              <a href="#projects" className="hover:text-[#0f2b5c] dark:hover:text-sky-400 transition-colors">Projects</a>
+              <a href="#skills" className="hover:text-[#0f2b5c] dark:hover:text-sky-400 transition-colors">Skills</a>
+              <a href="#education" className="hover:text-[#0f2b5c] dark:hover:text-sky-400 transition-colors">Education</a>
+              <a href="#achievements" className="hover:text-[#0f2b5c] dark:hover:text-sky-400 transition-colors">Achievements</a>
+              <a href="#contact" className="hover:text-[#0f2b5c] dark:hover:text-sky-400 transition-colors">Contact</a>
+            </nav>
+
+            {/* Header Right Actions */}
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Button
+                size="sm"
+                variant="outline"
+                asChild
+                className="hidden sm:inline-flex rounded-lg border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 h-8 text-xs font-semibold"
+              >
+                <a
+                  href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5"
+                >
+                  <FileText className="h-3.5 w-3.5" />
+                  <span>Resume</span>
+                </a>
+              </Button>
+
+              {/* Mobile Menu Button */}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden h-9 w-9 text-foreground"
+                aria-label="Toggle navigation menu"
+              >
+                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-b border-border bg-background/95 backdrop-blur-md px-4 pt-2 pb-4 space-y-2">
+            <nav className="flex flex-col space-y-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
+              <a
+                href="#experience"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-lg hover:bg-[#0f2b5c]/10 hover:text-[#0f2b5c]"
+              >
+                Experience
+              </a>
+              <a
+                href="#projects"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-lg hover:bg-[#0f2b5c]/10 hover:text-[#0f2b5c]"
+              >
+                Projects
+              </a>
+              <a
+                href="#skills"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-lg hover:bg-[#0f2b5c]/10 hover:text-[#0f2b5c]"
+              >
+                Skills
+              </a>
+              <a
+                href="#education"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-lg hover:bg-[#0f2b5c]/10 hover:text-[#0f2b5c]"
+              >
+                Education
+              </a>
+              <a
+                href="#achievements"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-lg hover:bg-[#0f2b5c]/10 hover:text-[#0f2b5c]"
+              >
+                Achievements &amp; Certifications
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-lg hover:bg-[#0f2b5c]/10 hover:text-[#0f2b5c]"
+              >
+                Contact
+              </a>
+              <div className="pt-2 border-t border-border">
+                <Button
+                  asChild
+                  className="w-full bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg h-9 text-xs font-semibold"
+                >
+                  <a
+                    href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1.5"
+                  >
+                    <FileText className="h-3.5 w-3.5" /> Download Resume
+                  </a>
+                </Button>
+              </div>
+            </nav>
+          </div>
+        )}
+      </header>
+
+      {/* Main Content */}
+      <main className="relative z-10">
+        {/* 1. HERO SECTION — PROFESSIONAL TWO-COLUMN DESKTOP HERO (40% PHOTO / 60% CONTENT) */}
+        <section className="pt-8 sm:pt-10 md:pt-12 pb-10 sm:pb-12 md:pb-14 px-4 sm:px-6 lg:px-8">
+          <div className="container mx-auto max-w-[1220px]">
+            {/* DESKTOP LAYOUT (>= 1024px): 40% Left Photo, 60% Right Introduction */}
+            <div className="hidden lg:flex items-center justify-between gap-10 xl:gap-14">
+              {/* LEFT COLUMN: Large Sharp Professional Photo (~40%) */}
+              <div className="w-[38%] flex justify-center shrink-0">
+                <div className="relative">
+                  <div className="relative w-[320px] h-[320px] xl:w-[350px] xl:h-[350px] rounded-full overflow-hidden border-4 border-[#0f2b5c] shadow-xl ring-4 ring-[#0f2b5c]/15 bg-slate-100 dark:bg-slate-800">
+                    <Image
+                      src="/Harini.png"
+                      alt="Harini L - Software Engineer"
+                      width={380}
+                      height={380}
+                      priority
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT COLUMN: Complete Professional Introduction (~60%) */}
+              <div className="w-[62%] flex flex-col items-start text-left">
+                {/* Status Indicator Pill */}
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 mb-3">
+                  <span className="w-2 h-2 rounded-full bg-[#0f2b5c] animate-pulse" />
+                  <span className="text-xs font-bold tracking-wide uppercase text-[#0f2b5c] dark:text-sky-300">
+                    ACTIVELY SEEKING OPPORTUNITIES
+                  </span>
+                </div>
+
+                {/* Name */}
+                <h1 className="text-4xl xl:text-5xl font-extrabold tracking-tight text-foreground mb-1">
+                  HARINI L
+                </h1>
+
+                {/* Role Title */}
+                <h2 className="text-2xl font-bold text-[#0f2b5c] dark:text-sky-400 mb-1.5">
+                  Software Engineer
+                </h2>
+
+                {/* Supporting Positioning Line */}
+                <div className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3 tracking-wide">
+                  AI-Native Software Development • Agentic AI • Full-Stack Engineering
+                </div>
+
+                {/* Concise Professional Summary */}
+                <p className="text-[14.5px] text-slate-700 dark:text-slate-200 font-normal leading-relaxed max-w-xl mb-4">
+                  Software Engineer building production software and AI-powered systems, leveraging coding agents, Agentic AI, LLMs, and Spec-Driven Development across modern software development workflows.
+                </p>
+
+                {/* Education Credential Chip */}
+                <a
+                  href="#education"
+                  className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800/80 border border-border hover:border-[#0f2b5c]/50 transition-all mb-4.5 group cursor-pointer"
+                >
+                  <GraduationCap className="h-3.5 w-3.5 text-[#0f2b5c] dark:text-sky-400 group-hover:scale-110 transition-transform" />
+                  <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100">
+                    M.Tech CSE (IT) — UVCE Bengaluru
+                  </span>
+                  <span className="text-xs font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full">
+                    CGPA: 8.70 / 10
+                  </span>
+                </a>
+
+                {/* Two Compact Visual Highlight Groups */}
+                <div className="w-full max-w-xl space-y-2 mb-5">
+                  {/* Highlight 1: Software Engineering */}
+                  <div className="p-2.5 rounded-lg bg-card border border-border/80 text-left shadow-2xs">
+                    <div className="text-[11px] font-extrabold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-400 mb-1 flex items-center gap-1.5">
+                      <Code2 className="h-3 w-3" />
+                      <span>SOFTWARE ENGINEERING</span>
+                    </div>
+                    <div className="text-xs font-medium text-slate-700 dark:text-slate-200">
+                      C#/.NET · Java/Spring Boot · React · Python · REST APIs · Application Development
+                    </div>
+                  </div>
+
+                  {/* Highlight 2: AI-Native Development */}
+                  <div className="p-2.5 rounded-lg bg-card border border-[#0f2b5c]/25 dark:border-sky-500/30 text-left bg-gradient-to-r from-[#0f2b5c]/[0.03] to-transparent shadow-2xs">
+                    <div className="text-[11px] font-extrabold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-400 mb-1 flex items-center gap-1.5">
+                      <Sparkles className="h-3 w-3" />
+                      <span>AI-NATIVE DEVELOPMENT</span>
+                    </div>
+                    <div className="text-xs font-medium text-slate-700 dark:text-slate-200">
+                      Claude Code · Coding Agents · Agentic AI · LLM Applications · RAG · Spec-Driven Development
+                    </div>
+                  </div>
+                </div>
+
+                {/* Main Action Buttons */}
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <Button
+                    asChild
+                    className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg shadow-sm font-bold text-xs h-9 px-4.5"
+                  >
+                    <a href="#experience" className="flex items-center gap-1.5">
+                      <Briefcase className="h-3.5 w-3.5" />
+                      <span>View Experience</span>
+                    </a>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    asChild
+                    className="rounded-lg border-[#0f2b5c]/40 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 font-bold text-xs h-9 px-4.5"
+                  >
+                    <a href="#projects" className="flex items-center gap-1.5">
+                      <Code2 className="h-3.5 w-3.5" />
+                      <span>View Projects</span>
+                    </a>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    asChild
+                    className="rounded-lg border-border hover:border-[#0f2b5c] font-semibold text-xs h-9 px-3.5"
+                  >
+                    <a
+                      href="https://github.com/Harini410"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5"
+                    >
+                      <Github className="h-3.5 w-3.5" />
+                      <span>GitHub</span>
+                    </a>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    asChild
+                    className="rounded-lg border-border hover:border-[#0f2b5c] font-semibold text-xs h-9 px-3.5"
+                  >
+                    <a
+                      href="https://www.linkedin.com/in/harini-lakshmanan-04/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5"
+                    >
+                      <Linkedin className="h-3.5 w-3.5 text-[#0f2b5c] dark:text-sky-400" />
+                      <span>LinkedIn</span>
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* MOBILE & TABLET LAYOUT (< 1024px): Seamless, natural top-to-bottom sequence */}
+            <div className="lg:hidden flex flex-col items-center text-center">
+              {/* 1. Status Indicator Pill */}
+              <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 mb-3.5">
+                <span className="w-2 h-2 rounded-full bg-[#0f2b5c] animate-pulse" />
+                <span className="text-[11px] font-bold tracking-wide uppercase text-[#0f2b5c] dark:text-sky-300">
+                  ACTIVELY SEEKING OPPORTUNITIES
+                </span>
+              </div>
+
+              {/* 2. Photo: Large and sharp circular portrait */}
+              <div className="relative mb-3.5">
+                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-[#0f2b5c] shadow-lg ring-4 ring-[#0f2b5c]/15 bg-slate-100 dark:bg-slate-800">
+                  <Image
+                    src="/Harini.png"
+                    alt="Harini L - Software Engineer"
+                    width={280}
+                    height={280}
+                    priority
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+              </div>
+
+              {/* 3. Name */}
+              <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground mb-1">
+                HARINI L
+              </h1>
+
+              {/* 4. Software Engineer */}
+              <h2 className="text-lg sm:text-xl font-bold text-[#0f2b5c] dark:text-sky-400 mb-1.5">
+                Software Engineer
+              </h2>
+
+              {/* 5. AI-Native Positioning */}
+              <div className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3 tracking-wide">
+                AI-Native Software Development • Agentic AI • Full-Stack Engineering
+              </div>
+
+              {/* 6. Professional Summary */}
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 font-normal leading-relaxed max-w-lg mb-3.5">
+                Software Engineer building production software and AI-powered systems, leveraging coding agents, Agentic AI, LLMs, and Spec-Driven Development across modern software development workflows.
+              </p>
+
+              {/* 7. Education */}
+              <a
+                href="#education"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800/80 border border-border hover:border-[#0f2b5c]/50 transition-all mb-4 group cursor-pointer"
+              >
+                <GraduationCap className="h-3.5 w-3.5 text-[#0f2b5c] dark:text-sky-400 group-hover:scale-110 transition-transform" />
+                <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100">
+                  M.Tech CSE (IT) — UVCE Bengaluru
+                </span>
+                <span className="text-[11px] sm:text-xs font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full">
+                  CGPA: 8.70 / 10
+                </span>
+              </a>
+
+              {/* 8. Software Engineering / AI Highlights */}
+              <div className="w-full max-w-md space-y-2 mb-4.5">
+                <div className="p-2.5 rounded-lg bg-card border border-border/80 text-left">
+                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-400 mb-1 flex items-center gap-1.5">
+                    <Code2 className="h-3 w-3" />
+                    <span>SOFTWARE ENGINEERING</span>
+                  </div>
+                  <div className="text-xs font-medium text-slate-700 dark:text-slate-200">
+                    C#/.NET · Java/Spring Boot · React · Python · REST APIs · Application Development
+                  </div>
+                </div>
+
+                <div className="p-2.5 rounded-lg bg-card border border-[#0f2b5c]/25 dark:border-sky-500/30 text-left bg-gradient-to-r from-[#0f2b5c]/[0.03] to-transparent">
+                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-400 mb-1 flex items-center gap-1.5">
+                    <Sparkles className="h-3 w-3" />
+                    <span>AI-NATIVE DEVELOPMENT</span>
+                  </div>
+                  <div className="text-xs font-medium text-slate-700 dark:text-slate-200">
+                    Claude Code · Coding Agents · Agentic AI · LLM Applications · RAG · Spec-Driven Development
+                  </div>
+                </div>
+              </div>
+
+              {/* 9. Action Buttons */}
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <Button
+                  asChild
+                  className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg shadow-sm font-bold text-xs h-9 px-4"
+                >
+                  <a href="#experience" className="flex items-center gap-1.5">
+                    <Briefcase className="h-3.5 w-3.5" />
+                    <span>View Experience</span>
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  asChild
+                  className="rounded-lg border-[#0f2b5c]/40 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 font-bold text-xs h-9 px-4"
+                >
+                  <a href="#projects" className="flex items-center gap-1.5">
+                    <Code2 className="h-3.5 w-3.5" />
+                    <span>View Projects</span>
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  asChild
+                  className="rounded-lg border-border hover:border-[#0f2b5c] font-semibold text-xs h-9 px-3.5"
+                >
+                  <a
+                    href="https://github.com/Harini410"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5"
+                  >
+                    <Github className="h-3.5 w-3.5" />
+                    <span>GitHub</span>
+                  </a>
+                </Button>
+                <Button
+                  variant="outline"
+                  asChild
+                  className="rounded-lg border-border hover:border-[#0f2b5c] font-semibold text-xs h-9 px-3.5"
+                >
+                  <a
+                    href="https://www.linkedin.com/in/harini-lakshmanan-04/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5"
+                  >
+                    <Linkedin className="h-3.5 w-3.5 text-[#0f2b5c] dark:text-sky-400" />
+                    <span>LinkedIn</span>
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 2. EXPERIENCE SECTION — WITH RIGHT-SIDE CAREER JOURNEY TIMELINE */}
+        <section id="experience" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border bg-slate-50/50 dark:bg-slate-900/30">
+          <div className="container mx-auto max-w-5xl">
+            {/* Section Header */}
+            <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+                Experience
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
+                Software engineering, systems automation, and AI-assisted enterprise development
+              </p>
+            </div>
+
+            {/* Experience Layout with Left-Side Career Journey Timeline Track */}
+            <div className="relative">
+              {/* Vertical Journey Line on Left Side */}
+              <div className="absolute left-4 sm:left-5 top-8 bottom-8 w-0.5 -translate-x-1/2 bg-gradient-to-b from-[#0f2b5c] via-[#0f2b5c]/60 to-[#0f2b5c]/25 pointer-events-none" />
+
+              <div className="space-y-6 pl-8 sm:pl-10">
+                {experiences.map((exp) => {
+                  const isTouched = touchedCard === exp.id
+                  return (
+                    <div key={exp.id} className="relative">
+                      {/* Timeline Dot on Left Vertical Rail (No step numbers) */}
+                      <div className="absolute -left-8 sm:-left-10 top-6 w-8 sm:w-10 flex items-center justify-center z-10 pointer-events-none">
+                        <div
+                          className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 sm:border-3 flex items-center justify-center transition-all ${
+                            isTouched
+                              ? "bg-[#0f2b5c] border-white shadow-md ring-2 ring-[#0f2b5c]"
+                              : "bg-white dark:bg-slate-900 border-[#0f2b5c]"
+                          }`}
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#0f2b5c] dark:bg-sky-400" />
+                        </div>
+                      </div>
+
+                      <Card
+                        onClick={() => setTouchedCard(exp.id)}
+                        className={`transition-all duration-300 cursor-pointer bg-card ${
+                          exp.isProminent
+                            ? isTouched
+                              ? "border-2 border-[#0f2b5c] shadow-[0_0_30px_rgba(15,43,92,0.18)] ring-1 ring-[#0f2b5c]/40"
+                              : "border-2 border-[#0f2b5c]/70 shadow-md hover:border-[#0f2b5c]"
+                            : isTouched
+                            ? "border-[#0f2b5c] shadow-md ring-1 ring-[#0f2b5c]/30"
+                            : "border border-border hover:border-[#0f2b5c]/50"
+                        }`}
+                      >
+                        <CardHeader className="pb-3">
+                          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+                            <div className="flex items-start gap-3.5">
+                              <div
+                                className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-xs mt-0.5 ${
+                                  exp.isProminent
+                                    ? "bg-[#0f2b5c] text-white"
+                                    : "bg-slate-100 dark:bg-slate-800 text-[#0f2b5c] dark:text-sky-400 border border-border"
+                                }`}
+                              >
+                                {exp.isProminent ? (
+                                  <Building2 className="h-5 w-5" />
+                                ) : (
+                                  <Briefcase className="h-5 w-5" />
+                                )}
+                              </div>
+                              <div>
+                                <div className="flex items-center gap-2 flex-wrap">
+                                  <h3 className="text-lg sm:text-xl font-black text-foreground">
+                                    {exp.company}
+                                  </h3>
+                                  {exp.isProminent && (
+                                    <span className="inline-flex items-center gap-1 text-[11px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-[#0f2b5c]/10 text-[#0f2b5c] dark:text-sky-300 border border-[#0f2b5c]/25">
+                                      <Sparkles className="h-2.5 w-2.5" />
+                                      <span>Primary Software Engineering</span>
+                                    </span>
+                                  )}
+                                </div>
+                                <div className="text-sm sm:text-base font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
+                                  {exp.role}
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-1 shrink-0 pl-13 sm:pl-0">
+                              <div className="inline-flex items-center gap-1 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-md border border-border">
+                                <Calendar className="h-3 w-3 text-[#0f2b5c] dark:text-sky-400" />
+                                <span>{exp.duration}</span>
+                              </div>
+                              <div className="flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                                <MapPin className="h-3 w-3" />
+                                <span>{exp.location}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </CardHeader>
+
+                        <CardContent className="pt-0">
+                          {/* Highlights Bullets */}
+                          <ul className="space-y-2 mb-4 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
+                            {exp.bullets.map((b, bIdx) => (
+                              <li key={bIdx} className="flex items-start gap-2 leading-relaxed">
+                                <span className="text-[#0f2b5c] dark:text-sky-400 font-bold mt-0.5">•</span>
+                                <span>{b}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          {/* Skills and Tags */}
+                          <div className="pt-3 border-t border-border flex flex-wrap items-center justify-between gap-2">
+                            <div className="flex flex-wrap gap-1.5">
+                              {exp.skills.map((s) => (
+                                <Badge
+                                  key={s}
+                                  variant="secondary"
+                                  className={`text-[11px] font-medium ${
+                                    isTouched
+                                      ? "bg-[#0f2b5c]/15 text-[#0f2b5c] dark:text-sky-200 border-[#0f2b5c]/30"
+                                      : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-border"
+                                  }`}
+                                >
+                                  {s}
+                                </Badge>
+                              ))}
+                            </div>
+
+                            {exp.certificate && (
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 hover:text-[#0f2b5c]/80 h-7 ml-auto"
+                                asChild
+                              >
+                                <a
+                                  href={exp.certificate}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-1"
+                                >
+                                  <span>Certificate</span>
+                                  <ExternalLink className="h-3 w-3" />
+                                </a>
+                              </Button>
+                            )}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. PROJECTS SECTION — WITH SWIPE CARDS & GRID VIEW MODES */}
+        <section id="projects" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border">
+          <div className="container mx-auto max-w-6xl">
+            {/* Section Header with View Toggle Controls */}
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+                  Projects
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
+                  Featured engineering applications spanning Agentic AI, multi-agent RAG, NLP, and enterprise full-stack systems
+                </p>
+              </div>
+
+              {/* Grid vs Swipe Card View Switcher */}
+              <div className="inline-flex items-center p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-border self-start sm:self-auto shrink-0 shadow-2xs">
+                <button
+                  type="button"
+                  onClick={() => setProjectViewMode("grid")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    projectViewMode === "grid"
+                      ? "bg-[#0f2b5c] text-white shadow-xs"
+                      : "text-slate-600 dark:text-slate-300 hover:text-foreground"
+                  }`}
+                  aria-label="Switch to Grid View"
+                >
+                  <LayoutGrid className="h-3.5 w-3.5" />
+                  <span>Grid View</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setProjectViewMode("swipe")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    projectViewMode === "swipe"
+                      ? "bg-[#0f2b5c] text-white shadow-xs"
+                      : "text-slate-600 dark:text-slate-300 hover:text-foreground"
+                  }`}
+                  aria-label="Switch to Swipe Card View"
+                >
+                  <SlidersHorizontal className="h-3.5 w-3.5" />
+                  <span>Swipe Cards</span>
+                </button>
+              </div>
+            </div>
+
+            {/* MODE 1: GRID VIEW (All 5 Projects + 6th GitHub Overview Card) */}
+            {projectViewMode === "grid" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in duration-200">
+                {projectsData.map((project) => renderProjectCard(project))}
+                {renderGithubOverviewCard()}
+              </div>
+            )}
+
+            {/* MODE 2: SWIPE CARDS VIEW (Interactive Slider with Prev/Next + Dots) */}
+            {projectViewMode === "swipe" && (
+              <div className="max-w-2xl mx-auto animate-in fade-in duration-200">
+                {/* Carousel Controls Header */}
+                <div className="flex items-center justify-between gap-2 mb-4 px-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-400">
+                      {currentSwipeIndex < projectsData.length
+                        ? `Project ${currentSwipeIndex + 1} of ${projectsData.length}`
+                        : "Explore All GitHub Projects"}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-1.5">
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      onClick={() => setCurrentSwipeIndex((prev) => (prev > 0 ? prev - 1 : totalSwipeSlides - 1))}
+                      className="h-8 w-8 rounded-lg border-border hover:border-[#0f2b5c] cursor-pointer"
+                      aria-label="Previous project slide"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      onClick={() => setCurrentSwipeIndex((prev) => (prev < totalSwipeSlides - 1 ? prev + 1 : 0))}
+                      className="h-8 w-8 rounded-lg border-border hover:border-[#0f2b5c] cursor-pointer"
+                      aria-label="Next project slide"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Active Slide Display */}
+                <div className="transition-all duration-300">
+                  {currentSwipeIndex < projectsData.length
+                    ? renderProjectCard(projectsData[currentSwipeIndex])
+                    : renderGithubOverviewCard()}
+                </div>
+
+                {/* Swipe Slide Dot Indicators */}
+                <div className="flex items-center justify-center gap-2 mt-6">
+                  {Array.from({ length: totalSwipeSlides }).map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSwipeIndex(idx)}
+                      className={`h-2 rounded-full transition-all cursor-pointer ${
+                        currentSwipeIndex === idx
+                          ? "w-8 bg-[#0f2b5c] dark:bg-sky-400"
+                          : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Bottom GitHub CTA Button */}
+            <div className="mt-8 sm:mt-10 text-center">
+              <Button
+                size="sm"
+                variant="outline"
+                className="rounded-lg border-[#0f2b5c]/40 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 h-10 px-5 text-xs font-bold"
+                asChild
+              >
+                <a
+                  href="https://github.com/Harini410"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <Github className="h-4 w-4" />
+                  <span>View More Projects on GitHub ↗</span>
+                </a>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* 4. TECHNICAL SKILLS — 5 CATEGORIZED MATRICES (WPF REMOVED) */}
+        <section id="skills" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border bg-slate-50/50 dark:bg-slate-900/30">
+          <div className="container mx-auto max-w-5xl">
+            <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+                Technical Skills
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
+                Engineering proficiencies spanning AI-assisted workflows, languages, systems, and enterprise stacks
+              </p>
+            </div>
+
+            {/* Filter Buttons */}
+            <div className="flex items-center justify-center gap-2 mb-8 overflow-x-auto scrollbar-none pb-1">
+              {[
+                { id: "all", label: "All Skills" },
+                { id: "ai", label: "AI & AI-Assisted" },
+                { id: "programming", label: "Programming" },
+                { id: "software", label: "Software Engineering" },
+                { id: "systems", label: "Systems & Automation" },
+                { id: "tools", label: "Databases & Tools" },
+              ].map((c) => (
+                <button
+                  key={c.id}
+                  onClick={() => setActiveSkillCategory(c.id)}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
+                    activeSkillCategory === c.id
+                      ? "bg-[#0f2b5c] text-white shadow-xs"
+                      : "bg-card border border-border text-slate-700 dark:text-slate-300 hover:text-foreground hover:border-[#0f2b5c]/40"
+                  }`}
+                >
+                  {c.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Categorized Skills Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredSkillGroups.map((group) => (
+                <Card
+                  key={group.category}
+                  className="border border-border hover:border-[#0f2b5c]/50 transition-all bg-card p-4 rounded-xl"
+                >
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-400 mb-2.5 flex items-center gap-1.5">
+                    <Code2 className="h-3.5 w-3.5" />
+                    <span>{group.title}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {group.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-border"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. EDUCATION SECTION — COMPACT WITH MINIMAL COLLAPSIBLE IEEE CONFERENCES */}
+        <section id="education" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border">
+          <div className="container mx-auto max-w-4xl">
+            {/* Section Header */}
+            <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+                Education
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
+                Academic qualifications, university honors, and IEEE international conference research
+              </p>
+            </div>
+
+            <div className="space-y-4 mb-8">
+              {/* M.Tech Degree Card */}
+              <Card
+                onClick={() => setTouchedCard("edu-mtech")}
+                className={`border transition-all duration-300 cursor-pointer bg-card ${
+                  touchedCard === "edu-mtech"
+                    ? "border-[#0f2b5c] shadow-md ring-1 ring-[#0f2b5c]/30"
+                    : "border-border hover:border-[#0f2b5c]/60"
+                }`}
+              >
+                <CardHeader className="pb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+                    <div className="flex items-start gap-3.5">
+                      <div className="w-10 h-10 rounded-xl bg-[#0f2b5c] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                        <GraduationCap className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-lg sm:text-xl font-extrabold text-foreground">
+                          Master of Technology — Computer Science &amp; Engineering (Information Technology)
+                        </CardTitle>
+                        <CardDescription className="text-sm font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
+                          University Visvesvaraya College of Engineering (UVCE), Bengaluru
+                        </CardDescription>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-1.5 shrink-0 pl-13 sm:pl-0">
+                      <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30">
+                        <span className="text-xs font-bold text-slate-700 dark:text-slate-300">CGPA:</span>
+                        <span className="text-sm sm:text-base font-black text-amber-800 dark:text-amber-300">
+                          8.70 / 10
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                        <Calendar className="h-3 w-3 text-[#0f2b5c] dark:text-sky-400" />
+                        <span>Feb 2024 – Jan 2026</span>
+                      </div>
+                    </div>
+                  </div>
+                </CardHeader>
+
+                {/* Collapsible IEEE Conferences under M.Tech entry */}
+                <div className="px-6 pb-4 pt-1 border-t border-border/60">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setIeeeExpanded(!ieeeExpanded)
+                    }}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#0f2b5c]/25 hover:border-[#0f2b5c] bg-[#0f2b5c]/[0.03] hover:bg-[#0f2b5c]/[0.08] transition-all cursor-pointer text-xs font-bold text-[#0f2b5c] dark:text-sky-400"
+                    aria-expanded={ieeeExpanded}
+                  >
+                    <FileCheck2 className="h-3.5 w-3.5" />
+                    <span>IEEE Conferences</span>
+                    <span className="font-extrabold text-sm ml-1">{ieeeExpanded ? "−" : "+"}</span>
+                  </button>
+
+                  {/* Expanded View: Exactly 2 Verified IEEE Papers */}
+                  {ieeeExpanded && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-3.5 animate-in fade-in duration-200">
+                      {/* Paper 1: Cyberbullying Framework */}
+                      <div className="p-3.5 rounded-xl bg-slate-50/80 dark:bg-slate-900/50 border border-border flex flex-col justify-between">
+                        <div>
+                          <div className="text-xs sm:text-sm font-bold text-foreground leading-snug">
+                            A Deep Learning-Based Framework for Detecting Cyberbullying on Social Media Platforms
+                          </div>
+                          <div className="text-[11px] font-semibold text-[#0f2b5c] dark:text-sky-400 mt-1">
+                            Second IEEE International Conference on New Frontiers in Communication, Automation, Management and Security
+                          </div>
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                            Presidency University, Bengaluru · 11–12 July 2025
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2 pt-3 mt-3 border-t border-border/60">
+                          <Button
+                            size="sm"
+                            className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg text-xs font-semibold h-7 px-2.5"
+                            asChild
+                          >
+                            <a
+                              href={ieeePapers[0].paperLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-1"
+                            >
+                              <span>View Paper / Certificate ↗</span>
+                              <ExternalLink className="h-3 w-3" />
+                            </a>
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="border-border hover:border-[#0f2b5c]/60 text-xs font-semibold rounded-lg h-7 px-2.5"
+                            asChild
+                          >
+                            <a
+                              href={ieeePapers[0].demoLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-1"
+                            >
+                              <span>Live Demo ↗</span>
+                              <ExternalLink className="h-3 w-3" />
+                            </a>
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Paper 2: Network Intrusion Detection */}
+                      <div className="p-3.5 rounded-xl bg-slate-50/80 dark:bg-slate-900/50 border border-border flex flex-col justify-between">
+                        <div>
+                          <div className="text-xs sm:text-sm font-bold text-foreground leading-snug">
+                            Optimized Hybrid Model for Network Intrusion Detection Using Ensemble Learning
+                          </div>
+                          <div className="text-[11px] font-semibold text-[#0f2b5c] dark:text-sky-400 mt-1">
+                            International Conference on Emerging Technologies in Electronics and Green Energy (ICETEG 2025)
+                          </div>
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                            JSS Science and Technology University, Mysuru · 10–11 October 2025
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2 pt-3 mt-3 border-t border-border/60">
+                          <Button
+                            size="sm"
+                            className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg text-xs font-semibold h-7 px-2.5"
+                            asChild
+                          >
+                            <a
+                              href={ieeePapers[1].certificateLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-1"
+                            >
+                              <span>View Certificate ↗</span>
+                              <ExternalLink className="h-3 w-3" />
+                            </a>
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </Card>
+
+              {/* B.E. Degree Card */}
+              <Card
+                onClick={() => setTouchedCard("edu-be")}
+                className={`border transition-all duration-300 cursor-pointer bg-card ${
+                  touchedCard === "edu-be"
+                    ? "border-[#0f2b5c] shadow-md ring-1 ring-[#0f2b5c]/30"
+                    : "border-border hover:border-[#0f2b5c]/60"
+                }`}
+              >
+                <CardHeader className="pb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+                    <div className="flex items-start gap-3.5">
+                      <div className="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 text-[#0f2b5c] dark:text-sky-400 flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                        <GraduationCap className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-lg sm:text-xl font-extrabold text-foreground">
+                          Bachelor of Engineering — Information Science &amp; Engineering
+                        </CardTitle>
+                        <CardDescription className="text-sm font-bold text-slate-700 dark:text-slate-300 mt-0.5">
+                          East West Institute of Technology, Bengaluru
+                        </CardDescription>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-1.5 shrink-0 pl-13 sm:pl-0">
+                      <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 border border-border">
+                        <span className="text-xs font-bold text-slate-600 dark:text-slate-400">CGPA:</span>
+                        <span className="text-sm sm:text-base font-bold text-foreground">
+                          7.2 / 10
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                        <Calendar className="h-3 w-3 text-[#0f2b5c] dark:text-sky-400" />
+                        <span>Aug 2017 – Aug 2021</span>
+                      </div>
+                    </div>
+                  </div>
+                </CardHeader>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* 6. ACHIEVEMENTS & CERTIFICATIONS SECTION */}
+        <section id="achievements" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border bg-slate-50/50 dark:bg-slate-900/30">
+          <div className="container mx-auto max-w-4xl">
+            {/* Section Header */}
+            <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+                Achievements &amp; Certifications
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
+                Engineering honors, industry hackathon awards, and professional accreditations
+              </p>
+            </div>
+
+            {/* Featured Hackathon Winner Card */}
+            <Card className="border-2 border-amber-500/40 bg-gradient-to-br from-amber-500/[0.04] via-card to-card p-5 sm:p-6 rounded-2xl shadow-sm mb-8">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 flex items-center justify-center shrink-0">
+                    <Award className="h-7 w-7" />
+                  </div>
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 text-xs font-bold border border-amber-500/30 mb-1.5">
+                      <span>Winner</span>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-black text-foreground">
+                      Winner — Agentic AI Hackathon, Dell Technologies
+                    </h3>
+                    <div className="text-xs sm:text-sm font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
+                      Dell Technologies (AI Academy &amp; India Innovation Forum) · Jan 2026
+                    </div>
+                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-2 leading-relaxed">
+                      Awarded Winner for architecting an autonomous ransomware recovery decision-support system integrating Agentic AI with network graph analysis for enterprise dependency mapping.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="sm:shrink-0 pl-16 sm:pl-0">
+                  <Button
+                    size="sm"
+                    className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg text-xs font-bold h-9 px-4 shadow-xs"
+                    asChild
+                  >
+                    <a
+                      href="https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5"
+                    >
+                      <span>View Certificate</span>
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </Card>
+
+            {/* Supported Professional Certifications Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {professionalCertifications.map((item) => (
+                <Card
+                  key={item.id}
+                  className="border border-border hover:border-[#0f2b5c]/50 transition-all bg-card flex flex-col justify-between p-4"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <div className="flex items-center gap-1.5">
+                        <Award className="h-4 w-4 text-[#0f2b5c] dark:text-sky-400" />
+                        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{item.date}</span>
+                      </div>
+                    </div>
+                    <div className="text-sm font-bold text-foreground">
+                      {item.title}
+                    </div>
+                    <div className="text-xs font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
+                      {item.org}
+                    </div>
+                    <p className="text-xs text-slate-700 dark:text-slate-300 font-normal mt-2 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-border/60 mt-3 flex items-center justify-between">
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#0f2b5c] dark:text-sky-400 hover:underline"
+                    >
+                      <span>View Credential</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            <div className="mt-6 text-center">
+              <a
+                href="https://drive.google.com/drive/folders/1FmX4R-KtWO3z30mpmEgomEKlCCxiFkxl?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0f2b5c] dark:text-sky-400 hover:underline"
+              >
+                <span>View Complete Certificate Archive on Google Drive</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* 7. CONTACT SECTION */}
+        <section id="contact" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border">
+          <div className="container mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground mb-3">
+              Let's Connect
+            </h2>
+            <p className="text-sm sm:text-base text-slate-700 dark:text-slate-200 font-medium max-w-lg mx-auto mb-6 sm:mb-8 leading-relaxed">
+              Open to Software Engineer opportunities. Reach out directly:
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 text-left mb-8">
+              {/* Email */}
+              <div
+                onClick={() => {
+                  setTouchedCard("c-email")
+                  copyEmail()
+                }}
+                className={`p-4 rounded-xl bg-card border-2 transition-all cursor-pointer ${
+                  touchedCard === "c-email" ? "border-[#0f2b5c] bg-[#0f2b5c]/[0.04]" : "border-border hover:border-[#0f2b5c]/50"
+                }`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <Mail className="h-4 w-4 text-[#0f2b5c] dark:text-sky-400" />
+                  <span className="text-[11px] font-bold text-[#0f2b5c] dark:text-sky-400">
+                    {copiedEmail ? "Copied!" : "Click to Copy"}
+                  </span>
+                </div>
+                <div className="text-[11px] uppercase font-bold text-slate-500 dark:text-slate-400">
+                  Email
+                </div>
+                <div className="text-xs sm:text-sm font-black text-foreground break-all mt-0.5">
+                  harini.lts8@gmail.com
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div
+                onClick={() => {
+                  setTouchedCard("c-phone")
+                  copyPhone()
+                }}
+                className={`p-4 rounded-xl bg-card border-2 transition-all cursor-pointer ${
+                  touchedCard === "c-phone" ? "border-[#0f2b5c] bg-[#0f2b5c]/[0.06]" : "border-[#0f2b5c]/40 hover:border-[#0f2b5c]"
+                }`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <Phone className="h-4 w-4 text-[#0f2b5c] dark:text-sky-400" />
+                  <span className="text-[11px] font-bold text-[#0f2b5c] dark:text-sky-400">
+                    {copiedPhone ? "Copied!" : "Click to Copy"}
+                  </span>
+                </div>
+                <div className="text-[11px] uppercase font-bold text-slate-500 dark:text-slate-400">
+                  Phone
+                </div>
+                <div className="text-xs sm:text-sm font-black text-slate-900 dark:text-white mt-0.5">
+                  +91 8884916059
+                </div>
+              </div>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/harini-lakshmanan-04/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setTouchedCard("c-linkedin")}
+                className={`p-4 rounded-xl bg-card border-2 transition-all cursor-pointer block ${
+                  touchedCard === "c-linkedin" ? "border-[#0f2b5c] bg-[#0f2b5c]/[0.04]" : "border-border hover:border-[#0f2b5c]/50"
+                }`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <Linkedin className="h-4 w-4 text-[#0f2b5c] dark:text-sky-400" />
+                  <ExternalLink className="h-3 w-3 text-slate-400" />
+                </div>
+                <div className="text-[11px] uppercase font-bold text-slate-500 dark:text-slate-400">
+                  LinkedIn
+                </div>
+                <div className="text-xs sm:text-sm font-black text-foreground mt-0.5 truncate">
+                  harini-lakshmanan-04
+                </div>
+              </a>
+            </div>
+
+            {/* Quick Resume Download Card */}
+            <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+              <div>
+                <div className="text-sm font-black text-foreground">
+                  Looking for my full resume?
+                </div>
+                <div className="text-xs text-slate-600 dark:text-slate-300 font-medium mt-0.5">
+                  Download the latest Software Engineer resume covering Dell Technologies, education, and technical projects.
+                </div>
+              </div>
+              <Button
+                className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg text-xs font-bold h-9 px-4 shrink-0 shadow-xs"
+                asChild
+              >
+                <a
+                  href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5"
+                >
+                  <FileText className="h-3.5 w-3.5" />
+                  <span>Download Resume PDF</span>
+                </a>
+              </Button>
+            </div>
+          </div>
+        </section>
+      </main>
 
       {/* Footer */}
-      <footer className="border-t py-8 px-4 bg-card/50">
-        <div className="container mx-auto max-w-4xl text-center">
-          <p className="text-muted-foreground">© 2025 Harini L. </p>
+      <footer className="border-t border-border py-8 px-4 sm:px-6 lg:px-8 bg-card text-xs text-slate-500 dark:text-slate-400">
+        <div className="container mx-auto max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>© {new Date().getFullYear()} Harini L. Built with Next.js, React &amp; Tailwind CSS.</div>
+          <div className="flex items-center gap-4 font-semibold">
+            <a href="#experience" className="hover:text-[#0f2b5c] dark:hover:text-sky-400">Experience</a>
+            <a href="#projects" className="hover:text-[#0f2b5c] dark:hover:text-sky-400">Projects</a>
+            <a href="#skills" className="hover:text-[#0f2b5c] dark:hover:text-sky-400">Skills</a>
+            <a href="#education" className="hover:text-[#0f2b5c] dark:hover:text-sky-400">Education</a>
+            <a href="#achievements" className="hover:text-[#0f2b5c] dark:hover:text-sky-400">Achievements</a>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="p-1.5 rounded-md hover:bg-[#0f2b5c]/10 hover:text-[#0f2b5c]"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="h-3.5 w-3.5" />
+            </button>
+          </div>
         </div>
       </footer>
     </div>
