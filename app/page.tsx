@@ -505,7 +505,7 @@ export default function Portfolio() {
           {project.demoUrl && (
             <Button
               size="sm"
-              className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white text-xs font-semibold rounded-lg h-8 px-3"
+              className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white text-xs font-semibold rounded-lg h-8 px-3"
               asChild
             >
               <a
@@ -524,7 +524,7 @@ export default function Portfolio() {
             <Button
               size="sm"
               variant="outline"
-              className="border-border hover:border-[#0f2b5c]/60 text-xs font-semibold rounded-lg h-8 px-3"
+              className="bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white text-xs font-semibold rounded-lg h-8 px-3"
               asChild
             >
               <a
@@ -589,7 +589,7 @@ export default function Portfolio() {
 
       <div className="mt-6 pt-4 border-t border-border">
         <Button
-          className="w-full bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg text-xs font-bold h-9 shadow-xs"
+          className="w-full bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-bold h-9 shadow-xs"
           asChild
         >
           <a
@@ -599,7 +599,8 @@ export default function Portfolio() {
             className="flex items-center justify-center gap-2"
           >
             <Github className="h-4 w-4" />
-            <span>View All Projects on GitHub ↗</span>
+            <span>View All Projects on GitHub</span>
+            <ExternalLink className="h-3.5 w-3.5" />
           </a>
         </Button>
       </div>
@@ -650,7 +651,7 @@ export default function Portfolio() {
                 size="sm"
                 variant="outline"
                 asChild
-                className="hidden sm:inline-flex rounded-lg border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 h-8 text-xs font-semibold"
+                className="hidden sm:inline-flex rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white h-8 text-xs font-semibold"
               >
                 <a
                   href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
@@ -668,7 +669,7 @@ export default function Portfolio() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden h-9 w-9 text-foreground"
+                className="md:hidden h-9 w-9 text-foreground hover:bg-[#0f2b5c]/10 hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white"
                 aria-label="Toggle navigation menu"
               >
                 {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -726,7 +727,7 @@ export default function Portfolio() {
               <div className="pt-2 border-t border-border">
                 <Button
                   asChild
-                  className="w-full bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg h-9 text-xs font-semibold"
+                  className="w-full bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg h-9 text-xs font-semibold"
                 >
                   <a
                     href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
@@ -839,7 +840,7 @@ export default function Portfolio() {
                 <div className="flex flex-wrap items-center gap-2.5">
                   <Button
                     asChild
-                    className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg shadow-sm font-bold text-xs h-9 px-4.5"
+                    className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg shadow-sm font-bold text-xs h-9 px-4.5"
                   >
                     <a href="#experience" className="flex items-center gap-1.5">
                       <Briefcase className="h-3.5 w-3.5" />
@@ -849,7 +850,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     asChild
-                    className="rounded-lg border-[#0f2b5c]/40 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 font-bold text-xs h-9 px-4.5"
+                    className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/40 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-bold text-xs h-9 px-4.5"
                   >
                     <a href="#projects" className="flex items-center gap-1.5">
                       <Code2 className="h-3.5 w-3.5" />
@@ -859,7 +860,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     asChild
-                    className="rounded-lg border-border hover:border-[#0f2b5c] font-semibold text-xs h-9 px-3.5"
+                    className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-semibold text-xs h-9 px-3.5"
                   >
                     <a
                       href="https://github.com/Harini410"
@@ -874,7 +875,7 @@ export default function Portfolio() {
                   <Button
                     variant="outline"
                     asChild
-                    className="rounded-lg border-border hover:border-[#0f2b5c] font-semibold text-xs h-9 px-3.5"
+                    className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-semibold text-xs h-9 px-3.5"
                   >
                     <a
                       href="https://www.linkedin.com/in/harini-lakshmanan-04/"
@@ -975,7 +976,7 @@ export default function Portfolio() {
               <div className="flex flex-wrap items-center justify-center gap-2">
                 <Button
                   asChild
-                  className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg shadow-sm font-bold text-xs h-9 px-4"
+                  className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg shadow-sm font-bold text-xs h-9 px-4"
                 >
                   <a href="#experience" className="flex items-center gap-1.5">
                     <Briefcase className="h-3.5 w-3.5" />
@@ -985,7 +986,7 @@ export default function Portfolio() {
                 <Button
                   variant="outline"
                   asChild
-                  className="rounded-lg border-[#0f2b5c]/40 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 font-bold text-xs h-9 px-4"
+                  className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/40 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-bold text-xs h-9 px-4"
                 >
                   <a href="#projects" className="flex items-center gap-1.5">
                     <Code2 className="h-3.5 w-3.5" />
@@ -995,7 +996,7 @@ export default function Portfolio() {
                 <Button
                   variant="outline"
                   asChild
-                  className="rounded-lg border-border hover:border-[#0f2b5c] font-semibold text-xs h-9 px-3.5"
+                  className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-semibold text-xs h-9 px-3.5"
                 >
                   <a
                     href="https://github.com/Harini410"
@@ -1010,7 +1011,7 @@ export default function Portfolio() {
                 <Button
                   variant="outline"
                   asChild
-                  className="rounded-lg border-border hover:border-[#0f2b5c] font-semibold text-xs h-9 px-3.5"
+                  className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-semibold text-xs h-9 px-3.5"
                 >
                   <a
                     href="https://www.linkedin.com/in/harini-lakshmanan-04/"
@@ -1096,12 +1097,6 @@ export default function Portfolio() {
                                   <h3 className="text-lg sm:text-xl font-black text-foreground">
                                     {exp.company}
                                   </h3>
-                                  {exp.isProminent && (
-                                    <span className="inline-flex items-center gap-1 text-[11px] font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-[#0f2b5c]/10 text-[#0f2b5c] dark:text-sky-300 border border-[#0f2b5c]/25">
-                                      <Sparkles className="h-2.5 w-2.5" />
-                                      <span>Primary Software Engineering</span>
-                                    </span>
-                                  )}
                                 </div>
                                 <div className="text-sm sm:text-base font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
                                   {exp.role}
@@ -1155,7 +1150,7 @@ export default function Portfolio() {
                               <Button
                                 size="sm"
                                 variant="ghost"
-                                className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 hover:text-[#0f2b5c]/80 h-7 ml-auto"
+                                className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 hover:text-[#0f2b5c] hover:bg-[#0f2b5c]/10 active:bg-[#0f2b5c] active:text-white h-7 ml-auto"
                                 asChild
                               >
                                 <a
@@ -1202,7 +1197,7 @@ export default function Portfolio() {
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     projectViewMode === "grid"
                       ? "bg-[#0f2b5c] text-white shadow-xs"
-                      : "text-slate-600 dark:text-slate-300 hover:text-foreground"
+                      : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-slate-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c]"
                   }`}
                   aria-label="Switch to Grid View"
                 >
@@ -1215,7 +1210,7 @@ export default function Portfolio() {
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     projectViewMode === "swipe"
                       ? "bg-[#0f2b5c] text-white shadow-xs"
-                      : "text-slate-600 dark:text-slate-300 hover:text-foreground"
+                      : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-slate-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c]"
                   }`}
                   aria-label="Switch to Swipe Card View"
                 >
@@ -1251,7 +1246,7 @@ export default function Portfolio() {
                       size="icon"
                       variant="outline"
                       onClick={() => setCurrentSwipeIndex((prev) => (prev > 0 ? prev - 1 : totalSwipeSlides - 1))}
-                      className="h-8 w-8 rounded-lg border-border hover:border-[#0f2b5c] cursor-pointer"
+                      className="h-8 w-8 rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white cursor-pointer"
                       aria-label="Previous project slide"
                     >
                       <ChevronLeft className="h-4 w-4" />
@@ -1260,7 +1255,7 @@ export default function Portfolio() {
                       size="icon"
                       variant="outline"
                       onClick={() => setCurrentSwipeIndex((prev) => (prev < totalSwipeSlides - 1 ? prev + 1 : 0))}
-                      className="h-8 w-8 rounded-lg border-border hover:border-[#0f2b5c] cursor-pointer"
+                      className="h-8 w-8 rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white cursor-pointer"
                       aria-label="Next project slide"
                     >
                       <ChevronRight className="h-4 w-4" />
@@ -1298,7 +1293,7 @@ export default function Portfolio() {
               <Button
                 size="sm"
                 variant="outline"
-                className="rounded-lg border-[#0f2b5c]/40 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 h-10 px-5 text-xs font-bold"
+                className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/40 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white h-10 px-5 text-xs font-bold"
                 asChild
               >
                 <a
@@ -1308,7 +1303,8 @@ export default function Portfolio() {
                   className="flex items-center gap-2"
                 >
                   <Github className="h-4 w-4" />
-                  <span>View More Projects on GitHub ↗</span>
+                  <span>View More Projects on GitHub</span>
+                  <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               </Button>
             </div>
@@ -1343,7 +1339,7 @@ export default function Portfolio() {
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                     activeSkillCategory === c.id
                       ? "bg-[#0f2b5c] text-white shadow-xs"
-                      : "bg-card border border-border text-slate-700 dark:text-slate-300 hover:text-foreground hover:border-[#0f2b5c]/40"
+                      : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-slate-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c]"
                   }`}
                 >
                   {c.label}
@@ -1440,7 +1436,11 @@ export default function Portfolio() {
                       e.stopPropagation()
                       setIeeeExpanded(!ieeeExpanded)
                     }}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[#0f2b5c]/25 hover:border-[#0f2b5c] bg-[#0f2b5c]/[0.03] hover:bg-[#0f2b5c]/[0.08] transition-all cursor-pointer text-xs font-bold text-[#0f2b5c] dark:text-sky-400"
+                    className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all cursor-pointer text-xs font-bold ${
+                      ieeeExpanded
+                        ? "bg-[#0f2b5c] text-white border border-[#0f2b5c]"
+                        : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-400 hover:border-[#0f2b5c] hover:bg-[#0f2b5c]/10"
+                    }`}
                     aria-expanded={ieeeExpanded}
                   >
                     <FileCheck2 className="h-3.5 w-3.5" />
@@ -1467,7 +1467,7 @@ export default function Portfolio() {
                         <div className="flex flex-wrap items-center gap-2 pt-3 mt-3 border-t border-border/60">
                           <Button
                             size="sm"
-                            className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg text-xs font-semibold h-7 px-2.5"
+                            className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-semibold h-7 px-2.5"
                             asChild
                           >
                             <a
@@ -1483,7 +1483,7 @@ export default function Portfolio() {
                           <Button
                             size="sm"
                             variant="outline"
-                            className="border-border hover:border-[#0f2b5c]/60 text-xs font-semibold rounded-lg h-7 px-2.5"
+                            className="bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white text-xs font-semibold rounded-lg h-7 px-2.5"
                             asChild
                           >
                             <a
@@ -1515,7 +1515,7 @@ export default function Portfolio() {
                         <div className="flex flex-wrap items-center gap-2 pt-3 mt-3 border-t border-border/60">
                           <Button
                             size="sm"
-                            className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg text-xs font-semibold h-7 px-2.5"
+                            className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-semibold h-7 px-2.5"
                             asChild
                           >
                             <a
@@ -1618,7 +1618,7 @@ export default function Portfolio() {
                 <div className="sm:shrink-0 pl-16 sm:pl-0">
                   <Button
                     size="sm"
-                    className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg text-xs font-bold h-9 px-4 shadow-xs"
+                    className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-bold h-9 px-4 shadow-xs"
                     asChild
                   >
                     <a
@@ -1782,7 +1782,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <Button
-                className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg text-xs font-bold h-9 px-4 shrink-0 shadow-xs"
+                className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-bold h-9 px-4 shrink-0 shadow-xs"
                 asChild
               >
                 <a
@@ -1812,7 +1812,7 @@ export default function Portfolio() {
             <a href="#achievements" className="hover:text-[#0f2b5c] dark:hover:text-sky-400">Achievements</a>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="p-1.5 rounded-md hover:bg-[#0f2b5c]/10 hover:text-[#0f2b5c]"
+              className="p-1.5 rounded-md hover:bg-[#0f2b5c]/10 hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white transition-colors cursor-pointer"
               aria-label="Back to top"
             >
               <ArrowUp className="h-3.5 w-3.5" />
