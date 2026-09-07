@@ -715,14 +715,14 @@ export default function Portfolio() {
         </CardHeader>
 
         <CardContent>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Built an <strong>AI-powered web application</strong> for automated
-            resume analysis and candidate-to-job matching. Developed modular{" "}
-            <strong>Node.js backend workflows</strong> and{" "}
-            <strong>REST APIs</strong> to support resume processing and
-            automated matching.
-          </p>
-
+  <p className="text-muted-foreground mb-4 leading-relaxed">
+    Built a <strong>multi-agent RAG system</strong> for automated
+    resume-job matching using <strong>Next.js, TypeScript, Groq LLMs</strong>,
+    and semantic embeddings. Implemented{" "}
+    <strong>grounded evidence validation, anti-hallucination checks</strong>,
+    and deterministic scoring, achieving <strong>13/13 unit tests</strong>{" "}
+    and <strong>10/10 evaluation scenarios</strong>.
+  </p>
           <div className="flex flex-wrap gap-2">
             {[
               "Node.js",
