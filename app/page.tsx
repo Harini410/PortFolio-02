@@ -714,28 +714,45 @@ export default function Portfolio() {
           </div>
         </CardHeader>
 
-        <CardContent>
-  <p className="text-muted-foreground mb-4 leading-relaxed">
-    Built a <strong>multi-agent RAG system</strong> for automated
-    resume-job matching using <strong>Next.js, TypeScript, Groq LLMs</strong>,
-    and semantic embeddings. Implemented{" "}
-    <strong>grounded evidence validation, anti-hallucination checks</strong>,
-    and deterministic scoring, achieving <strong>13/13 unit tests</strong>{" "}
-    and <strong>10/10 evaluation scenarios</strong>.
-  </p>
-          <div className="flex flex-wrap gap-2">
-            {[
-              "Node.js",
-              "REST APIs",
-              "AI",
-              "Resume Analysis",
-              "Candidate Matching",
-            ].map((tech) => (
-              <Badge key={tech} variant="outline" className="text-xs">
-                {tech}
-              </Badge>
-            ))}
-          </div>
+       <CardContent>
+  <ul className="list-disc pl-5 text-muted-foreground space-y-2 mb-5">
+    <li>
+      Built a <strong>multi-agent RAG pipeline</strong> using{" "}
+      <strong>Next.js, TypeScript, Groq LLMs</strong>, and semantic embeddings
+      for automated resume-job matching.
+    </li>
+    <li>
+      Developed an <strong>atomic requirement extraction and semantic
+      retrieval engine</strong> to identify and match relevant candidate
+      evidence against job requirements.
+    </li>
+    <li>
+      Implemented <strong>grounded evidence evaluation and
+      anti-hallucination validation</strong> to verify generated citations
+      against the candidate's actual resume content.
+    </li>
+    <li>
+      Added <strong>deterministic scoring, fallback handling, and automated
+      evaluation</strong>, achieving <strong>13/13 unit tests</strong> and{" "}
+      <strong>10/10 evaluation scenarios</strong>.
+    </li>
+  </ul>
+         <div className="flex flex-wrap gap-2">
+  {[
+    "Next.js",
+    "TypeScript",
+    "Groq LLMs",
+    "RAG",
+    "Semantic Embeddings",
+    "Multi-Agent AI",
+    "Anti-Hallucination",
+    "Deterministic Scoring",
+  ].map((tech) => (
+    <Badge key={tech} variant="outline" className="text-xs">
+      {tech}
+    </Badge>
+  ))}
+</div>
         </CardContent>
       </Card>
 
