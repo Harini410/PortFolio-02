@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
+import useEmblaCarousel from "embla-carousel-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ThemeToggle } from "@/components/theme-toggle"
 import {
   Github,
   Linkedin,
@@ -33,6 +33,7 @@ import {
   SlidersHorizontal,
   ChevronLeft,
   ChevronRight,
+  FolderGit2,
 } from "lucide-react"
 
 export default function Portfolio() {
@@ -43,8 +44,95 @@ export default function Portfolio() {
   const [touchedCard, setTouchedCard] = useState<string | null>("exp-0")
   const [activeSkillCategory, setActiveSkillCategory] = useState("all")
   const [ieeeExpanded, setIeeeExpanded] = useState(false)
-  const [projectViewMode, setProjectViewMode] = useState<"grid" | "swipe">("grid")
-  const [currentSwipeIndex, setCurrentSwipeIndex] = useState(0)
+  const [certViewMode, setCertViewMode] = useState<"grid" | "swipe">("swipe")
+  const [certCurrentIndex, setCertCurrentIndex] = useState(0)
+  const [certScrollSnaps, setCertScrollSnaps] = useState<number[]>([])
+
+  const [certEmblaRef, certEmblaApi] = useEmblaCarousel({
+    loop: true,
+  })
+
+  const onCertSelect = useCallback(() => {
+    if (!certEmblaApi) return
+    setCertCurrentIndex(certEmblaApi.selectedScrollSnap())
+  }, [certEmblaApi])
+
+  useEffect(() => {
+    if (!certEmblaApi) return
+    onCertSelect()
+    setCertScrollSnaps(certEmblaApi.scrollSnapList())
+    certEmblaApi.on("select", onCertSelect)
+    certEmblaApi.on("reInit", onCertSelect)
+    return () => {
+      certEmblaApi.off("select", onCertSelect)
+      certEmblaApi.off("reInit", onCertSelect)
+    }
+  }, [certEmblaApi, onCertSelect])
+
+  const scrollCertPrev = useCallback(() => {
+    if (certEmblaApi) certEmblaApi.scrollPrev()
+  }, [certEmblaApi])
+
+  const scrollCertNext = useCallback(() => {
+    if (certEmblaApi) certEmblaApi.scrollNext()
+  }, [certEmblaApi])
+
+  const scrollCertTo = useCallback(
+    (index: number) => {
+      if (certEmblaApi) certEmblaApi.scrollTo(index)
+    },
+    [certEmblaApi]
+  )
+
+  const certDragMoved = React.useRef(false)
+  const certPointerStart = React.useRef<{ x: number; y: number } | null>(null)
+
+  const handleCertPointerDown = (e: React.PointerEvent) => {
+    certPointerStart.current = { x: e.clientX, y: e.clientY }
+    certDragMoved.current = false
+  }
+
+  const handleCertPointerMove = (e: React.PointerEvent) => {
+    if (!certPointerStart.current) return
+    const dx = Math.abs(e.clientX - certPointerStart.current.x)
+    const dy = Math.abs(e.clientY - certPointerStart.current.y)
+    if (dx > 10 || dy > 10) {
+      certDragMoved.current = true
+    }
+  }
+
+  const handleCertTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length > 0) {
+      certPointerStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+      certDragMoved.current = false
+    }
+  }
+
+  const handleCertTouchMove = (e: React.TouchEvent) => {
+    if (!certPointerStart.current || e.touches.length === 0) return
+    const dx = Math.abs(e.touches[0].clientX - certPointerStart.current.x)
+    const dy = Math.abs(e.touches[0].clientY - certPointerStart.current.y)
+    if (dx > 10 || dy > 10) {
+      certDragMoved.current = true
+    }
+  }
+
+  const handleCertCardClick = (e: React.MouseEvent) => {
+    // If the user was swiping/dragging, ignore click navigation
+    if (certDragMoved.current) {
+      certDragMoved.current = false
+      return
+    }
+
+    // Buttons/links inside the card must work normally and NOT trigger the carousel
+    const target = e.target as HTMLElement
+    if (target.closest("a") || target.closest("button")) {
+      return
+    }
+
+    // Entire card area click/tap moves to the next card
+    scrollCertNext()
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -607,7 +695,15 @@ export default function Portfolio() {
     </Card>
   )
 
-  const totalSwipeSlides = projectsData.length + 1
+  const certSlideLabels = [
+    "Agentic AI Hackathon Winner",
+    "Toshiba Software Trainee",
+    "DRDO CAIR Research Trainee",
+    "NPTEL Software Testing",
+    "JSpiders Full Stack Java",
+    "Complete Certificate Archive",
+  ]
+  const totalCertSlides = 6
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-[#0f2b5c]/20 selection:text-[#0f2b5c] dark:selection:text-sky-300">
@@ -646,7 +742,6 @@ export default function Portfolio() {
 
             {/* Header Right Actions */}
             <div className="flex items-center gap-2">
-              <ThemeToggle />
               <Button
                 size="sm"
                 variant="outline"
@@ -1175,118 +1270,24 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 3. PROJECTS SECTION — WITH SWIPE CARDS & GRID VIEW MODES */}
+        {/* 3. PROJECTS SECTION — GRID VIEW ONLY */}
         <section id="projects" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border">
           <div className="container mx-auto max-w-6xl">
-            {/* Section Header with View Toggle Controls */}
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-                  Projects
-                </h2>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
-                  Featured engineering applications spanning Agentic AI, multi-agent RAG, NLP, and enterprise full-stack systems
-                </p>
-              </div>
-
-              {/* Grid vs Swipe Card View Switcher */}
-              <div className="inline-flex items-center p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-border self-start sm:self-auto shrink-0 shadow-2xs">
-                <button
-                  type="button"
-                  onClick={() => setProjectViewMode("grid")}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    projectViewMode === "grid"
-                      ? "bg-[#0f2b5c] text-white shadow-xs"
-                      : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-slate-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c]"
-                  }`}
-                  aria-label="Switch to Grid View"
-                >
-                  <LayoutGrid className="h-3.5 w-3.5" />
-                  <span>Grid View</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setProjectViewMode("swipe")}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    projectViewMode === "swipe"
-                      ? "bg-[#0f2b5c] text-white shadow-xs"
-                      : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-slate-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c]"
-                  }`}
-                  aria-label="Switch to Swipe Card View"
-                >
-                  <SlidersHorizontal className="h-3.5 w-3.5" />
-                  <span>Swipe Cards</span>
-                </button>
-              </div>
+            {/* Section Header */}
+            <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+                Projects
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
+                Featured engineering applications spanning Agentic AI, multi-agent RAG, NLP, and enterprise full-stack systems
+              </p>
             </div>
 
-            {/* MODE 1: GRID VIEW (All 5 Projects + 6th GitHub Overview Card) */}
-            {projectViewMode === "grid" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in duration-200">
-                {projectsData.map((project) => renderProjectCard(project))}
-                {renderGithubOverviewCard()}
-              </div>
-            )}
-
-            {/* MODE 2: SWIPE CARDS VIEW (Interactive Slider with Prev/Next + Dots) */}
-            {projectViewMode === "swipe" && (
-              <div className="max-w-2xl mx-auto animate-in fade-in duration-200">
-                {/* Carousel Controls Header */}
-                <div className="flex items-center justify-between gap-2 mb-4 px-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-400">
-                      {currentSwipeIndex < projectsData.length
-                        ? `Project ${currentSwipeIndex + 1} of ${projectsData.length}`
-                        : "Explore All GitHub Projects"}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-1.5">
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      onClick={() => setCurrentSwipeIndex((prev) => (prev > 0 ? prev - 1 : totalSwipeSlides - 1))}
-                      className="h-8 w-8 rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white cursor-pointer"
-                      aria-label="Previous project slide"
-                    >
-                      <ChevronLeft className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      onClick={() => setCurrentSwipeIndex((prev) => (prev < totalSwipeSlides - 1 ? prev + 1 : 0))}
-                      className="h-8 w-8 rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white cursor-pointer"
-                      aria-label="Next project slide"
-                    >
-                      <ChevronRight className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Active Slide Display */}
-                <div className="transition-all duration-300">
-                  {currentSwipeIndex < projectsData.length
-                    ? renderProjectCard(projectsData[currentSwipeIndex])
-                    : renderGithubOverviewCard()}
-                </div>
-
-                {/* Swipe Slide Dot Indicators */}
-                <div className="flex items-center justify-center gap-2 mt-6">
-                  {Array.from({ length: totalSwipeSlides }).map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentSwipeIndex(idx)}
-                      className={`h-2 rounded-full transition-all cursor-pointer ${
-                        currentSwipeIndex === idx
-                          ? "w-8 bg-[#0f2b5c] dark:bg-sky-400"
-                          : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
-                      }`}
-                      aria-label={`Go to slide ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
+            {/* Projects Grid View (All 5 Projects + 6th GitHub Overview Card) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in duration-200">
+              {projectsData.map((project) => renderProjectCard(project))}
+              {renderGithubOverviewCard()}
+            </div>
 
             {/* Bottom GitHub CTA Button */}
             <div className="mt-8 sm:mt-10 text-center">
@@ -1582,110 +1583,368 @@ export default function Portfolio() {
         {/* 6. ACHIEVEMENTS & CERTIFICATIONS SECTION */}
         <section id="achievements" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border bg-slate-50/50 dark:bg-slate-900/30">
           <div className="container mx-auto max-w-4xl">
-            {/* Section Header */}
-            <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-                Achievements &amp; Certifications
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
-                Engineering honors, industry hackathon awards, and professional accreditations
-              </p>
+            {/* Section Header with View Toggle Controls */}
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+                  Achievements &amp; Certifications
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
+                  Engineering honors, industry hackathon awards, and professional accreditations
+                </p>
+              </div>
+
+              {/* Swipe Cards vs Grid View Switcher */}
+              <div className="inline-flex items-center p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-border self-start sm:self-auto shrink-0 shadow-2xs">
+                <button
+                  type="button"
+                  onClick={() => setCertViewMode("swipe")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    certViewMode === "swipe"
+                      ? "bg-[#0f2b5c] text-white shadow-xs"
+                      : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-slate-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c]"
+                  }`}
+                  aria-label="Switch to Swipe Card View"
+                >
+                  <SlidersHorizontal className="h-3.5 w-3.5" />
+                  <span>Swipe Cards</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCertViewMode("grid")}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    certViewMode === "grid"
+                      ? "bg-[#0f2b5c] text-white shadow-xs"
+                      : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-slate-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c]"
+                  }`}
+                  aria-label="Switch to Grid View"
+                >
+                  <LayoutGrid className="h-3.5 w-3.5" />
+                  <span>Grid View</span>
+                </button>
+              </div>
             </div>
 
-            {/* Featured Hackathon Winner Card */}
-            <Card className="border-2 border-amber-500/40 bg-gradient-to-br from-amber-500/[0.04] via-card to-card p-5 sm:p-6 rounded-2xl shadow-sm mb-8">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 flex items-center justify-center shrink-0">
-                    <Award className="h-7 w-7" />
-                  </div>
-                  <div>
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 text-xs font-bold border border-amber-500/30 mb-1.5">
-                      <span>Winner</span>
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-black text-foreground">
-                      Winner — Agentic AI Hackathon, Dell Technologies
-                    </h3>
-                    <div className="text-xs sm:text-sm font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
-                      Dell Technologies (AI Academy &amp; India Innovation Forum) · Jan 2026
-                    </div>
-                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-2 leading-relaxed">
-                      Awarded Winner for architecting an autonomous ransomware recovery decision-support system integrating Agentic AI with network graph analysis for enterprise dependency mapping.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="sm:shrink-0 pl-16 sm:pl-0">
-                  <Button
-                    size="sm"
-                    className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-bold h-9 px-4 shadow-xs"
-                    asChild
-                  >
-                    <a
-                      href="https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5"
-                    >
-                      <span>View Certificate</span>
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </Card>
-
-            {/* Supported Professional Certifications Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {professionalCertifications.map((item) => (
-                <Card
-                  key={item.id}
-                  className="border border-border hover:border-[#0f2b5c]/50 transition-all bg-card flex flex-col justify-between p-4"
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-2 mb-1.5">
-                      <div className="flex items-center gap-1.5">
-                        <Award className="h-4 w-4 text-[#0f2b5c] dark:text-sky-400" />
-                        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{item.date}</span>
+            {/* MODE 1: GRID VIEW */}
+            {certViewMode === "grid" && (
+              <div className="animate-in fade-in duration-200">
+                {/* Featured Hackathon Winner Card */}
+                <Card className="border-2 border-amber-500/40 bg-gradient-to-br from-amber-500/[0.04] via-card to-card p-5 sm:p-6 rounded-2xl shadow-sm mb-8">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 flex items-center justify-center shrink-0">
+                        <Award className="h-7 w-7" />
+                      </div>
+                      <div>
+                        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 text-xs font-bold border border-amber-500/30 mb-1.5">
+                          <span>Winner</span>
+                        </div>
+                        <h3 className="text-lg sm:text-xl font-black text-foreground">
+                          Winner — Agentic AI Hackathon, Dell Technologies
+                        </h3>
+                        <div className="text-xs sm:text-sm font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
+                          Dell Technologies (AI Academy &amp; India Innovation Forum) · Jan 2026
+                        </div>
+                        <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-2 leading-relaxed">
+                          Awarded Winner for architecting an autonomous ransomware recovery decision-support system integrating Agentic AI with network graph analysis for enterprise dependency mapping.
+                        </p>
                       </div>
                     </div>
-                    <div className="text-sm font-bold text-foreground">
-                      {item.title}
-                    </div>
-                    <div className="text-xs font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
-                      {item.org}
-                    </div>
-                    <p className="text-xs text-slate-700 dark:text-slate-300 font-normal mt-2 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
 
-                  <div className="pt-3 border-t border-border/60 mt-3 flex items-center justify-between">
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-bold text-[#0f2b5c] dark:text-sky-400 hover:underline"
-                    >
-                      <span>View Credential</span>
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
+                    <div className="sm:shrink-0 pl-16 sm:pl-0">
+                      <Button
+                        size="sm"
+                        className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-bold h-9 px-4 shadow-xs"
+                        asChild
+                      >
+                        <a
+                          href="https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5"
+                        >
+                          <span>View Certificate</span>
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </Card>
-              ))}
-            </div>
 
-            <div className="mt-6 text-center">
-              <a
-                href="https://drive.google.com/drive/folders/1FmX4R-KtWO3z30mpmEgomEKlCCxiFkxl?usp=drive_link"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0f2b5c] dark:text-sky-400 hover:underline"
-              >
-                <span>View Complete Certificate Archive on Google Drive</span>
-                <ExternalLink className="h-3 w-3" />
-              </a>
-            </div>
+                {/* Supported Professional Certifications Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {professionalCertifications.map((item) => (
+                    <Card
+                      key={item.id}
+                      className="border border-border hover:border-[#0f2b5c]/50 transition-all bg-card flex flex-col justify-between p-4"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between gap-2 mb-1.5">
+                          <div className="flex items-center gap-1.5">
+                            <Award className="h-4 w-4 text-[#0f2b5c] dark:text-sky-400" />
+                            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{item.date}</span>
+                          </div>
+                        </div>
+                        <div className="text-sm font-bold text-foreground">
+                          {item.title}
+                        </div>
+                        <div className="text-xs font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
+                          {item.org}
+                        </div>
+                        <p className="text-xs text-slate-700 dark:text-slate-300 font-normal mt-2 leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-border/60 mt-3 flex items-center justify-between">
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs font-bold text-[#0f2b5c] dark:text-sky-400 hover:underline"
+                        >
+                          <span>View Credential</span>
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+
+                <div className="mt-6 text-center">
+                  <a
+                    href="https://drive.google.com/drive/folders/1FmX4R-KtWO3z30mpmEgomEKlCCxiFkxl?usp=drive_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0f2b5c] dark:text-sky-400 hover:underline"
+                  >
+                    <span>View Complete Certificate Archive on Google Drive</span>
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </div>
+              </div>
+            )}
+
+            {/* MODE 2: SWIPE CARDS VIEW (Interactive Touch/Swipe + Arrow Buttons) */}
+            {certViewMode === "swipe" && (
+              <div className="max-w-2xl mx-auto animate-in fade-in duration-200">
+                {/* Carousel Controls Header */}
+                <div className="flex items-center justify-between gap-2 mb-4 px-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-400">
+                      {certSlideLabels[certCurrentIndex]}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-1.5">
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      onClick={scrollCertPrev}
+                      className="h-8 w-8 rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white cursor-pointer"
+                      aria-label="Previous certification slide"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      onClick={scrollCertNext}
+                      className="h-8 w-8 rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white cursor-pointer"
+                      aria-label="Next certification slide"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Touch-Friendly Swipe Carousel Viewport */}
+                <div
+                  className="overflow-hidden cursor-grab active:cursor-grabbing select-none rounded-2xl"
+                  ref={certEmblaRef}
+                >
+                  <div className="flex touch-pan-y">
+                    {/* Slide 1: Featured Hackathon Winner Card */}
+                    <div className="flex-[0_0_100%] min-w-0 px-2">
+                      <Card
+                        onClick={handleCertCardClick}
+                        onPointerDown={handleCertPointerDown}
+                        onPointerMove={handleCertPointerMove}
+                        onTouchStart={handleCertTouchStart}
+                        onTouchMove={handleCertTouchMove}
+                        className="border-2 border-amber-500/40 bg-gradient-to-br from-amber-500/[0.04] via-card to-card p-5 sm:p-6 rounded-2xl shadow-sm min-h-[250px] flex flex-col justify-between cursor-pointer"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-2">
+                            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 text-xs font-bold border border-amber-500/30">
+                              <Award className="h-3.5 w-3.5 text-amber-600 dark:text-amber-300" />
+                              <span>Winner · Dell Technologies Hackathon</span>
+                            </div>
+                            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Jan 2026</span>
+                          </div>
+                          <h3 className="text-base sm:text-lg font-black text-foreground mt-1">
+                            Winner — Agentic AI Hackathon, Dell Technologies
+                          </h3>
+                          <div className="text-xs sm:text-sm font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
+                            Dell Technologies (AI Academy &amp; India Innovation Forum)
+                          </div>
+                          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-2.5 leading-relaxed">
+                            Awarded Winner for architecting an autonomous ransomware recovery decision-support system integrating Agentic AI with network graph analysis for enterprise dependency mapping.
+                          </p>
+                        </div>
+
+                        <div className="pt-4 border-t border-border/60 mt-4 flex items-center justify-between">
+                          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Official Honor</span>
+                          <Button
+                            size="sm"
+                            className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-bold h-8 px-3.5 shadow-xs"
+                            asChild
+                          >
+                            <a
+                              href="https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-1.5"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <span>View Certificate</span>
+                              <ExternalLink className="h-3.5 w-3.5" />
+                            </a>
+                          </Button>
+                        </div>
+                      </Card>
+                    </div>
+
+                    {/* Slides 2 to 5: Professional Certifications */}
+                    {professionalCertifications.map((item) => (
+                      <div key={item.id} className="flex-[0_0_100%] min-w-0 px-2">
+                        <Card
+                          onClick={handleCertCardClick}
+                          onPointerDown={handleCertPointerDown}
+                          onPointerMove={handleCertPointerMove}
+                          onTouchStart={handleCertTouchStart}
+                          onTouchMove={handleCertTouchMove}
+                          className="border border-border hover:border-[#0f2b5c]/50 transition-all bg-card p-5 sm:p-6 rounded-2xl shadow-sm min-h-[250px] flex flex-col justify-between cursor-pointer"
+                        >
+                          <div>
+                            <div className="flex items-center justify-between gap-2 mb-2">
+                              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0f2b5c]/10 text-[#0f2b5c] dark:text-sky-400 text-xs font-bold border border-[#0f2b5c]/20">
+                                <Award className="h-3.5 w-3.5" />
+                                <span>Professional Certification</span>
+                              </div>
+                              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{item.date}</span>
+                            </div>
+                            <h3 className="text-base sm:text-lg font-bold text-foreground mt-1">
+                              {item.title}
+                            </h3>
+                            <div className="text-xs sm:text-sm font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
+                              {item.org}
+                            </div>
+                            <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-normal mt-2.5 leading-relaxed">
+                              {item.desc}
+                            </p>
+                          </div>
+
+                          <div className="pt-4 border-t border-border/60 mt-4 flex items-center justify-between">
+                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Verified Credential</span>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white rounded-lg text-xs font-bold h-8 px-3.5"
+                              asChild
+                            >
+                              <a
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-1.5"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <span>View Credential</span>
+                                <ExternalLink className="h-3.5 w-3.5" />
+                              </a>
+                            </Button>
+                          </div>
+                        </Card>
+                      </div>
+                    ))}
+
+                    {/* Slide 6: Google Drive Complete Archive */}
+                    <div className="flex-[0_0_100%] min-w-0 px-2">
+                      <Card
+                        onClick={handleCertCardClick}
+                        onPointerDown={handleCertPointerDown}
+                        onPointerMove={handleCertPointerMove}
+                        onTouchStart={handleCertTouchStart}
+                        onTouchMove={handleCertTouchMove}
+                        className="border border-[#0f2b5c]/30 bg-gradient-to-br from-[#0f2b5c]/[0.04] via-card to-card p-5 sm:p-6 rounded-2xl shadow-sm min-h-[250px] flex flex-col justify-between cursor-pointer"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-2">
+                            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0f2b5c]/10 text-[#0f2b5c] dark:text-sky-400 text-xs font-bold border border-[#0f2b5c]/20">
+                              <FolderGit2 className="h-3.5 w-3.5" />
+                              <span>Full Archive</span>
+                            </div>
+                            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">All Credentials</span>
+                          </div>
+                          <h3 className="text-base sm:text-lg font-bold text-foreground mt-1">
+                            Complete Certificate Archive on Google Drive
+                          </h3>
+                          <div className="text-xs sm:text-sm font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
+                            Verified Certifications &amp; Accreditations Repository
+                          </div>
+                          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-2.5 leading-relaxed">
+                            Access the complete drive repository containing all official internship completion certificates, hackathon award honors, NPTEL course verification documents, and technical training accreditations.
+                          </p>
+                        </div>
+
+                        <div className="pt-4 border-t border-border/60 mt-4 flex items-center justify-between">
+                          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Google Drive Repository</span>
+                          <Button
+                            size="sm"
+                            className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-bold h-8 px-3.5 shadow-xs"
+                            asChild
+                          >
+                            <a
+                              href="https://drive.google.com/drive/folders/1FmX4R-KtWO3z30mpmEgomEKlCCxiFkxl?usp=drive_link"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-1.5"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <span>Open Full Archive</span>
+                              <ExternalLink className="h-3.5 w-3.5" />
+                            </a>
+                          </Button>
+                        </div>
+                      </Card>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Swipe Slide Dot Indicators */}
+                <div className="flex items-center justify-center gap-2 mt-6">
+                  {(certScrollSnaps.length > 0 ? certScrollSnaps : Array.from({ length: totalCertSlides })).map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => scrollCertTo(idx)}
+                      className={`h-2 rounded-full transition-all cursor-pointer ${
+                        certCurrentIndex === idx
+                          ? "w-8 bg-[#0f2b5c] dark:bg-sky-400"
+                          : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
+                      }`}
+                      aria-label={`Go to certification slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Swipe Hint */}
+                <p className="text-center text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-2">
+                  Tap card to advance · Swipe or use &lt; &gt; arrows to navigate
+                </p>
+              </div>
+            )}
           </div>
         </section>
 
