@@ -43,6 +43,7 @@ export default function Portfolio() {
   const [scrolled, setScrolled] = useState(false)
   const [touchedCard, setTouchedCard] = useState<string | null>("exp-0")
   const [activeSkillCategory, setActiveSkillCategory] = useState("all")
+  const [activeHeroCta, setActiveHeroCta] = useState<string | null>(null)
   const [ieeeExpanded, setIeeeExpanded] = useState(false)
   const [certViewMode, setCertViewMode] = useState<"grid" | "swipe">("swipe")
   const [certCurrentIndex, setCertCurrentIndex] = useState(0)
@@ -153,6 +154,14 @@ export default function Portfolio() {
     setCopiedPhone(true)
     setTimeout(() => setCopiedPhone(false), 2500)
   }
+
+  // Hero CTA styling visually matching Technical Skills tabs
+  const getHeroCtaClass = (id: string) =>
+    `w-full h-11 px-2.5 sm:px-3 rounded-lg text-[11px] sm:text-xs font-bold whitespace-nowrap transition-all cursor-pointer shadow-2xs ${
+      activeHeroCta === id
+        ? "bg-[#0f2b5c] text-white border border-[#0f2b5c] shadow-xs"
+        : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-slate-200 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white"
+    }`
 
   // Exact factual experiences: Dell (primary prominent), Toshiba, DRDO CAIR
   const experiences = [
@@ -931,55 +940,139 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Main Action Buttons */}
-                <div className="flex flex-wrap items-center gap-2.5">
+                {/* Main Action CTAs — Clean Professional 2-row × 4-column Grid (Visually matching Technical Skills tabs) */}
+                <div className="w-full max-w-xl grid grid-cols-4 gap-2.5">
+                  {/* Row 1: Email | Phone | LinkedIn | GitHub */}
                   <Button
                     asChild
-                    className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg shadow-sm font-bold text-xs h-9 px-4.5"
-                  >
-                    <a href="#experience" className="flex items-center gap-1.5">
-                      <Briefcase className="h-3.5 w-3.5" />
-                      <span>View Experience</span>
-                    </a>
-                  </Button>
-                  <Button
                     variant="outline"
-                    asChild
-                    className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/40 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-bold text-xs h-9 px-4.5"
-                  >
-                    <a href="#projects" className="flex items-center gap-1.5">
-                      <Code2 className="h-3.5 w-3.5" />
-                      <span>View Projects</span>
-                    </a>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    asChild
-                    className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-semibold text-xs h-9 px-3.5"
+                    onClick={() => {
+                      setActiveHeroCta("email")
+                      copyEmail()
+                    }}
+                    className={getHeroCtaClass("email")}
                   >
                     <a
-                      href="https://github.com/Harini410"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5"
+                      href="mailto:harini.lts8@gmail.com"
+                      className="flex items-center justify-center gap-1.5 w-full h-full"
                     >
-                      <Github className="h-3.5 w-3.5" />
-                      <span>GitHub</span>
+                      <Mail className="h-3.5 w-3.5 shrink-0" />
+                      <span className="leading-none">{copiedEmail ? "Copied!" : "Email"}</span>
                     </a>
                   </Button>
+
                   <Button
-                    variant="outline"
                     asChild
-                    className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-semibold text-xs h-9 px-3.5"
+                    variant="outline"
+                    onClick={() => {
+                      setActiveHeroCta("phone")
+                      copyPhone()
+                    }}
+                    className={getHeroCtaClass("phone")}
+                  >
+                    <a
+                      href="tel:+918884916059"
+                      className="flex items-center justify-center gap-1.5 w-full h-full"
+                    >
+                      <Phone className="h-3.5 w-3.5 shrink-0" />
+                      <span className="leading-none">{copiedPhone ? "Copied!" : "Phone"}</span>
+                    </a>
+                  </Button>
+
+                  <Button
+                    asChild
+                    variant="outline"
+                    onClick={() => setActiveHeroCta("linkedin")}
+                    className={getHeroCtaClass("linkedin")}
                   >
                     <a
                       href="https://www.linkedin.com/in/harini-lakshmanan-04/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5"
+                      className="flex items-center justify-center gap-1.5 w-full h-full"
                     >
-                      <Linkedin className="h-3.5 w-3.5 text-[#0f2b5c] dark:text-sky-400" />
-                      <span>LinkedIn</span>
+                      <Linkedin className="h-3.5 w-3.5 shrink-0" />
+                      <span className="leading-none">LinkedIn</span>
+                    </a>
+                  </Button>
+
+                  <Button
+                    asChild
+                    variant="outline"
+                    onClick={() => setActiveHeroCta("github")}
+                    className={getHeroCtaClass("github")}
+                  >
+                    <a
+                      href="https://github.com/Harini410"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-1.5 w-full h-full"
+                    >
+                      <Github className="h-3.5 w-3.5 shrink-0" />
+                      <span className="leading-none">GitHub</span>
+                    </a>
+                  </Button>
+
+                  {/* Row 2: Experience | Projects | Resume | Bengaluru, India */}
+                  <Button
+                    asChild
+                    variant="outline"
+                    onClick={() => setActiveHeroCta("experience")}
+                    className={getHeroCtaClass("experience")}
+                  >
+                    <a
+                      href="#experience"
+                      className="flex items-center justify-center gap-1.5 w-full h-full"
+                    >
+                      <Briefcase className="h-3.5 w-3.5 shrink-0" />
+                      <span className="leading-none">Experience</span>
+                    </a>
+                  </Button>
+
+                  <Button
+                    asChild
+                    variant="outline"
+                    onClick={() => setActiveHeroCta("projects")}
+                    className={getHeroCtaClass("projects")}
+                  >
+                    <a
+                      href="#projects"
+                      className="flex items-center justify-center gap-1.5 w-full h-full"
+                    >
+                      <Code2 className="h-3.5 w-3.5 shrink-0" />
+                      <span className="leading-none">Projects</span>
+                    </a>
+                  </Button>
+
+                  <Button
+                    asChild
+                    variant="outline"
+                    onClick={() => setActiveHeroCta("resume")}
+                    className={getHeroCtaClass("resume")}
+                  >
+                    <a
+                      href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-1.5 w-full h-full"
+                    >
+                      <FileText className="h-3.5 w-3.5 shrink-0" />
+                      <span className="leading-none">Resume</span>
+                    </a>
+                  </Button>
+
+                  <Button
+                    asChild
+                    variant="outline"
+                    onClick={() => setActiveHeroCta("location")}
+                    className={getHeroCtaClass("location")}
+                  >
+                    <a
+                      href="#contact"
+                      className="flex items-center justify-center gap-1.5 w-full h-full"
+                    >
+                      <MapPin className="h-3.5 w-3.5 shrink-0" />
+                      <span className="leading-none">Bengaluru, India</span>
                     </a>
                   </Button>
                 </div>
@@ -1067,55 +1160,141 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* 9. Action Buttons */}
-              <div className="flex flex-wrap items-center justify-center gap-2">
+              {/* 9. Action CTAs — Clean Professional 4-row × 2-column Grid (Visually matching Technical Skills tabs) */}
+              <div className="w-full max-w-md grid grid-cols-2 gap-2.5">
+                {/* Row 1: Email | Phone */}
                 <Button
                   asChild
-                  className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg shadow-sm font-bold text-xs h-9 px-4"
-                >
-                  <a href="#experience" className="flex items-center gap-1.5">
-                    <Briefcase className="h-3.5 w-3.5" />
-                    <span>View Experience</span>
-                  </a>
-                </Button>
-                <Button
                   variant="outline"
-                  asChild
-                  className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/40 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-bold text-xs h-9 px-4"
-                >
-                  <a href="#projects" className="flex items-center gap-1.5">
-                    <Code2 className="h-3.5 w-3.5" />
-                    <span>View Projects</span>
-                  </a>
-                </Button>
-                <Button
-                  variant="outline"
-                  asChild
-                  className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-semibold text-xs h-9 px-3.5"
+                  onClick={() => {
+                    setActiveHeroCta("email")
+                    copyEmail()
+                  }}
+                  className={getHeroCtaClass("email")}
                 >
                   <a
-                    href="https://github.com/Harini410"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5"
+                    href="mailto:harini.lts8@gmail.com"
+                    className="flex items-center justify-center gap-1.5 w-full h-full"
                   >
-                    <Github className="h-3.5 w-3.5" />
-                    <span>GitHub</span>
+                    <Mail className="h-3.5 w-3.5 shrink-0" />
+                    <span className="leading-none">{copiedEmail ? "Copied!" : "Email"}</span>
                   </a>
                 </Button>
+
                 <Button
-                  variant="outline"
                   asChild
-                  className="rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white font-semibold text-xs h-9 px-3.5"
+                  variant="outline"
+                  onClick={() => {
+                    setActiveHeroCta("phone")
+                    copyPhone()
+                  }}
+                  className={getHeroCtaClass("phone")}
+                >
+                  <a
+                    href="tel:+918884916059"
+                    className="flex items-center justify-center gap-1.5 w-full h-full"
+                  >
+                    <Phone className="h-3.5 w-3.5 shrink-0" />
+                    <span className="leading-none">{copiedPhone ? "Copied!" : "Phone"}</span>
+                  </a>
+                </Button>
+
+                {/* Row 2: LinkedIn | GitHub */}
+                <Button
+                  asChild
+                  variant="outline"
+                  onClick={() => setActiveHeroCta("linkedin")}
+                  className={getHeroCtaClass("linkedin")}
                 >
                   <a
                     href="https://www.linkedin.com/in/harini-lakshmanan-04/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5"
+                    className="flex items-center justify-center gap-1.5 w-full h-full"
                   >
-                    <Linkedin className="h-3.5 w-3.5 text-[#0f2b5c] dark:text-sky-400" />
-                    <span>LinkedIn</span>
+                    <Linkedin className="h-3.5 w-3.5 shrink-0" />
+                    <span className="leading-none">LinkedIn</span>
+                  </a>
+                </Button>
+
+                <Button
+                  asChild
+                  variant="outline"
+                  onClick={() => setActiveHeroCta("github")}
+                  className={getHeroCtaClass("github")}
+                >
+                  <a
+                    href="https://github.com/Harini410"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1.5 w-full h-full"
+                  >
+                    <Github className="h-3.5 w-3.5 shrink-0" />
+                    <span className="leading-none">GitHub</span>
+                  </a>
+                </Button>
+
+                {/* Row 3: Experience | Projects */}
+                <Button
+                  asChild
+                  variant="outline"
+                  onClick={() => setActiveHeroCta("experience")}
+                  className={getHeroCtaClass("experience")}
+                >
+                  <a
+                    href="#experience"
+                    className="flex items-center justify-center gap-1.5 w-full h-full"
+                  >
+                    <Briefcase className="h-3.5 w-3.5 shrink-0" />
+                    <span className="leading-none">Experience</span>
+                  </a>
+                </Button>
+
+                <Button
+                  asChild
+                  variant="outline"
+                  onClick={() => setActiveHeroCta("projects")}
+                  className={getHeroCtaClass("projects")}
+                >
+                  <a
+                    href="#projects"
+                    className="flex items-center justify-center gap-1.5 w-full h-full"
+                  >
+                    <Code2 className="h-3.5 w-3.5 shrink-0" />
+                    <span className="leading-none">Projects</span>
+                  </a>
+                </Button>
+
+                {/* Row 4: Resume | Bengaluru, India */}
+                <Button
+                  asChild
+                  variant="outline"
+                  onClick={() => setActiveHeroCta("resume")}
+                  className={getHeroCtaClass("resume")}
+                >
+                  <a
+                    href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1.5 w-full h-full"
+                  >
+                    <FileText className="h-3.5 w-3.5 shrink-0" />
+                    <span className="leading-none">Resume</span>
+                  </a>
+                </Button>
+
+                <Button
+                  asChild
+                  variant="outline"
+                  onClick={() => setActiveHeroCta("location")}
+                  className={getHeroCtaClass("location")}
+                >
+                  <a
+                    href="#contact"
+                    className="flex items-center justify-center gap-1.5 w-full h-full"
+                  >
+                    <MapPin className="h-3.5 w-3.5 shrink-0" />
+                    <span className="leading-none">Bengaluru, India</span>
                   </a>
                 </Button>
               </div>
