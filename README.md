@@ -18,10 +18,10 @@ Master's student in Computer Science & Engineering with hands-on experience in:
 - **Design**: Professional UI with responsive layout
 
 ## 🎯 Featured Projects
-- **Cyberbullying Detection System** - Federated RoBERTa model with 95% accuracy
-- **Smart Complaint Management Portal** - Full-stack Spring Boot application
-- **E-commerce Platform** - Scalable application with optimized APIs
-- **Fake News Detection** - BERT-based classifier with 92% accuracy
+- **AI-Powered Ransomware Recovery Prioritizer** - Winner, Agentic AI Hackathon (Llama 3.1 & NetworkX)
+- **AI Resume Screener** - Multi-Agent RAG Web Application (Next.js, TypeScript & Groq LLMs)
+- **Smart Complaint Management Portal** - Full-stack Spring Boot & React.js Application
+- **CyberSafe AI Platform** - Autonomous 7-Agent Cyberbullying Detection & Safety Copilot (RoBERTa & Dense RAG)
 
 ## 📫 Contact
 - **Email**: harini.lts8@gmail.com

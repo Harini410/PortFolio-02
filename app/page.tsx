@@ -174,28 +174,20 @@ export default function Portfolio() {
       isProminent: true,
       bullets: [
         "Architected and developed C#/.NET Windows recovery applications supporting critical Hardware Scan, Repair, Reset, Backup, and Disk Cloning workflows.",
-        "Led end-to-end software development, debugging, snapshot root-cause analysis, and regression testing across core recovery features.",
         "Engineered robust system automation utilizing PowerShell, Batch scripting, WIM, WinPE, WinRE, and DISM for deployment and automated ISO generation.",
-        "Conducted thorough performance analysis, software validation, and stability optimization to guarantee mission-critical enterprise reliability.",
-        "Employed modern AI-assisted engineering workflows leveraging Claude Code and Spec-Driven Development (SDD) across the full lifecycle: codebase exploration → implementation → debugging → refactoring → test generation → validation.",
-        "Applied coding-agent workflows for AI-assisted code generation, rapid refactoring, and automated test generation within enterprise engineering boundaries.",
-        "Collaborated across agile sprints utilizing Git/GitHub for version control and Jira for sprint backlog triage, defect lifecycle tracking, and issue management.",
+        "Led end-to-end debugging, root-cause analysis, regression testing, and performance validation across core recovery features to guarantee enterprise stability.",
+        "Employed AI-assisted engineering workflows leveraging Claude Code, Coding Agents, and Spec-Driven Development (SDD) for rapid codebase exploration, implementation, refactoring, and test generation.",
       ],
       skills: [
         "C#/.NET",
-        "Software Development",
+        "PowerShell",
+        "WinPE / WinRE",
+        "DISM / WIM",
+        "Windows Recovery",
         "Claude Code",
         "Coding Agents",
         "Spec-Driven Development (SDD)",
-        "AI-Assisted Code Generation",
-        "AI-Assisted Debugging",
-        "AI-Assisted Refactoring",
-        "AI-Assisted Test Generation",
-        "AI-Assisted Codebase Exploration",
-        "PowerShell",
-        "Windows Recovery Applications",
         "Testing & Validation",
-        "Performance Analysis",
         "Git / GitHub",
         "Jira",
       ],
@@ -209,19 +201,15 @@ export default function Portfolio() {
       location: "Bengaluru, India",
       isProminent: false,
       bullets: [
-        "Completed rigorous Japanese software engineering program covering enterprise Software Engineering principles, Artificial Intelligence, and Agile Methodology.",
-        "Executed project-based assignments covering sprint planning, effort estimation, and end-to-end software development lifecycles.",
-        "Applied PMBOK Project Management frameworks to software design, technical documentation, and cross-functional team delivery.",
-        "Collaborated with cross-cultural engineering teams in daily standups and agile delivery reviews adhering to international quality benchmarks.",
+        "Completed enterprise Japanese software engineering program covering core Software Engineering principles, Artificial Intelligence, and Agile delivery.",
+        "Delivered project-based assignments applying PMBOK project management frameworks for sprint planning, effort estimation, and technical documentation.",
       ],
       skills: [
         "Software Engineering",
         "Artificial Intelligence",
         "Agile Methodology",
-        "Project Management",
-        "Project-Based Assignments",
+        "PMBOK / Project Management",
         "Planning & Estimation",
-        "Software Development",
       ],
       certificate: "https://drive.google.com/file/d/12-qbiWk395zQNifNbny0t0CEr5ti0Thk/view?usp=sharing",
     },
@@ -233,10 +221,8 @@ export default function Portfolio() {
       location: "Bengaluru, India",
       isProminent: false,
       bullets: [
-        "Engineered modular frontend components and intuitive user interfaces using React.js and Figma for an institutional AI-based evaluation application.",
-        "Integrated client-side components with Spring Boot REST APIs and MongoDB backend database for real-time data persistence and seamless evaluation workflows.",
-        "Built robust state management, client-side validation, and secure RESTful data communication between frontend and backend layers.",
-        "Conducted end-to-end component testing, usability reviews, and system evaluation to meet defense research standards.",
+        "Engineered modular frontend components and intuitive user interfaces using React.js and Figma for an institutional AI-based evaluation platform.",
+        "Integrated client-side components with Spring Boot REST APIs and MongoDB backend database for real-time evaluation data persistence and validation.",
       ],
       skills: [
         "React.js",
@@ -244,39 +230,33 @@ export default function Portfolio() {
         "Spring Boot",
         "REST APIs",
         "MongoDB",
-        "Frontend Component Development",
-        "Backend Integration",
-        "Evaluation Application",
+        "Frontend/Backend Integration",
       ],
       certificate: "https://drive.google.com/file/d/1I_B8fyGlng8WRsnosvQomWHWBlW5_pzX/view?usp=sharing",
     },
   ]
 
-  // Exact 5 projects in requested order with authentic technical evidence
+  // Exact 4 projects: Ransomware, AI Resume Screener, Smart Complaint Portal, CyberSafe AI
   const projectsData = [
     {
       id: "proj-0",
       title: "AI-Powered Ransomware Recovery Prioritizer",
-      tagline: "Agentic AI · Python · NetworkX · Llama 3.1 · Ollama · Dynamic Risk Scoring",
+      tagline: "Agentic AI · NetworkX · Llama 3.1 · Ollama · Dynamic Risk Scoring",
       badge: "Winner — Agentic AI Hackathon",
       date: "January 2026",
       summary:
-        "Designed and prototyped an AI-driven ransomware recovery decision-support system combining Agentic AI with graph-based network analysis to prioritize recovery of critical enterprise assets.",
+        "Agentic AI decision-support system combining graph network analysis with dynamic risk scoring to prioritize recovery of critical enterprise assets.",
       bullets: [
-        "Built an interactive NetworkX attack-surface graph to represent infection paths, asset dependencies, connectivity, and potential blast radius.",
-        "Developed dynamic risk scoring using business criticality, infection status, and network connectivity to prioritize high-impact assets.",
-        "Integrated Llama 3.1 through Ollama to generate context-aware recovery plans covering isolation, reimaging, and backup restoration.",
-        "Built a Python dashboard for ransomware impact analysis, infection trends, prioritized recovery queues, vulnerability reporting, and AI-generated recovery actions.",
+        "Built interactive NetworkX attack graphs modeling infection paths, asset dependencies, and potential blast radius.",
+        "Integrated Llama 3.1 via Ollama to generate context-aware recovery plans for isolation, reimaging, and restore.",
       ],
       tech: [
-        "Python",
         "Agentic AI",
+        "Python",
+        "NetworkX",
         "Llama 3.1",
         "Ollama",
-        "NetworkX",
-        "Graph-Based Network Analysis",
-        "Risk Scoring",
-        "Cybersecurity",
+        "Dynamic Risk Scoring",
       ],
       certificate: "https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing",
       demoUrl: null,
@@ -286,24 +266,21 @@ export default function Portfolio() {
     {
       id: "proj-1",
       title: "AI Resume Screener Web Application",
-      tagline: "Multi-Agent RAG · Next.js · TypeScript · Groq · Semantic Embeddings",
+      tagline: "Multi-Agent RAG · Next.js · TypeScript · Groq · Semantic Search",
       badge: null,
       date: "September 2026",
       summary:
-        "Built a multi-agent RAG pipeline using Next.js, TypeScript, Groq LLMs, and semantic embeddings for automated resume-to-job matching.",
+        "Production multi-agent RAG pipeline using Next.js, TypeScript, Groq LLMs, and dense semantic embeddings for automated resume-to-job matching.",
       bullets: [
-        "Developed atomic requirement extraction and semantic retrieval to identify relevant candidate evidence against job requirements.",
-        "Implemented grounded evidence evaluation and anti-hallucination validation so generated citations are checked against the candidate's actual resume content.",
-        "Added deterministic scoring, fallback handling, and automated evaluation, achieving 13/13 unit tests and 10/10 evaluation scenarios.",
+        "Engineered atomic requirement extraction and semantic retrieval to match candidate evidence directly against job criteria.",
+        "Built deterministic scoring and automated evaluation suites, passing 13/13 unit tests and 10/10 evaluation benchmarks.",
       ],
       tech: [
         "Next.js",
         "TypeScript",
         "Groq LLMs",
-        "RAG",
-        "Semantic Embeddings",
-        "Multi-Agent AI",
-        "Anti-Hallucination",
+        "Multi-Agent RAG",
+        "Semantic Search",
         "Deterministic Scoring",
       ],
       demoUrl: "https://v0-ai-resume-screener-smoky.vercel.app/",
@@ -318,19 +295,18 @@ export default function Portfolio() {
       badge: null,
       date: "September 2026",
       summary:
-        "Developed a full-stack complaint management portal using Java, Spring Boot, Hibernate, MySQL, and React.js.",
+        "Enterprise complaint management portal featuring role-based access control, modular RESTful APIs, and relational database persistence.",
       bullets: [
-        "Implemented role-based authentication with Spring Security, complaint tracking, status management, and REST API integration.",
-        "Engineered modular REST API architecture cleanly separated with Hibernate ORM repository patterns for reliable data persistence.",
+        "Architected role-based authentication and secure session management using Spring Security and modular REST integration.",
+        "Engineered clean repository-pattern REST services with Hibernate ORM, MySQL database, and responsive React.js dashboards.",
       ],
       tech: [
         "Java",
         "Spring Boot",
-        "Hibernate",
+        "Hibernate ORM",
         "Spring Security",
         "React.js",
         "MySQL",
-        "REST APIs",
       ],
       demoUrl: null,
       githubUrl: "https://github.com/Harini410/Fullstack-complaint-portal",
@@ -339,55 +315,32 @@ export default function Portfolio() {
     },
     {
       id: "proj-3",
-      title: "Cyberbullying Detection in Social Media",
-      tagline: "Python · RoBERTa · Federated Learning · NLP · PyTorch",
-      badge: null,
-      date: "January 2026",
+      title: "CyberSafe AI — Cyberbullying Detection Platform",
+      tagline: "Autonomous 7-Agent DAG · RoBERTa · Dense Vector RAG · Affective NLP · FastAPI",
+      badge: "M.Tech Thesis Project",
+      date: "Sep 2026",
       summary:
-        "Engineered a privacy-preserving federated RoBERTa model for cyberbullying detection, integrating emotion-based and contextual embeddings.",
+        "Privacy-preserving autonomous multi-agent cyberbullying detection and conversational safety support platform powered by RoBERTa and dense RAG.",
       bullets: [
-        "Achieved 95% accuracy and handled the end-to-end pipeline from data preprocessing through model evaluation.",
-        "Emphasized decentralized machine learning and contextual NLP representation.",
+        "Orchestrated 7-agent autonomous DAG pipeline (Detection, Emotion, Context, Risk, RAG, Explanation, Response) with <105ms latency.",
+        "Integrated fine-tuned RoBERTa sequence inference, MiniLM dense RAG across 6 safety domains, and context-aware Copilot chatbot.",
       ],
       tech: [
-        "Python",
         "RoBERTa",
-        "Federated Learning",
-        "NLP",
-        "PyTorch",
+        "Multi-Agent DAG",
+        "Dense RAG (MiniLM)",
+        "FastAPI",
+        "Affective NLP",
+        "Next.js 16 (React 19)",
       ],
       demoUrl: "https://cyberbullying-detection-eta.vercel.app/",
       githubUrl: "https://github.com/Harini410/Cyberbullying-detection",
       certificate: null,
       isGoldHighlight: false,
     },
-    {
-      id: "proj-4",
-      title: "E-commerce Application using Spring Boot",
-      tagline: "Spring Boot · REST API · MySQL · Performance Optimization · Scalability",
-      badge: null,
-      date: "June 2025",
-      summary:
-        "Built a full-stack e-commerce application with RESTful APIs and database-driven workflows.",
-      bullets: [
-        "Implemented product catalog, shopping cart, order tracking, and secure checkout functionality.",
-        "Focused on API design, database queries, performance optimization, and scalability.",
-      ],
-      tech: [
-        "Spring Boot",
-        "REST API",
-        "MySQL",
-        "Performance Optimization",
-        "Scalability",
-      ],
-      demoUrl: null,
-      githubUrl: "https://github.com/Harini410/E-commerce-application-using-Spring-Boot",
-      certificate: null,
-      isGoldHighlight: false,
-    },
   ]
 
-  // Technical Skills - WPF removed; fully synced with Experience and Projects
+  // Technical Skills - Streamlined ~27 highly relevant skills across 5 categories
   const skillGroups = [
     {
       category: "ai",
@@ -395,37 +348,27 @@ export default function Portfolio() {
       skills: [
         "Agentic AI",
         "LLM Applications",
-        "Coding Agents",
-        "Claude Code",
+        "Claude Code & Coding Agents",
         "Spec-Driven Development (SDD)",
         "Multi-Agent RAG",
-        "Semantic Embeddings",
-        "Prompt Engineering",
         "NLP (RoBERTa)",
-        "Federated Learning",
-        "AI-Assisted Code Generation",
-        "AI-Assisted Debugging",
-        "AI-Assisted Test Generation",
+        "AI-Assisted Engineering",
       ],
     },
     {
       category: "programming",
       title: "Programming",
-      skills: ["Java", "C#", "Python", "JavaScript", "TypeScript", "SQL"],
+      skills: ["C#", "Java", "Python", "TypeScript", "JavaScript", "SQL"],
     },
     {
       category: "software",
       title: "Software Engineering",
       skills: [
-        "Spring Boot",
         ".NET Core",
-        "Hibernate ORM",
-        "Spring Security",
-        "REST APIs",
+        "Spring Boot",
         "React.js",
         "Next.js",
-        "MVC / Clean Architecture",
-        "Full-Stack Development",
+        "REST APIs",
       ],
     },
     {
@@ -433,12 +376,10 @@ export default function Portfolio() {
       title: "Systems & Automation",
       skills: [
         "PowerShell Automation",
-        "Windows Internals",
         "WinPE / WinRE",
-        "DISM",
-        "WIM Deployment",
+        "DISM & WIM Deployment",
+        "Windows Internals",
         "Batch Scripting",
-        "System Recovery Automation",
       ],
     },
     {
@@ -449,12 +390,7 @@ export default function Portfolio() {
         "MongoDB",
         "Git / GitHub",
         "Jira",
-        "NetworkX",
-        "PyTorch",
         "Figma",
-        "Maven",
-        "npm",
-        "CI/CD",
       ],
     },
   ]
@@ -471,7 +407,8 @@ export default function Portfolio() {
       title: "A Deep Learning-Based Framework for Detecting Cyberbullying on Social Media Platforms",
       conference: "Second IEEE International Conference on New Frontiers in Communication, Automation, Management and Security",
       venueDate: "Presidency University, Bengaluru · 11–12 July 2025",
-      paperLink: "https://drive.google.com/file/d/1awP9khfIb3BWgK2ALano5ieLvKHNS8mf/view?usp=sharing",
+      paperLink: "https://ieeexplore.ieee.org/document/11234157",
+      certificateLink: "https://drive.google.com/file/d/1awP9khfIb3BWgK2ALano5ieLvKHNS8mf/view?usp=sharing",
       demoLink: "https://cyberbullying-detection-eta.vercel.app/",
     },
     {
@@ -479,6 +416,7 @@ export default function Portfolio() {
       title: "Optimized Hybrid Model for Network Intrusion Detection Using Ensemble Learning",
       conference: "International Conference on Emerging Technologies in Electronics and Green Energy (ICETEG 2025)",
       venueDate: "JSS Science and Technology University, Mysuru · 10–11 October 2025",
+      paperLink: "https://ieeexplore.ieee.org/document/11472951",
       certificateLink: "https://drive.google.com/file/d/1kbbiDFJwMAWBHz6p9iqfkS9CpHLzFPpG/view?usp=sharing",
     },
   ]
@@ -526,13 +464,13 @@ export default function Portfolio() {
       <Card
         key={project.id}
         onClick={() => setTouchedCard(project.id)}
-        className={`w-full flex flex-col justify-between transition-all duration-300 cursor-pointer bg-card ${
+        className={`w-full h-full flex flex-col justify-between transition-all duration-300 cursor-pointer bg-card ${
           isTouched
             ? "border-[#0f2b5c] shadow-[0_0_25px_rgba(15,43,92,0.16)] bg-gradient-to-br from-[#0f2b5c]/[0.03] via-card to-card ring-1 ring-[#0f2b5c]/30"
             : "border-border hover:border-[#0f2b5c]/60 hover:shadow-md active:border-[#0f2b5c]"
         }`}
       >
-        <div>
+        <div className="flex flex-col flex-1">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between gap-2 mb-2">
               {project.badge ? (
@@ -554,33 +492,33 @@ export default function Portfolio() {
             </div>
 
             <CardTitle
-              className={`text-lg font-bold transition-colors ${
+              className={`text-lg font-bold transition-colors min-h-[3.25rem] flex items-center ${
                 isTouched ? "text-[#0f2b5c] dark:text-sky-400" : "text-foreground"
               }`}
             >
               {project.title}
             </CardTitle>
 
-            <div className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 mt-1">
+            <div className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 mt-1 line-clamp-1">
               {project.tagline}
             </div>
 
-            <CardDescription className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-2 font-normal leading-relaxed">
+            <CardDescription className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-2 font-normal leading-relaxed min-h-[2.8rem]">
               {project.summary}
             </CardDescription>
           </CardHeader>
 
-          <CardContent className="pt-0 pb-4">
+          <CardContent className="pt-0 pb-4 flex flex-col flex-1 justify-between">
             <ul className="space-y-2 mb-4 text-xs sm:text-[13px] text-slate-700 dark:text-slate-200">
               {project.bullets.map((b, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="text-[#0f2b5c] dark:text-sky-400 font-bold mt-0.5">•</span>
+                  <span className="text-[#0f2b5c] dark:text-sky-400 font-bold mt-0.5 shrink-0">•</span>
                   <span>{b}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border">
+            <div className="flex flex-wrap gap-1.5 pt-3 border-t border-border mt-auto">
               {project.tech.map((t) => (
                 <Badge
                   key={t}
@@ -598,7 +536,7 @@ export default function Portfolio() {
           </CardContent>
         </div>
 
-        <div className="px-6 pb-6 pt-3 border-t border-border flex items-center gap-2 bg-slate-50/50 dark:bg-slate-900/30 rounded-b-xl">
+        <div className="px-6 pb-5 pt-3 border-t border-border flex items-center gap-2 bg-slate-50/50 dark:bg-slate-900/30 rounded-b-xl min-h-[56px] mt-auto">
           {project.demoUrl && (
             <Button
               size="sm"
@@ -662,7 +600,7 @@ export default function Portfolio() {
 
   // Render the ending GitHub all projects card
   const renderGithubOverviewCard = () => (
-    <Card className="w-full flex flex-col justify-between border-2 border-dashed border-[#0f2b5c]/35 hover:border-[#0f2b5c] bg-gradient-to-br from-[#0f2b5c]/[0.03] via-card to-card p-6 rounded-2xl transition-all shadow-xs group">
+    <Card className="w-full h-full flex flex-col justify-between border-2 border-dashed border-[#0f2b5c]/35 hover:border-[#0f2b5c] bg-gradient-to-br from-[#0f2b5c]/[0.03] via-card to-card p-6 rounded-2xl transition-all shadow-xs group">
       <div>
         <div className="flex items-center justify-between mb-4">
           <div className="w-12 h-12 rounded-xl bg-[#0f2b5c] text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
@@ -1462,9 +1400,13 @@ export default function Portfolio() {
               </p>
             </div>
 
-            {/* Projects Grid View (All 5 Projects + 6th GitHub Overview Card) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in duration-200">
+            {/* Projects Grid View (4 Projects in balanced 2x2 grid) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in fade-in duration-200">
               {projectsData.map((project) => renderProjectCard(project))}
+            </div>
+
+            {/* GitHub Overview Spotlight Card */}
+            <div className="mt-6">
               {renderGithubOverviewCard()}
             </div>
 
@@ -1656,8 +1598,24 @@ export default function Portfolio() {
                               rel="noopener noreferrer"
                               className="flex items-center gap-1"
                             >
-                              <span>View Paper / Certificate</span>
+                              <span>View Paper</span>
                               <ExternalLink className="h-3 w-3 text-white" />
+                            </a>
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white text-xs font-semibold rounded-lg h-7 px-2.5"
+                            asChild
+                          >
+                            <a
+                              href={ieeePapers[0].certificateLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-1"
+                            >
+                              <span>View Certificate</span>
+                              <ExternalLink className="h-3 w-3" />
                             </a>
                           </Button>
                           <Button
@@ -1699,13 +1657,29 @@ export default function Portfolio() {
                             asChild
                           >
                             <a
+                              href={ieeePapers[1].paperLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-1"
+                            >
+                              <span>View Paper</span>
+                              <ExternalLink className="h-3 w-3 text-white" />
+                            </a>
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white text-xs font-semibold rounded-lg h-7 px-2.5"
+                            asChild
+                          >
+                            <a
                               href={ieeePapers[1].certificateLink}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="flex items-center gap-1"
                             >
                               <span>View Certificate</span>
-                              <ExternalLink className="h-3 w-3 text-white" />
+                              <ExternalLink className="h-3 w-3" />
                             </a>
                           </Button>
                         </div>
@@ -1882,7 +1856,7 @@ export default function Portfolio() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1 text-xs font-bold text-[#0f2b5c] dark:text-sky-400 hover:underline"
                         >
-                          <span>View Credential</span>
+                          <span>View Certificate</span>
                           <ExternalLink className="h-3 w-3" />
                         </a>
                       </div>
@@ -2025,7 +1999,7 @@ export default function Portfolio() {
                           </div>
 
                           <div className="pt-4 border-t border-border/60 mt-4 flex items-center justify-between">
-                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Verified Credential</span>
+                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Verified Certificate</span>
                             <Button
                               size="sm"
                               variant="outline"
@@ -2039,7 +2013,7 @@ export default function Portfolio() {
                                 className="flex items-center gap-1.5"
                                 onClick={(e) => e.stopPropagation()}
                               >
-                                <span>View Credential</span>
+                                <span>View Certificate</span>
                                 <ExternalLink className="h-3.5 w-3.5" />
                               </a>
                             </Button>
