@@ -104,7 +104,7 @@ export function TiltCard({
     : `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
 
   return (
-    <div style={{ perspective: 1000 }} className="w-full h-full relative">
+    <div style={{ perspective: 1000 }} className="w-full h-full relative min-w-0 max-w-full">
       <div
         ref={cardRef}
         onClick={onClick}
@@ -118,7 +118,7 @@ export function TiltCard({
             ? "transform 0.08s ease-out, box-shadow 0.3s ease"
             : "transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease",
         }}
-        className={`relative w-full h-full rounded-2xl transition-shadow duration-300 will-change-transform ${className}`}
+        className={`relative w-full max-w-full h-full rounded-2xl transition-shadow duration-300 will-change-transform ${className}`}
       >
         {/* Dynamic Cursor Spotlight Layer */}
         <div

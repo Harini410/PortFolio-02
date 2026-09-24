@@ -46,7 +46,7 @@ export function ProjectCard({ project, isTouched, onSelect }: ProjectCardProps) 
       }`}
     >
       {/* CARD TOP PADDING & CONTENT BODY */}
-      <div className="flex flex-col flex-1 p-6 sm:p-7 pb-0">
+      <div className="flex flex-col flex-1 p-5 sm:p-7 pb-0">
         {/* ROW 1: BADGE <-> DATE */}
         <div className="flex items-center justify-between gap-3 min-h-[28px]">
           {project.badge ? (
@@ -81,7 +81,7 @@ export function ProjectCard({ project, isTouched, onSelect }: ProjectCardProps) 
 
         {/* ROW 2: PROJECT TITLE */}
         <h3
-          className={`text-lg sm:text-xl font-bold tracking-tight transition-colors line-clamp-2 leading-snug min-h-[3rem] flex items-center ${
+          className={`text-lg sm:text-xl font-bold tracking-tight transition-colors line-clamp-2 leading-snug min-h-[3rem] flex items-center break-words ${
             isTouched ? "text-[#0f2b5c] dark:text-sky-400" : "text-foreground"
           }`}
         >
@@ -134,7 +134,7 @@ export function ProjectCard({ project, isTouched, onSelect }: ProjectCardProps) 
       </div>
 
       {/* FOOTER ACTIONS BAR */}
-      <div className="px-6 sm:px-7 pb-5 pt-3.5 border-t border-border flex items-center gap-2 bg-slate-50/50 dark:bg-slate-900/30 rounded-b-xl min-h-[56px] mt-auto">
+      <div className="px-5 sm:px-7 pb-4 sm:pb-5 pt-3 border-t border-border flex flex-wrap items-center gap-2 bg-slate-50/50 dark:bg-slate-900/30 rounded-b-xl min-h-[56px] mt-auto">
         {project.demoUrl && (
           <Button
             size="sm"

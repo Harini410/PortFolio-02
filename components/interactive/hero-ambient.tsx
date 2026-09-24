@@ -20,7 +20,7 @@ export function HeroAmbientBackground() {
   }, [prefersReducedMotion])
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 select-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 select-none max-w-full">
       {/* Subtle Engineering Dot Grid */}
       <div
         className="absolute inset-0 opacity-[0.035] dark:opacity-[0.05]"

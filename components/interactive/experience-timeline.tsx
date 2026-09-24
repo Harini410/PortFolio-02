@@ -97,10 +97,11 @@ export function ExperienceTimeline({
               <motion.div
                 whileHover={prefersReducedMotion ? {} : { y: -2 }}
                 transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                className="w-full min-w-0"
               >
                 <Card
                   onClick={() => setTouchedCard(exp.id)}
-                  className={`transition-all duration-300 cursor-pointer bg-card overflow-hidden ${
+                  className={`transition-all duration-300 cursor-pointer bg-card overflow-hidden w-full min-w-0 ${
                     exp.isProminent
                       ? isTouched
                         ? "border-2 border-[#0f2b5c] shadow-[0_8px_30px_rgba(15,43,92,0.18)] ring-1 ring-[#0f2b5c]/40"
@@ -110,9 +111,9 @@ export function ExperienceTimeline({
                       : "border border-border hover:border-[#0f2b5c]/50 hover:shadow-sm"
                   }`}
                 >
-                  <CardHeader className="pb-3">
+                  <CardHeader className="pb-3 p-4 sm:p-6">
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-                      <div className="flex items-start gap-3.5">
+                      <div className="flex items-start gap-3.5 min-w-0">
                         <div
                           className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-xs mt-0.5 transition-transform ${
                             exp.isProminent
@@ -126,32 +127,32 @@ export function ExperienceTimeline({
                             <Briefcase className="h-5 w-5" />
                           )}
                         </div>
-                        <div>
+                        <div className="min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <h3 className="text-lg sm:text-xl font-black text-foreground">
+                            <h3 className="text-lg sm:text-xl font-black text-foreground break-words">
                               {exp.company}
                             </h3>
                           </div>
-                          <div className="text-sm sm:text-base font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
+                          <div className="text-sm sm:text-base font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5 break-words">
                             {exp.role}
                           </div>
                         </div>
                       </div>
 
-                      <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-1 shrink-0 pl-13 sm:pl-0">
-                        <div className="inline-flex items-center gap-1 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-md border border-border">
-                          <Calendar className="h-3 w-3 text-[#0f2b5c] dark:text-sky-400" />
-                          <span>{exp.duration}</span>
+                      <div className="flex flex-wrap sm:flex-col items-start sm:items-end justify-between sm:justify-start gap-2 sm:gap-1 w-full sm:w-auto shrink-0 pt-1 sm:pt-0">
+                        <div className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-md border border-border shrink-0">
+                          <Calendar className="h-3 w-3 text-[#0f2b5c] dark:text-sky-400 shrink-0" />
+                          <span className="whitespace-nowrap">{exp.duration}</span>
                         </div>
-                        <div className="flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400">
-                          <MapPin className="h-3 w-3" />
+                        <div className="flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400 shrink-0">
+                          <MapPin className="h-3 w-3 shrink-0" />
                           <span>{exp.location}</span>
                         </div>
                       </div>
                     </div>
                   </CardHeader>
 
-                  <CardContent className="pt-0">
+                  <CardContent className="pt-0 px-4 sm:px-6 pb-4 sm:pb-6">
                     {/* Staggered Highlights Bullets */}
                     <ul className="space-y-2 mb-4 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
                       {exp.bullets.map((b, bIdx) => (
@@ -246,11 +247,11 @@ export function ExperienceTimeline({
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden pt-4"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 w-full items-stretch">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 w-full items-stretch">
                     {earlierExperiences.map((item) => (
                       <Card
                         key={item.id}
-                        className="border border-border/80 bg-card hover:border-[#0f2b5c]/40 rounded-xl shadow-2xs transition-colors w-full p-4 flex flex-col justify-between"
+                        className="border border-border/80 bg-card hover:border-[#0f2b5c]/40 rounded-xl shadow-2xs transition-colors w-full min-w-0 p-4 flex flex-col justify-between"
                       >
                           <div>
                             {/* Header: Company, Role, Location, Duration */}
