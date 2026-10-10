@@ -563,6 +563,7 @@ export default function Portfolio() {
   const navItems = [
     { href: "#experience", id: "experience", label: "Experience" },
     { href: "#projects", id: "projects", label: "Projects" },
+    { href: "#open-source", id: "open-source", label: "Open Source" },
     { href: "#skills", id: "skills", label: "Skills" },
     { href: "#education", id: "education", label: "Education" },
     { href: "#achievements", id: "achievements", label: "Achievements" },
@@ -1217,7 +1218,68 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+{/*4. OPEN-SOURCE CONTRIBUTIONS */}
+<section
+  id="open-source"
+  className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border"
+>
+  <div className="container mx-auto max-w-5xl">
+    <div className="text-center mb-8">
+      <h2 className="text-2xl sm:text-3xl font-extrabold">
+        Open-Source Contributions
+      </h2>
+      <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
+        Contributing bug fixes and validation improvements to open-source projects.
+      </p>
+    </div>
 
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>Apache XTable</CardTitle>
+          <CardDescription>Java · Guava · Hudi</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <p className="text-sm">
+            Fixed a Guava compatibility issue in Hudi partition-path validation,
+            preserving lazy error-message construction.
+          </p>
+          <a
+            href="https://github.com/apache/incubator-xtable/pull/967"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-semibold text-blue-600 hover:underline"
+          >
+            View Pull Request #967 ↗
+          </a>
+          <Badge variant="outline">Open · Awaiting review</Badge>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Cisco Catalyst Center SDK</CardTitle>
+          <CardDescription>Python · Schema Validation</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <p className="text-sm">
+            Added and registered the v3.2.3.0 banner schema validator for
+            request-body validation.
+          </p>
+          <a
+            href="https://github.com/cisco-en-programmability/catalystcentersdk/pull/78"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-semibold text-blue-600 hover:underline"
+          >
+            View Pull Request #78 ↗
+          </a>
+          <Badge variant="outline">Open · Checks passed</Badge>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>
         {/* 4. TECHNICAL SKILLS — INTERACTIVE RELATIONSHIPS & FILTER TRANSITIONS */}
         <section id="skills" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border bg-slate-50/50 dark:bg-slate-900/30">
           <div className="container mx-auto max-w-5xl">
