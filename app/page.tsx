@@ -637,7 +637,7 @@ export default function Portfolio() {
                   className="hidden sm:inline-flex rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white h-8 text-xs font-semibold shadow-2xs group"
                 >
                   <a
-                    href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
+                    href="https://drive.google.com/file/d/11n55o4Jv-XjekSa-5bqwOb9VtXmsL4WV/view?usp=drive_link"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5"
@@ -693,7 +693,7 @@ export default function Portfolio() {
                     className="w-full bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg h-9 text-xs font-semibold"
                   >
                     <a
-                      href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
+                      href="https://drive.google.com/file/d/11n55o4Jv-XjekSa-5bqwOb9VtXmsL4WV/view?usp=drive_link"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1.5"
@@ -936,7 +936,7 @@ export default function Portfolio() {
                       className={getHeroCtaClass("resume")}
                     >
                       <a
-                        href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
+                        href="https://drive.google.com/file/d/11n55o4Jv-XjekSa-5bqwOb9VtXmsL4WV/view?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
@@ -1140,7 +1140,7 @@ export default function Portfolio() {
                   className={getHeroCtaClass("resume")}
                 >
                   <a
-                    href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
+                    href="https://drive.google.com/file/d/11n55o4Jv-XjekSa-5bqwOb9VtXmsL4WV/view?usp=drive_link"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
