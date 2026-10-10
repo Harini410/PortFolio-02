@@ -364,33 +364,36 @@ export default function Portfolio() {
       githubUrl: null,
       isGoldHighlight: true,
     },
-    {
-      id: "proj-2",
-      title: "Smart Complaint Management Portal",
-      tagline: "Java · Spring Boot · Hibernate · MySQL · React.js · Spring Security",
-      badge: null,
-      date: "Sep 2026",
-      summary:
-        "Enterprise complaint management portal featuring role-based access control, modular RESTful APIs, and relational database persistence.",
-      bullets: [
-        "Architected role-based access control and secure session management using Spring Security and modular RESTful APIs.",
-        "Engineered repository-pattern REST services with Hibernate ORM, MySQL database, and responsive React.js dashboards for end-to-end complaint lifecycle tracking.",
-      ],
-      tech: [
-        "Java",
-        "Spring Boot",
-        "Hibernate ORM",
-        "Spring Security",
-        "REST APIs",
-        "React.js",
-        "MySQL",
-      ],
-      demoUrl: null,
-      githubUrl: "https://github.com/Harini410/Fullstack-complaint-portal",
-      certificate: null,
-      isGoldHighlight: false,
-      isProminentJava: false,
-    },
+    ```tsx
+{
+  id: "proj-2",
+  title: "Smart Complaint Management Portal",
+  tagline: "Java 17 · Spring Boot 3 · PostgreSQL · Kafka · Redis · React · Docker",
+  badge: null,
+  date: "Sep 2026",
+  summary:
+    "Event-driven complaint management system with JWT authentication, role-based access control, audit trails, and asynchronous event processing.",
+  bullets: [
+    "Built secure REST APIs using Spring Boot, Spring Security, JWT authentication, and role-based access control.",
+    "Implemented Kafka event integration, Redis caching, 64 automated tests, GitHub Actions CI/CD, and cloud deployment on Render.",
+  ],
+  tech: [
+    "Java 17",
+    "Spring Boot 3",
+    "PostgreSQL",
+    "Apache Kafka",
+    "Redis",
+    "React",
+    "Docker",
+    "GitHub Actions",
+  ],
+  demoUrl: null,
+  githubUrl: "https://github.com/Harini410/Fullstack-complaint-portal",
+  certificate: null,
+  isGoldHighlight: false,
+  isProminentJava: false,
+},
+```
     {
       id: "proj-1",
       title: "AI Resume Screener Web Application",
