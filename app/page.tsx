@@ -364,36 +364,34 @@ export default function Portfolio() {
       githubUrl: null,
       isGoldHighlight: true,
     },
-    ```tsx
-{
-  id: "proj-2",
-  title: "Smart Complaint Management Portal",
-  tagline: "Java 17 · Spring Boot 3 · PostgreSQL · Kafka · Redis · React · Docker",
-  badge: null,
-  date: "Sep 2026",
-  summary:
-    "Event-driven complaint management system with JWT authentication, role-based access control, audit trails, and asynchronous event processing.",
-  bullets: [
-    "Built secure REST APIs using Spring Boot, Spring Security, JWT authentication, and role-based access control.",
-    "Implemented Kafka event integration, Redis caching, 64 automated tests, GitHub Actions CI/CD, and cloud deployment on Render.",
-  ],
-  tech: [
-    "Java 17",
-    "Spring Boot 3",
-    "PostgreSQL",
-    "Apache Kafka",
-    "Redis",
-    "React",
-    "Docker",
-    "GitHub Actions",
-  ],
-  demoUrl: null,
-  githubUrl: "https://github.com/Harini410/Fullstack-complaint-portal",
-  certificate: null,
-  isGoldHighlight: false,
-  isProminentJava: false,
-},
-```
+        {
+      id: "proj-2",
+      title: "Smart Complaint Management Portal",
+      tagline: "Java 17 · Spring Boot 3 · PostgreSQL · Kafka · Redis · React · Docker",
+      badge: null,
+      date: "Sep 2026",
+      summary:
+        "Event-driven complaint management system with JWT authentication, role-based access control, audit trails, and asynchronous event processing.",
+      bullets: [
+        "Built secure REST APIs using Spring Boot, Spring Security, JWT authentication, and role-based access control.",
+        "Implemented Kafka event integration, Redis caching, 64 automated tests, GitHub Actions CI/CD, and cloud deployment on Render.",
+      ],
+      tech: [
+        "Java 17",
+        "Spring Boot 3",
+        "PostgreSQL",
+        "Apache Kafka",
+        "Redis",
+        "React",
+        "Docker",
+        "GitHub Actions",
+      ],
+      demoUrl: null,
+      githubUrl: "https://github.com/Harini410/Fullstack-complaint-portal",
+      certificate: null,
+      isGoldHighlight: false,
+      isProminentJava: false,
+    },
     {
       id: "proj-1",
       title: "AI Resume Screener Web Application",
@@ -640,7 +638,7 @@ export default function Portfolio() {
                   className="hidden sm:inline-flex rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white h-8 text-xs font-semibold shadow-2xs group"
                 >
                   <a
-                    href="https://drive.google.com/file/d/11n55o4Jv-XjekSa-5bqwOb9VtXmsL4WV/view?usp=drive_link"
+                    href="https://drive.google.com/file/d/1P3t1dXHf97G_Lek4nzFRhlb2O4vlGlTa/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5"
@@ -696,7 +694,7 @@ export default function Portfolio() {
                     className="w-full bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg h-9 text-xs font-semibold"
                   >
                     <a
-                      href="https://drive.google.com/file/d/11n55o4Jv-XjekSa-5bqwOb9VtXmsL4WV/view?usp=drive_link"
+                      href="https://drive.google.com/file/d/1P3t1dXHf97G_Lek4nzFRhlb2O4vlGlTa/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1.5"
@@ -939,7 +937,7 @@ export default function Portfolio() {
                       className={getHeroCtaClass("resume")}
                     >
                       <a
-                        href="https://drive.google.com/file/d/11n55o4Jv-XjekSa-5bqwOb9VtXmsL4WV/view?usp=drive_link"
+                        href="https://drive.google.com/file/d/1P3t1dXHf97G_Lek4nzFRhlb2O4vlGlTa/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
@@ -1143,7 +1141,7 @@ export default function Portfolio() {
                   className={getHeroCtaClass("resume")}
                 >
                   <a
-                    href="https://drive.google.com/file/d/11n55o4Jv-XjekSa-5bqwOb9VtXmsL4WV/view?usp=drive_link"
+                    href="https://drive.google.com/file/d/1P3t1dXHf97G_Lek4nzFRhlb2O4vlGlTa/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
@@ -1238,26 +1236,28 @@ export default function Portfolio() {
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <Card>
-        <CardHeader>
-          <CardTitle>Apache XTable</CardTitle>
-          <CardDescription>Java · Guava · Hudi</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <p className="text-sm">
-            Fixed a Guava compatibility issue in Hudi partition-path validation,
-            preserving lazy error-message construction.
-          </p>
-          <a
-            href="https://github.com/apache/incubator-xtable/pull/967"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold text-blue-600 hover:underline"
-          >
-            View Pull Request #967 ↗
-          </a>
-          <Badge variant="outline">Open · Awaiting review</Badge>
-        </CardContent>
-      </Card>
+  <CardHeader>
+    <CardTitle>Apache XTable</CardTitle>
+    <CardDescription>Java · Guava · Hudi</CardDescription>
+  </CardHeader>
+  <CardContent className="space-y-3">
+    <p className="text-sm">
+      Fixed a Guava runtime compatibility issue in Hudi partition-path
+      validation by replacing an unsupported API overload with explicit
+      argument validation. Preserved lazy error-message construction and
+      verified the fix with a targeted Java runtime test using Guava 14.
+    </p>
+    <a
+      href="https://github.com/apache/incubator-xtable/pull/967"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-sm font-semibold text-blue-600 hover:underline"
+    >
+      View Merged PR #967 ↗
+    </a>
+    <Badge variant="outline">Merged · PR #967</Badge>
+  </CardContent>
+</Card>
 
       <Card>
         <CardHeader>
