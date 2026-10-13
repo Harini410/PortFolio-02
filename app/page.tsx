@@ -2002,33 +2002,32 @@ export default function Portfolio() {
               </motion.a>
             </div>
 
-            {/* Quick Resume Download Card */}
-            <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-left shadow-2xs">
-              <div>
-                <div className="text-sm font-black text-foreground">
-                  Looking for my full resume?
-                </div>
-                <div className="text-xs text-slate-600 dark:text-slate-300 font-medium mt-0.5">
-                  Download the latest Software Engineer resume covering Dell Technologies, education, and technical projects.
-                </div>
-              </div>
-              <Magnetic strength={0.25}>
-                <Button
-                  className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-bold h-9 px-4 shrink-0 shadow-xs group"
-                  asChild
-                >
-                  <a
-                    href="https://drive.google.com/file/d/119PTgpH2C7tSg0N7bxQ1oVl-bUBFa5NX/view?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5"
-                  >
-                    <FileText className="h-3.5 w-3.5 group-hover:scale-110 transition-transform" />
-                    <span>Download Resume PDF</span>
-                  </a>
-                </Button>
-              </Magnetic>
-            </div>
+            {/* Resume Download */}
+<div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-border bg-card p-5 text-left">
+  <div>
+    <h3 className="text-sm font-bold text-foreground">
+      Want to know more about my experience?
+    </h3>
+    <p className="mt-1 text-xs text-muted-foreground">
+      Explore my resume for my professional experience, education, and technical skills.
+    </p>
+  </div>
+
+  <Button
+    asChild
+    className="shrink-0 rounded-lg bg-[#0f2b5c] px-4 text-white hover:bg-[#0a1c38]"
+  >
+    <a
+      href="https://drive.google.com/file/d/1P3t1dXHf97G_Lek4nzFRhlb2O4vlGlTa/view?usp=sharing"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-2"
+    >
+      <FileText className="h-4 w-4" />
+      View Resume
+    </a>
+  </Button>
+</div>
           </div>
         </section>
       </main>
