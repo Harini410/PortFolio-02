@@ -1237,75 +1237,94 @@ export default function Portfolio() {
       </p>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <Card>
-  <CardHeader>
-    <CardTitle>Apache XTable</CardTitle>
-    <CardDescription>Java · Guava · Hudi</CardDescription>
-  </CardHeader>
-  <CardContent className="space-y-3">
-    <p className="text-sm">
-      Fixed a Guava runtime compatibility issue in Hudi partition-path
-      validation by replacing an unsupported API overload with explicit
-      argument validation. Preserved lazy error-message construction and
-      verified the fix with a targeted Java runtime test using Guava 14.
-    </p>
-    <a
-      href="https://github.com/apache/incubator-xtable/pull/967"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-sm font-semibold text-blue-600 hover:underline"
-    >
-      View Merged PR #967 
-    </a>
-    <Badge variant="outline">Merged · PR #967</Badge>
-  </CardContent>
-</Card>
-<Card>
-  <CardHeader>
-    <CardTitle>AWS Durable Execution SDK for Java</CardTitle>
-    <CardDescription>Java · Maven · JUnit · AWS Lambda</CardDescription>
-  </CardHeader>
-  <CardContent className="space-y-3">
-    <p className="text-sm">
-      Fixed invalid durable-execution suspension by adding retryable
-      error handling with awaited-operation diagnostics. Preserved
-      checkpoint-token revocation behavior and added regression tests
-      for execution lifecycle and plugin notifications.
-    </p>
-    <a
-      href="https://github.com/aws/aws-durable-execution-sdk-java/pull/785"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-sm font-semibold text-blue-600 hover:underline"
-    >
-      View Merged PR #785 
-    </a>
-    <Badge variant="outline">Merged · PR #785</Badge>
-  </CardContent>
-</Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>Cisco Catalyst Center SDK</CardTitle>
-          <CardDescription>Python · Schema Validation</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <p className="text-sm">
-            Added and registered the v3.2.3.0 banner schema validator for
-            request-body validation.
-          </p>
-          <a
-            href="https://github.com/cisco-en-programmability/catalystcentersdk/pull/78"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold text-blue-600 hover:underline"
-          >
-            View Pull Request #78 
-          </a>
-          <Badge variant="outline">Open · Checks passed</Badge>
-        </CardContent>
-      </Card>
-    </div>
+   <<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {/* Apache XTable */}
+  <Card className="flex flex-col">
+    <CardHeader>
+      <CardTitle>Apache XTable</CardTitle>
+      <CardDescription>Java · Guava · Hudi</CardDescription>
+    </CardHeader>
+    <CardContent className="flex flex-1 flex-col gap-4">
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        Fixed a Guava runtime compatibility issue in Hudi partition-path
+        validation using explicit argument validation. Preserved lazy
+        error-message construction and verified the fix with Guava 14.
+      </p>
+
+      <div className="mt-auto flex flex-wrap gap-3 pt-2">
+        <a
+          href="https://github.com/apache/incubator-xtable/pull/967"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium transition-colors hover:bg-accent"
+        >
+          View Code ↗
+        </a>
+        <Badge variant="outline" className="self-center">
+          Merged · PR #967
+        </Badge>
+      </div>
+    </CardContent>
+  </Card>
+
+  {/* AWS Durable Execution SDK */}
+  <Card className="flex flex-col">
+    <CardHeader>
+      <CardTitle>AWS Durable Execution SDK for Java</CardTitle>
+      <CardDescription>Java · Maven · JUnit · AWS Lambda</CardDescription>
+    </CardHeader>
+    <CardContent className="flex flex-1 flex-col gap-4">
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        Fixed invalid durable-execution suspension with retryable error
+        handling and awaited-operation diagnostics. Preserved checkpoint-token
+        revocation behavior and added regression tests for execution lifecycle
+        and plugin notifications.
+      </p>
+
+      <div className="mt-auto flex flex-wrap gap-3 pt-2">
+        <a
+          href="https://github.com/aws/aws-durable-execution-sdk-java/pull/785"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium transition-colors hover:bg-accent"
+        >
+          View Code ↗
+        </a>
+        <Badge variant="outline" className="self-center">
+          Merged · PR #785
+        </Badge>
+      </div>
+    </CardContent>
+  </Card>
+
+  {/* Cisco Catalyst Center SDK */}
+  <Card className="flex flex-col">
+    <CardHeader>
+      <CardTitle>Cisco Catalyst Center SDK</CardTitle>
+      <CardDescription>Python · Schema Validation</CardDescription>
+    </CardHeader>
+    <CardContent className="flex flex-1 flex-col gap-4">
+      <p className="text-sm leading-relaxed text-muted-foreground">
+        Added and registered the v3.2.3.0 banner schema validator
+        for request-body validation.
+      </p>
+
+      <div className="mt-auto flex flex-wrap gap-3 pt-2">
+        <a
+          href="https://github.com/cisco-en-programmability/catalystcentersdk/pull/78"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium transition-colors hover:bg-accent"
+        >
+          View Code ↗
+        </a>
+        <Badge variant="outline" className="self-center">
+          Open · Checks passed
+        </Badge>
+      </div>
+    </CardContent>
+  </Card>
+</div>
   </div>
 </section>
         {/* 4. TECHNICAL SKILLS — INTERACTIVE RELATIONSHIPS & FILTER TRANSITIONS */}
