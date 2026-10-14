@@ -1222,122 +1222,196 @@ export default function Portfolio() {
 
 
         
-{/* OPEN-SOURCE CONTRIBUTIONS */}
+{/* 4. OPEN-SOURCE CONTRIBUTIONS */}
 <section
   id="open-source"
-  className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border"
+  className="relative border-t border-border bg-slate-50/50 py-12 sm:py-14 px-4 sm:px-6 lg:px-8 dark:bg-slate-900/30"
 >
   <div className="container mx-auto max-w-6xl">
-    <div className="text-center mb-8 sm:mb-10">
-      <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+    {/* Section Header */}
+    <div className="mx-auto mb-9 max-w-xl text-center sm:mb-10">
+      <h2 className="text-2xl font-extrabold tracking-tight text-[#0f2b5c] dark:text-sky-400 sm:text-3xl">
         Open-Source Contributions
       </h2>
-      <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
-        Contributing bug fixes and validation improvements to open-source projects.
+      <p className="mt-2 text-xs font-medium text-slate-600 dark:text-slate-300 sm:text-sm">
+        Solving real-world bugs and improving reliability across open-source projects.
       </p>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {/* Contribution Cards */}
+    <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
 
       {/* Apache XTable */}
-      <Card className="flex flex-col h-full">
-        <CardHeader>
-          <CardTitle>Apache XTable</CardTitle>
-          <CardDescription>Java · Guava · Hudi</CardDescription>
+      <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
+        <div className="h-1 w-full bg-[#0f2b5c]" />
+
+        <CardHeader className="pb-3">
+          <div className="mb-2 flex items-start justify-between gap-2">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400">
+              <Code2 className="h-5 w-5" />
+            </div>
+            <Badge
+              variant="outline"
+              className="shrink-0 rounded-full border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-400"
+            >
+              ✓ Merged
+            </Badge>
+          </div>
+
+          <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
+            Apache XTable
+          </CardTitle>
+          <CardDescription className="text-xs font-medium tracking-wide">
+            Java · Guava · Hudi
+          </CardDescription>
         </CardHeader>
 
-        <CardContent className="flex flex-1 flex-col gap-4">
-          <p className="text-sm leading-relaxed text-muted-foreground">
+        <CardContent className="flex flex-1 flex-col gap-5">
+          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
             Fixed a Guava runtime compatibility issue in Hudi partition-path
             validation using explicit argument validation. Preserved lazy
             error-message construction and verified the fix using Guava 14.
           </p>
 
-          <div className="mt-auto flex flex-wrap items-center gap-2 pt-2">
-            <Button asChild variant="outline" size="sm">
+          <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-slate-100 pt-4 dark:border-slate-700">
+            <Button
+              asChild
+              size="sm"
+              className="h-9 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#173f7a] hover:shadow-md"
+            >
               <a
                 href="https://github.com/apache/incubator-xtable/pull/967"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View PR #967 <ExternalLink className="ml-1 h-3.5 w-3.5" />
+                View PR #967
+                <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
               </a>
             </Button>
 
-            <Badge variant="outline" className="text-xs">
-              Merged
-            </Badge>
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
+              Apache project
+            </span>
           </div>
         </CardContent>
       </Card>
 
       {/* AWS Durable Execution SDK */}
-      <Card className="flex flex-col h-full">
-        <CardHeader>
-          <CardTitle>AWS Durable Execution SDK for Java</CardTitle>
-          <CardDescription>Java · Maven · JUnit · AWS Lambda</CardDescription>
+      <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
+        <div className="h-1 w-full bg-[#0f2b5c]" />
+
+        <CardHeader className="pb-3">
+          <div className="mb-2 flex items-start justify-between gap-2">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400">
+              <Code2 className="h-5 w-5" />
+            </div>
+            <Badge
+              variant="outline"
+              className="shrink-0 rounded-full border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-400"
+            >
+              ✓ Merged
+            </Badge>
+          </div>
+
+          <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
+            AWS Durable Execution SDK for Java
+          </CardTitle>
+          <CardDescription className="text-xs font-medium tracking-wide">
+            Java · Maven · JUnit · AWS Lambda
+          </CardDescription>
         </CardHeader>
 
-        <CardContent className="flex flex-1 flex-col gap-4">
-          <p className="text-sm leading-relaxed text-muted-foreground">
+        <CardContent className="flex flex-1 flex-col gap-5">
+          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
             Fixed invalid durable-execution suspension with retryable error
             handling and awaited-operation diagnostics. Preserved checkpoint-token
             revocation behavior and added regression tests for execution lifecycle
             and plugin notifications.
           </p>
 
-          <div className="mt-auto flex flex-wrap items-center gap-2 pt-2">
-            <Button asChild variant="outline" size="sm">
+          <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-slate-100 pt-4 dark:border-slate-700">
+            <Button
+              asChild
+              size="sm"
+              className="h-9 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#173f7a] hover:shadow-md"
+            >
               <a
                 href="https://github.com/aws/aws-durable-execution-sdk-java/pull/785"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View PR #785 <ExternalLink className="ml-1 h-3.5 w-3.5" />
+                View PR #785
+                <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
               </a>
             </Button>
 
-            <Badge variant="outline" className="text-xs">
-              Merged
-            </Badge>
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
+              AWS SDK
+            </span>
           </div>
         </CardContent>
       </Card>
 
       {/* Cisco Catalyst Center SDK */}
-      <Card className="flex flex-col h-full">
-        <CardHeader>
-          <CardTitle>Cisco Catalyst Center SDK</CardTitle>
-          <CardDescription>Python · Schema Validation</CardDescription>
+      <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
+        <div className="h-1 w-full bg-[#0f2b5c]" />
+
+        <CardHeader className="pb-3">
+          <div className="mb-2 flex items-start justify-between gap-2">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400">
+              <Code2 className="h-5 w-5" />
+            </div>
+            <Badge
+              variant="outline"
+              className="shrink-0 rounded-full border-blue-200 bg-blue-50 px-2.5 py-1 text-[11px] font-semibold text-[#0f2b5c] dark:border-sky-900 dark:bg-sky-950/40 dark:text-sky-400"
+            >
+              Open · Checks passed
+            </Badge>
+          </div>
+
+          <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
+            Cisco Catalyst Center SDK
+          </CardTitle>
+          <CardDescription className="text-xs font-medium tracking-wide">
+            Python · Schema Validation
+          </CardDescription>
         </CardHeader>
 
-        <CardContent className="flex flex-1 flex-col gap-4">
-          <p className="text-sm leading-relaxed text-muted-foreground">
+        <CardContent className="flex flex-1 flex-col gap-5">
+          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
             Added and registered the v3.2.3.0 banner schema validator
             for request-body validation.
           </p>
 
-          <div className="mt-auto flex flex-wrap items-center gap-2 pt-2">
-            <Button asChild variant="outline" size="sm">
+          <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-slate-100 pt-4 dark:border-slate-700">
+            <Button
+              asChild
+              size="sm"
+              className="h-9 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#173f7a] hover:shadow-md"
+            >
               <a
                 href="https://github.com/cisco-en-programmability/catalystcentersdk/pull/78"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View PR #78 <ExternalLink className="ml-1 h-3.5 w-3.5" />
+                View PR #78
+                <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
               </a>
             </Button>
 
-            <Badge variant="outline" className="text-xs">
-              Open · Checks passed
-            </Badge>
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
+              Cisco SDK
+            </span>
           </div>
         </CardContent>
       </Card>
 
     </div>
   </div>
-</section>        {/* 4. TECHNICAL SKILLS — INTERACTIVE RELATIONSHIPS & FILTER TRANSITIONS */}
+</section>
+        
+        
+        {/* 4. TECHNICAL SKILLS — INTERACTIVE RELATIONSHIPS & FILTER TRANSITIONS */}
         <section id="skills" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border bg-slate-50/50 dark:bg-slate-900/30">
           <div className="container mx-auto max-w-5xl">
             <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
