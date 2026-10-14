@@ -1219,6 +1219,9 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
+
+
+        
 {/*4. OPEN-SOURCE CONTRIBUTIONS */}
 <section
   id="open-source"
@@ -1253,12 +1256,34 @@ export default function Portfolio() {
       rel="noopener noreferrer"
       className="text-sm font-semibold text-blue-600 hover:underline"
     >
-      View Merged PR #967 ↗
+      View Merged PR #967 
     </a>
     <Badge variant="outline">Merged · PR #967</Badge>
   </CardContent>
 </Card>
-
+<Card>
+  <CardHeader>
+    <CardTitle>AWS Durable Execution SDK for Java</CardTitle>
+    <CardDescription>Java · Maven · JUnit · AWS Lambda</CardDescription>
+  </CardHeader>
+  <CardContent className="space-y-3">
+    <p className="text-sm">
+      Fixed invalid durable-execution suspension by adding retryable
+      error handling with awaited-operation diagnostics. Preserved
+      checkpoint-token revocation behavior and added regression tests
+      for execution lifecycle and plugin notifications.
+    </p>
+    <a
+      href="https://github.com/aws/aws-durable-execution-sdk-java/pull/785"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-sm font-semibold text-blue-600 hover:underline"
+    >
+      View Merged PR #785 
+    </a>
+    <Badge variant="outline">Merged · PR #785</Badge>
+  </CardContent>
+</Card>
       <Card>
         <CardHeader>
           <CardTitle>Cisco Catalyst Center SDK</CardTitle>
@@ -1275,7 +1300,7 @@ export default function Portfolio() {
             rel="noopener noreferrer"
             className="text-sm font-semibold text-blue-600 hover:underline"
           >
-            View Pull Request #78 ↗
+            View Pull Request #78 
           </a>
           <Badge variant="outline">Open · Checks passed</Badge>
         </CardContent>
