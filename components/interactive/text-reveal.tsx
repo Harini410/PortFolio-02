@@ -60,7 +60,7 @@ export function TextReveal({
       animate="visible"
       custom={delay}
       variants={containerVariants}
-      className={`inline-flex flex-wrap gap-x-2 ${className}`}
+      className={`flex flex-wrap gap-x-2 text-balance ${className}`}
     >
       {words.map((word, idx) => (
         <motion.span

@@ -54,6 +54,7 @@ export default function Portfolio() {
   const [activeSkillCategory, setActiveSkillCategory] = useState("all")
   const [activeHeroCta, setActiveHeroCta] = useState<string | null>(null)
   const [ieeeExpanded, setIeeeExpanded] = useState(false)
+  const [ciscoPrsExpanded, setCiscoPrsExpanded] = useState(false)
   const [certViewMode, setCertViewMode] = useState<"grid" | "swipe">("swipe")
   const [certCurrentIndex, setCertCurrentIndex] = useState(0)
   const [certScrollSnaps, setCertScrollSnaps] = useState<number[]>([])
@@ -159,7 +160,7 @@ export default function Portfolio() {
 
   // Active section scroll spy
   useEffect(() => {
-    const sections = ["experience", "projects", "skills", "education", "achievements", "contact"]
+    const sections = ["experience", "open-source", "projects", "skills", "education", "achievements", "contact"]
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -205,26 +206,37 @@ export default function Portfolio() {
       id: "exp-0",
       company: "Dell Technologies",
       role: "Software Engineer",
-      duration: "Nov 2025 – Sep 2026",
+      duration: "November 2025 – September 2026",
       location: "Bengaluru, India",
       isProminent: true,
+      summaryQuote: "I worked across Windows recovery applications and OSRI image builds, contributing to fixes, requirements, debugging, and validation.",
+      caseStudy: {
+        title: "Tracking down a Windows recovery failure",
+        problem: "A blue-screen crash was occurring during hardware diagnostics and system recovery on Windows test images. Before anything could be fixed, the failure had to be reproduced and understood.",
+        investigation: "I reproduced the issue in controlled test environments, captured system snapshots and diagnostic logs, and examined runtime traces using Helix Data Collector and Helix Data Analyzer.",
+        findings: "The diagnostic evidence pointed to a string/integer type mismatch associated with an exception-handling issue in the recovery service.",
+        validation: "I validated recovery scenarios across hardware profiles and tracked test results and regression coverage through GitHub PR workflows and Jira.",
+      },
       bullets: [
-        "Architected and developed C#/.NET Windows recovery applications supporting critical Hardware Scan, Repair, Reset, Backup, and Disk Cloning workflows.",
-        "Engineered robust system automation utilizing PowerShell, Batch scripting, WIM, WinPE, WinRE, and DISM for deployment and automated ISO generation.",
-        "Led end-to-end debugging, root-cause analysis, regression testing, and performance validation across core recovery features to guarantee enterprise stability.",
-        "Employed AI-assisted engineering workflows leveraging Claude Code, Coding Agents, and Spec-Driven Development (SDD) for rapid codebase exploration, implementation, refactoring, and test generation.",
+        "I worked with an existing C#/.NET Windows recovery application covering hardware scan, repair, reset, backup, and disk cloning.",
+        "I also worked with the Windows 11 ARM64 OSRI build workflow, using PowerShell, Batch, DISM, WIM, WinPE, and WinRE for scripting, image operations, and validation.",
       ],
+      closingQuote: "The interesting part isn't just seeing something fail. It's finding enough evidence to understand what went wrong.",
       skills: [
-        "C#/.NET",
+        "C#",
+        ".NET",
         "PowerShell",
-        "WinPE / WinRE",
-        "DISM / WIM",
-        "Windows Recovery",
-        "Claude Code",
-        "Coding Agents",
-        "Spec-Driven Development (SDD)",
-        "Testing & Validation",
-        "Git / GitHub",
+        "Batch",
+        "DISM",
+        "WIM",
+        "WinPE",
+        "WinRE",
+        "Helix Data Collector",
+        "Helix Data Analyzer",
+        "debugging",
+        "regression testing",
+        "Git",
+        "GitHub",
         "Jira",
       ],
       certificate: null,
@@ -233,12 +245,11 @@ export default function Portfolio() {
       id: "exp-1",
       company: "Toshiba Software India Pvt. Ltd.",
       role: "Student Intern — Japanese Trainee Program",
-      duration: "Jun 2025 – Jul 2025",
+      duration: "June – July 2025",
       location: "Bengaluru, India",
       isProminent: false,
       bullets: [
-        "Completed enterprise Japanese software engineering program covering core Software Engineering principles, Artificial Intelligence, and Agile delivery.",
-        "Delivered project-based assignments applying PMBOK project management frameworks for sprint planning, effort estimation, and technical documentation.",
+        "I completed training in software engineering, AI, and Agile delivery, with project assignments involving planning, effort estimation, and technical documentation.",
       ],
       skills: [
         "Software Engineering",
@@ -253,12 +264,11 @@ export default function Portfolio() {
       id: "exp-2",
       company: "DRDO — Centre for Artificial Intelligence and Robotics (CAIR)",
       role: "Student Intern Trainee",
-      duration: "Jan 2025 – Jun 2025",
+      duration: "January – June 2025",
       location: "Bengaluru, India",
       isProminent: false,
       bullets: [
-        "Engineered modular frontend components and intuitive user interfaces using React.js and Figma for an institutional AI-based evaluation platform.",
-        "Integrated client-side components with Spring Boot REST APIs and MongoDB backend database for real-time evaluation data persistence and validation.",
+        "I worked on React components and user interfaces for an institutional AI-based evaluation platform, integrating the frontend with Spring Boot REST APIs and MongoDB.",
       ],
       skills: [
         "React.js",
@@ -337,80 +347,77 @@ export default function Portfolio() {
     },
   ]
 
-  // Exact 4 projects: 1. Ransomware (Winner), 2. Smart Complaint (Enterprise Java), 3. Resume Screener, 4. CyberSafe AI
+  // Core Engineering Projects: 1. Smart Complaint, 2. Ransomware Recovery, 3. AI Resume Screener, 4. CyberSafe AI
   const projectsData = [
+    {
+      id: "proj-2",
+      title: "Smart Complaint Management Portal",
+      tagline: "Java 17 · Spring Boot 3 · Kafka · Redis · PostgreSQL · Docker · React",
+      badge: "64 Automated Tests",
+      date: "Sep 2026",
+      hook: "What happens when a complaint system gets more work than it can handle?",
+      summary:
+        "I built a complaint-management application using Java and Spring Boot, with Kafka for asynchronous processing, Redis for caching, and PostgreSQL for persistence. The goal was to separate complaint intake from downstream work rather than make every request wait for everything else.",
+      bullets: [
+        "I used isolated Kafka consumer groups for notification and analytics processing, added a cache-aside layer for status lookups, and wrote 64 automated unit and integration tests using Testcontainers and MockMvc.",
+      ],
+      tech: [
+        "Java 17",
+        "Spring Boot 3",
+        "Kafka",
+        "Redis",
+        "PostgreSQL",
+        "Docker",
+        "React",
+      ],
+      demoUrl: null,
+      githubUrl: "https://github.com/Harini410/Fullstack-complaint-portal",
+      certificate: null,
+      isGoldHighlight: false,
+      isProminentJava: true,
+    },
     {
       id: "proj-0",
       title: "AI-Powered Ransomware Recovery Prioritizer",
-      tagline: "Agentic AI · NetworkX · Llama 3.1 · Ollama · Dynamic Risk Scoring",
-      badge: "Winner — Agentic AI Hackathon",
+      tagline: "Python · NetworkX · Graph Algorithms · Llama 3.1 · Ollama",
+      badge: "Winner · Dell Agentic AI Hackathon",
       date: "Jan 2026",
+      hook: "If several systems depend on each other, what should recover first?",
       summary:
-        "Agentic AI decision-support system combining graph network analysis with dynamic risk scoring to prioritize recovery of critical enterprise assets.",
+        "I built a decision-support prototype that represents infrastructure dependencies as a graph and helps prioritize a recovery sequence. Using NetworkX, graph algorithms, and heuristic risk scoring, it considers dependency relationships and recovery objectives rather than treating every system as equally urgent.",
       bullets: [
-        "Built interactive NetworkX attack graphs modeling infection paths, asset dependencies, and blast radius to prioritize critical recovery workflows.",
-        "Integrated Llama 3.1 via Ollama to generate context-aware recovery playbooks for automated host isolation, reimaging, and restore.",
+        "I also integrated a local Llama 3.1 model through Ollama to generate remediation playbooks. The project won the Dell Agentic AI Hackathon.",
       ],
       tech: [
-        "Agentic AI",
         "Python",
         "NetworkX",
+        "Graph Algorithms",
         "Llama 3.1",
         "Ollama",
-        "Dynamic Risk Scoring",
       ],
       certificate: "https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing",
       demoUrl: null,
       githubUrl: null,
       isGoldHighlight: true,
     },
-        {
-      id: "proj-2",
-      title: "Smart Complaint Management Portal",
-      tagline: "Java 17 · Spring Boot 3 · PostgreSQL · Kafka · Redis · React · Docker",
-      badge: null,
-      date: "Sep 2026",
-      summary:
-        "Event-driven complaint management system with JWT authentication, role-based access control, audit trails, and asynchronous event processing.",
-      bullets: [
-        "Built secure REST APIs using Spring Boot, Spring Security, JWT authentication, and role-based access control.",
-        "Implemented Kafka event integration, Redis caching, 64 automated tests, GitHub Actions CI/CD, and cloud deployment on Render.",
-      ],
-      tech: [
-        "Java 17",
-        "Spring Boot 3",
-        "PostgreSQL",
-        "Apache Kafka",
-        "Redis",
-        "React",
-        "Docker",
-        "GitHub Actions",
-      ],
-      demoUrl: null,
-      githubUrl: "https://github.com/Harini410/Fullstack-complaint-portal",
-      certificate: null,
-      isGoldHighlight: false,
-      isProminentJava: false,
-    },
     {
       id: "proj-1",
-      title: "AI Resume Screener Web Application",
-      tagline: "Multi-Agent RAG · Next.js · TypeScript · Groq · Semantic Search",
-      badge: null,
+      title: "AI Resume Screener",
+      tagline: "Next.js · TypeScript · Semantic Retrieval · Groq LLMs · Automated Testing",
+      badge: "13/13 Unit Tests · 10/10 Benchmarks",
       date: "Sep 2026",
+      hook: "A matching score is only useful if you can explain it.",
       summary:
-        "Production multi-agent RAG pipeline using Next.js, TypeScript, Groq LLMs, and dense semantic embeddings for automated resume-to-job matching.",
+        "I built a resume evaluation application that combines semantic retrieval with structured scoring against job criteria. Rather than relying on an unconstrained prompt to decide everything, I separated requirement extraction from scoring so evaluations could be tested and compared consistently.",
       bullets: [
-        "Engineered atomic requirement extraction and semantic retrieval to match candidate evidence directly against job criteria.",
-        "Built deterministic scoring and automated evaluation suites, passing 13/13 unit tests and 10/10 evaluation benchmarks.",
+        "The evaluation suite reports 13/13 unit tests and 10/10 benchmark evaluations.",
       ],
       tech: [
         "Next.js",
         "TypeScript",
+        "Semantic Retrieval",
         "Groq LLMs",
-        "Multi-Agent RAG",
-        "Semantic Search",
-        "Deterministic Scoring",
+        "Automated Testing",
       ],
       demoUrl: "https://v0-ai-resume-screener-smoky.vercel.app/",
       githubUrl: "https://github.com/Harini410/AI-Resume-Screener",
@@ -419,22 +426,22 @@ export default function Portfolio() {
     },
     {
       id: "proj-3",
-      title: "CyberSafe AI — Cyberbullying Detection Platform",
-      tagline: "Autonomous 7-Agent DAG · RoBERTa · Dense Vector RAG · Affective NLP · FastAPI",
+      title: "CyberSafe AI",
+      tagline: "Python · RoBERTa · RAG · FastAPI · Next.js",
+      badge: "IEEE Publication Companion",
       date: "Sep 2026",
+      hook: "Understanding harmful language takes more than spotting a keyword.",
       summary:
-        "Privacy-preserving autonomous multi-agent cyberbullying detection and conversational safety support platform powered by RoBERTa and dense RAG.",
+        "I developed a conversational safety platform combining text classification, retrieval, and a multi-agent workflow to examine context and generate constructive responses to online harassment.",
       bullets: [
-        "Orchestrated 7-agent autonomous DAG pipeline (Detection, Emotion, Context, Risk, RAG, Explanation, Response) executing with <105ms latency.",
-        "Integrated fine-tuned RoBERTa sequence inference, MiniLM dense vector RAG across 6 safety domains, and context-aware Copilot chatbot.",
+        "The implementation uses RoBERTa, a seven-agent DAG, dense retrieval-augmented generation, FastAPI, and Next.js. It accompanies my IEEE Xplore research.",
       ],
       tech: [
-        "7-Agent DAG",
+        "Python",
         "RoBERTa",
-        "Dense RAG",
+        "RAG",
         "FastAPI",
-        "Affective NLP",
-        "Next.js 16",
+        "Next.js",
       ],
       demoUrl: "https://cyberbullying-detection-eta.vercel.app/",
       githubUrl: "https://github.com/Harini410/Cyberbullying-detection",
@@ -443,54 +450,90 @@ export default function Portfolio() {
     },
   ]
 
-  // Technical Skills - 4 compact, recruiter-friendly categories
+  // Technical Skills - Developer Toolkit (6 categories)
   const skillGroups = [
     {
-      category: "software",
-      title: "Primary Software Engineering",
-      skills: [
-        "Java",
-        "Spring Boot",
-        "C#/.NET",
-        "REST APIs",
-        "React.js",
-        "Next.js",
-      ],
+      category: "languages",
+      title: "Languages",
+      skills: ["Java", "C#", "Python", "TypeScript", "JavaScript", "SQL"],
     },
     {
-      category: "backend",
-      title: "Backend & Database",
-      skills: [
-        "SQL",
-        "MySQL",
-        "MongoDB",
-        "Hibernate / JPA",
-      ],
+      category: "app-dev",
+      title: "Application Development",
+      skills: ["Spring Boot", "REST APIs", "React", "Next.js"],
     },
     {
-      category: "systems",
-      title: "Systems & Enterprise",
-      skills: [
-        "PowerShell",
-        "WinPE / WinRE",
-        "DISM & WIM",
-        "Windows Internals",
-        "Git / GitHub",
-        "Jira",
-      ],
+      category: "databases",
+      title: "Data and Messaging",
+      skills: ["PostgreSQL", "MySQL", "MongoDB", "Kafka", "Redis"],
     },
     {
-      category: "ai",
-      title: "AI Engineering",
-      skills: [
-        "Agentic AI",
-        "LLM Applications",
-        "Multi-Agent RAG",
-        "Python",
-        "Claude Code",
-        "Spec-Driven Development (SDD)",
-        "RoBERTa",
-      ],
+      category: "tools",
+      title: "Engineering Practices",
+      skills: ["Git", "GitHub", "Docker", "CI/CD", "debugging", "regression testing"],
+    },
+    {
+      category: "windows",
+      title: "Windows Development",
+      skills: [".NET", "PowerShell", "Batch", "DISM", "WIM", "WinPE", "WinRE"],
+    },
+    {
+      category: "additional",
+      title: "Additional Work",
+      skills: ["LLM applications", "RAG", "NetworkX", "RoBERTa"],
+    },
+  ]
+
+  // 7 Merged PRs on Cisco Catalyst WAN SDK (#245–#251)
+  const ciscoMergedPrs = [
+    {
+      num: "PR #251",
+      title: "Device-health endpoint pagination",
+      desc: "Implemented pagination for device-health endpoints to reliably query large-scale enterprise network device inventories.",
+      url: "https://github.com/cisco-en-programmability/catalystwan-sdk/pull/251",
+      tag: "Pagination & Telemetry",
+    },
+    {
+      num: "PR #250",
+      title: "Enterprise Root CA certificate upload",
+      desc: "Added enterprise Root CA certificate upload endpoints for automated TLS trust-chain management.",
+      url: "https://github.com/cisco-en-programmability/catalystwan-sdk/pull/250",
+      tag: "PKI / TLS Security",
+    },
+    {
+      num: "PR #249",
+      title: "Certificate-editing HTTP methods & test suite",
+      desc: "Corrected certificate-editing HTTP methods (PUT vs POST/PATCH) and added comprehensive test coverage.",
+      url: "https://github.com/cisco-en-programmability/catalystwan-sdk/pull/249",
+      tag: "REST APIs & Testing",
+    },
+    {
+      num: "PR #248",
+      title: "API Gateway session token reuse",
+      desc: "Enabled API Gateway sessions utilizing existing authentication tokens, avoiding redundant auth roundtrips.",
+      url: "https://github.com/cisco-en-programmability/catalystwan-sdk/pull/248",
+      tag: "Auth & Gateway Sessions",
+    },
+    {
+      num: "PR #247",
+      title: "UUID serialization & BGP model registration",
+      desc: "Fixed UUID serialization and registered missing BGP routing template models for SD-WAN device templates.",
+      url: "https://github.com/cisco-en-programmability/catalystwan-sdk/pull/247",
+      tag: "Serialization & BGP",
+    },
+    {
+      num: "PR #246",
+      title: "ConfigGroup ID handling & validation",
+      desc: "Fixed ConfigGroup ID handling and payload validation across configuration group management APIs.",
+      url: "https://github.com/cisco-en-programmability/catalystwan-sdk/pull/246",
+      tag: "Config & Validation",
+    },
+    {
+      num: "PR #245",
+      title: "Standard progress bar & CLI test automation",
+      desc: "Modernized CLI tooling by replacing deprecated external clint dependency with Python standard-library progress indicators and automated unit tests.",
+      url: "https://github.com/cisco-en-programmability/catalystwan-sdk/pull/245",
+      tag: "CLI Tooling & Tests",
     },
   ]
 
@@ -563,8 +606,8 @@ export default function Portfolio() {
 
   const navItems = [
     { href: "#experience", id: "experience", label: "Experience" },
-    { href: "#projects", id: "projects", label: "Projects" },
     { href: "#open-source", id: "open-source", label: "Open Source" },
+    { href: "#projects", id: "projects", label: "Projects" },
     { href: "#skills", id: "skills", label: "Skills" },
     { href: "#education", id: "education", label: "Education" },
     { href: "#achievements", id: "achievements", label: "Achievements" },
@@ -638,7 +681,7 @@ export default function Portfolio() {
                   className="hidden sm:inline-flex rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white h-8 text-xs font-semibold shadow-2xs group"
                 >
                   <a
-                    href="https://drive.google.com/file/d/19wR0-SiqxR7rJtDJJe_iEEB-m6EMGNiD/view?usp=drive_link"
+                    href="https://drive.google.com/file/d/1qfAMs66TUXFdZUbBbTOSXeJujo7VKKxq/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5"
@@ -694,7 +737,7 @@ export default function Portfolio() {
                     className="w-full bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg h-9 text-xs font-semibold"
                   >
                     <a
-                      href="https://drive.google.com/file/d/19wR0-SiqxR7rJtDJJe_iEEB-m6EMGNiD/view?usp=drive_link"
+                      href="https://drive.google.com/file/d/1qfAMs66TUXFdZUbBbTOSXeJujo7VKKxq/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1.5"
@@ -746,11 +789,11 @@ export default function Portfolio() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 mb-3 shadow-2xs"
+                  className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 mb-3 shadow-2xs"
                 >
-                  <span className="w-2 h-2 rounded-full bg-[#0f2b5c] animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   <span className="text-xs font-bold tracking-wide uppercase text-[#0f2b5c] dark:text-sky-300">
-                    ACTIVELY SEEKING OPPORTUNITIES
+                    SOFTWARE ENGINEER · OPEN TO OPPORTUNITIES
                   </span>
                 </motion.div>
 
@@ -762,230 +805,243 @@ export default function Portfolio() {
                   className="text-4xl xl:text-5xl font-extrabold tracking-tight text-foreground mb-1"
                 />
 
-                {/* Role Title Reveal */}
+                {/* Headline Reveal */}
                 <TextReveal
-                  text="Software Engineer"
+                  text="Good software starts with asking the right questions."
                   as="h2"
-                  delay={0.25}
-                  className="text-2xl font-bold text-[#0f2b5c] dark:text-sky-400 mb-1.5"
+                  delay={0.2}
+                  className="text-2xl sm:text-3xl xl:text-[34px] font-extrabold text-[#0f2b5c] dark:text-sky-400 mb-2 tracking-tight leading-tight max-w-xl text-balance"
                 />
 
-                {/* Supporting Positioning Line */}
+                {/* Supporting Line & Hero Paragraph */}
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.45, delay: 0.35 }}
-                  className="text-sm sm:text-base font-semibold text-slate-600 dark:text-slate-300 mb-3 tracking-wide"
+                  className="space-y-2 mb-3 max-w-xl text-left"
                 >
-                  Java/Spring Boot • C#/.NET • AI Engineering
+                  <p className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 leading-snug">
+                    Because before I write the fix, I want to understand what&apos;s broken.
+                  </p>
+                  <p className="text-sm sm:text-[15px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                    I&apos;ve worked on Windows recovery software at Dell, tracked down bugs in existing systems, and contributed fixes to codebases at AWS, Apache, and Cisco. I also build things of my own — because there&apos;s always something new to figure out.
+                  </p>
                 </motion.div>
 
-                {/* Concise Professional Summary */}
-                <motion.p
+                {/* Technical Proof Line */}
+                <motion.div
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: 0.45 }}
-                  className="text-[14.5px] text-slate-700 dark:text-slate-200 font-normal leading-relaxed max-w-xl mb-4"
+                  transition={{ duration: 0.45, delay: 0.42 }}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs sm:text-[13px] font-medium text-slate-800 dark:text-slate-200 mb-3.5"
                 >
-                  Software Engineer with enterprise experience at Dell Technologies, building C#/.NET applications and automation, with hands-on Java/Spring Boot, full-stack development, and AI/LLM engineering experience.
-                </motion.p>
+                  <span>Dell Technologies · Software Development · Java &amp; C#/.NET · 9 Merged Open-Source PRs</span>
+                </motion.div>
 
-                {/* Education Credential Chip with Spring Hover */}
-                <motion.a
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0.55 }}
-                  whileHover={{ scale: 1.02, y: -1 }}
-                  href="#education"
-                  className="inline-grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-border hover:border-[#0f2b5c]/50 transition-all mb-6 group cursor-pointer shadow-2xs"
+                {/* Recruiter Quick-Scan High-Signal Proof Pills (Desktop) */}
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.48 }}
+                  className="w-full max-w-xl grid grid-cols-2 gap-2 mb-5"
                 >
-                  <GraduationCap className="h-4 w-4 text-[#0f2b5c] dark:text-sky-400 group-hover:scale-110 transition-transform shrink-0" />
-                  <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100">
-                    M.Tech CSE (IT) — UVCE Bengaluru
-                  </span>
-                  <span className="text-xs font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">
-                    CGPA: 8.70 / 10
-                  </span>
-                </motion.a>
+                  <a
+                    href="#experience"
+                    className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-100/90 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 hover:border-[#0f2b5c]/50 transition-all cursor-pointer shadow-2xs group"
+                  >
+                    <div className="w-8 h-8 rounded-md bg-[#0f2b5c] text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+                      <Building2 className="h-4 w-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[12px] font-bold text-slate-900 dark:text-white truncate">Dell Technologies</div>
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">Software Engineering &amp; Application Development</div>
+                    </div>
+                  </a>
 
-                {/* Main Action CTAs — Clean Professional 2-row × 4-column Grid with Magnetic Pull */}
+                  <a
+                    href="#open-source"
+                    className="flex items-center gap-2 p-2.5 rounded-lg bg-emerald-500/[0.08] dark:bg-emerald-950/30 border border-emerald-500/20 hover:border-emerald-500/50 transition-all cursor-pointer shadow-2xs group"
+                  >
+                    <div className="w-8 h-8 rounded-md bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+                      <Code2 className="h-4 w-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[12px] font-bold text-emerald-800 dark:text-emerald-300 truncate">9 Merged Open Source PRs</div>
+                      <div className="text-[11px] text-emerald-700/80 dark:text-emerald-400/80 truncate">AWS · Apache · Cisco</div>
+                    </div>
+                  </a>
+
+                  <a
+                    href="#achievements"
+                    className="flex items-center gap-2 p-2.5 rounded-lg bg-amber-500/[0.08] dark:bg-amber-950/30 border border-amber-500/20 hover:border-amber-500/50 transition-all cursor-pointer shadow-2xs group"
+                  >
+                    <div className="w-8 h-8 rounded-md bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+                      <Award className="h-4 w-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[12px] font-bold text-amber-800 dark:text-amber-300 truncate">Hackathon Winner</div>
+                      <div className="text-[11px] text-amber-700/80 dark:text-amber-400/80 truncate">Dell Agentic AI Hackathon</div>
+                    </div>
+                  </a>
+
+                  <a
+                    href="#education"
+                    className="flex items-center gap-2 p-2.5 rounded-lg bg-slate-100/90 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 hover:border-[#0f2b5c]/50 transition-all cursor-pointer shadow-2xs group"
+                  >
+                    <div className="w-8 h-8 rounded-md bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                      <GraduationCap className="h-4 w-4" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[12px] font-bold text-slate-900 dark:text-white truncate">M.Tech CSE · 8.70 CGPA</div>
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">UVCE · 2 IEEE Publications</div>
+                    </div>
+                  </a>
+                </motion.div>
+
+                {/* Main Action CTAs — Clean Professional Layout with Magnetic Pull */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.55, delay: 0.75 }}
-                  className="w-full max-w-xl grid grid-cols-4 gap-2.5"
+                  className="w-full max-w-xl space-y-2.5"
                 >
-                  {/* Row 1: Email | Phone | LinkedIn | GitHub */}
-                  <Magnetic strength={0.2}>
-                    <Button
-                      asChild
-                      variant="outline"
-                      onClick={() => {
-                        setActiveHeroCta("email")
-                        copyEmail()
-                      }}
-                      className={getHeroCtaClass("email")}
-                    >
-                      <a
-                        href="mailto:harini.lts8@gmail.com"
-                        className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
+                  {/* Primary Row: Explore my work + Let's talk */}
+                  <div className="grid grid-cols-2 gap-2.5">
+                    <Magnetic strength={0.2}>
+                      <Button
+                        asChild
+                        onClick={() => setActiveHeroCta("experience")}
+                        className="w-full h-11 px-3 rounded-lg text-xs sm:text-sm font-bold whitespace-nowrap transition-all cursor-pointer shadow-xs select-none min-w-0 bg-[#0f2b5c] text-white hover:bg-[#0a1c38] active:bg-[#08152b]"
                       >
-                        <Mail className="h-3.5 w-3.5 shrink-0" />
-                        <span className="leading-none truncate">{copiedEmail ? "Copied!" : "Email"}</span>
-                      </a>
-                    </Button>
-                  </Magnetic>
+                        <a
+                          href="#experience"
+                          className="flex items-center justify-center gap-2 w-full h-full min-w-0"
+                        >
+                          <Briefcase className="h-4 w-4 shrink-0" />
+                          <span className="leading-none truncate">Explore my work</span>
+                        </a>
+                      </Button>
+                    </Magnetic>
 
-                  <Magnetic strength={0.2}>
-                    <Button
-                      asChild
-                      variant="outline"
-                      onClick={() => {
-                        setActiveHeroCta("phone")
-                        copyPhone()
-                      }}
-                      className={getHeroCtaClass("phone")}
-                    >
-                      <a
-                        href="tel:+918884916059"
-                        className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
+                    <Magnetic strength={0.2}>
+                      <Button
+                        asChild
+                        variant="outline"
+                        onClick={() => setActiveHeroCta("contact")}
+                        className="w-full h-11 px-3 rounded-lg text-xs sm:text-sm font-bold whitespace-nowrap transition-all cursor-pointer shadow-xs select-none min-w-0 border-2 border-[#0f2b5c] text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10"
                       >
-                        <Phone className="h-3.5 w-3.5 shrink-0" />
-                        <span className="leading-none truncate">{copiedPhone ? "Copied!" : "Phone"}</span>
-                      </a>
-                    </Button>
-                  </Magnetic>
+                        <a
+                          href="#contact"
+                          className="flex items-center justify-center gap-2 w-full h-full min-w-0"
+                        >
+                          <Mail className="h-4 w-4 shrink-0" />
+                          <span className="leading-none truncate">Let&apos;s talk</span>
+                        </a>
+                      </Button>
+                    </Magnetic>
+                  </div>
 
-                  <Magnetic strength={0.2}>
-                    <Button
-                      asChild
-                      variant="outline"
-                      onClick={() => setActiveHeroCta("linkedin")}
-                      className={getHeroCtaClass("linkedin")}
-                    >
-                      <a
-                        href="https://www.linkedin.com/in/harini-lakshmanan-04/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
+                  {/* Secondary Row: View Resume | GitHub | LinkedIn | Email */}
+                  <div className="grid grid-cols-4 gap-2">
+                    <Magnetic strength={0.2}>
+                      <Button
+                        asChild
+                        variant="outline"
+                        onClick={() => setActiveHeroCta("resume")}
+                        className={getHeroCtaClass("resume")}
                       >
-                        <Linkedin className="h-3.5 w-3.5 shrink-0" />
-                        <span className="leading-none truncate">LinkedIn</span>
-                      </a>
-                    </Button>
-                  </Magnetic>
+                        <a
+                          href="https://drive.google.com/file/d/1qfAMs66TUXFdZUbBbTOSXeJujo7VKKxq/view?usp=sharing"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-1.5 w-full h-full min-w-0 text-xs font-semibold"
+                        >
+                          <FileText className="h-3.5 w-3.5 shrink-0" />
+                          <span className="leading-none truncate">Resume</span>
+                        </a>
+                      </Button>
+                    </Magnetic>
 
-                  <Magnetic strength={0.2}>
-                    <Button
-                      asChild
-                      variant="outline"
-                      onClick={() => setActiveHeroCta("github")}
-                      className={getHeroCtaClass("github")}
-                    >
-                      <a
-                        href="https://github.com/Harini410"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
+                    <Magnetic strength={0.2}>
+                      <Button
+                        asChild
+                        variant="outline"
+                        onClick={() => setActiveHeroCta("github")}
+                        className={getHeroCtaClass("github")}
                       >
-                        <Github className="h-3.5 w-3.5 shrink-0" />
-                        <span className="leading-none truncate">GitHub</span>
-                      </a>
-                    </Button>
-                  </Magnetic>
+                        <a
+                          href="https://github.com/Harini410"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-1.5 w-full h-full min-w-0 text-xs font-semibold"
+                        >
+                          <Github className="h-3.5 w-3.5 shrink-0" />
+                          <span className="leading-none truncate">GitHub</span>
+                        </a>
+                      </Button>
+                    </Magnetic>
 
-                  {/* Row 2: Experience | Projects | Resume | Bengaluru, India */}
-                  <Magnetic strength={0.2}>
-                    <Button
-                      asChild
-                      variant="outline"
-                      onClick={() => setActiveHeroCta("experience")}
-                      className={getHeroCtaClass("experience")}
-                    >
-                      <a
-                        href="#experience"
-                        className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
+                    <Magnetic strength={0.2}>
+                      <Button
+                        asChild
+                        variant="outline"
+                        onClick={() => setActiveHeroCta("linkedin")}
+                        className={getHeroCtaClass("linkedin")}
                       >
-                        <Briefcase className="h-3.5 w-3.5 shrink-0" />
-                        <span className="leading-none truncate">Experience</span>
-                      </a>
-                    </Button>
-                  </Magnetic>
+                        <a
+                          href="https://www.linkedin.com/in/harini-lakshmanan-04/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-1.5 w-full h-full min-w-0 text-xs font-semibold"
+                        >
+                          <Linkedin className="h-3.5 w-3.5 shrink-0" />
+                          <span className="leading-none truncate">LinkedIn</span>
+                        </a>
+                      </Button>
+                    </Magnetic>
 
-                  <Magnetic strength={0.2}>
-                    <Button
-                      asChild
-                      variant="outline"
-                      onClick={() => setActiveHeroCta("projects")}
-                      className={getHeroCtaClass("projects")}
-                    >
-                      <a
-                        href="#projects"
-                        className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
+                    <Magnetic strength={0.2}>
+                      <Button
+                        asChild
+                        variant="outline"
+                        onClick={() => {
+                          setActiveHeroCta("email")
+                          copyEmail()
+                        }}
+                        className={getHeroCtaClass("email")}
                       >
-                        <Code2 className="h-3.5 w-3.5 shrink-0" />
-                        <span className="leading-none truncate">Projects</span>
-                      </a>
-                    </Button>
-                  </Magnetic>
-
-                  <Magnetic strength={0.2}>
-                    <Button
-                      asChild
-                      variant="outline"
-                      onClick={() => setActiveHeroCta("resume")}
-                      className={getHeroCtaClass("resume")}
-                    >
-                      <a
-                        href="https://drive.google.com/file/d/19wR0-SiqxR7rJtDJJe_iEEB-m6EMGNiD/view?usp=drive_link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
-                      >
-                        <FileText className="h-3.5 w-3.5 shrink-0" />
-                        <span className="leading-none truncate">Resume</span>
-                      </a>
-                    </Button>
-                  </Magnetic>
-
-                  <Magnetic strength={0.2}>
-                    <Button
-                      asChild
-                      variant="outline"
-                      onClick={() => setActiveHeroCta("location")}
-                      className={getHeroCtaClass("location")}
-                    >
-                      <a
-                        href="#contact"
-                        className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
-                      >
-                        <MapPin className="h-3.5 w-3.5 shrink-0" />
-                        <span className="leading-none truncate">Bengaluru, India</span>
-                      </a>
-                    </Button>
-                  </Magnetic>
+                        <a
+                          href="mailto:harini.lts8@gmail.com"
+                          className="flex items-center justify-center gap-1.5 w-full h-full min-w-0 text-xs font-semibold"
+                        >
+                          <Mail className="h-3.5 w-3.5 shrink-0" />
+                          <span className="leading-none truncate">{copiedEmail ? "Copied!" : "Email"}</span>
+                        </a>
+                      </Button>
+                    </Magnetic>
+                  </div>
                 </motion.div>
               </div>
             </div>
 
-            {/* MOBILE & TABLET LAYOUT (< 1024px): Seamless, natural top-to-bottom sequence */}
+            {/* MOBILE & TABLET LAYOUT (< 1024px): Clean, compact, mobile-first sequence (320px, 375px, 390px, 430px) */}
             <div className="lg:hidden flex flex-col items-center text-center">
               {/* 1. Status Indicator Pill */}
-              <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 mb-3.5 shadow-2xs">
-                <span className="w-2 h-2 rounded-full bg-[#0f2b5c] animate-pulse" />
-                <span className="text-[11px] font-bold tracking-wide uppercase text-[#0f2b5c] dark:text-sky-300">
-                  ACTIVELY SEEKING OPPORTUNITIES
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 mb-2.5 shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[10px] sm:text-[11px] font-bold tracking-wide uppercase text-[#0f2b5c] dark:text-sky-300">
+                  SOFTWARE ENGINEER · OPEN TO OPPORTUNITIES
                 </span>
               </div>
 
-              {/* 2. Photo: Large and sharp circular portrait */}
-              <div className="relative mb-3.5">
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-[#0f2b5c] shadow-lg ring-4 ring-[#0f2b5c]/15 bg-slate-100 dark:bg-slate-800">
+              {/* 2. Photo: Crisp, compact portrait designed for mobile viewports */}
+              <div className="relative mb-2.5">
+                <div className="relative w-28 h-28 xs:w-32 xs:h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden border-3 border-[#0f2b5c] shadow-md ring-3 ring-[#0f2b5c]/15 bg-slate-100 dark:bg-slate-800">
                   <Image
                     src="/Harini.png"
                     alt="Harini L - Software Engineer"
-                    width={280}
-                    height={280}
+                    width={160}
+                    height={160}
                     priority
                     className="w-full h-full object-cover object-top"
                   />
@@ -993,178 +1049,192 @@ export default function Portfolio() {
               </div>
 
               {/* 3. Name */}
-              <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground mb-1">
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground mb-0.5">
                 HARINI L
               </h1>
 
-              {/* 4. Software Engineer */}
-              <h2 className="text-lg sm:text-xl font-bold text-[#0f2b5c] dark:text-sky-400 mb-1.5">
-                Software Engineer
+              {/* 4. Headline */}
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0f2b5c] dark:text-sky-400 mb-1.5 tracking-tight leading-snug px-2 text-balance max-w-sm">
+                Good software starts with asking the right questions.
               </h2>
 
-              {/* 5. Positioning Line */}
-              <div className="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 mb-3 tracking-wide">
-                Java/Spring Boot • C#/.NET • AI Engineering
-              </div>
-
-              {/* 6. Professional Summary */}
-              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 font-normal leading-relaxed max-w-lg mb-4">
-                Software Engineer with enterprise experience at Dell Technologies, building C#/.NET applications and automation, with hands-on Java/Spring Boot, full-stack development, and AI/LLM engineering experience.
+              {/* 5. Supporting line & Hero paragraph */}
+              <p className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 mb-1 leading-snug px-2">
+                Because before I write the fix, I want to understand what&apos;s broken.
+              </p>
+              <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 mb-2.5 leading-relaxed px-2">
+                I&apos;ve worked on Windows recovery software at Dell, tracked down bugs in existing systems, and contributed fixes to codebases at AWS, Apache, and Cisco. I also build things of my own — because there&apos;s always something new to figure out.
               </p>
 
-              {/* 7. Education */}
-              <a
-                href="#education"
-                className="w-full max-w-[360px] sm:max-w-md mx-auto mb-5 group cursor-pointer block"
-              >
-                <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 sm:gap-2.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-border hover:border-[#0f2b5c]/50 transition-all shadow-2xs">
-                  <GraduationCap className="h-4 w-4 text-[#0f2b5c] dark:text-sky-400 group-hover:scale-110 transition-transform shrink-0" />
-                  <span className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 text-left leading-snug">
-                    M.Tech CSE (IT) — UVCE Bengaluru
-                  </span>
-                  <span className="text-[11px] sm:text-xs font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2 sm:px-2.5 py-0.5 rounded-full shrink-0 whitespace-nowrap text-center">
-                    CGPA: 8.70 / 10
-                  </span>
+              {/* Technical Proof Line (Mobile) */}
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-[10.5px] font-medium text-slate-800 dark:text-slate-200 mb-2.5 max-w-sm">
+                <span>Dell Technologies · Software Development · Java &amp; C#/.NET · 9 Merged Open-Source PRs</span>
+              </div>
+
+              {/* Recruiter Quick-Scan High-Signal Proof Pills (Mobile) */}
+              <div className="w-full max-w-sm sm:max-w-md grid grid-cols-2 gap-1.5 sm:gap-2 mb-3 text-left">
+                <a
+                  href="#experience"
+                  className="flex items-center gap-2 p-1.5 sm:p-2 rounded-lg bg-slate-100/90 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 hover:border-[#0f2b5c]/50 transition-colors"
+                >
+                  <div className="w-6 h-6 rounded-md bg-[#0f2b5c] text-white flex items-center justify-center shrink-0">
+                    <Building2 className="h-3 w-3" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] sm:text-[11px] font-bold text-slate-900 dark:text-white truncate">Dell Technologies</div>
+                    <div className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 truncate">Software Engineering &amp; Application Development</div>
+                  </div>
+                </a>
+
+                <a
+                  href="#open-source"
+                  className="flex items-center gap-2 p-1.5 sm:p-2 rounded-lg bg-emerald-500/[0.08] dark:bg-emerald-950/30 border border-emerald-500/20 hover:border-emerald-500/50 transition-colors"
+                >
+                  <div className="w-6 h-6 rounded-md bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                    <Code2 className="h-3 w-3" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] sm:text-[11px] font-bold text-emerald-800 dark:text-emerald-300 truncate">9 Merged Open Source</div>
+                    <div className="text-[9px] sm:text-[10px] text-emerald-700/80 dark:text-emerald-400/80 truncate">AWS · Apache · Cisco</div>
+                  </div>
+                </a>
+
+                <a
+                  href="#achievements"
+                  className="flex items-center gap-2 p-1.5 sm:p-2 rounded-lg bg-amber-500/[0.08] dark:bg-amber-950/30 border border-amber-500/20 hover:border-amber-500/50 transition-colors"
+                >
+                  <div className="w-6 h-6 rounded-md bg-amber-500 text-white flex items-center justify-center shrink-0">
+                    <Award className="h-3 w-3" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] sm:text-[11px] font-bold text-amber-800 dark:text-amber-300 truncate">Hackathon Winner</div>
+                    <div className="text-[9px] sm:text-[10px] text-amber-700/80 dark:text-amber-400/80 truncate">Dell Agentic AI</div>
+                  </div>
+                </a>
+
+                <a
+                  href="#education"
+                  className="flex items-center gap-2 p-1.5 sm:p-2 rounded-lg bg-slate-100/90 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 hover:border-[#0f2b5c]/50 transition-colors"
+                >
+                  <div className="w-6 h-6 rounded-md bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400 flex items-center justify-center shrink-0">
+                    <GraduationCap className="h-3 w-3" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] sm:text-[11px] font-bold text-slate-900 dark:text-white truncate">M.Tech · 8.70 CGPA</div>
+                    <div className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 truncate">UVCE · 2 IEEE Papers</div>
+                  </div>
+                </a>
+              </div>
+
+              {/* 8. Action CTAs on Mobile — Clean Primary Row + Secondary Row */}
+              <div className="w-full max-w-sm sm:max-w-md space-y-2 mb-2.5">
+                <div className="grid grid-cols-2 gap-2">
+                  <Button
+                    asChild
+                    className="bg-[#0f2b5c] hover:bg-[#0a1c38] text-white rounded-lg h-9 text-xs font-semibold shadow-xs"
+                  >
+                    <a
+                      href="#experience"
+                      className="flex items-center justify-center gap-1.5 w-full h-full"
+                    >
+                      <Briefcase className="h-3.5 w-3.5 shrink-0" />
+                      <span>Explore my work</span>
+                    </a>
+                  </Button>
+
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-[#0f2b5c] text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 rounded-lg h-9 text-xs font-semibold shadow-xs"
+                  >
+                    <a
+                      href="#contact"
+                      className="flex items-center justify-center gap-1.5 w-full h-full"
+                    >
+                      <Mail className="h-3.5 w-3.5 shrink-0" />
+                      <span>Let&apos;s talk</span>
+                    </a>
+                  </Button>
                 </div>
-              </a>
 
-              {/* 9. Action CTAs — Clean Professional 4-row × 2-column Grid */}
-              <div className="w-full max-w-md grid grid-cols-2 gap-2 sm:gap-2.5">
-                {/* Row 1: Email | Phone */}
-                <Button
-                  asChild
-                  variant="outline"
-                  onClick={() => {
-                    setActiveHeroCta("email")
-                    copyEmail()
-                  }}
-                  className={getHeroCtaClass("email")}
-                >
-                  <a
-                    href="mailto:harini.lts8@gmail.com"
-                    className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
+                <div className="grid grid-cols-4 gap-1.5">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="rounded-lg border-border hover:border-[#0f2b5c] hover:bg-[#0f2b5c]/10 text-foreground h-8 text-[11px] font-semibold shadow-2xs"
                   >
-                    <Mail className="h-3.5 w-3.5 shrink-0" />
-                    <span className="leading-none truncate">{copiedEmail ? "Copied!" : "Email"}</span>
-                  </a>
-                </Button>
+                    <a
+                      href="https://drive.google.com/file/d/1qfAMs66TUXFdZUbBbTOSXeJujo7VKKxq/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-1 w-full h-full"
+                    >
+                      <FileText className="h-3 w-3 shrink-0" />
+                      <span>Resume</span>
+                    </a>
+                  </Button>
 
-                <Button
-                  asChild
-                  variant="outline"
-                  onClick={() => {
-                    setActiveHeroCta("phone")
-                    copyPhone()
-                  }}
-                  className={getHeroCtaClass("phone")}
-                >
-                  <a
-                    href="tel:+918884916059"
-                    className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="rounded-lg border-border hover:border-[#0f2b5c] hover:bg-[#0f2b5c]/10 text-foreground h-8 text-[11px] font-semibold shadow-2xs"
                   >
-                    <Phone className="h-3.5 w-3.5 shrink-0" />
-                    <span className="leading-none truncate">{copiedPhone ? "Copied!" : "Phone"}</span>
-                  </a>
-                </Button>
+                    <a
+                      href="https://github.com/Harini410"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-1 w-full h-full"
+                    >
+                      <Github className="h-3 w-3 shrink-0" />
+                      <span>GitHub</span>
+                    </a>
+                  </Button>
 
-                {/* Row 2: LinkedIn | GitHub */}
-                <Button
-                  asChild
-                  variant="outline"
-                  onClick={() => setActiveHeroCta("linkedin")}
-                  className={getHeroCtaClass("linkedin")}
-                >
-                  <a
-                    href="https://www.linkedin.com/in/harini-lakshmanan-04/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="rounded-lg border-border hover:border-[#0f2b5c] hover:bg-[#0f2b5c]/10 text-foreground h-8 text-[11px] font-semibold shadow-2xs"
                   >
-                    <Linkedin className="h-3.5 w-3.5 shrink-0" />
-                    <span className="leading-none truncate">LinkedIn</span>
-                  </a>
-                </Button>
+                    <a
+                      href="https://www.linkedin.com/in/harini-lakshmanan-04/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-1 w-full h-full"
+                    >
+                      <Linkedin className="h-3 w-3 shrink-0" />
+                      <span>LinkedIn</span>
+                    </a>
+                  </Button>
 
-                <Button
-                  asChild
-                  variant="outline"
-                  onClick={() => setActiveHeroCta("github")}
-                  className={getHeroCtaClass("github")}
-                >
-                  <a
-                    href="https://github.com/Harini410"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
+                  <Button
+                    asChild
+                    variant="outline"
+                    onClick={() => {
+                      setActiveHeroCta("email")
+                      copyEmail()
+                    }}
+                    className="rounded-lg border-border hover:border-[#0f2b5c] hover:bg-[#0f2b5c]/10 text-foreground h-8 text-[11px] font-semibold shadow-2xs"
                   >
-                    <Github className="h-3.5 w-3.5 shrink-0" />
-                    <span className="leading-none truncate">GitHub</span>
-                  </a>
-                </Button>
+                    <a
+                      href="mailto:harini.lts8@gmail.com"
+                      className="flex items-center justify-center gap-1 w-full h-full"
+                    >
+                      <Mail className="h-3 w-3 shrink-0" />
+                      <span>{copiedEmail ? "Copied!" : "Email"}</span>
+                    </a>
+                  </Button>
+                </div>
+              </div>
 
-                {/* Row 3: Experience | Projects */}
-                <Button
-                  asChild
-                  variant="outline"
-                  onClick={() => setActiveHeroCta("experience")}
-                  className={getHeroCtaClass("experience")}
-                >
-                  <a
-                    href="#experience"
-                    className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
-                  >
-                    <Briefcase className="h-3.5 w-3.5 shrink-0" />
-                    <span className="leading-none truncate">Experience</span>
-                  </a>
-                </Button>
-
-                <Button
-                  asChild
-                  variant="outline"
-                  onClick={() => setActiveHeroCta("projects")}
-                  className={getHeroCtaClass("projects")}
-                >
-                  <a
-                    href="#projects"
-                    className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
-                  >
-                    <Code2 className="h-3.5 w-3.5 shrink-0" />
-                    <span className="leading-none truncate">Projects</span>
-                  </a>
-                </Button>
-
-                {/* Row 4: Resume | Bengaluru, India */}
-                <Button
-                  asChild
-                  variant="outline"
-                  onClick={() => setActiveHeroCta("resume")}
-                  className={getHeroCtaClass("resume")}
-                >
-                  <a
-                    href="https://drive.google.com/file/d/19wR0-SiqxR7rJtDJJe_iEEB-m6EMGNiD/view?usp=drive_link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
-                  >
-                    <FileText className="h-3.5 w-3.5 shrink-0" />
-                    <span className="leading-none truncate">Resume</span>
-                  </a>
-                </Button>
-
-                <Button
-                  asChild
-                  variant="outline"
-                  onClick={() => setActiveHeroCta("location")}
-                  className={getHeroCtaClass("location")}
-                >
-                  <a
-                    href="#contact"
-                    className="flex items-center justify-center gap-1.5 w-full h-full min-w-0"
-                  >
-                    <MapPin className="h-3.5 w-3.5 shrink-0" />
-                    <span className="leading-none truncate">Bengaluru, India</span>
-                  </a>
-                </Button>
+              {/* 9. Mobile Section Jump Links Strip */}
+              <div className="flex flex-wrap items-center justify-center gap-1 text-[11px] font-medium text-slate-500 dark:text-slate-400">
+                <a href="#experience" className="px-1.5 py-0.5 rounded hover:text-[#0f2b5c] dark:hover:text-sky-300">Experience</a>
+                <span>·</span>
+                <a href="#open-source" className="px-1.5 py-0.5 rounded hover:text-[#0f2b5c] dark:hover:text-sky-300">Open Source (9 PRs)</a>
+                <span>·</span>
+                <a href="#projects" className="px-1.5 py-0.5 rounded hover:text-[#0f2b5c] dark:hover:text-sky-300">Projects</a>
+                <span>·</span>
+                <a href="#skills" className="px-1.5 py-0.5 rounded hover:text-[#0f2b5c] dark:hover:text-sky-300">Skills</a>
               </div>
             </div>
           </div>
@@ -1175,11 +1245,15 @@ export default function Portfolio() {
           <div className="container mx-auto max-w-5xl">
             {/* Section Header */}
             <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 text-[#0f2b5c] dark:text-sky-300 text-xs font-bold uppercase tracking-wider mb-2.5 shadow-2xs">
+                <Briefcase className="h-3.5 w-3.5" />
+                <span>Work Experience</span>
+              </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-                Experience
+                When software breaks, I want to know why.
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
-                Software engineering, systems automation, and AI-assisted enterprise development
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1 leading-relaxed">
+                Not every engineering problem starts with a blank screen. Sometimes the challenge is understanding a system that already exists, reproducing a failure you can&apos;t easily explain, and narrowing it down until the evidence makes sense.
               </p>
             </div>
 
@@ -1193,16 +1267,335 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 3. PROJECTS SECTION — 3D TILT CARDS & SPOTLIGHT */}
+        {/* 3. OPEN-SOURCE CONTRIBUTIONS — 9 MERGED PRs ACROSS AWS, APACHE, AND CISCO */}
+        <section
+          id="open-source"
+          className="relative border-t border-border bg-slate-50/50 py-12 sm:py-14 px-4 sm:px-6 lg:px-8 dark:bg-slate-900/30"
+        >
+          <div className="container mx-auto max-w-6xl">
+            {/* Section Header */}
+            <div className="mx-auto mb-8 max-w-2xl text-center sm:mb-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2.5 shadow-2xs">
+                <Code2 className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span>9 Merged Pull Requests</span>
+              </div>
+              <h2 className="text-2xl font-extrabold tracking-tight text-[#0f2b5c] dark:text-sky-400 sm:text-3xl">
+                Code doesn&apos;t stop at my own projects.
+              </h2>
+              <p className="mt-2 text-xs font-medium text-slate-600 dark:text-slate-300 sm:text-sm leading-relaxed">
+                I wanted to contribute beyond code I wrote myself. That meant reading unfamiliar repositories, understanding their conventions, working through edge cases, and submitting changes that could stand up to review. Nine of my pull requests have been merged across AWS, Apache, and Cisco.
+              </p>
+
+              {/* Quick Summary Badges across 3 Projects */}
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-semibold">
+                <a
+                  href="https://github.com/aws/aws-durable-execution-sdk-java/pull/785"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white dark:bg-card border border-border hover:border-[#0f2b5c]/50 text-slate-800 dark:text-slate-200 transition-colors shadow-2xs"
+                >
+                  <span className="font-bold text-[#0f2b5c] dark:text-sky-400">AWS:</span>
+                  <span>1 Merged PR (#785)</span>
+                  <ExternalLink className="h-3 w-3 text-slate-400" />
+                </a>
+                <a
+                  href="https://github.com/apache/incubator-xtable/pull/967"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white dark:bg-card border border-border hover:border-[#0f2b5c]/50 text-slate-800 dark:text-slate-200 transition-colors shadow-2xs"
+                >
+                  <span className="font-bold text-[#0f2b5c] dark:text-sky-400">Apache:</span>
+                  <span>1 Merged PR (#967)</span>
+                  <ExternalLink className="h-3 w-3 text-slate-400" />
+                </a>
+                <a
+                  href="https://github.com/cisco-en-programmability/catalystwan-sdk/pulls?q=is%3Apr+author%3AHarini410+is%3Amerged"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white dark:bg-card border border-border hover:border-[#0f2b5c]/50 text-slate-800 dark:text-slate-200 transition-colors shadow-2xs"
+                >
+                  <span className="font-bold text-[#0f2b5c] dark:text-sky-400">Cisco:</span>
+                  <span>7 Merged PRs (#245–#251)</span>
+                  <ExternalLink className="h-3 w-3 text-slate-400" />
+                </a>
+              </div>
+            </div>
+
+            {/* 3 Core Organization Cards Grid */}
+            <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-3">
+              {/* Card 1: AWS Durable Execution SDK for Java */}
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
+                <div className="h-1.5 w-full bg-[#0f2b5c]" />
+                <CardHeader className="pb-3">
+                  <div className="mb-2 flex items-start justify-between gap-2">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400 font-extrabold text-xs">
+                      AWS
+                    </div>
+                    <Badge
+                      variant="outline"
+                      className="shrink-0 rounded-full border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-400"
+                    >
+                      PR #785 · Merged
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
+                    Getting failure handling right.
+                  </CardTitle>
+                  <CardDescription className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                    AWS Durable Execution SDK for Java
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-1 flex-col justify-between gap-4">
+                  <div className="space-y-3">
+                    <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                      I worked on durable-execution suspension and error handling, including retryable errors, awaited-operation diagnostics, and regression tests. In workflow systems, small mistakes in failure handling can affect how an operation resumes, so preserving the expected execution lifecycle matters.
+                    </p>
+                    <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+                      <div className="font-bold text-slate-800 dark:text-slate-100 flex items-center justify-between">
+                        <span>PR #785 · Merged</span>
+                        <span className="text-emerald-600 dark:text-emerald-400 font-bold">✓ Merged Upstream</span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                        Ensures correct error classification and suspension semantics for long-running serverless workflows.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {["Java", "Maven", "JUnit", "AWS Lambda", "Lifecycle Tests"].map((t) => (
+                        <span key={t} className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <Button
+                      asChild
+                      size="sm"
+                      className="h-8 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-2xs hover:bg-[#173f7a]"
+                    >
+                      <a
+                        href="https://github.com/aws/aws-durable-execution-sdk-java/pull/785"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5"
+                      >
+                        View PR #785
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </Button>
+                    <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Official AWS SDK</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Card 2: Apache XTable (Incubating) */}
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
+                <div className="h-1.5 w-full bg-[#0f2b5c]" />
+                <CardHeader className="pb-3">
+                  <div className="mb-2 flex items-start justify-between gap-2">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400 font-extrabold text-xs">
+                      Apache
+                    </div>
+                    <Badge
+                      variant="outline"
+                      className="shrink-0 rounded-full border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-400"
+                    >
+                      PR #967 · Merged
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
+                    Fixing a compatibility edge case.
+                  </CardTitle>
+                  <CardDescription className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                    Apache XTable (Hudi Partition Validation)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-1 flex-col justify-between gap-4">
+                  <div className="space-y-3">
+                    <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                      I addressed a Guava runtime compatibility issue in Apache Hudi partition-path validation, using explicit argument validation while preserving lazy error-message construction and checking compatibility across Guava versions.
+                    </p>
+                    <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+                      <div className="font-bold text-slate-800 dark:text-slate-100 flex items-center justify-between">
+                        <span>PR #967 · Merged</span>
+                        <span className="text-emerald-600 dark:text-emerald-400 font-bold">✓ Merged Upstream</span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                        Ensures safe cross-table partition translation between Apache Hudi, Delta Lake, and Apache Iceberg.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {["Java", "Apache Hudi", "Guava", "Lakehouse Interop", "API Validation"].map((t) => (
+                        <span key={t} className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <Button
+                      asChild
+                      size="sm"
+                      className="h-8 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-2xs hover:bg-[#173f7a]"
+                    >
+                      <a
+                        href="https://github.com/apache/incubator-xtable/pull/967"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5"
+                      >
+                        View PR #967
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </Button>
+                    <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Apache Foundation</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Card 3: Cisco Catalyst WAN SDK (7 Merged PRs) */}
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
+                <div className="h-1.5 w-full bg-[#0f2b5c]" />
+                <CardHeader className="pb-3">
+                  <div className="mb-2 flex items-start justify-between gap-2">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400 font-extrabold text-xs">
+                      Cisco
+                    </div>
+                    <Badge
+                      variant="outline"
+                      className="shrink-0 rounded-full border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-400"
+                    >
+                      PRs #245–#251 · Merged
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
+                    Making API behavior more reliable.
+                  </CardTitle>
+                  <CardDescription className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                    Cisco Catalyst WAN SDK (7 Merged PRs)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-1 flex-col justify-between gap-4">
+                  <div className="space-y-3">
+                    <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                      Across seven merged pull requests, I contributed changes involving device-health pagination, certificate management, HTTP method correctness, API behavior, and tests in an enterprise networking SDK.
+                    </p>
+
+                    {/* Interactive Collapsible / Tabbed View for all 7 Cisco PRs */}
+                    <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-2.5">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200">
+                          Merged Pull Requests ({ciscoMergedPrs.length})
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setCiscoPrsExpanded(!ciscoPrsExpanded)}
+                          className="text-[10px] font-bold text-[#0f2b5c] dark:text-sky-400 hover:underline cursor-pointer"
+                        >
+                          {ciscoPrsExpanded ? "Show Top 3" : "Expand All 7 PRs"}
+                        </button>
+                      </div>
+
+                      <div className="space-y-1.5 max-h-60 overflow-y-auto pr-1">
+                        {(ciscoPrsExpanded ? ciscoMergedPrs : ciscoMergedPrs.slice(0, 3)).map((pr) => (
+                          <a
+                            key={pr.num}
+                            href={pr.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group/pr flex items-start justify-between gap-2 p-1.5 rounded-md bg-white dark:bg-card border border-slate-200/80 dark:border-slate-700/80 hover:border-[#0f2b5c]/50 transition-colors"
+                          >
+                            <div className="min-w-0">
+                              <div className="flex items-center gap-1.5">
+                                <span className="font-mono text-[10px] font-bold text-emerald-700 dark:text-emerald-400">
+                                  {pr.num}
+                                </span>
+                                <span className="text-[11px] font-semibold text-slate-800 dark:text-slate-100 truncate group-hover/pr:text-[#0f2b5c] dark:group-hover/pr:text-sky-400">
+                                  {pr.title}
+                                </span>
+                              </div>
+                              <p className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
+                                {pr.desc}
+                              </p>
+                            </div>
+                            <ExternalLink className="h-3 w-3 text-slate-400 group-hover/pr:text-[#0f2b5c] shrink-0 mt-0.5" />
+                          </a>
+                        ))}
+                      </div>
+
+                      {!ciscoPrsExpanded && (
+                        <p className="text-[10px] text-center text-slate-500 dark:text-slate-400 mt-2">
+                          + 4 more merged PRs (#248, #247, #246, #245)
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="flex flex-wrap gap-1">
+                      {["Python", "REST APIs", "API Gateway", "PKI / TLS", "BGP Models", "Pytest"].map((t) => (
+                        <span key={t} className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Differentiated In-Progress note */}
+                    <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                      <span>In Review: PR #78 (Catalyst Center)</span>
+                      <a
+                        href="https://github.com/cisco-en-programmability/catalystcentersdk/pull/78"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-[#0f2b5c] dark:text-sky-400 hover:underline font-semibold text-[10.5px]"
+                      >
+                        <span>Open · Checks passing</span>
+                        <ExternalLink className="h-2.5 w-2.5" />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <Button
+                      asChild
+                      size="sm"
+                      className="h-8 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-2xs hover:bg-[#173f7a]"
+                    >
+                      <a
+                        href="https://github.com/cisco-en-programmability/catalystwan-sdk/pulls?q=is%3Apr+author%3AHarini410+is%3Amerged"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5"
+                      >
+                        All 7 Cisco PRs
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </Button>
+                    <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Cisco Systems</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Closing Reflection Note */}
+            <p className="text-center text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mt-8 leading-relaxed italic">
+              “These contributions taught me to work with code I didn&apos;t start, understand the assumptions behind it, and make changes that fit the project rather than just my own approach.”
+            </p>
+          </div>
+        </section>
+
+        {/* 4. PROJECTS SECTION — 3D TILT CARDS & SPOTLIGHT */}
         <section id="projects" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border">
           <div className="container mx-auto max-w-6xl">
             {/* Section Header */}
             <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 text-[#0f2b5c] dark:text-sky-300 text-xs font-bold uppercase tracking-wider mb-2.5 shadow-2xs">
+                <Laptop className="h-3.5 w-3.5" />
+                <span>Featured Engineering Projects</span>
+              </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-                Projects
+                Problems I&apos;ve chosen to work on.
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
-                Featured engineering applications spanning Agentic AI, multi-agent RAG, NLP, and enterprise full-stack systems
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1 leading-relaxed">
+                My projects are where I get to explore an idea end to end: understand the problem, choose an approach, build it, and test whether the result holds up.
               </p>
             </div>
 
@@ -1219,207 +1612,21 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-
-
-        
-{/* 4. OPEN-SOURCE CONTRIBUTIONS */}
-<section
-  id="open-source"
-  className="relative border-t border-border bg-slate-50/50 py-12 sm:py-14 px-4 sm:px-6 lg:px-8 dark:bg-slate-900/30"
->
-  <div className="container mx-auto max-w-6xl">
-    {/* Section Header */}
-    <div className="mx-auto mb-9 max-w-xl text-center sm:mb-10">
-      <h2 className="text-2xl font-extrabold tracking-tight text-[#0f2b5c] dark:text-sky-400 sm:text-3xl">
-        Open-Source Contributions
-      </h2>
-      <p className="mt-2 text-xs font-medium text-slate-600 dark:text-slate-300 sm:text-sm">
-        Solving real-world bugs and improving reliability across open-source projects.
-      </p>
-    </div>
-
-    {/* Contribution Cards */}
-    <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-
-      {/* Apache XTable */}
-      <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
-        <div className="h-1 w-full bg-[#0f2b5c]" />
-
-        <CardHeader className="pb-3">
-          <div className="mb-2 flex items-start justify-between gap-2">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400">
-              <Code2 className="h-5 w-5" />
-            </div>
-            <Badge
-              variant="outline"
-              className="shrink-0 rounded-full border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-400"
-            >
-              ✓ Merged
-            </Badge>
-          </div>
-
-          <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
-            Apache XTable
-          </CardTitle>
-          <CardDescription className="text-xs font-medium tracking-wide">
-            Java · Guava · Hudi
-          </CardDescription>
-        </CardHeader>
-
-        <CardContent className="flex flex-1 flex-col gap-5">
-          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            Fixed a Guava runtime compatibility issue in Hudi partition-path
-            validation using explicit argument validation. Preserved lazy
-            error-message construction and verified the fix using Guava 14.
-          </p>
-
-          <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-slate-100 pt-4 dark:border-slate-700">
-            <Button
-              asChild
-              size="sm"
-              className="h-9 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#173f7a] hover:shadow-md"
-            >
-              <a
-                href="https://github.com/apache/incubator-xtable/pull/967"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View PR #967
-                <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
-              </a>
-            </Button>
-
-            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
-              Apache project
-            </span>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* AWS Durable Execution SDK */}
-      <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
-        <div className="h-1 w-full bg-[#0f2b5c]" />
-
-        <CardHeader className="pb-3">
-          <div className="mb-2 flex items-start justify-between gap-2">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400">
-              <Code2 className="h-5 w-5" />
-            </div>
-            <Badge
-              variant="outline"
-              className="shrink-0 rounded-full border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-400"
-            >
-              ✓ Merged
-            </Badge>
-          </div>
-
-          <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
-            AWS Durable Execution SDK for Java
-          </CardTitle>
-          <CardDescription className="text-xs font-medium tracking-wide">
-            Java · Maven · JUnit · AWS Lambda
-          </CardDescription>
-        </CardHeader>
-
-        <CardContent className="flex flex-1 flex-col gap-5">
-          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            Fixed invalid durable-execution suspension with retryable error
-            handling and awaited-operation diagnostics. Preserved checkpoint-token
-            revocation behavior and added regression tests for execution lifecycle
-            and plugin notifications.
-          </p>
-
-          <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-slate-100 pt-4 dark:border-slate-700">
-            <Button
-              asChild
-              size="sm"
-              className="h-9 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#173f7a] hover:shadow-md"
-            >
-              <a
-                href="https://github.com/aws/aws-durable-execution-sdk-java/pull/785"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View PR #785
-                <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
-              </a>
-            </Button>
-
-            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
-              AWS SDK
-            </span>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Cisco Catalyst Center SDK */}
-      <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
-        <div className="h-1 w-full bg-[#0f2b5c]" />
-
-        <CardHeader className="pb-3">
-          <div className="mb-2 flex items-start justify-between gap-2">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400">
-              <Code2 className="h-5 w-5" />
-            </div>
-            <Badge
-              variant="outline"
-              className="shrink-0 rounded-full border-blue-200 bg-blue-50 px-2.5 py-1 text-[11px] font-semibold text-[#0f2b5c] dark:border-sky-900 dark:bg-sky-950/40 dark:text-sky-400"
-            >
-              Open · Checks passed
-            </Badge>
-          </div>
-
-          <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
-            Cisco Catalyst Center SDK
-          </CardTitle>
-          <CardDescription className="text-xs font-medium tracking-wide">
-            Python · Schema Validation
-          </CardDescription>
-        </CardHeader>
-
-        <CardContent className="flex flex-1 flex-col gap-5">
-          <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            Added and registered the v3.2.3.0 banner schema validator
-            for request-body validation.
-          </p>
-
-          <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-slate-100 pt-4 dark:border-slate-700">
-            <Button
-              asChild
-              size="sm"
-              className="h-9 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#173f7a] hover:shadow-md"
-            >
-              <a
-                href="https://github.com/cisco-en-programmability/catalystcentersdk/pull/78"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View PR #78
-                <ExternalLink className="ml-1.5 h-3.5 w-3.5" />
-              </a>
-            </Button>
-
-            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
-              Cisco SDK
-            </span>
-          </div>
-        </CardContent>
-      </Card>
-
-    </div>
-  </div>
-</section>
         
         
         {/* 4. TECHNICAL SKILLS — INTERACTIVE RELATIONSHIPS & FILTER TRANSITIONS */}
         <section id="skills" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border bg-slate-50/50 dark:bg-slate-900/30">
           <div className="container mx-auto max-w-5xl">
             <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 text-[#0f2b5c] dark:text-sky-300 text-xs font-bold uppercase tracking-wider mb-2.5 shadow-2xs">
+                <Code2 className="h-3.5 w-3.5" />
+                <span>Developer Toolkit</span>
+              </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-                Technical Skills
+                The tools I use to solve problems.
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
-                Engineering proficiencies spanning AI-assisted workflows, languages, systems, and enterprise stacks
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1 leading-relaxed">
+                I choose tools based on the problem in front of me. These are the languages, frameworks, and systems I&apos;ve worked with across professional experience, open-source contributions, and projects.
               </p>
             </div>
 
@@ -1437,11 +1644,15 @@ export default function Portfolio() {
           <div className="container mx-auto max-w-4xl">
             {/* Section Header */}
             <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 text-[#0f2b5c] dark:text-sky-300 text-xs font-bold uppercase tracking-wider mb-2.5 shadow-2xs">
+                <GraduationCap className="h-3.5 w-3.5" />
+                <span>Academic Foundation &amp; Research</span>
+              </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-                Education
+                The foundation behind the work.
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1">
-                Academic qualifications, university honors, and IEEE international conference research
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1 leading-relaxed">
+                I studied computer science with a focus on building software, exploring technical problems, and developing a stronger engineering foundation.
               </p>
             </div>
 
@@ -1696,10 +1907,10 @@ export default function Portfolio() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10 w-full">
               <div className="min-w-0">
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground break-words">
-                  Achievements &amp; Certifications
+                  A few milestones along the way.
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1 leading-relaxed">
-                  Engineering honors, industry hackathon awards, and professional accreditations
+                  Winner · Dell Agentic AI Hackathon · 9 Merged Open-Source PRs · 2 IEEE Publications · M.Tech CGPA 8.70/10
                 </p>
               </div>
 
@@ -2045,11 +2256,15 @@ export default function Portfolio() {
         {/* 7. CONTACT SECTION */}
         <section id="contact" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border">
           <div className="container mx-auto max-w-3xl text-center">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 text-[#0f2b5c] dark:text-sky-300 text-xs font-bold uppercase tracking-wider mb-2.5 shadow-2xs">
+              <Mail className="h-3.5 w-3.5" />
+              <span>Get in Touch</span>
+            </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground mb-3">
-              Let's Connect
+              Have a problem worth solving?
             </h2>
             <p className="text-sm sm:text-base text-slate-700 dark:text-slate-200 font-medium max-w-lg mx-auto mb-6 sm:mb-8 leading-relaxed">
-              Open to Software Engineer opportunities. Reach out directly:
+              I&apos;m looking for my next Software Engineer opportunity where I can write solid code, debug hard problems, and contribute to a demanding team. If my work resonates with you, let&apos;s connect.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 text-left mb-8">
@@ -2146,7 +2361,7 @@ export default function Portfolio() {
     className="shrink-0 rounded-lg bg-[#0f2b5c] px-4 text-white hover:bg-[#0a1c38]"
   >
     <a
-      href="https://drive.google.com/file/d/19wR0-SiqxR7rJtDJJe_iEEB-m6EMGNiD/view?usp=drive_link"
+      href="https://drive.google.com/file/d/1qfAMs66TUXFdZUbBbTOSXeJujo7VKKxq/view?usp=sharing"
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center gap-2"

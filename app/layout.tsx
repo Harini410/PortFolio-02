@@ -17,7 +17,7 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: "Harini L - Software Engineer Portfolio",
-  description: "Portfolio of Harini L - Software Engineer specializing in AI/ML and Full-Stack Development",
+  description: "Portfolio of Harini L - Software Engineer | Java, C#/.NET & Open Source. Experience at Dell Technologies and 9 merged open-source PRs across AWS, Apache, and Cisco.",
   generator: "v0.app",
 }
 

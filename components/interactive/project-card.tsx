@@ -14,6 +14,7 @@ export interface ProjectData {
   tagline: string
   badge?: string | null
   date: string
+  hook?: string
   summary: string
   bullets: string[]
   tech: string[]
@@ -91,24 +92,32 @@ export function ProjectCard({ project, isTouched, onSelect }: ProjectCardProps) 
         {/* COMFORTABLE GAP */}
         <div className="h-3 sm:h-3.5" />
 
-        {/* ROW 3: TECHNOLOGY TAGLINE & DESCRIPTION */}
-        <div className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 line-clamp-1 mb-2">
+        {/* ROW 3: TECHNOLOGY TAGLINE */}
+        <div className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 line-clamp-1 mb-2.5">
           {project.tagline}
         </div>
 
-        <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 font-normal leading-relaxed min-h-[3.25rem] mb-4">
+        {/* Intro Hook */}
+        {project.hook && (
+          <p className="text-xs sm:text-[13px] font-semibold text-[#0f2b5c] dark:text-sky-300 italic mb-2 leading-snug">
+            “{project.hook}”
+          </p>
+        )}
+
+        {/* Narrative Summary */}
+        <p className="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed mb-3.5">
           {project.summary}
         </p>
 
-        {/* Bullets with consistent comfortable spacing */}
-        <ul className="space-y-2 mb-4 text-xs sm:text-[13px] text-slate-700 dark:text-slate-200">
+        {/* Engineering Highlights */}
+        <div className="space-y-2 mb-4">
           {project.bullets.map((b, i) => (
-            <li key={i} className="flex items-start gap-2 leading-relaxed">
-              <span className="text-[#0f2b5c] dark:text-sky-400 font-bold mt-0.5 shrink-0">•</span>
+            <div key={i} className="flex items-start gap-2.5 leading-relaxed text-xs sm:text-[13px] text-slate-700 dark:text-slate-200">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0f2b5c] dark:bg-sky-400 mt-1.5 shrink-0" />
               <span>{b}</span>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
 
         {/* Tech Chips */}
         <div className="flex flex-wrap gap-1.5 pt-3.5 border-t border-border mt-auto mb-4">

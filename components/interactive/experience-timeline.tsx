@@ -7,6 +7,14 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Building2, Briefcase, Calendar, MapPin, ExternalLink, ChevronDown } from "lucide-react"
 
+export interface ExperienceCaseStudy {
+  title: string
+  problem: string
+  investigation: string
+  findings: string
+  validation: string
+}
+
 export interface ExperienceItem {
   id: string
   company: string
@@ -14,6 +22,9 @@ export interface ExperienceItem {
   duration: string
   location: string
   isProminent: boolean
+  summaryQuote?: string
+  closingQuote?: string
+  caseStudy?: ExperienceCaseStudy
   bullets: string[]
   skills: string[]
   certificate: string | null
@@ -153,22 +164,111 @@ export function ExperienceTimeline({
                   </CardHeader>
 
                   <CardContent className="pt-0 px-4 sm:px-6 pb-4 sm:pb-6">
-                    {/* Staggered Highlights Bullets */}
-                    <ul className="space-y-2 mb-4 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
-                      {exp.bullets.map((b, bIdx) => (
-                        <motion.li
-                          key={bIdx}
-                          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.35, delay: 0.1 + bIdx * 0.08 }}
-                          className="flex items-start gap-2 leading-relaxed"
-                        >
-                          <span className="text-[#0f2b5c] dark:text-sky-400 font-bold mt-0.5 shrink-0">•</span>
-                          <span>{b}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
+                    {exp.summaryQuote && (
+                      <p className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 leading-relaxed bg-slate-50 dark:bg-slate-800/60 p-3 rounded-lg border border-border/80 mb-3.5">
+                        “{exp.summaryQuote}”
+                      </p>
+                    )}
+
+                    {/* Problem → Investigation → Change → Validation Case Study Breakdown */}
+                    {exp.caseStudy && (
+                      <div className="mb-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-900/50 p-3.5 sm:p-4">
+                        <div className="flex items-center justify-between gap-2 mb-3">
+                          <div className="flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                            <span className="text-xs font-bold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-300">
+                              Engineering Case Study: {exp.caseStudy.title}
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-semibold text-slate-500 dark:text-slate-400">
+                            The Problem → What I Investigated → What the Investigation Revealed → Validation
+                          </span>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                          {/* 1. The Problem */}
+                          <div className="p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
+                            <div className="flex items-center gap-1.5 mb-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+                                The Problem
+                              </span>
+                            </div>
+                            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                              {exp.caseStudy.problem}
+                            </p>
+                          </div>
+
+                          {/* 2. What I Investigated */}
+                          <div className="p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
+                            <div className="flex items-center gap-1.5 mb-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                                What I Investigated
+                              </span>
+                            </div>
+                            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                              {exp.caseStudy.investigation}
+                            </p>
+                          </div>
+
+                          {/* 3. What the Investigation Revealed */}
+                          <div className="p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
+                            <div className="flex items-center gap-1.5 mb-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
+                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-600 dark:text-sky-400">
+                                What the Investigation Revealed
+                              </span>
+                            </div>
+                            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                              {exp.caseStudy.findings}
+                            </p>
+                          </div>
+
+                          {/* 4. Validation */}
+                          <div className="p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
+                            <div className="flex items-center gap-1.5 mb-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                                Validation
+                              </span>
+                            </div>
+                            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                              {exp.caseStudy.validation}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Other Engineering Work Bullets */}
+                    <div className="mb-2">
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
+                        Other engineering work
+                      </div>
+                      <ul className="space-y-2 mb-4 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
+                        {exp.bullets.map((b, bIdx) => (
+                          <motion.li
+                            key={bIdx}
+                            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: -10 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.35, delay: 0.1 + bIdx * 0.08 }}
+                            className="flex items-start gap-2 leading-relaxed"
+                          >
+                            <span className="text-[#0f2b5c] dark:text-sky-400 font-bold mt-0.5 shrink-0">•</span>
+                            <span>{b}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Closing Line */}
+                    {exp.closingQuote && (
+                      <p className="text-xs sm:text-[13px] italic font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 border-l-3 border-[#0f2b5c] dark:border-sky-400 px-3 py-2 rounded-r-lg mb-4">
+                        “{exp.closingQuote}”
+                      </p>
+                    )}
 
                     {/* Skills and Tags with spring hover */}
                     <div className="pt-3 border-t border-border flex flex-wrap items-center justify-between gap-2">

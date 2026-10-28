@@ -12,30 +12,38 @@ export interface SkillGroup {
 }
 
 const skillUsageMap: Record<string, { usedIn: string; type: "experience" | "project" | "research" }> = {
-  "Java": { usedIn: "Smart Complaint Portal & DRDO CAIR Platform", type: "project" },
-  "Spring Boot": { usedIn: "Smart Complaint Portal & DRDO REST Microservices", type: "project" },
-  "C#/.NET": { usedIn: "Dell Technologies (Windows Recovery & Disk Cloning)", type: "experience" },
-  "REST APIs": { usedIn: "DRDO CAIR & Smart Complaint Portal", type: "experience" },
-  "React.js": { usedIn: "DRDO CAIR, CyberSafe AI & Complaint Portal", type: "experience" },
-  "Next.js": { usedIn: "AI Resume Screener & Portfolio", type: "project" },
-  "SQL": { usedIn: "Smart Complaint Portal & Enterprise Relational DBs", type: "project" },
-  "MySQL": { usedIn: "Smart Complaint Portal Relational DB", type: "project" },
-  "MongoDB": { usedIn: "DRDO CAIR Evaluation Platform", type: "experience" },
-  "Hibernate / JPA": { usedIn: "Smart Complaint Management Portal", type: "project" },
-  "PowerShell": { usedIn: "Dell Technologies (WinPE/WinRE & ISO Automation)", type: "experience" },
-  "WinPE / WinRE": { usedIn: "Dell Technologies (Windows Recovery Environment)", type: "experience" },
-  "DISM & WIM": { usedIn: "Dell Technologies (Automated System Imaging)", type: "experience" },
-  "Windows Internals": { usedIn: "Dell Technologies (Hardware Scan & Repair Systems)", type: "experience" },
-  "Batch Scripting": { usedIn: "Dell Technologies (Deployment Automation)", type: "experience" },
-  "Git / GitHub": { usedIn: "Version control across Dell, DRDO & Open Source", type: "experience" },
-  "Jira": { usedIn: "Dell Technologies Agile Sprint Delivery", type: "experience" },
-  "Agentic AI": { usedIn: "Ransomware Recovery Prioritizer (Dell Hackathon Winner)", type: "project" },
-  "LLM Applications": { usedIn: "Ransomware Prioritizer & AI Resume Screener", type: "project" },
-  "Multi-Agent RAG": { usedIn: "AI Resume Screener & CyberSafe AI", type: "project" },
-  "Python": { usedIn: "Ransomware Recovery Prioritizer & CyberSafe AI", type: "project" },
-  "Claude Code": { usedIn: "Dell Technologies (AI-assisted engineering workflows)", type: "experience" },
-  "Spec-Driven Development (SDD)": { usedIn: "Dell Technologies (Enterprise SDD Workflows)", type: "experience" },
-  "RoBERTa": { usedIn: "CyberSafe AI Platform & IEEE Research Publication", type: "research" },
+  "Java": { usedIn: "AWS Durable Execution SDK, Apache XTable & Smart Complaint Portal", type: "project" },
+  "C#": { usedIn: "Dell Technologies (Windows recovery applications & diagnostics)", type: "experience" },
+  "Python": { usedIn: "Cisco Catalyst WAN SDK & Ransomware Prioritizer", type: "project" },
+  "TypeScript": { usedIn: "AI Resume Screener & interactive portfolio UI", type: "project" },
+  "JavaScript": { usedIn: "Frontend applications & interactive UI components", type: "project" },
+  "SQL": { usedIn: "Relational database schema design & persistence queries", type: "project" },
+  "Spring Boot": { usedIn: "Smart Complaint Portal REST APIs & DRDO CAIR", type: "project" },
+  "REST APIs": { usedIn: "DRDO CAIR, Cisco SDK & Complaint Portal integration", type: "experience" },
+  "React": { usedIn: "DRDO CAIR evaluation platform & Complaint Portal frontend", type: "experience" },
+  "Next.js": { usedIn: "AI Resume Screener & production portfolio", type: "project" },
+  "PostgreSQL": { usedIn: "Smart Complaint Portal persistence & audit logging", type: "project" },
+  "MySQL": { usedIn: "Relational database development & structured queries", type: "project" },
+  "MongoDB": { usedIn: "DRDO CAIR AI evaluation platform database", type: "experience" },
+  "Kafka": { usedIn: "Smart Complaint Portal asynchronous event streaming", type: "project" },
+  "Redis": { usedIn: "Smart Complaint Portal distributed caching & sessions", type: "project" },
+  "Git": { usedIn: "Version control across Dell, DRDO & open-source projects", type: "experience" },
+  "GitHub": { usedIn: "9 merged PRs across AWS, Apache & Cisco repositories", type: "project" },
+  "Docker": { usedIn: "Containerization for microservices & local testing", type: "project" },
+  "CI/CD": { usedIn: "Automated test & build pipelines with GitHub Actions", type: "project" },
+  "debugging": { usedIn: "BSOD triage, Helix diagnostics & defect reproduction at Dell", type: "experience" },
+  "regression testing": { usedIn: "Automated test suites for Dell recovery workflows & SDK PRs", type: "experience" },
+  ".NET": { usedIn: "Dell Technologies recovery applications, repair & disk cloning", type: "experience" },
+  "PowerShell": { usedIn: "Windows 11 ARM64 OSRI build automation & ISO generation", type: "experience" },
+  "Batch": { usedIn: "Dell deployment scripts & recovery image servicing", type: "experience" },
+  "DISM": { usedIn: "OSRI image servicing, driver injection & build workflows", type: "experience" },
+  "WIM": { usedIn: "Windows imaging & deployment automation", type: "experience" },
+  "WinPE": { usedIn: "Bare-metal recovery preinstallation environment", type: "experience" },
+  "WinRE": { usedIn: "Windows recovery environment diagnostic workflows", type: "experience" },
+  "LLM applications": { usedIn: "Ransomware Recovery Prioritizer & AI Resume Screener", type: "project" },
+  "RAG": { usedIn: "AI Resume Screener & CyberSafe AI safety retrieval", type: "project" },
+  "NetworkX": { usedIn: "Ransomware Prioritizer (graph dependency & blast-radius modeling)", type: "project" },
+  "RoBERTa": { usedIn: "CyberSafe AI sequence classification & IEEE paper", type: "research" },
 }
 
 interface InteractiveSkillsProps {
@@ -54,10 +62,12 @@ export function InteractiveSkills({
 
   const categories = [
     { id: "all", label: "All Skills" },
-    { id: "software", label: "Software Engineering" },
-    { id: "backend", label: "Backend & Database" },
-    { id: "systems", label: "Systems & Enterprise" },
-    { id: "ai", label: "AI Engineering" },
+    { id: "languages", label: "Languages" },
+    { id: "app-dev", label: "App Development" },
+    { id: "databases", label: "Databases & Messaging" },
+    { id: "tools", label: "Testing & Tools" },
+    { id: "windows", label: "Windows Development" },
+    { id: "additional", label: "Additional Work" },
   ]
 
   const filteredGroups =
@@ -107,7 +117,7 @@ export function InteractiveSkills({
               <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#0f2b5c] dark:text-sky-400" />
               <span className="font-bold shrink-0">{hoveredSkill}:</span>
               <span className="text-slate-700 dark:text-slate-200 truncate">
-                Used in {activeUsage.usedIn}
+                {activeUsage.usedIn}
               </span>
             </motion.div>
           ) : (
@@ -118,14 +128,14 @@ export function InteractiveSkills({
               className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-medium text-slate-500 dark:text-slate-400"
             >
               <Info className="h-3 w-3 shrink-0" />
-              <span>Hover or tap any technology to reveal where it was engineered</span>
+              <span>Hover or tap any skill to see where it was used</span>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* 4 Compact Categories Grid (2x2 on md/lg) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto w-full">
+      {/* 6 Developer Toolkit Groups Grid (2 or 3 columns) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto w-full">
         {filteredGroups.map((group, gIdx) => (
           <motion.div
             key={group.category}
