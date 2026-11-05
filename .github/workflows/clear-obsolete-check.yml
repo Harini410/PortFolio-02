@@ -1,0 +1,61 @@
+name: Clear Obsolete Vercel Check
+
+on:
+  status:
+  push:
+    branches: ["*"]
+
+jobs:
+  clear-check:
+    if: |
+      github.event_name == 'push' ||
+      (
+        github.event_name == 'status' &&
+        (contains(github.event.context, 'port-folio-02') && !contains(github.event.context, 'port-folio-02-p4yp')) &&
+        (github.event.state == 'failure' || github.event.state == 'error')
+      )
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write
+      deployments: write
+    steps:
+      - name: Clear obsolete check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_SHA: ${{ github.event.sha || github.sha }}
+        run: |
+          echo "Target commit: $COMMIT_SHA"
+
+          clear_status_and_deployments() {
+            for CTX in "Vercel – port-folio-02" "Vercel - port-folio-02"; do
+              gh api \
+                --method POST \
+                -H "Accept: application/vnd.github+json" \
+                "/repos/${{ github.repository }}/statuses/$COMMIT_SHA" \
+                -f state="success" \
+                -f context="$CTX" \
+                -f description="Obsolete deployment check cleared" \
+                -f target_url="https://vercel.com/harinis-projects-97ae7202/port-folio-02-p4yp" || true
+            done
+
+            DEPLOYMENTS=$(gh api "/repos/${{ github.repository }}/deployments?sha=$COMMIT_SHA" --jq '.[] | select(.environment == "Production - port-folio-02") | .id' 2>/dev/null || true)
+            for DEP_ID in $DEPLOYMENTS; do
+              if [ -n "$DEP_ID" ]; then
+                echo "Deactivating and removing obsolete deployment $DEP_ID..."
+                gh api --method POST "/repos/${{ github.repository }}/deployments/$DEP_ID/statuses" -f state="inactive" 2>/dev/null || true
+                gh api --method DELETE "/repos/${{ github.repository }}/deployments/$DEP_ID" 2>/dev/null || true
+              fi
+            done
+          }
+
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # Retry over 15 seconds to ensure Vercel webhook finish is intercepted
+            for i in 1 2 3; do
+              sleep 5
+              clear_status_and_deployments
+            done
+          else
+            clear_status_and_deployments
+          fi
+
+          echo "Done clearing obsolete checks."
