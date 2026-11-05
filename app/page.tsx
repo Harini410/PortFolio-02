@@ -681,7 +681,7 @@ export default function Portfolio() {
                   className="hidden sm:inline-flex rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-400 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white h-8 text-xs font-semibold shadow-2xs group"
                 >
                   <a
-                    href="https://drive.google.com/file/d/1qfAMs66TUXFdZUbBbTOSXeJujo7VKKxq/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1rMpX8K0gKItHWAZkrOcR85zgT1smw4TO/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5"
@@ -737,7 +737,7 @@ export default function Portfolio() {
                     className="w-full bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg h-9 text-xs font-semibold"
                   >
                     <a
-                      href="https://drive.google.com/file/d/1qfAMs66TUXFdZUbBbTOSXeJujo7VKKxq/view?usp=sharing"
+                      href="https://drive.google.com/file/d/1rMpX8K0gKItHWAZkrOcR85zgT1smw4TO/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1.5"
@@ -951,7 +951,7 @@ export default function Portfolio() {
                         className={getHeroCtaClass("resume")}
                       >
                         <a
-                          href="https://drive.google.com/file/d/1qfAMs66TUXFdZUbBbTOSXeJujo7VKKxq/view?usp=sharing"
+                          href="https://drive.google.com/file/d/1rMpX8K0gKItHWAZkrOcR85zgT1smw4TO/view?usp=sharing"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-1.5 w-full h-full min-w-0 text-xs font-semibold"
@@ -1164,7 +1164,7 @@ export default function Portfolio() {
                     className="rounded-lg border-border hover:border-[#0f2b5c] hover:bg-[#0f2b5c]/10 text-foreground h-8 text-[11px] font-semibold shadow-2xs"
                   >
                     <a
-                      href="https://drive.google.com/file/d/1qfAMs66TUXFdZUbBbTOSXeJujo7VKKxq/view?usp=sharing"
+                      href="https://drive.google.com/file/d/1rMpX8K0gKItHWAZkrOcR85zgT1smw4TO/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1 w-full h-full"
@@ -2361,7 +2361,7 @@ export default function Portfolio() {
     className="shrink-0 rounded-lg bg-[#0f2b5c] px-4 text-white hover:bg-[#0a1c38]"
   >
     <a
-      href="https://drive.google.com/file/d/1qfAMs66TUXFdZUbBbTOSXeJujo7VKKxq/view?usp=sharing"
+      href="https://drive.google.com/file/d/1rMpX8K0gKItHWAZkrOcR85zgT1smw4TO/view?usp=sharing"
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center gap-2"
