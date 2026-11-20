@@ -41,6 +41,7 @@ import { HeroAmbientBackground } from "@/components/interactive/hero-ambient"
 import { TextReveal } from "@/components/interactive/text-reveal"
 import { InteractiveSkills } from "@/components/interactive/skills-interactive"
 import { ExperienceTimeline } from "@/components/interactive/experience-timeline"
+import { AchievementsRecognition } from "@/components/interactive/achievements-recognition"
 import { triggerWinnerConfetti } from "@/components/interactive/confetti"
 import { ProjectCard } from "@/components/interactive/project-card"
 
@@ -160,7 +161,7 @@ export default function Portfolio() {
 
   // Active section scroll spy
   useEffect(() => {
-    const sections = ["experience", "open-source", "projects", "skills", "education", "achievements", "contact"]
+    const sections = ["experience", "recognition", "open-source", "projects", "skills", "education", "achievements", "contact"]
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -606,6 +607,7 @@ export default function Portfolio() {
 
   const navItems = [
     { href: "#experience", id: "experience", label: "Experience" },
+    { href: "#recognition", id: "recognition", label: "Recognition" },
     { href: "#open-source", id: "open-source", label: "Open Source" },
     { href: "#projects", id: "projects", label: "Projects" },
     { href: "#skills", id: "skills", label: "Skills" },
@@ -1266,6 +1268,9 @@ export default function Portfolio() {
             />
           </div>
         </section>
+
+        {/* 2.1 ACHIEVEMENTS & RECOGNITION PHOTO GALLERY — TOSHIBA & DELL TECHNOLOGIES */}
+        <AchievementsRecognition />
 
         {/* 3. OPEN-SOURCE CONTRIBUTIONS — 9 MERGED PRs ACROSS AWS, APACHE, AND CISCO */}
         <section
