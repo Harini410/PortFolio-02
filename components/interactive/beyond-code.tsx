@@ -6,15 +6,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Award, Mic, Maximize2, ChevronLeft, ChevronRight, X, Sparkles, Building2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-// All photos available for full lightbox viewing (Dell & Toshiba first, then JSS Conference)
+// 3 Core Highlight Photos: Dell Hackathon Team, Toshiba Recognition, JSS Conference Speaking
 const ALL_PHOTOS = [
-  {
-    src: "/hackathon-individual.jpg",
-    title: "Agentic AI Hackathon — Winner Certificate",
-    subtitle: "Dell Technologies · Grand Finale",
-    caption: "Harini L holding the Winner certificate at the Dell Technologies Agentic AI Hackathon Grand Finale.",
-    category: "Industry Recognition",
-  },
   {
     src: "/hackathon-group.jpg",
     title: "Agentic AI Hackathon — Winning Team",
@@ -40,7 +33,6 @@ const ALL_PHOTOS = [
 
 export function BeyondCodeSection() {
   const [activeLightboxIdx, setActiveLightboxIdx] = React.useState<number | null>(null)
-  const [hackathonView, setHackathonView] = React.useState<"individual" | "group">("individual")
   const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(false)
 
   React.useEffect(() => {
@@ -115,7 +107,7 @@ export function BeyondCodeSection() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-              {/* 1. Dell Technologies — Agentic AI Hackathon Grand Finale */}
+              {/* 1. Dell Technologies — Agentic AI Hackathon Grand Finale (Single Team Photo) */}
               <motion.div
                 initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -123,25 +115,19 @@ export function BeyondCodeSection() {
                 transition={{ duration: 0.45 }}
                 className="flex flex-col"
               >
-                <div className="group relative flex flex-col h-full rounded-2xl bg-card border-2 border-amber-500/40 hover:border-amber-500/80 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden ring-1 ring-amber-500/20">
-                  {/* Photo Area with Primary/Secondary View Toggle */}
-                  <div
-                    onClick={() => openPhotoLightbox(hackathonView === "individual" ? 0 : 1)}
-                    className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden bg-slate-950/20 cursor-pointer"
-                  >
+                <div
+                  onClick={() => openPhotoLightbox(0)}
+                  className="group relative flex flex-col h-full rounded-2xl bg-card border-2 border-amber-500/40 hover:border-amber-500/80 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden ring-1 ring-amber-500/20 cursor-pointer"
+                >
+                  {/* Team Stage Photo */}
+                  <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden bg-slate-950/20">
                     <Image
-                      src={hackathonView === "individual" ? "/hackathon-individual.jpg" : "/hackathon-group.jpg"}
-                      alt={
-                        hackathonView === "individual"
-                          ? "Harini L with Winner certificate at Dell Technologies Agentic AI Hackathon Grand Finale"
-                          : "Grand Finale winning team on stage at Dell Technologies"
-                      }
+                      src="/hackathon-group.jpg"
+                      alt="Grand Finale winning team on stage at Dell Technologies Bengaluru"
                       fill
                       priority
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className={`transition-transform duration-500 ease-out group-hover:scale-103 ${
-                        hackathonView === "individual" ? "object-cover object-top" : "object-cover object-center"
-                      }`}
+                      className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-103"
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
@@ -151,37 +137,6 @@ export function BeyondCodeSection() {
                       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-500 text-amber-950 text-[11px] font-extrabold shadow-md">
                         <Award className="h-3 w-3" />
                         <span>Dell · Grand Finale Winner</span>
-                      </div>
-                    </div>
-
-                    {/* Photo Switcher Pill (Top Right) */}
-                    <div
-                      className="absolute top-3.5 right-3.5 z-20"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <div className="inline-flex items-center p-0.5 rounded-lg bg-black/75 backdrop-blur-md border border-white/20 text-white text-[10px] font-semibold shadow-md">
-                        <button
-                          type="button"
-                          onClick={() => setHackathonView("individual")}
-                          className={`px-2.5 py-1 rounded transition-colors ${
-                            hackathonView === "individual"
-                              ? "bg-amber-500 text-amber-950 font-bold"
-                              : "text-slate-300 hover:text-white"
-                          }`}
-                        >
-                          Certificate
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setHackathonView("group")}
-                          className={`px-2.5 py-1 rounded transition-colors ${
-                            hackathonView === "group"
-                              ? "bg-amber-500 text-amber-950 font-bold"
-                              : "text-slate-300 hover:text-white"
-                          }`}
-                        >
-                          Team Stage
-                        </button>
                       </div>
                     </div>
 
@@ -213,13 +168,9 @@ export function BeyondCodeSection() {
 
                     <div className="pt-3.5 mt-3.5 border-t border-border/70 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
                       <span>Bengaluru · Jan 2026</span>
-                      <button
-                        type="button"
-                        onClick={() => openPhotoLightbox(0)}
-                        className="text-amber-700 dark:text-amber-400 font-bold hover:underline"
-                      >
-                        View photos (2) →
-                      </button>
+                      <span className="text-amber-700 dark:text-amber-400 font-bold group-hover:underline">
+                        View team photo full size →
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -234,7 +185,7 @@ export function BeyondCodeSection() {
                 className="flex flex-col"
               >
                 <div
-                  onClick={() => openPhotoLightbox(2)}
+                  onClick={() => openPhotoLightbox(1)}
                   className="group relative flex flex-col h-full rounded-2xl bg-card border-2 border-border hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
                 >
                   {/* Photo Area */}
@@ -310,7 +261,7 @@ export function BeyondCodeSection() {
               transition={{ duration: 0.45, delay: 0.2 }}
             >
               <div
-                onClick={() => openPhotoLightbox(3)}
+                onClick={() => openPhotoLightbox(2)}
                 className="group relative rounded-2xl bg-card border border-border hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer flex flex-col md:flex-row items-stretch"
               >
                 {/* Photo with Natural Aspect Ratio */}
