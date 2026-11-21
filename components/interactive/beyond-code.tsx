@@ -89,10 +89,10 @@ export function BeyondCodeSection() {
             id="beyond-code-heading"
             className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground"
           >
-            A few moments beyond building software.
+            Moments that tested more than just my code.
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1.5 leading-relaxed max-w-xl mx-auto">
-            Hackathon delivery under pressure, professional recognition, and IEEE conference research presentations.
+            Presenting research from an IEEE podium, winning through the night at a hackathon finale, and delivering when stakes and deadlines were real.
           </p>
         </div>
 

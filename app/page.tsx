@@ -1233,16 +1233,16 @@ export default function Portfolio() {
             {/* 3 Core Organization Cards Grid */}
             <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-3">
               {/* Card 1: AWS Durable Execution SDK for Java */}
-              <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-border/85 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
                 <div className="h-1.5 w-full bg-[#0f2b5c]" />
-                <CardHeader className="pb-3">
+                <CardHeader className="pb-3 p-5 sm:p-6">
                   <div className="mb-2 flex items-start justify-between gap-2">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400 font-extrabold text-xs">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400 font-extrabold text-xs">
                       AWS
                     </div>
                     <Badge
                       variant="outline"
-                      className="shrink-0 rounded-full border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-400"
+                      className="shrink-0 rounded-full border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-800 dark:text-emerald-300"
                     >
                       PR #785 · Merged
                     </Badge>
@@ -1250,37 +1250,37 @@ export default function Portfolio() {
                   <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
                     Getting failure handling right.
                   </CardTitle>
-                  <CardDescription className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                  <CardDescription className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
                     AWS Durable Execution SDK for Java
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="flex flex-1 flex-col justify-between gap-4">
+                <CardContent className="flex flex-1 flex-col justify-between gap-4 p-5 sm:p-6 pt-0">
                   <div className="space-y-3">
                     <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                       Contributed durable-execution suspension and error handling to the AWS Durable Execution SDK for Java, covering retryable errors, awaited-operation diagnostics, and regression tests to guarantee serverless workflows resume safely.
                     </p>
-                    <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+                    <div className="p-3 rounded-xl bg-slate-50/80 dark:bg-slate-800/60 border border-border text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
                       <div className="font-bold text-slate-800 dark:text-slate-100 flex items-center justify-between">
                         <span>PR #785 · Merged</span>
                         <span className="text-emerald-600 dark:text-emerald-400 font-bold">✓ Merged Upstream</span>
                       </div>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                        Ensures correct error classification and suspension semantics for long-running serverless workflows.
+                        Ensures correct error classification and suspension semantics for serverless workflows.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-1">
                       {["Java", "Maven", "JUnit", "AWS Lambda", "Lifecycle Tests"].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                        <span key={t} className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-border/50">
                           {t}
                         </span>
                       ))}
                     </div>
                   </div>
-                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <div className="pt-3 border-t border-border flex items-center justify-between">
                     <Button
                       asChild
                       size="sm"
-                      className="h-8 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-2xs hover:bg-[#173f7a]"
+                      className="h-8 rounded-lg bg-[#0f2b5c] px-3.5 text-xs font-semibold text-white shadow-2xs hover:bg-[#173f7a]"
                     >
                       <a
                         href="https://github.com/aws/aws-durable-execution-sdk-java/pull/785"
@@ -1297,17 +1297,17 @@ export default function Portfolio() {
                 </CardContent>
               </Card>
 
-              {/* Card 2: Apache XTable (Incubating) */}
-              <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
+              {/* Card 2: Apache XTable (Incubating) — Matching borders, spacing and visual weight */}
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-border/85 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
                 <div className="h-1.5 w-full bg-[#0f2b5c]" />
-                <CardHeader className="pb-3">
+                <CardHeader className="pb-3 p-5 sm:p-6">
                   <div className="mb-2 flex items-start justify-between gap-2">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400 font-extrabold text-xs">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400 font-extrabold text-xs">
                       Apache
                     </div>
                     <Badge
                       variant="outline"
-                      className="shrink-0 rounded-full border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-400"
+                      className="shrink-0 rounded-full border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-800 dark:text-emerald-300"
                     >
                       PR #967 · Merged
                     </Badge>
@@ -1315,16 +1315,16 @@ export default function Portfolio() {
                   <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
                     Fixing a compatibility edge case.
                   </CardTitle>
-                  <CardDescription className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                  <CardDescription className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
                     Apache XTable (Hudi Partition Validation)
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="flex flex-1 flex-col justify-between gap-4">
+                <CardContent className="flex flex-1 flex-col justify-between gap-4 p-5 sm:p-6 pt-0">
                   <div className="space-y-3">
                     <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                       Resolved a Guava runtime compatibility issue in Apache Hudi partition-path validation using explicit argument validation and lazy error construction, ensuring safe cross-table translation between Hudi, Delta Lake, and Iceberg.
                     </p>
-                    <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
+                    <div className="p-3 rounded-xl bg-slate-50/80 dark:bg-slate-800/60 border border-border text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
                       <div className="font-bold text-slate-800 dark:text-slate-100 flex items-center justify-between">
                         <span>PR #967 · Merged</span>
                         <span className="text-emerald-600 dark:text-emerald-400 font-bold">✓ Merged Upstream</span>
@@ -1335,17 +1335,17 @@ export default function Portfolio() {
                     </div>
                     <div className="flex flex-wrap gap-1">
                       {["Java", "Apache Hudi", "Guava", "Lakehouse Interop", "API Validation"].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                        <span key={t} className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-border/50">
                           {t}
                         </span>
                       ))}
                     </div>
                   </div>
-                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <div className="pt-3 border-t border-border flex items-center justify-between">
                     <Button
                       asChild
                       size="sm"
-                      className="h-8 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-2xs hover:bg-[#173f7a]"
+                      className="h-8 rounded-lg bg-[#0f2b5c] px-3.5 text-xs font-semibold text-white shadow-2xs hover:bg-[#173f7a]"
                     >
                       <a
                         href="https://github.com/apache/incubator-xtable/pull/967"
@@ -1363,16 +1363,16 @@ export default function Portfolio() {
               </Card>
 
               {/* Card 3: Cisco Catalyst WAN SDK (7 Merged PRs) */}
-              <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/40 hover:shadow-lg dark:border-slate-700 dark:bg-card">
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-border/85 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
                 <div className="h-1.5 w-full bg-[#0f2b5c]" />
-                <CardHeader className="pb-3">
+                <CardHeader className="pb-3 p-5 sm:p-6">
                   <div className="mb-2 flex items-start justify-between gap-2">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400 font-extrabold text-xs">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0f2b5c]/10 text-[#0f2b5c] dark:bg-sky-400/10 dark:text-sky-400 font-extrabold text-xs">
                       Cisco
                     </div>
                     <Badge
                       variant="outline"
-                      className="shrink-0 rounded-full border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-400"
+                      className="shrink-0 rounded-full border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-800 dark:text-emerald-300"
                     >
                       PRs #245–#251 · Merged
                     </Badge>
@@ -1380,18 +1380,18 @@ export default function Portfolio() {
                   <CardTitle className="text-lg font-bold tracking-tight text-[#0f2b5c] dark:text-slate-100">
                     Making API behavior more reliable.
                   </CardTitle>
-                  <CardDescription className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                  <CardDescription className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
                     Cisco Catalyst WAN SDK (7 Merged PRs)
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="flex flex-1 flex-col justify-between gap-4">
+                <CardContent className="flex flex-1 flex-col justify-between gap-4 p-5 sm:p-6 pt-0">
                   <div className="space-y-3">
                     <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
                       Contributed 7 merged PRs across device-health pagination, Root CA certificate management, HTTP method correctness (PUT vs POST/PATCH), session token reuse, UUID serialization, and test automation in an enterprise networking SDK.
                     </p>
 
                     {/* Interactive Collapsible / Tabbed View for all 7 Cisco PRs */}
-                    <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-2.5">
+                    <div className="rounded-xl border border-border bg-slate-50/80 dark:bg-slate-800/60 p-3">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200">
                           Merged Pull Requests ({ciscoMergedPrs.length})
@@ -1412,7 +1412,7 @@ export default function Portfolio() {
                             href={pr.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group/pr flex items-start justify-between gap-2 p-1.5 rounded-md bg-white dark:bg-card border border-slate-200/80 dark:border-slate-700/80 hover:border-[#0f2b5c]/50 transition-colors"
+                            className="group/pr flex items-start justify-between gap-2 p-1.5 rounded-md bg-white dark:bg-card border border-border/80 hover:border-[#0f2b5c]/50 transition-colors"
                           >
                             <div className="min-w-0">
                               <div className="flex items-center gap-1.5">
@@ -1445,14 +1445,14 @@ export default function Portfolio() {
 
                     <div className="flex flex-wrap gap-1">
                       {["Python", "REST APIs", "API Gateway", "PKI / TLS", "BGP Models", "Pytest"].map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                        <span key={t} className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-border/50">
                           {t}
                         </span>
                       ))}
                     </div>
 
                     {/* Differentiated In-Progress note */}
-                    <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                    <div className="pt-2 border-t border-border flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
                       <span>In Review: PR #78 (Catalyst Center)</span>
                       <a
                         href="https://github.com/cisco-en-programmability/catalystcentersdk/pull/78"
@@ -1466,11 +1466,11 @@ export default function Portfolio() {
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  <div className="pt-3 border-t border-border flex items-center justify-between">
                     <Button
                       asChild
                       size="sm"
-                      className="h-8 rounded-lg bg-[#0f2b5c] px-3 text-xs font-semibold text-white shadow-2xs hover:bg-[#173f7a]"
+                      className="h-8 rounded-lg bg-[#0f2b5c] px-3.5 text-xs font-semibold text-white shadow-2xs hover:bg-[#173f7a]"
                     >
                       <a
                         href="https://github.com/cisco-en-programmability/catalystwan-sdk/pulls?q=is%3Apr+author%3AHarini410+is%3Amerged"
@@ -1564,10 +1564,10 @@ export default function Portfolio() {
                 <span>Academic Foundation &amp; Research</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-                The foundation behind the work.
+                Where I built the fundamentals.
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1 leading-relaxed">
-                I studied computer science with a focus on building software, exploring technical problems, and developing a stronger engineering foundation.
+                Computer science taught me how to break complex systems down to first principles—from OS internals and distributed systems to published research.
               </p>
             </div>
 
@@ -1815,106 +1815,133 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 6. ACHIEVEMENTS & CERTIFICATIONS SECTION — STREAMLINED & HIGH-IMPACT */}
+        {/* 6. ACHIEVEMENTS & CERTIFICATIONS SECTION — SHORT, IMPACTFUL, NON-REPETITIVE */}
         <section id="achievements" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border bg-slate-50/50 dark:bg-slate-900/30">
           <div className="container mx-auto max-w-4xl">
             {/* Section Header */}
             <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 text-[#0f2b5c] dark:text-sky-300 text-xs font-bold uppercase tracking-wider mb-2.5 shadow-2xs">
                 <Award className="h-3.5 w-3.5" />
-                <span>Milestones &amp; Credentials</span>
+                <span>Milestones &amp; Honors</span>
               </div>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground">
-                A few milestones along the way.
+                Milestones that pushed me forward.
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1 leading-relaxed">
-                Key recognitions and verified professional credentials earned throughout my engineering journey.
+                Moments where digging deeper, staying persistent, and tackling hard problems paid off.
               </p>
             </div>
 
-            {/* 4-Item High-Impact Milestones Strip */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3.5 mb-8">
-              <div className="p-3.5 rounded-xl bg-card border border-amber-500/30 shadow-2xs flex flex-col justify-between">
-                <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 mb-1.5">
-                  <Award className="h-4 w-4 shrink-0" />
-                  <span className="text-[10.5px] font-extrabold uppercase tracking-wide">Hackathon</span>
-                </div>
+            {/* Exactly 3 Featured Prominent Milestone Cards with Consistent Border-2 Styling */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 items-stretch">
+              {/* 1. Hackathon */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-card border-2 border-border/85 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
-                  <div className="text-xs sm:text-sm font-black text-foreground">Grand Finale Winner</div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Dell Technologies AI Academy</div>
+                  <div className="flex items-center justify-between gap-2 mb-2.5">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-[11px] font-extrabold uppercase tracking-wide">
+                      <Award className="h-3.5 w-3.5" />
+                      <span>Hackathon</span>
+                    </div>
+                    <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Jan 2026</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-black text-foreground tracking-tight">
+                    Grand Finale Winner
+                  </h3>
+                  <div className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 mt-1">
+                    Dell Technologies · AI Academy
+                  </div>
+                </div>
+                <div className="pt-3 mt-3 border-t border-border/70 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                  Ransomware Recovery System
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-card border border-emerald-500/30 shadow-2xs flex flex-col justify-between">
-                <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 mb-1.5">
-                  <Code2 className="h-4 w-4 shrink-0" />
-                  <span className="text-[10.5px] font-extrabold uppercase tracking-wide">Open Source</span>
-                </div>
+              {/* 2. Open Source */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-card border-2 border-border/85 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
-                  <div className="text-xs sm:text-sm font-black text-foreground">9 Merged Upstream PRs</div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">AWS · Apache · Cisco</div>
+                  <div className="flex items-center justify-between gap-2 mb-2.5">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-[11px] font-extrabold uppercase tracking-wide">
+                      <Code2 className="h-3.5 w-3.5" />
+                      <span>Open Source</span>
+                    </div>
+                    <span className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 font-bold">Merged</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-black text-foreground tracking-tight">
+                    9 Merged Pull Requests
+                  </h3>
+                  <div className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 mt-1">
+                    AWS · Apache · Cisco
+                  </div>
+                </div>
+                <div className="pt-3 mt-3 border-t border-border/70 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                  Upstream Production Codebases
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-card border border-sky-500/30 shadow-2xs flex flex-col justify-between">
-                <div className="flex items-center gap-1.5 text-sky-600 dark:text-sky-400 mb-1.5">
-                  <FileCheck2 className="h-4 w-4 shrink-0" />
-                  <span className="text-[10.5px] font-extrabold uppercase tracking-wide">Research</span>
-                </div>
+              {/* 3. Research (Without "IEEE Xplore Indexed") */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-card border-2 border-border/85 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
-                  <div className="text-xs sm:text-sm font-black text-foreground">2 IEEE Publications</div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">IEEE Xplore Indexed</div>
+                  <div className="flex items-center justify-between gap-2 mb-2.5">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/30 text-sky-800 dark:text-sky-300 text-[11px] font-extrabold uppercase tracking-wide">
+                      <FileCheck2 className="h-3.5 w-3.5" />
+                      <span>Research</span>
+                    </div>
+                    <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">2025</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-black text-foreground tracking-tight">
+                    2 IEEE Conference Papers
+                  </h3>
+                  <div className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 mt-1">
+                    ICETEG 2025 &amp; IEEE CAMs
+                  </div>
                 </div>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-card border border-indigo-500/30 shadow-2xs flex flex-col justify-between">
-                <div className="flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 mb-1.5">
-                  <GraduationCap className="h-4 w-4 shrink-0" />
-                  <span className="text-[10.5px] font-extrabold uppercase tracking-wide">Academics</span>
-                </div>
-                <div>
-                  <div className="text-xs sm:text-sm font-black text-foreground">M.Tech Distinction</div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">UVCE · CGPA 8.70 / 10</div>
+                <div className="pt-3 mt-3 border-t border-border/70 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                  Intrusion Detection &amp; Safety NLP
                 </div>
               </div>
             </div>
 
-            {/* 4 Verified Professional Certifications */}
-            <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 px-1 flex items-center gap-1.5">
-                <Award className="h-3.5 w-3.5 text-[#0f2b5c] dark:text-sky-400" />
-                <span>Verified Professional Certifications</span>
+            {/* 4 Professional Certifications in a Compact Responsive Swipeable Row on Mobile */}
+            <div className="pt-1">
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 px-1 flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <Award className="h-3.5 w-3.5 text-[#0f2b5c] dark:text-sky-400" />
+                  <span>Professional Certifications</span>
+                </div>
+                <span className="text-[11px] font-medium text-slate-400 sm:hidden">Swipe to explore →</span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+              {/* Horizontal scroll on mobile, 4-column grid on desktop */}
+              <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2 pt-0.5 -mx-4 px-4 sm:mx-0 sm:px-0">
                 {professionalCertifications.map((item) => (
                   <Card
                     key={item.id}
-                    className="border border-border/90 bg-card hover:border-[#0f2b5c]/50 transition-all p-4 rounded-xl shadow-2xs flex flex-col justify-between"
+                    tabIndex={0}
+                    className="min-w-[260px] sm:min-w-0 max-w-[280px] sm:max-w-none shrink-0 snap-start border border-border/90 bg-card hover:border-[#0f2b5c]/50 transition-all p-3.5 rounded-xl shadow-2xs flex flex-col justify-between focus:ring-2 focus:ring-[#0f2b5c]"
                   >
                     <div>
-                      <div className="flex items-center justify-between gap-2 mb-1.5">
-                        <span className="text-xs font-bold text-[#0f2b5c] dark:text-sky-400">
+                      <div className="flex items-center justify-between gap-1 mb-1">
+                        <span className="text-[11px] font-bold text-[#0f2b5c] dark:text-sky-400 truncate">
                           {item.org}
                         </span>
-                        <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                        <span className="text-[10px] font-semibold text-slate-400 shrink-0">
                           {item.date}
                         </span>
                       </div>
-                      <h4 className="text-sm font-bold text-foreground">
+                      <h4 className="text-xs sm:text-sm font-bold text-foreground leading-snug line-clamp-1">
                         {item.title}
                       </h4>
-                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
+                      <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1 leading-relaxed line-clamp-2">
                         {item.desc}
                       </p>
                     </div>
 
-                    <div className="pt-3 mt-3 border-t border-border/60 flex items-center justify-between">
-                      <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Verified</span>
+                    <div className="pt-2.5 mt-2.5 border-t border-border/60 flex items-center justify-between">
+                      <span className="text-[10.5px] font-medium text-slate-500 dark:text-slate-400">Verified</span>
                       <Button
                         size="sm"
                         variant="outline"
-                        className="bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white rounded-lg text-xs font-bold h-7 px-2.5 group shadow-2xs"
+                        className="bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white rounded-lg text-[11px] font-bold h-7 px-2.5 group shadow-2xs"
                         asChild
                       >
                         <a
