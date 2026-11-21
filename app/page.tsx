@@ -165,7 +165,7 @@ export default function Portfolio() {
       location: "Bengaluru, India",
       isProminent: false,
       bullets: [
-        "Completed training in software engineering, AI, and Agile delivery, delivering project milestones with planning, effort estimation, and technical documentation.",
+        "Completed training in software engineering, AI, and Agile practices, achieving project milestones with planning, effort estimation, and technical documentation.",
       ],
       skills: [
         "Software Engineering",
@@ -1233,7 +1233,7 @@ export default function Portfolio() {
             {/* 3 Core Organization Cards Grid */}
             <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-3">
               {/* Card 1: AWS Durable Execution SDK for Java */}
-              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-border/85 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
                 <div className="h-1.5 w-full bg-[#0f2b5c]" />
                 <CardHeader className="pb-3 p-5 sm:p-6">
                   <div className="mb-2 flex items-start justify-between gap-2">
@@ -1298,7 +1298,7 @@ export default function Portfolio() {
               </Card>
 
               {/* Card 2: Apache XTable (Incubating) — Matching borders, spacing and visual weight */}
-              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-border/85 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
                 <div className="h-1.5 w-full bg-[#0f2b5c]" />
                 <CardHeader className="pb-3 p-5 sm:p-6">
                   <div className="mb-2 flex items-start justify-between gap-2">
@@ -1363,7 +1363,7 @@ export default function Portfolio() {
               </Card>
 
               {/* Card 3: Cisco Catalyst WAN SDK (7 Merged PRs) */}
-              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-border/85 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
                 <div className="h-1.5 w-full bg-[#0f2b5c]" />
                 <CardHeader className="pb-3 p-5 sm:p-6">
                   <div className="mb-2 flex items-start justify-between gap-2">
@@ -1878,25 +1878,25 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* 3. Research (Without "IEEE Xplore Indexed") */}
+              {/* 3. Postgraduate Education Milestone: M.Tech */}
               <div className="p-4 sm:p-5 rounded-2xl bg-card border-2 border-border/85 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2.5">
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/30 text-sky-800 dark:text-sky-300 text-[11px] font-extrabold uppercase tracking-wide">
-                      <FileCheck2 className="h-3.5 w-3.5" />
-                      <span>Research</span>
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-500/15 border border-indigo-500/30 text-indigo-800 dark:text-indigo-300 text-[11px] font-extrabold uppercase tracking-wide">
+                      <GraduationCap className="h-3.5 w-3.5" />
+                      <span>M.Tech</span>
                     </div>
-                    <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">2025</span>
+                    <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">2023 – 2025</span>
                   </div>
                   <h3 className="text-base sm:text-lg font-black text-foreground tracking-tight">
-                    2 IEEE Conference Papers
+                    Computer Science
                   </h3>
                   <div className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 mt-1">
-                    ICETEG 2025 &amp; IEEE CAMs
+                    UVCE · CGPA 8.70
                   </div>
                 </div>
                 <div className="pt-3 mt-3 border-t border-border/70 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-                  Intrusion Detection &amp; Safety NLP
+                  University Visvesvaraya College of Engineering
                 </div>
               </div>
             </div>

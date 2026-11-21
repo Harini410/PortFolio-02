@@ -24,9 +24,9 @@ const ALL_PHOTOS = [
   },
   {
     src: "/technical-speaking.jpg",
-    title: "IEEE Conference Presentation",
-    subtitle: "JSS Science & Technology University · ICETEG 2025",
-    caption: "Presented research paper on ensemble network intrusion detection at the IEEE ICETEG 2025 conference (published in IEEE Xplore).",
+    title: "ICETEG 2025 · IEEE Conference Presentation",
+    subtitle: "JSS Science and Technology University",
+    caption: "Presented research on ensemble network intrusion detection at the ICETEG 2025 IEEE conference at JSS Science and Technology University (published in IEEE Xplore).",
     category: "IEEE Conference & Research",
   },
 ]
@@ -92,7 +92,7 @@ export function BeyondCodeSection() {
             Moments that tested more than just my code.
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1.5 leading-relaxed max-w-xl mx-auto">
-            Presenting research from an IEEE podium, winning through the night at a hackathon finale, and delivering when stakes and deadlines were real.
+            Presenting research from an IEEE podium, winning through the night at a hackathon finale, and executing when stakes and deadlines were real.
           </p>
         </div>
 
@@ -295,16 +295,16 @@ export function BeyondCodeSection() {
                 <div className="p-5 sm:p-7 flex flex-col justify-between flex-1">
                   <div>
                     <div className="text-xs font-bold text-[#0f2b5c] dark:text-sky-400 uppercase tracking-wider mb-1">
-                      JSS Science &amp; Technology University · IEEE Conference
+                      JSS Science and Technology University
                     </div>
                     <h3 className="text-lg sm:text-xl font-extrabold text-foreground tracking-tight">
-                      IEEE Conference Presentation
+                      ICETEG 2025 · IEEE Conference Presentation
                     </h3>
                     <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">
-                      ICETEG 2025 · IEEE Xplore Published Research
+                      International Conference on Emerging Technologies in Electronics and Green Energy
                     </div>
                     <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed max-w-xl">
-                      Presented research paper on ensemble network intrusion detection at the IEEE ICETEG 2025 international conference at JSS Science &amp; Technology University, published in IEEE Xplore.
+                      Presented research paper on ensemble network intrusion detection at the ICETEG 2025 IEEE conference hosted at JSS Science and Technology University, published in IEEE Xplore.
                     </p>
                   </div>
 
