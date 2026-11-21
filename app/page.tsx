@@ -475,39 +475,53 @@ export default function Portfolio() {
     },
   ]
 
-  // Supported Professional Certifications (Resume-backed)
+  // Supported Professional Certifications (Resume-backed) — 5 Cards Total
   const professionalCertifications = [
     {
-      id: "cert-1",
-      title: "Full Stack Java Development",
-      org: "JSpiders Training Center",
-      date: "Apr 2022 – Mar 2023",
-      desc: "Core Java, Spring Boot, Hibernate and SQL.",
-      link: "https://drive.google.com/file/d/1RTtCGOrI2vyXH6j_xHPgi3w3-1oqNjTv/view?usp=drive_link",
+      id: "cert-dell",
+      title: "Grand Finale Winner",
+      org: "Dell Technologies · AI Academy",
+      date: "Jan 2026",
+      desc: "Dell Agentic AI Hackathon — Ransomware Recovery System",
+      link: "https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing",
+      badge: "Hackathon",
+      isWinner: true,
     },
     {
-      id: "cert-2",
+      id: "cert-toshiba",
       title: "Student Intern — Japanese Trainee Program",
       org: "Toshiba Software India Pvt. Ltd.",
       date: "Jun 2025 – Jul 2025",
       desc: "Software engineering, AI, Agile and PMBOK-based project management.",
       link: "https://drive.google.com/file/d/12-qbiWk395zQNifNbny0t0CEr5ti0Thk/view?usp=sharing",
+      badge: "Professional Certification",
     },
     {
-      id: "cert-3",
+      id: "cert-drdo",
       title: "Student Intern Trainee",
       org: "DRDO — Centre for Artificial Intelligence and Robotics (CAIR)",
       date: "Jan 2025 – Jun 2025",
       desc: "React.js, Spring Boot REST APIs and MongoDB integration for an evaluation platform.",
       link: "https://drive.google.com/file/d/1I_B8fyGlng8WRsnosvQomWHWBlW5_pzX/view?usp=sharing",
+      badge: "Professional Certification",
     },
     {
-      id: "cert-4",
+      id: "cert-nptel",
       title: "Software Testing Certification",
       org: "NPTEL",
       date: "Jul 2024 – Oct 2024",
       desc: "Software testing and verification methodologies.",
       link: "https://drive.google.com/file/d/1TZyZvl5HiDj390lw11bnyDYVS1gplW17/view?usp=drive_link",
+      badge: "Professional Certification",
+    },
+    {
+      id: "cert-jspiders",
+      title: "Full Stack Java Development",
+      org: "JSpiders Training Center",
+      date: "Apr 2022 – Mar 2023",
+      desc: "Core Java, Spring Boot, Hibernate and SQL.",
+      link: "https://drive.google.com/file/d/1RTtCGOrI2vyXH6j_xHPgi3w3-1oqNjTv/view?usp=drive_link",
+      badge: "Professional Certification",
     },
   ]
 
@@ -1890,7 +1904,7 @@ export default function Portfolio() {
                     <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">2023 – 2025</span>
                   </div>
                   <h3 className="text-base sm:text-lg font-black text-foreground tracking-tight">
-                    Computer Science
+                    Information Technology
                   </h3>
                   <div className="text-xs font-semibold text-[#0f2b5c] dark:text-sky-400 mt-1">
                     UVCE · CGPA 8.70

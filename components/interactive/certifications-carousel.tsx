@@ -22,6 +22,8 @@ export interface CertificationItem {
   date: string
   desc: string
   link: string
+  badge?: string
+  isWinner?: boolean
 }
 
 interface CertificationsCarouselProps {
@@ -161,17 +163,27 @@ export function CertificationsCarousel({ items }: CertificationsCarouselProps) {
 
       {/* MODE 1: GRID VIEW */}
       {certViewMode === "grid" && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 animate-in fade-in duration-200">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 animate-in fade-in duration-200">
           {items.map((item) => (
             <Card
               key={item.id}
-              className="border border-border/90 bg-card hover:border-[#0f2b5c]/50 transition-all p-4 rounded-xl shadow-2xs flex flex-col justify-between"
+              className="border-2 border-border/85 bg-card hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 transition-all p-4 rounded-xl shadow-2xs flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-1 mb-2">
-                  <span className="text-[11px] font-bold text-[#0f2b5c] dark:text-sky-400 truncate">
-                    {item.org}
-                  </span>
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    {item.isWinner ? (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-[10px] font-extrabold uppercase shrink-0">
+                        <Award className="h-3 w-3" />
+                        <span>Hackathon</span>
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 text-[#0f2b5c] dark:text-sky-400 text-[10px] font-bold uppercase shrink-0">
+                        <Award className="h-3 w-3" />
+                        <span>Certification</span>
+                      </span>
+                    )}
+                  </div>
                   <span className="text-[10px] font-semibold text-slate-400 shrink-0">
                     {item.date}
                   </span>
@@ -179,15 +191,24 @@ export function CertificationsCarousel({ items }: CertificationsCarouselProps) {
                 <h4 className="text-xs sm:text-sm font-bold text-foreground leading-snug line-clamp-1">
                   {item.title}
                 </h4>
+                <div className="text-[11px] font-semibold text-[#0f2b5c] dark:text-sky-400 mt-0.5 truncate">
+                  {item.org}
+                </div>
                 <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed line-clamp-2">
                   {item.desc}
                 </p>
               </div>
 
               <div className="pt-3 mt-3 border-t border-border/60 flex items-center justify-between">
-                <span className="inline-flex items-center gap-1 text-[10.5px] font-semibold text-emerald-700 dark:text-emerald-400">
+                <span
+                  className={`inline-flex items-center gap-1 text-[10.5px] font-semibold ${
+                    item.isWinner
+                      ? "text-amber-700 dark:text-amber-400"
+                      : "text-emerald-700 dark:text-emerald-400"
+                  }`}
+                >
                   <CheckCircle2 className="h-3 w-3" />
-                  <span>Verified</span>
+                  <span>{item.isWinner ? "Winner" : "Verified"}</span>
                 </span>
                 <Button
                   size="sm"
@@ -263,9 +284,15 @@ export function CertificationsCarousel({ items }: CertificationsCarouselProps) {
                   >
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2">
-                        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0f2b5c]/10 text-[#0f2b5c] dark:text-sky-400 text-xs font-bold border border-[#0f2b5c]/20">
+                        <div
+                          className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold border ${
+                            item.isWinner
+                              ? "bg-amber-500/15 border-amber-500/30 text-amber-800 dark:text-amber-300"
+                              : "bg-[#0f2b5c]/10 border-[#0f2b5c]/20 text-[#0f2b5c] dark:text-sky-400"
+                          }`}
+                        >
                           <Award className="h-3.5 w-3.5" />
-                          <span>Professional Certification</span>
+                          <span>{item.badge || (item.isWinner ? "Hackathon" : "Professional Certification")}</span>
                         </div>
                         <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
                           {item.date}
@@ -283,9 +310,15 @@ export function CertificationsCarousel({ items }: CertificationsCarouselProps) {
                     </div>
 
                     <div className="pt-4 border-t border-border/60 mt-4 flex items-center justify-between gap-2">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+                      <span
+                        className={`inline-flex items-center gap-1.5 text-xs font-semibold ${
+                          item.isWinner
+                            ? "text-amber-700 dark:text-amber-400"
+                            : "text-emerald-700 dark:text-emerald-400"
+                        }`}
+                      >
                         <CheckCircle2 className="h-3.5 w-3.5" />
-                        <span>Verified Certificate</span>
+                        <span>{item.isWinner ? "Verified Winner Certificate" : "Verified Certificate"}</span>
                       </span>
                       <Button
                         size="sm"
