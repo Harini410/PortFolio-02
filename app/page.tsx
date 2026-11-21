@@ -41,7 +41,7 @@ import { HeroAmbientBackground } from "@/components/interactive/hero-ambient"
 import { TextReveal } from "@/components/interactive/text-reveal"
 import { InteractiveSkills } from "@/components/interactive/skills-interactive"
 import { ExperienceTimeline } from "@/components/interactive/experience-timeline"
-import { AchievementsRecognition } from "@/components/interactive/achievements-recognition"
+import { BeyondCodeSection } from "@/components/interactive/beyond-code"
 import { triggerWinnerConfetti } from "@/components/interactive/confetti"
 import { ProjectCard } from "@/components/interactive/project-card"
 
@@ -161,7 +161,7 @@ export default function Portfolio() {
 
   // Active section scroll spy
   useEffect(() => {
-    const sections = ["experience", "recognition", "open-source", "projects", "skills", "education", "achievements", "contact"]
+    const sections = ["experience", "open-source", "projects", "beyond-code", "skills", "education", "achievements", "contact"]
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -213,10 +213,10 @@ export default function Portfolio() {
       summaryQuote: "I worked across Windows recovery applications and OSRI image builds, contributing to fixes, requirements, debugging, and validation.",
       caseStudy: {
         title: "Tracking down a Windows recovery failure",
-        problem: "A blue-screen crash was occurring during hardware diagnostics and system recovery on Windows test images. Before anything could be fixed, the failure had to be reproduced and understood.",
-        investigation: "I reproduced the issue in controlled test environments, captured system snapshots and diagnostic logs, and examined runtime traces using Helix Data Collector and Helix Data Analyzer.",
-        findings: "The diagnostic evidence pointed to a string/integer type mismatch associated with an exception-handling issue in the recovery service.",
-        validation: "I validated recovery scenarios across hardware profiles and tracked test results and regression coverage through GitHub PR workflows and Jira.",
+        problem: "A blue-screen crash occurred during hardware diagnostics and system recovery on Windows test images.",
+        investigation: "Reproduced the crash in test environments, captured diagnostic logs and snapshots, and examined runtime traces using Helix Data Collector and Analyzer.",
+        findings: "Identified a string/integer type mismatch associated with an exception-handling issue in the recovery service.",
+        validation: "Validated recovery scenarios across multiple hardware profiles, tracking test results and regression coverage via GitHub PRs and Jira.",
       },
       bullets: [
         "I worked with an existing C#/.NET Windows recovery application covering hardware scan, repair, reset, backup, and disk cloning.",
@@ -358,9 +358,9 @@ export default function Portfolio() {
       date: "Sep 2026",
       hook: "What happens when a complaint system gets more work than it can handle?",
       summary:
-        "I built a complaint-management application using Java and Spring Boot, with Kafka for asynchronous processing, Redis for caching, and PostgreSQL for persistence. The goal was to separate complaint intake from downstream work rather than make every request wait for everything else.",
+        "Built an asynchronous complaint portal using Java and Spring Boot. Separated intake from downstream notification and analytics processing using Kafka, with Redis cache-aside for status lookups and PostgreSQL for persistence.",
       bullets: [
-        "I used isolated Kafka consumer groups for notification and analytics processing, added a cache-aside layer for status lookups, and wrote 64 automated unit and integration tests using Testcontainers and MockMvc.",
+        "Used isolated Kafka consumer groups for decoupled notification and analytics processing, plus 64 automated unit and integration tests using Testcontainers and MockMvc.",
       ],
       tech: [
         "Java 17",
@@ -385,9 +385,9 @@ export default function Portfolio() {
       date: "Jan 2026",
       hook: "If several systems depend on each other, what should recover first?",
       summary:
-        "I built a decision-support prototype that represents infrastructure dependencies as a graph and helps prioritize a recovery sequence. Using NetworkX, graph algorithms, and heuristic risk scoring, it considers dependency relationships and recovery objectives rather than treating every system as equally urgent.",
+        "A decision-support prototype that models infrastructure dependencies as directed graphs. Using NetworkX and heuristic risk scoring, it calculates recovery sequences based on critical dependencies rather than treating all systems as equally urgent.",
       bullets: [
-        "I also integrated a local Llama 3.1 model through Ollama to generate remediation playbooks. The project won the Dell Agentic AI Hackathon.",
+        "Integrated a local Llama 3.1 model via Ollama to generate offline remediation runbooks. Won the Dell Agentic AI Hackathon Grand Finale.",
       ],
       tech: [
         "Python",
@@ -409,9 +409,9 @@ export default function Portfolio() {
       date: "Sep 2026",
       hook: "A matching score is only useful if you can explain it.",
       summary:
-        "I built a resume evaluation application that combines semantic retrieval with structured scoring against job criteria. Rather than relying on an unconstrained prompt to decide everything, I separated requirement extraction from scoring so evaluations could be tested and compared consistently.",
+        "Built a resume evaluation application pairing semantic retrieval with structured scoring against job criteria. Separated requirement extraction from scoring so evaluations can be audited and tested consistently.",
       bullets: [
-        "The evaluation suite reports 13/13 unit tests and 10/10 benchmark evaluations.",
+        "Automated evaluation suite reports 13/13 unit tests and 10/10 benchmark evaluations across edge-case candidate profiles.",
       ],
       tech: [
         "Next.js",
@@ -433,9 +433,9 @@ export default function Portfolio() {
       date: "Sep 2026",
       hook: "Understanding harmful language takes more than spotting a keyword.",
       summary:
-        "I developed a conversational safety platform combining text classification, retrieval, and a multi-agent workflow to examine context and generate constructive responses to online harassment.",
+        "Developed a conversational safety platform combining transformer classification with dense retrieval and multi-agent reasoning to examine context and generate constructive de-escalation responses.",
       bullets: [
-        "The implementation uses RoBERTa, a seven-agent DAG, dense retrieval-augmented generation, FastAPI, and Next.js. It accompanies my IEEE Xplore research.",
+        "Implemented with fine-tuned RoBERTa, a seven-agent DAG, dense RAG, FastAPI, and Next.js. Accompanies my IEEE Xplore research.",
       ],
       tech: [
         "Python",
@@ -607,9 +607,9 @@ export default function Portfolio() {
 
   const navItems = [
     { href: "#experience", id: "experience", label: "Experience" },
-    { href: "#recognition", id: "recognition", label: "Recognition" },
     { href: "#open-source", id: "open-source", label: "Open Source" },
     { href: "#projects", id: "projects", label: "Projects" },
+    { href: "#beyond-code", id: "beyond-code", label: "Beyond Code" },
     { href: "#skills", id: "skills", label: "Skills" },
     { href: "#education", id: "education", label: "Education" },
     { href: "#achievements", id: "achievements", label: "Achievements" },
@@ -1232,9 +1232,11 @@ export default function Portfolio() {
               <div className="flex flex-wrap items-center justify-center gap-1 text-[11px] font-medium text-slate-500 dark:text-slate-400">
                 <a href="#experience" className="px-1.5 py-0.5 rounded hover:text-[#0f2b5c] dark:hover:text-sky-300">Experience</a>
                 <span>·</span>
-                <a href="#open-source" className="px-1.5 py-0.5 rounded hover:text-[#0f2b5c] dark:hover:text-sky-300">Open Source (9 PRs)</a>
+                <a href="#open-source" className="px-1.5 py-0.5 rounded hover:text-[#0f2b5c] dark:hover:text-sky-300">Open Source</a>
                 <span>·</span>
                 <a href="#projects" className="px-1.5 py-0.5 rounded hover:text-[#0f2b5c] dark:hover:text-sky-300">Projects</a>
+                <span>·</span>
+                <a href="#beyond-code" className="px-1.5 py-0.5 rounded hover:text-[#0f2b5c] dark:hover:text-sky-300 font-semibold text-[#0f2b5c] dark:text-sky-400">Beyond Code</a>
                 <span>·</span>
                 <a href="#skills" className="px-1.5 py-0.5 rounded hover:text-[#0f2b5c] dark:hover:text-sky-300">Skills</a>
               </div>
@@ -1268,9 +1270,6 @@ export default function Portfolio() {
             />
           </div>
         </section>
-
-        {/* 2.1 ACHIEVEMENTS & RECOGNITION PHOTO GALLERY — TOSHIBA & DELL TECHNOLOGIES */}
-        <AchievementsRecognition />
 
         {/* 3. OPEN-SOURCE CONTRIBUTIONS — 9 MERGED PRs ACROSS AWS, APACHE, AND CISCO */}
         <section
@@ -1353,7 +1352,7 @@ export default function Portfolio() {
                 <CardContent className="flex flex-1 flex-col justify-between gap-4">
                   <div className="space-y-3">
                     <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-                      I worked on durable-execution suspension and error handling, including retryable errors, awaited-operation diagnostics, and regression tests. In workflow systems, small mistakes in failure handling can affect how an operation resumes, so preserving the expected execution lifecycle matters.
+                      Contributed durable-execution suspension and error handling to the AWS Durable Execution SDK for Java, covering retryable errors, awaited-operation diagnostics, and regression tests to guarantee serverless workflows resume safely.
                     </p>
                     <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
                       <div className="font-bold text-slate-800 dark:text-slate-100 flex items-center justify-between">
@@ -1418,7 +1417,7 @@ export default function Portfolio() {
                 <CardContent className="flex flex-1 flex-col justify-between gap-4">
                   <div className="space-y-3">
                     <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-                      I addressed a Guava runtime compatibility issue in Apache Hudi partition-path validation, using explicit argument validation while preserving lazy error-message construction and checking compatibility across Guava versions.
+                      Resolved a Guava runtime compatibility issue in Apache Hudi partition-path validation using explicit argument validation and lazy error construction, ensuring safe cross-table translation between Hudi, Delta Lake, and Iceberg.
                     </p>
                     <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-300 space-y-1">
                       <div className="font-bold text-slate-800 dark:text-slate-100 flex items-center justify-between">
@@ -1483,7 +1482,7 @@ export default function Portfolio() {
                 <CardContent className="flex flex-1 flex-col justify-between gap-4">
                   <div className="space-y-3">
                     <p className="text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
-                      Across seven merged pull requests, I contributed changes involving device-health pagination, certificate management, HTTP method correctness, API behavior, and tests in an enterprise networking SDK.
+                      Contributed 7 merged PRs across device-health pagination, Root CA certificate management, HTTP method correctness (PUT vs POST/PATCH), session token reuse, UUID serialization, and test automation in an enterprise networking SDK.
                     </p>
 
                     {/* Interactive Collapsible / Tabbed View for all 7 Cisco PRs */}
@@ -1617,9 +1616,11 @@ export default function Portfolio() {
             </div>
           </div>
         </section>
-        
-        
-        {/* 4. TECHNICAL SKILLS — INTERACTIVE RELATIONSHIPS & FILTER TRANSITIONS */}
+
+        {/* 5. BEYOND CODE SECTION — EDITORIAL IMAGE GALLERY & LIGHTBOX */}
+        <BeyondCodeSection />
+
+        {/* 6. TECHNICAL SKILLS — INTERACTIVE RELATIONSHIPS & FILTER TRANSITIONS */}
         <section id="skills" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border bg-slate-50/50 dark:bg-slate-900/30">
           <div className="container mx-auto max-w-5xl">
             <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
