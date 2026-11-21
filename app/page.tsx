@@ -43,6 +43,7 @@ import { ExperienceTimeline } from "@/components/interactive/experience-timeline
 import { BeyondCodeSection } from "@/components/interactive/beyond-code"
 import { triggerWinnerConfetti } from "@/components/interactive/confetti"
 import { ProjectCard } from "@/components/interactive/project-card"
+import { CertificationsCarousel } from "@/components/interactive/certifications-carousel"
 
 export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -1901,65 +1902,8 @@ export default function Portfolio() {
               </div>
             </div>
 
-            {/* 4 Professional Certifications in a Compact Responsive Swipeable Row on Mobile */}
-            <div className="pt-1">
-              <div className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 px-1 flex items-center justify-between">
-                <div className="flex items-center gap-1.5">
-                  <Award className="h-3.5 w-3.5 text-[#0f2b5c] dark:text-sky-400" />
-                  <span>Professional Certifications</span>
-                </div>
-                <span className="text-[11px] font-medium text-slate-400 sm:hidden">Swipe to explore →</span>
-              </div>
-
-              {/* Horizontal scroll on mobile, 4-column grid on desktop */}
-              <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2 pt-0.5 -mx-4 px-4 sm:mx-0 sm:px-0">
-                {professionalCertifications.map((item) => (
-                  <Card
-                    key={item.id}
-                    tabIndex={0}
-                    className="min-w-[260px] sm:min-w-0 max-w-[280px] sm:max-w-none shrink-0 snap-start border border-border/90 bg-card hover:border-[#0f2b5c]/50 transition-all p-3.5 rounded-xl shadow-2xs flex flex-col justify-between focus:ring-2 focus:ring-[#0f2b5c]"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between gap-1 mb-1">
-                        <span className="text-[11px] font-bold text-[#0f2b5c] dark:text-sky-400 truncate">
-                          {item.org}
-                        </span>
-                        <span className="text-[10px] font-semibold text-slate-400 shrink-0">
-                          {item.date}
-                        </span>
-                      </div>
-                      <h4 className="text-xs sm:text-sm font-bold text-foreground leading-snug line-clamp-1">
-                        {item.title}
-                      </h4>
-                      <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1 leading-relaxed line-clamp-2">
-                        {item.desc}
-                      </p>
-                    </div>
-
-                    <div className="pt-2.5 mt-2.5 border-t border-border/60 flex items-center justify-between">
-                      <span className="text-[10.5px] font-medium text-slate-500 dark:text-slate-400">Verified</span>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white rounded-lg text-[11px] font-bold h-7 px-2.5 group shadow-2xs"
-                        asChild
-                      >
-                        <a
-                          href={item.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <span>View Certificate</span>
-                          <ExternalLink className="h-3 w-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                        </a>
-                      </Button>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            </div>
+            {/* Interactive Professional Certifications Carousel with Grid/Carousel Toggle */}
+            <CertificationsCarousel items={professionalCertifications} />
           </div>
         </section>
 
