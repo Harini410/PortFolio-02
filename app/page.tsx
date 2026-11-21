@@ -479,6 +479,14 @@ export default function Portfolio() {
   const professionalCertifications = [
     {
       id: "cert-1",
+      title: "Full Stack Java Development",
+      org: "JSpiders Training Center",
+      date: "Apr 2022 – Mar 2023",
+      desc: "Core Java, Spring Boot, Hibernate and SQL.",
+      link: "https://drive.google.com/file/d/1RTtCGOrI2vyXH6j_xHPgi3w3-1oqNjTv/view?usp=drive_link",
+    },
+    {
+      id: "cert-2",
       title: "Student Intern — Japanese Trainee Program",
       org: "Toshiba Software India Pvt. Ltd.",
       date: "Jun 2025 – Jul 2025",
@@ -486,7 +494,7 @@ export default function Portfolio() {
       link: "https://drive.google.com/file/d/12-qbiWk395zQNifNbny0t0CEr5ti0Thk/view?usp=sharing",
     },
     {
-      id: "cert-2",
+      id: "cert-3",
       title: "Student Intern Trainee",
       org: "DRDO — Centre for Artificial Intelligence and Robotics (CAIR)",
       date: "Jan 2025 – Jun 2025",
@@ -494,20 +502,12 @@ export default function Portfolio() {
       link: "https://drive.google.com/file/d/1I_B8fyGlng8WRsnosvQomWHWBlW5_pzX/view?usp=sharing",
     },
     {
-      id: "cert-3",
+      id: "cert-4",
       title: "Software Testing Certification",
       org: "NPTEL",
       date: "Jul 2024 – Oct 2024",
       desc: "Software testing and verification methodologies.",
       link: "https://drive.google.com/file/d/1TZyZvl5HiDj390lw11bnyDYVS1gplW17/view?usp=drive_link",
-    },
-    {
-      id: "cert-4",
-      title: "Full Stack Java Development",
-      org: "JSpiders Training Center",
-      date: "Apr 2022 – Mar 2023",
-      desc: "Core Java, Spring Boot, Hibernate and SQL.",
-      link: "https://drive.google.com/file/d/1RTtCGOrI2vyXH6j_xHPgi3w3-1oqNjTv/view?usp=drive_link",
     },
   ]
 
