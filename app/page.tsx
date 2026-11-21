@@ -1248,7 +1248,7 @@ export default function Portfolio() {
             {/* 3 Core Organization Cards Grid */}
             <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-3">
               {/* Card 1: AWS Durable Execution SDK for Java */}
-              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg p-0 py-0 gap-0">
                 <div className="h-1.5 w-full bg-[#0f2b5c]" />
                 <CardHeader className="pb-3 p-5 sm:p-6">
                   <div className="mb-2 flex items-start justify-between gap-2">
@@ -1313,7 +1313,7 @@ export default function Portfolio() {
               </Card>
 
               {/* Card 2: Apache XTable (Incubating) — Matching borders, spacing and visual weight */}
-              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg p-0 py-0 gap-0">
                 <div className="h-1.5 w-full bg-[#0f2b5c]" />
                 <CardHeader className="pb-3 p-5 sm:p-6">
                   <div className="mb-2 flex items-start justify-between gap-2">
@@ -1378,7 +1378,7 @@ export default function Portfolio() {
               </Card>
 
               {/* Card 3: Cisco Catalyst WAN SDK (7 Merged PRs) */}
-              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg">
+              <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#0f2b5c]/60 dark:hover:border-sky-500/60 hover:shadow-lg p-0 py-0 gap-0">
                 <div className="h-1.5 w-full bg-[#0f2b5c]" />
                 <CardHeader className="pb-3 p-5 sm:p-6">
                   <div className="mb-2 flex items-start justify-between gap-2">
