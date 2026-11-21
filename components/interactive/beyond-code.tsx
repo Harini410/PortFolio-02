@@ -3,10 +3,10 @@
 import * as React from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import { Award, Mic, Maximize2, ChevronLeft, ChevronRight, X, Sparkles, Building2 } from "lucide-react"
+import { Award, FileCheck2, Maximize2, ChevronLeft, ChevronRight, X, Sparkles, Building2, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-// 3 Core Highlight Photos: Dell Hackathon Team, Toshiba Recognition, JSS Conference Speaking
+// 3 Core Highlight Photos: Dell Hackathon Team, Toshiba Recognition, JSS IEEE Conference Presentation
 const ALL_PHOTOS = [
   {
     src: "/hackathon-group.jpg",
@@ -24,10 +24,10 @@ const ALL_PHOTOS = [
   },
   {
     src: "/technical-speaking.jpg",
-    title: "Technical Speaking",
-    subtitle: "JSS College · IEEE Conference",
-    caption: "Presented and communicated technical ideas at an IEEE conference.",
-    category: "Academic & Conference Speaking",
+    title: "IEEE Conference Presentation",
+    subtitle: "JSS Science & Technology University · ICETEG 2025",
+    caption: "Presented research paper on ensemble network intrusion detection at the IEEE ICETEG 2025 conference (published in IEEE Xplore).",
+    category: "IEEE Conference & Research",
   },
 ]
 
@@ -92,7 +92,7 @@ export function BeyondCodeSection() {
             A few moments beyond building software.
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1.5 leading-relaxed max-w-xl mx-auto">
-            Hackathon delivery under pressure, professional recognition, and technical conference speaking.
+            Hackathon delivery under pressure, professional recognition, and IEEE conference research presentations.
           </p>
         </div>
 
@@ -107,7 +107,7 @@ export function BeyondCodeSection() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-              {/* 1. Dell Technologies — Agentic AI Hackathon Grand Finale (Single Team Photo) */}
+              {/* 1. Dell Technologies — Agentic AI Hackathon Grand Finale */}
               <motion.div
                 initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -245,12 +245,12 @@ export function BeyondCodeSection() {
             </div>
           </div>
 
-          {/* TIER 2: DISTINCT DEDICATED SPACE — CONFERENCE & TECHNICAL SPEAKING (JSS IEEE) */}
+          {/* TIER 2: DISTINCT DEDICATED SPACE — IEEE CONFERENCE PRESENTATION */}
           <div className="pt-8 border-t border-border">
             <div className="flex items-center gap-2 mb-4 px-1">
-              <Mic className="h-4 w-4 text-[#0f2b5c] dark:text-sky-400" />
+              <FileCheck2 className="h-4 w-4 text-[#0f2b5c] dark:text-sky-400" />
               <span className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                Conference &amp; Technical Speaking
+                IEEE Conference Presentation
               </span>
             </div>
 
@@ -268,7 +268,7 @@ export function BeyondCodeSection() {
                 <div className="relative aspect-[16/10] md:w-[48%] shrink-0 overflow-hidden bg-slate-950/20">
                   <Image
                     src="/technical-speaking.jpg"
-                    alt="Harini L presenting technical ideas at the podium at JSS College IEEE Conference"
+                    alt="Harini L presenting research paper at the IEEE Conference (ICETEG 2025) at JSS Science & Technology University"
                     fill
                     sizes="(max-width: 768px) 100vw, 48vw"
                     className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-103"
@@ -278,8 +278,8 @@ export function BeyondCodeSection() {
 
                   <div className="absolute top-3.5 left-3.5 z-10">
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-black/65 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold shadow-md">
-                      <Mic className="h-3 w-3 text-sky-300" />
-                      <span>IEEE Conference Presentation</span>
+                      <FileCheck2 className="h-3 w-3 text-sky-300" />
+                      <span>IEEE Conference · ICETEG 2025</span>
                     </div>
                   </div>
 
@@ -295,23 +295,32 @@ export function BeyondCodeSection() {
                 <div className="p-5 sm:p-7 flex flex-col justify-between flex-1">
                   <div>
                     <div className="text-xs font-bold text-[#0f2b5c] dark:text-sky-400 uppercase tracking-wider mb-1">
-                      JSS College · IEEE Conference
+                      JSS Science &amp; Technology University · IEEE Conference
                     </div>
                     <h3 className="text-lg sm:text-xl font-extrabold text-foreground tracking-tight">
-                      Technical Speaking
+                      IEEE Conference Presentation
                     </h3>
                     <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">
-                      ICETEG 2025 · JSS Science &amp; Technology University
+                      ICETEG 2025 · IEEE Xplore Published Research
                     </div>
                     <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-3 leading-relaxed max-w-xl">
-                      Presented and communicated technical ideas at an IEEE conference. Shared research on ensemble network intrusion detection, answering questions from academic researchers and practitioners.
+                      Presented research paper on ensemble network intrusion detection at the IEEE ICETEG 2025 international conference at JSS Science &amp; Technology University, published in IEEE Xplore.
                     </p>
                   </div>
 
-                  <div className="pt-4 mt-4 border-t border-border/70 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
-                    <span>Mysuru · October 2025</span>
+                  <div className="pt-4 mt-4 border-t border-border/70 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-slate-400">
+                    <a
+                      href="https://ieeexplore.ieee.org/document/11472951"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1 text-[#0f2b5c] dark:text-sky-400 font-semibold hover:underline"
+                    >
+                      <span>IEEE Xplore Paper</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
                     <span className="text-[#0f2b5c] dark:text-sky-400 font-semibold group-hover:underline">
-                      View photo full size →
+                      View conference photo full size →
                     </span>
                   </div>
                 </div>
