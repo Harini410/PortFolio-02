@@ -172,25 +172,25 @@ export function ExperienceTimeline({
 
                     {/* Problem → Investigation → Change → Validation Case Study Breakdown */}
                     {exp.caseStudy && (
-                      <div className="mb-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-900/50 p-3.5 sm:p-4">
-                        <div className="flex items-center justify-between gap-2 mb-3">
+                      <div className="mb-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-900/50 p-3 sm:p-4">
+                        <div className="flex items-center justify-between gap-2 mb-2.5 sm:mb-3">
                           <div className="flex items-center gap-2">
                             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                             <span className="text-xs font-bold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-300">
                               Engineering Case Study: {exp.caseStudy.title}
                             </span>
                           </div>
-                          <span className="text-[10px] font-semibold text-slate-500 dark:text-slate-400">
-                            The Problem → What I Investigated → What the Investigation Revealed → Validation
+                          <span className="hidden sm:inline-block text-[10px] font-semibold text-slate-500 dark:text-slate-400">
+                            Problem → Investigation → Findings → Validation
                           </span>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-2.5">
                           {/* 1. The Problem */}
-                          <div className="p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
-                            <div className="flex items-center gap-1.5 mb-1.5">
+                          <div className="p-2.5 sm:p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
+                            <div className="flex items-center gap-1.5 mb-1">
                               <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+                              <span className="text-[10.5px] sm:text-[11px] font-extrabold uppercase tracking-wider text-rose-600 dark:text-rose-400">
                                 The Problem
                               </span>
                             </div>
@@ -200,10 +200,10 @@ export function ExperienceTimeline({
                           </div>
 
                           {/* 2. What I Investigated */}
-                          <div className="p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
-                            <div className="flex items-center gap-1.5 mb-1.5">
+                          <div className="p-2.5 sm:p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
+                            <div className="flex items-center gap-1.5 mb-1">
                               <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                              <span className="text-[10.5px] sm:text-[11px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400">
                                 What I Investigated
                               </span>
                             </div>
@@ -213,11 +213,11 @@ export function ExperienceTimeline({
                           </div>
 
                           {/* 3. What the Investigation Revealed */}
-                          <div className="p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
-                            <div className="flex items-center gap-1.5 mb-1.5">
+                          <div className="p-2.5 sm:p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
+                            <div className="flex items-center gap-1.5 mb-1">
                               <span className="w-1.5 h-1.5 rounded-full bg-sky-500" />
-                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-600 dark:text-sky-400">
-                                What the Investigation Revealed
+                              <span className="text-[10.5px] sm:text-[11px] font-extrabold uppercase tracking-wider text-sky-600 dark:text-sky-400">
+                                Findings
                               </span>
                             </div>
                             <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -226,10 +226,10 @@ export function ExperienceTimeline({
                           </div>
 
                           {/* 4. Validation */}
-                          <div className="p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
-                            <div className="flex items-center gap-1.5 mb-1.5">
+                          <div className="p-2.5 sm:p-3 rounded-lg bg-white dark:bg-card border border-slate-200/90 dark:border-slate-700/80 shadow-2xs flex flex-col">
+                            <div className="flex items-center gap-1.5 mb-1">
                               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                              <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                              <span className="text-[10.5px] sm:text-[11px] font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
                                 Validation
                               </span>
                             </div>

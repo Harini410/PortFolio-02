@@ -79,8 +79,8 @@ export function InteractiveSkills({
 
   return (
     <div className="w-full max-w-full">
-      {/* Category Filter Tabs - Responsive wrapping on mobile, centered single row on desktop */}
-      <div className="w-full max-w-full mb-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 px-1 sm:px-0">
+      {/* Category Filter Tabs - Horizontal scrollable on mobile, centered row on desktop */}
+      <div className="w-full max-w-full mb-3 sm:mb-5 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1 px-1 sm:px-0">
         {categories.map((c) => {
           const isActive = activeCategory === c.id
           return (
@@ -90,7 +90,7 @@ export function InteractiveSkills({
               whileHover={prefersReducedMotion ? {} : { y: -1, scale: 1.02 }}
               whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              className={`relative px-2.5 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-bold whitespace-nowrap transition-colors cursor-pointer select-none ${
+              className={`relative px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-bold whitespace-nowrap shrink-0 transition-colors cursor-pointer select-none ${
                 isActive
                   ? "bg-[#0f2b5c] text-white shadow-xs"
                   : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-slate-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c]"
@@ -103,18 +103,18 @@ export function InteractiveSkills({
       </div>
 
       {/* Interactive Technology Relationship Callout Banner */}
-      <div className="h-10 mb-5 flex items-center justify-center px-2 w-full max-w-full">
+      <div className="min-h-[28px] sm:h-9 mb-3 sm:mb-4 flex items-center justify-center px-2 w-full max-w-full">
         <AnimatePresence mode="wait">
           {hoveredSkill && activeUsage ? (
             <motion.div
               key={hoveredSkill}
-              initial={{ opacity: 0, y: 6, scale: 0.98 }}
+              initial={{ opacity: 0, y: 4, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -6, scale: 0.98 }}
+              exit={{ opacity: 0, y: -4, scale: 0.98 }}
               transition={{ duration: 0.15 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0f2b5c]/10 dark:bg-[#0f2b5c]/25 border border-[#0f2b5c]/30 text-xs font-semibold text-[#0f2b5c] dark:text-sky-300 shadow-2xs max-w-full min-w-0"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0f2b5c]/10 dark:bg-[#0f2b5c]/25 border border-[#0f2b5c]/30 text-[11px] sm:text-xs font-semibold text-[#0f2b5c] dark:text-sky-300 shadow-2xs max-w-full min-w-0"
             >
-              <Sparkles className="h-3.5 w-3.5 shrink-0 text-[#0f2b5c] dark:text-sky-400" />
+              <Sparkles className="h-3 w-3 shrink-0 text-[#0f2b5c] dark:text-sky-400" />
               <span className="font-bold shrink-0">{hoveredSkill}:</span>
               <span className="text-slate-700 dark:text-slate-200 truncate">
                 {activeUsage.usedIn}
@@ -134,35 +134,35 @@ export function InteractiveSkills({
         </AnimatePresence>
       </div>
 
-      {/* 6 Developer Toolkit Groups Grid (2 or 3 columns) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto w-full">
+      {/* 6 Developer Toolkit Groups Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-5xl mx-auto w-full">
         {filteredGroups.map((group, gIdx) => (
           <motion.div
             key={group.category}
-            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{
-              duration: 0.45,
-              delay: prefersReducedMotion ? 0 : gIdx * 0.08,
+              duration: 0.4,
+              delay: prefersReducedMotion ? 0 : gIdx * 0.06,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            whileHover={prefersReducedMotion ? {} : { y: -4 }}
+            whileHover={prefersReducedMotion ? {} : { y: -3 }}
             className="h-full w-full min-w-0"
           >
-            <Card className="h-full border border-border hover:border-[#0f2b5c]/60 transition-all duration-300 bg-card p-4 sm:p-5 rounded-xl shadow-2xs hover:shadow-md flex flex-col justify-between overflow-hidden w-full">
+            <Card className="h-full border border-border hover:border-[#0f2b5c]/60 transition-all duration-300 bg-card p-3.5 sm:p-4 rounded-xl shadow-2xs hover:shadow-md flex flex-col justify-between overflow-hidden w-full">
               <div>
                 <motion.div
                   initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: -6 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: prefersReducedMotion ? 0 : gIdx * 0.08 + 0.1 }}
-                  className="text-xs font-bold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-400 mb-3 flex items-center gap-1.5"
+                  className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-400 mb-2 sm:mb-2.5 flex items-center gap-1.5"
                 >
                   <Code2 className="h-3.5 w-3.5" />
                   <span>{group.title}</span>
                 </motion.div>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1 sm:gap-1.5">
                   {group.skills.map((skill, sIdx) => {
                     const isSkillHovered = hoveredSkill === skill
                     return (
@@ -181,9 +181,9 @@ export function InteractiveSkills({
                         onMouseEnter={() => setHoveredSkill(skill)}
                         onMouseLeave={() => setHoveredSkill(null)}
                         onClick={() => setHoveredSkill(hoveredSkill === skill ? null : skill)}
-                        whileHover={prefersReducedMotion ? {} : { y: -2, scale: 1.05 }}
+                        whileHover={prefersReducedMotion ? {} : { y: -1, scale: 1.04 }}
                         whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
-                        className={`text-xs font-semibold px-2.5 py-1 rounded-md border transition-all cursor-pointer text-left ${
+                        className={`text-[11px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border transition-all cursor-pointer text-left ${
                           isSkillHovered
                             ? "bg-[#0f2b5c] text-white border-[#0f2b5c] shadow-xs"
                             : "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-border hover:border-[#0f2b5c]/40 hover:bg-slate-200/80 dark:hover:bg-slate-700/80"

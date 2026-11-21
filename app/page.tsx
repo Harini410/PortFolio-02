@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import useEmblaCarousel from "embla-carousel-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -56,9 +55,6 @@ export default function Portfolio() {
   const [activeHeroCta, setActiveHeroCta] = useState<string | null>(null)
   const [ieeeExpanded, setIeeeExpanded] = useState(false)
   const [ciscoPrsExpanded, setCiscoPrsExpanded] = useState(false)
-  const [certViewMode, setCertViewMode] = useState<"grid" | "swipe">("swipe")
-  const [certCurrentIndex, setCertCurrentIndex] = useState(0)
-  const [certScrollSnaps, setCertScrollSnaps] = useState<number[]>([])
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
   useEffect(() => {
@@ -69,87 +65,6 @@ export default function Portfolio() {
     mq.addEventListener("change", handler)
     return () => mq.removeEventListener("change", handler)
   }, [])
-
-  const [certEmblaRef, certEmblaApi] = useEmblaCarousel({
-    loop: true,
-  })
-
-  const onCertSelect = useCallback(() => {
-    if (!certEmblaApi) return
-    setCertCurrentIndex(certEmblaApi.selectedScrollSnap())
-  }, [certEmblaApi])
-
-  useEffect(() => {
-    if (!certEmblaApi) return
-    onCertSelect()
-    setCertScrollSnaps(certEmblaApi.scrollSnapList())
-    certEmblaApi.on("select", onCertSelect)
-    certEmblaApi.on("reInit", onCertSelect)
-    return () => {
-      certEmblaApi.off("select", onCertSelect)
-      certEmblaApi.off("reInit", onCertSelect)
-    }
-  }, [certEmblaApi, onCertSelect])
-
-  const scrollCertPrev = useCallback(() => {
-    if (certEmblaApi) certEmblaApi.scrollPrev()
-  }, [certEmblaApi])
-
-  const scrollCertNext = useCallback(() => {
-    if (certEmblaApi) certEmblaApi.scrollNext()
-  }, [certEmblaApi])
-
-  const scrollCertTo = useCallback(
-    (index: number) => {
-      if (certEmblaApi) certEmblaApi.scrollTo(index)
-    },
-    [certEmblaApi]
-  )
-
-  const certDragMoved = React.useRef(false)
-  const certPointerStart = React.useRef<{ x: number; y: number } | null>(null)
-
-  const handleCertPointerDown = (e: React.PointerEvent) => {
-    certPointerStart.current = { x: e.clientX, y: e.clientY }
-    certDragMoved.current = false
-  }
-
-  const handleCertPointerMove = (e: React.PointerEvent) => {
-    if (!certPointerStart.current) return
-    const dx = Math.abs(e.clientX - certPointerStart.current.x)
-    const dy = Math.abs(e.clientY - certPointerStart.current.y)
-    if (dx > 10 || dy > 10) {
-      certDragMoved.current = true
-    }
-  }
-
-  const handleCertTouchStart = (e: React.TouchEvent) => {
-    if (e.touches.length > 0) {
-      certPointerStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
-      certDragMoved.current = false
-    }
-  }
-
-  const handleCertTouchMove = (e: React.TouchEvent) => {
-    if (!certPointerStart.current || e.touches.length === 0) return
-    const dx = Math.abs(e.touches[0].clientX - certPointerStart.current.x)
-    const dy = Math.abs(e.touches[0].clientY - certPointerStart.current.y)
-    if (dx > 10 || dy > 10) {
-      certDragMoved.current = true
-    }
-  }
-
-  const handleCertCardClick = (e: React.MouseEvent) => {
-    if (certDragMoved.current) {
-      certDragMoved.current = false
-      return
-    }
-    const target = e.target as HTMLElement
-    if (target.closest("a") || target.closest("button")) {
-      return
-    }
-    scrollCertNext()
-  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -210,17 +125,17 @@ export default function Portfolio() {
       duration: "November 2025 – September 2026",
       location: "Bengaluru, India",
       isProminent: true,
-      summaryQuote: "I worked across Windows recovery applications and OSRI image builds, contributing to fixes, requirements, debugging, and validation.",
+      summaryQuote: "I worked across Windows recovery applications and OSRI image builds—contributing to fixes, requirements, debugging, and validation.",
       caseStudy: {
         title: "Tracking down a Windows recovery failure",
-        problem: "A blue-screen crash occurred during hardware diagnostics and system recovery on Windows test images.",
-        investigation: "Reproduced the crash in test environments, captured diagnostic logs and snapshots, and examined runtime traces using Helix Data Collector and Analyzer.",
-        findings: "Identified a string/integer type mismatch associated with an exception-handling issue in the recovery service.",
-        validation: "Validated recovery scenarios across multiple hardware profiles, tracking test results and regression coverage via GitHub PRs and Jira.",
+        problem: "A BSOD crash occurred during hardware diagnostics and system recovery on Windows test images.",
+        investigation: "Reproduced the crash in test environments, captured diagnostic logs and memory snapshots, and traced execution using Helix Data Collector and Analyzer.",
+        findings: "Isolated a string/integer type mismatch in the recovery service's exception handler.",
+        validation: "Validated recovery workflows across multiple hardware profiles, tracking test results and regression coverage in GitHub and Jira.",
       },
       bullets: [
-        "I worked with an existing C#/.NET Windows recovery application covering hardware scan, repair, reset, backup, and disk cloning.",
-        "I also worked with the Windows 11 ARM64 OSRI build workflow, using PowerShell, Batch, DISM, WIM, WinPE, and WinRE for scripting, image operations, and validation.",
+        "Maintained an existing C#/.NET Windows recovery application covering hardware scans, repair, reset, backup, and disk cloning.",
+        "Built Windows 11 ARM64 OSRI build workflows using PowerShell, Batch, DISM, WIM, WinPE, and WinRE for scripting, image operations, and validation.",
       ],
       closingQuote: "The interesting part isn't just seeing something fail. It's finding enough evidence to understand what went wrong.",
       skills: [
@@ -250,7 +165,7 @@ export default function Portfolio() {
       location: "Bengaluru, India",
       isProminent: false,
       bullets: [
-        "I completed training in software engineering, AI, and Agile delivery, with project assignments involving planning, effort estimation, and technical documentation.",
+        "Completed training in software engineering, AI, and Agile delivery, delivering project milestones with planning, effort estimation, and technical documentation.",
       ],
       skills: [
         "Software Engineering",
@@ -269,7 +184,7 @@ export default function Portfolio() {
       location: "Bengaluru, India",
       isProminent: false,
       bullets: [
-        "I worked on React components and user interfaces for an institutional AI-based evaluation platform, integrating the frontend with Spring Boot REST APIs and MongoDB.",
+        "Engineered React UI components for an AI evaluation platform, integrating the frontend with Spring Boot REST APIs and MongoDB.",
       ],
       skills: [
         "React.js",
@@ -358,9 +273,9 @@ export default function Portfolio() {
       date: "Sep 2026",
       hook: "What happens when a complaint system gets more work than it can handle?",
       summary:
-        "Built an asynchronous complaint portal using Java and Spring Boot. Separated intake from downstream notification and analytics processing using Kafka, with Redis cache-aside for status lookups and PostgreSQL for persistence.",
+        "Asynchronous complaint portal built with Spring Boot. Decoupled intake from downstream notifications and analytics using Kafka, with Redis cache-aside lookups and PostgreSQL persistence.",
       bullets: [
-        "Used isolated Kafka consumer groups for decoupled notification and analytics processing, plus 64 automated unit and integration tests using Testcontainers and MockMvc.",
+        "Decoupled Kafka consumer groups ensure independent analytics and notification scaling; verified with 64 unit and integration tests using Testcontainers and MockMvc.",
       ],
       tech: [
         "Java 17",
@@ -385,9 +300,9 @@ export default function Portfolio() {
       date: "Jan 2026",
       hook: "If several systems depend on each other, what should recover first?",
       summary:
-        "A decision-support prototype that models infrastructure dependencies as directed graphs. Using NetworkX and heuristic risk scoring, it calculates recovery sequences based on critical dependencies rather than treating all systems as equally urgent.",
+        "Decision-support engine modeling infrastructure dependencies as directed graphs. Uses NetworkX heuristic risk scoring to calculate optimal recovery sequences under attack.",
       bullets: [
-        "Integrated a local Llama 3.1 model via Ollama to generate offline remediation runbooks. Won the Dell Agentic AI Hackathon Grand Finale.",
+        "Integrated local Llama 3.1 via Ollama to generate offline runbooks without external network dependencies. Grand Finale Winner at Dell Technologies.",
       ],
       tech: [
         "Python",
@@ -409,7 +324,7 @@ export default function Portfolio() {
       date: "Sep 2026",
       hook: "A matching score is only useful if you can explain it.",
       summary:
-        "Built a resume evaluation application pairing semantic retrieval with structured scoring against job criteria. Separated requirement extraction from scoring so evaluations can be audited and tested consistently.",
+        "Audit-ready resume evaluator pairing semantic retrieval with structured criteria scoring. Separates requirement extraction from evaluation to ensure consistent scoring.",
       bullets: [
         "Automated evaluation suite reports 13/13 unit tests and 10/10 benchmark evaluations across edge-case candidate profiles.",
       ],
@@ -433,9 +348,9 @@ export default function Portfolio() {
       date: "Sep 2026",
       hook: "Understanding harmful language takes more than spotting a keyword.",
       summary:
-        "Developed a conversational safety platform combining transformer classification with dense retrieval and multi-agent reasoning to examine context and generate constructive de-escalation responses.",
+        "Conversational safety platform combining transformer classification with dense retrieval and multi-agent reasoning for context-aware de-escalation.",
       bullets: [
-        "Implemented with fine-tuned RoBERTa, a seven-agent DAG, dense RAG, FastAPI, and Next.js. Accompanies my IEEE Xplore research.",
+        "Implemented with fine-tuned RoBERTa, a seven-agent DAG, dense RAG, FastAPI backend, and Next.js frontend. Companion prototype to published IEEE Xplore research.",
       ],
       tech: [
         "Python",
@@ -594,16 +509,6 @@ export default function Portfolio() {
       link: "https://drive.google.com/file/d/1RTtCGOrI2vyXH6j_xHPgi3w3-1oqNjTv/view?usp=drive_link",
     },
   ]
-
-
-  const certSlideLabels = [
-    "Agentic AI Hackathon Winner",
-    "Toshiba Software Trainee",
-    "DRDO CAIR Research Trainee",
-    "NPTEL Software Testing",
-    "JSpiders Full Stack Java",
-  ]
-  const totalCertSlides = 5
 
   const navItems = [
     { href: "#experience", id: "experience", label: "Experience" },
@@ -1494,9 +1399,9 @@ export default function Portfolio() {
                         <button
                           type="button"
                           onClick={() => setCiscoPrsExpanded(!ciscoPrsExpanded)}
-                          className="text-[10px] font-bold text-[#0f2b5c] dark:text-sky-400 hover:underline cursor-pointer"
+                          className="text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded bg-[#0f2b5c]/10 dark:bg-[#0f2b5c]/25 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/20 transition-colors cursor-pointer"
                         >
-                          {ciscoPrsExpanded ? "Show Top 3" : "Expand All 7 PRs"}
+                          {ciscoPrsExpanded ? "Show Top 3 PRs" : "View all 7 PRs"}
                         </button>
                       </div>
 
@@ -1528,9 +1433,13 @@ export default function Portfolio() {
                       </div>
 
                       {!ciscoPrsExpanded && (
-                        <p className="text-[10px] text-center text-slate-500 dark:text-slate-400 mt-2">
-                          + 4 more merged PRs (#248, #247, #246, #245)
-                        </p>
+                        <button
+                          type="button"
+                          onClick={() => setCiscoPrsExpanded(true)}
+                          className="w-full text-center text-[10px] text-slate-500 dark:text-slate-400 hover:text-[#0f2b5c] dark:hover:text-sky-400 mt-2 cursor-pointer font-medium"
+                        >
+                          + 4 more merged PRs (#248, #247, #246, #245) · click to view all
+                        </button>
                       )}
                     </div>
 
@@ -1676,14 +1585,14 @@ export default function Portfolio() {
                       : "border-border hover:border-[#0f2b5c]/60 hover:shadow-sm"
                   }`}
                 >
-                  <CardHeader className="pb-3 p-4 sm:p-6">
+                  <CardHeader className="pb-2.5 p-3.5 sm:p-5">
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-                      <div className="flex items-start gap-3.5 min-w-0">
-                        <div className="w-10 h-10 rounded-xl bg-[#0f2b5c] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
-                          <GraduationCap className="h-5 w-5" />
+                      <div className="flex items-start gap-3 min-w-0">
+                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0f2b5c] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                          <GraduationCap className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
                         </div>
                         <div className="min-w-0">
-                          <CardTitle className="text-base sm:text-lg md:text-xl font-extrabold text-foreground break-words">
+                          <CardTitle className="text-sm sm:text-base md:text-lg font-extrabold text-foreground break-words">
                             Master of Technology — Computer Science &amp; Engineering (Information Technology)
                           </CardTitle>
                           <CardDescription className="text-xs sm:text-sm font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5 break-words">
@@ -1708,7 +1617,7 @@ export default function Portfolio() {
                   </CardHeader>
 
                   {/* Collapsible IEEE Conferences under M.Tech entry with smooth AnimatePresence height */}
-                  <div className="px-4 sm:px-6 pb-4 pt-1 border-t border-border/60">
+                  <div className="px-3.5 sm:px-5 pb-3.5 pt-1 border-t border-border/60">
                     <button
                       type="button"
                       onClick={(e) => {
@@ -1870,14 +1779,14 @@ export default function Portfolio() {
                       : "border-border hover:border-[#0f2b5c]/60 hover:shadow-sm"
                   }`}
                 >
-                  <CardHeader className="pb-3 p-4 sm:p-6">
+                  <CardHeader className="p-3.5 sm:p-5">
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
-                      <div className="flex items-start gap-3.5 min-w-0">
-                        <div className="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 text-[#0f2b5c] dark:text-sky-400 flex items-center justify-center shrink-0 shadow-xs mt-0.5">
-                          <GraduationCap className="h-5 w-5" />
+                      <div className="flex items-start gap-3 min-w-0">
+                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-200 dark:bg-slate-800 text-[#0f2b5c] dark:text-sky-400 flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                          <GraduationCap className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
                         </div>
                         <div className="min-w-0">
-                          <CardTitle className="text-base sm:text-lg md:text-xl font-extrabold text-foreground break-words">
+                          <CardTitle className="text-sm sm:text-base md:text-lg font-extrabold text-foreground break-words">
                             Bachelor of Engineering — Information Science &amp; Engineering
                           </CardTitle>
                           <CardDescription className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 mt-0.5 break-words">
@@ -1906,356 +1815,124 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* 6. ACHIEVEMENTS & CERTIFICATIONS SECTION */}
+        {/* 6. ACHIEVEMENTS & CERTIFICATIONS SECTION — STREAMLINED & HIGH-IMPACT */}
         <section id="achievements" className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-t border-border bg-slate-50/50 dark:bg-slate-900/30">
           <div className="container mx-auto max-w-4xl">
-            {/* Section Header with View Toggle Controls */}
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10 w-full">
-              <div className="min-w-0">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground break-words">
-                  A few milestones along the way.
-                </h2>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1 leading-relaxed">
-                  Winner · Dell Agentic AI Hackathon · 9 Merged Open-Source PRs · 2 IEEE Publications · M.Tech CGPA 8.70/10
-                </p>
+            {/* Section Header */}
+            <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0f2b5c]/10 border border-[#0f2b5c]/20 text-[#0f2b5c] dark:text-sky-300 text-xs font-bold uppercase tracking-wider mb-2.5 shadow-2xs">
+                <Award className="h-3.5 w-3.5" />
+                <span>Milestones &amp; Credentials</span>
+              </div>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-foreground">
+                A few milestones along the way.
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium mt-1 leading-relaxed">
+                Key recognitions and verified professional credentials earned throughout my engineering journey.
+              </p>
+            </div>
+
+            {/* 4-Item High-Impact Milestones Strip */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3.5 mb-8">
+              <div className="p-3.5 rounded-xl bg-card border border-amber-500/30 shadow-2xs flex flex-col justify-between">
+                <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 mb-1.5">
+                  <Award className="h-4 w-4 shrink-0" />
+                  <span className="text-[10.5px] font-extrabold uppercase tracking-wide">Hackathon</span>
+                </div>
+                <div>
+                  <div className="text-xs sm:text-sm font-black text-foreground">Grand Finale Winner</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Dell Technologies AI Academy</div>
+                </div>
               </div>
 
-              {/* Swipe Cards vs Grid View Switcher */}
-              <div className="w-full sm:w-auto inline-flex items-center justify-center p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-border shrink-0 shadow-2xs max-w-full">
-                <button
-                  type="button"
-                  onClick={() => setCertViewMode("swipe")}
-                  className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer select-none min-h-[36px] ${
-                    certViewMode === "swipe"
-                      ? "bg-[#0f2b5c] text-white shadow-xs"
-                      : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-slate-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c]"
-                  }`}
-                  aria-label="Switch to Swipe Card View"
-                >
-                  <SlidersHorizontal className="h-3.5 w-3.5 shrink-0" />
-                  <span className="whitespace-nowrap">Swipe Cards</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setCertViewMode("grid")}
-                  className={`flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer select-none min-h-[36px] ${
-                    certViewMode === "grid"
-                      ? "bg-[#0f2b5c] text-white shadow-xs"
-                      : "bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-slate-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c]"
-                  }`}
-                  aria-label="Switch to Grid View"
-                >
-                  <LayoutGrid className="h-3.5 w-3.5 shrink-0" />
-                  <span className="whitespace-nowrap">Grid View</span>
-                </button>
+              <div className="p-3.5 rounded-xl bg-card border border-emerald-500/30 shadow-2xs flex flex-col justify-between">
+                <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 mb-1.5">
+                  <Code2 className="h-4 w-4 shrink-0" />
+                  <span className="text-[10.5px] font-extrabold uppercase tracking-wide">Open Source</span>
+                </div>
+                <div>
+                  <div className="text-xs sm:text-sm font-black text-foreground">9 Merged Upstream PRs</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">AWS · Apache · Cisco</div>
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-card border border-sky-500/30 shadow-2xs flex flex-col justify-between">
+                <div className="flex items-center gap-1.5 text-sky-600 dark:text-sky-400 mb-1.5">
+                  <FileCheck2 className="h-4 w-4 shrink-0" />
+                  <span className="text-[10.5px] font-extrabold uppercase tracking-wide">Research</span>
+                </div>
+                <div>
+                  <div className="text-xs sm:text-sm font-black text-foreground">2 IEEE Publications</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">IEEE Xplore Indexed</div>
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-card border border-indigo-500/30 shadow-2xs flex flex-col justify-between">
+                <div className="flex items-center gap-1.5 text-indigo-600 dark:text-indigo-400 mb-1.5">
+                  <GraduationCap className="h-4 w-4 shrink-0" />
+                  <span className="text-[10.5px] font-extrabold uppercase tracking-wide">Academics</span>
+                </div>
+                <div>
+                  <div className="text-xs sm:text-sm font-black text-foreground">M.Tech Distinction</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">UVCE · CGPA 8.70 / 10</div>
+                </div>
               </div>
             </div>
 
-            {/* MODE 1: GRID VIEW */}
-            {certViewMode === "grid" && (
-              <div className="animate-in fade-in duration-200">
-                {/* Featured Hackathon Winner Card with 3D Tilt, Staggered Reveal and Celebration Confetti */}
-                <motion.div
-                  initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 22, scale: 0.98 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.45, ease: [0.25, 0.1, 0.25, 1] }}
-                  whileHover={prefersReducedMotion ? {} : { y: -3 }}
-                >
-                  <TiltCard
-                    highlightColor="gold"
-                    onClick={() => triggerWinnerConfetti()}
-                    className="border-2 border-amber-500/40 bg-gradient-to-br from-amber-500/[0.04] via-card to-card p-5 sm:p-6 rounded-2xl shadow-sm mb-8 hover:shadow-lg cursor-pointer transition-all"
+            {/* 4 Verified Professional Certifications */}
+            <div>
+              <div className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 px-1 flex items-center gap-1.5">
+                <Award className="h-3.5 w-3.5 text-[#0f2b5c] dark:text-sky-400" />
+                <span>Verified Professional Certifications</span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+                {professionalCertifications.map((item) => (
+                  <Card
+                    key={item.id}
+                    className="border border-border/90 bg-card hover:border-[#0f2b5c]/50 transition-all p-4 rounded-xl shadow-2xs flex flex-col justify-between"
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      <div className="flex items-start gap-4">
-                        <motion.div
-                          whileHover={prefersReducedMotion ? {} : { rotate: 12, scale: 1.12 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                          className="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/30 flex items-center justify-center shrink-0"
-                        >
-                          <Award className="h-7 w-7" />
-                        </motion.div>
-                        <div>
-                          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 text-xs font-bold border border-amber-500/30 mb-1.5">
-                            <span>Winner</span>
-                          </div>
-                          <h3 className="text-lg sm:text-xl font-black text-foreground">
-                            Winner — Agentic AI Hackathon
-                          </h3>
-                          <div className="text-xs sm:text-sm font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
-                            Dell Technologies · AI Academy &amp; India Innovation Forum · Jan 2026
-                          </div>
-                          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-2 leading-relaxed">
-                            Awarded Winner for architecting an Agentic AI ransomware recovery decision-support system.
-                          </p>
-                        </div>
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-1.5">
+                        <span className="text-xs font-bold text-[#0f2b5c] dark:text-sky-400">
+                          {item.org}
+                        </span>
+                        <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                          {item.date}
+                        </span>
                       </div>
-
-                      <div className="sm:shrink-0 w-full sm:w-auto pt-2 sm:pt-0">
-                        <Button
-                          size="sm"
-                          className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-bold h-9 px-4 shadow-xs group w-full sm:w-auto justify-center"
-                          asChild
-                        >
-                          <a
-                            href="https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-1.5"
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              triggerWinnerConfetti()
-                            }}
-                          >
-                            <span>View Certificate</span>
-                            <ExternalLink className="h-3.5 w-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
-                  </TiltCard>
-                </motion.div>
-
-                {/* Supported Professional Certifications Grid with Staggered Scroll Reveal */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {professionalCertifications.map((item, idx) => (
-                    <motion.div
-                      key={item.id}
-                      initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 22, scale: 0.98 }}
-                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                      viewport={{ once: true, margin: "-30px" }}
-                      transition={{
-                        duration: 0.45,
-                        delay: prefersReducedMotion ? 0 : idx * 0.1,
-                        ease: [0.25, 0.1, 0.25, 1],
-                      }}
-                      whileHover={prefersReducedMotion ? {} : { y: -4 }}
-                      className="h-full"
-                    >
-                      <TiltCard
-                        className="h-full border border-border hover:border-[#0f2b5c]/60 transition-all bg-card flex flex-col justify-between p-5 rounded-xl shadow-2xs hover:shadow-md"
-                      >
-                        <div>
-                          <div className="flex items-center justify-between gap-2 mb-2">
-                            <motion.div
-                              whileHover={prefersReducedMotion ? {} : { rotate: 12, scale: 1.15 }}
-                              transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                              className="flex items-center gap-1.5 text-[#0f2b5c] dark:text-sky-400"
-                            >
-                              <Award className="h-4 w-4" />
-                              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{item.date}</span>
-                            </motion.div>
-                          </div>
-                          <div className="text-sm font-bold text-foreground">
-                            {item.title}
-                          </div>
-                          <div className="text-xs font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
-                            {item.org}
-                          </div>
-                          <p className="text-xs text-slate-700 dark:text-slate-300 font-normal mt-2.5 leading-relaxed">
-                            {item.desc}
-                          </p>
-                        </div>
-
-                        <div className="pt-3.5 border-t border-border/60 mt-4 flex items-center justify-between">
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white rounded-lg text-xs font-bold h-8 px-3 group shadow-2xs"
-                            asChild
-                          >
-                            <a
-                              href={item.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              <span>View Certificate</span>
-                              <ExternalLink className="h-3.5 w-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                            </a>
-                          </Button>
-                        </div>
-                      </TiltCard>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* MODE 2: SWIPE CARDS VIEW (Interactive Touch/Swipe + Arrow Buttons) */}
-            {certViewMode === "swipe" && (
-              <div className="max-w-2xl mx-auto animate-in fade-in duration-200">
-                {/* Carousel Controls Header */}
-                <div className="flex items-center justify-between gap-2 mb-4 px-1 w-full min-w-0">
-                  <div className="flex items-center gap-2 min-w-0 flex-1">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#0f2b5c] dark:text-sky-400 truncate">
-                      {certSlideLabels[certCurrentIndex]}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-1.5 shrink-0">
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      onClick={scrollCertPrev}
-                      className="h-8 w-8 rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white cursor-pointer shadow-2xs"
-                      aria-label="Previous certification slide"
-                    >
-                      <ChevronLeft className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      onClick={scrollCertNext}
-                      className="h-8 w-8 rounded-lg bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white cursor-pointer shadow-2xs"
-                      aria-label="Next certification slide"
-                    >
-                      <ChevronRight className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Touch-Friendly Swipe Carousel Viewport */}
-                <div
-                  className="overflow-hidden cursor-grab active:cursor-grabbing select-none rounded-2xl"
-                  ref={certEmblaRef}
-                >
-                  <div className="flex touch-pan-y">
-                    {/* Slide 1: Featured Hackathon Winner Card */}
-                    <div className="flex-[0_0_100%] min-w-0 px-2">
-                      <Card
-                        onClick={handleCertCardClick}
-                        onPointerDown={handleCertPointerDown}
-                        onPointerMove={handleCertPointerMove}
-                        onTouchStart={handleCertTouchStart}
-                        onTouchMove={handleCertTouchMove}
-                        className="border-2 border-amber-500/40 bg-gradient-to-br from-amber-500/[0.04] via-card to-card p-5 sm:p-6 rounded-2xl shadow-sm min-h-[250px] flex flex-col justify-between cursor-pointer"
-                      >
-                        <div>
-                          <div className="flex items-center justify-between gap-2 mb-2">
-                            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 text-xs font-bold border border-amber-500/30">
-                              <Award className="h-3.5 w-3.5 text-amber-600 dark:text-amber-300" />
-                              <span>Winner · Dell Technologies Hackathon</span>
-                            </div>
-                            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Jan 2026</span>
-                          </div>
-                          <h3 className="text-base sm:text-lg font-black text-foreground mt-1">
-                            Winner — Agentic AI Hackathon
-                          </h3>
-                          <div className="text-xs sm:text-sm font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
-                            Dell Technologies · AI Academy &amp; India Innovation Forum
-                          </div>
-                          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-2.5 leading-relaxed">
-                            Awarded Winner for architecting an Agentic AI ransomware recovery decision-support system.
-                          </p>
-                        </div>
-
-                        <div className="pt-4 border-t border-border/60 mt-4 flex flex-wrap items-center justify-between gap-2">
-                          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Official Honor</span>
-                          <Button
-                            size="sm"
-                            className="bg-[#0f2b5c] hover:bg-[#0a1c38] active:bg-[#08152b] text-white rounded-lg text-xs font-bold h-8 px-3.5 shadow-xs group"
-                            asChild
-                          >
-                            <a
-                              href="https://drive.google.com/file/d/1Rh1eQYfv5-wvQTLrUSsV5FH_1h11KYXa/view?usp=sharing"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-1.5"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                triggerWinnerConfetti()
-                              }}
-                            >
-                              <span>View Certificate</span>
-                              <ExternalLink className="h-3.5 w-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                            </a>
-                          </Button>
-                        </div>
-                      </Card>
+                      <h4 className="text-sm font-bold text-foreground">
+                        {item.title}
+                      </h4>
+                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
+                        {item.desc}
+                      </p>
                     </div>
 
-                    {/* Slides 2 to 5: Professional Certifications */}
-                    {professionalCertifications.map((item) => (
-                      <div key={item.id} className="flex-[0_0_100%] min-w-0 px-2">
-                        <Card
-                          onClick={handleCertCardClick}
-                          onPointerDown={handleCertPointerDown}
-                          onPointerMove={handleCertPointerMove}
-                          onTouchStart={handleCertTouchStart}
-                          onTouchMove={handleCertTouchMove}
-                          className="border border-border hover:border-[#0f2b5c]/50 transition-all bg-card p-5 sm:p-6 rounded-2xl shadow-sm min-h-[250px] flex flex-col justify-between cursor-pointer"
+                    <div className="pt-3 mt-3 border-t border-border/60 flex items-center justify-between">
+                      <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Verified</span>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white rounded-lg text-xs font-bold h-7 px-2.5 group shadow-2xs"
+                        asChild
+                      >
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1"
+                          onClick={(e) => e.stopPropagation()}
                         >
-                          <div>
-                            <div className="flex items-center justify-between gap-2 mb-2">
-                              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0f2b5c]/10 text-[#0f2b5c] dark:text-sky-400 text-xs font-bold border border-[#0f2b5c]/20">
-                                <Award className="h-3.5 w-3.5" />
-                                <span>Professional Certification</span>
-                              </div>
-                              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{item.date}</span>
-                            </div>
-                            <h3 className="text-base sm:text-lg font-bold text-foreground mt-1">
-                              {item.title}
-                            </h3>
-                            <div className="text-xs sm:text-sm font-bold text-[#0f2b5c] dark:text-sky-400 mt-0.5">
-                              {item.org}
-                            </div>
-                            <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-normal mt-2.5 leading-relaxed">
-                              {item.desc}
-                            </p>
-                          </div>
-
-                          <div className="pt-4 border-t border-border/60 mt-4 flex flex-wrap items-center justify-between gap-2">
-                            <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Verified Certificate</span>
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="bg-white dark:bg-card border border-[#0f2b5c]/30 text-[#0f2b5c] dark:text-sky-300 hover:bg-[#0f2b5c]/10 hover:border-[#0f2b5c] hover:text-[#0f2b5c] active:bg-[#0f2b5c] active:text-white rounded-lg text-xs font-bold h-8 px-3.5 group shadow-2xs"
-                              asChild
-                            >
-                              <a
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-1.5"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <span>View Certificate</span>
-                                <ExternalLink className="h-3.5 w-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                              </a>
-                            </Button>
-                          </div>
-                        </Card>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Swipe Slide Dot Indicators */}
-                <div className="flex items-center justify-center gap-2 mt-6">
-                  {(certScrollSnaps.length > 0 ? certScrollSnaps : Array.from({ length: totalCertSlides })).map((_, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() => scrollCertTo(idx)}
-                      className={`h-2 rounded-full transition-all cursor-pointer ${
-                        certCurrentIndex === idx
-                          ? "w-8 bg-[#0f2b5c] dark:bg-sky-400"
-                          : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
-                      }`}
-                      aria-label={`Go to certification slide ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-
-                {/* Swipe Hint */}
-                <p className="text-center text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-2">
-                  Tap card to advance · Swipe or use &lt; &gt; arrows to navigate
-                </p>
+                          <span>View Certificate</span>
+                          <ExternalLink className="h-3 w-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </a>
+                      </Button>
+                    </div>
+                  </Card>
+                ))}
               </div>
-            )}
+            </div>
           </div>
         </section>
 
